@@ -72,3 +72,58 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+
+/* Custom Base */
+
+#app {
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+
+button {
+  background: none;
+  appearance: none;
+  box-shadow: none;
+  border: none;
+  justify-content: center;
+  display: flex;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+  columns: inherit;
+}
+
+a:visited{
+  text-decoration: none;
+}
+
+ul {
+  text-decoration: none;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Style modes */
+
+.light {
+  fill: #101d42;;
+  fill-rule:nonzero;
+  stroke: #101d42;
+  color: #101D42;
+}
+
+.light a {
+  color: #101D42;
+}
+
+.dark {
+  background-color: #343434;
+  stroke: white;
+  color: white;
+  fill: white;
+
+}

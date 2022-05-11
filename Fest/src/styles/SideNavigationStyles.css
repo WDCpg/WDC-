@@ -1,0 +1,38 @@
+.side-menu-container {
+    height: 100%;
+    width: 75px;
+    background-color: red;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.side-menu-container ul {
+    width: 100%;
+    
+    
+}
+
+.side-menu-container a {
+    width: 100%;
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+}
+
+
+.side-menu-icon {
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Icons */
+.light .side-menu-icon {
+    fill: #777E94;
+}
+

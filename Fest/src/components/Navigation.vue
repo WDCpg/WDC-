@@ -1,20 +1,18 @@
 <template>
-    <nav class="navigation-container light">
+    <nav class="navigation-container light" id="navigation-container">
         <div class="nav-bar">
-            <div class="nav-bar-left">
+            <div class="nav-bar-left" id="nav-bar">
                <!-- Menu button display -->
-                <button id="menu-button" type="button" class="menu-icon-container">
-                    <svg width="100%" height="100%" viewBox="0 0 3559 2417" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.5;">
+                <button  type="button" class="menu-icon-container">
+                    <svg id="menu-button" width="100%" height="100%" viewBox="0 0 3559 2417" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.5;">
                         <rect id="MenuIcon" x="0" y="0" width="3558.62" height="2416.17" style="fill:none;"/>
                         <g>
-                            <path d="M146.007,283.261l3241.56,0" style="fill:none;stroke:#101d42;stroke-width:230.17px;"/>
-                            <path d="M146.007,1131.72l3241.56,0" style="fill:none;stroke:#101d42;stroke-width:230.17px;"/>
-                            <path d="M146.007,1996.04l3241.56,0" style="fill:none;stroke:#101d42;stroke-width:230.17px;"/>
+                            <path d="M146.007,283.261l3241.56,0" style="fill:none;stroke-width:230.17px;"/>
+                            <path d="M146.007,1131.72l3241.56,0" style="fill:none;stroke-width:230.17px;"/>
+                            <path d="M146.007,1996.04l3241.56,0" style="fill:none;stroke-width:230.17px;"/>
                         </g>
                     </svg>
                 </button>
-                    
-       
                 <a class="page-logo-container" href="/">
                     <div class="company-logo">
                         <svg width="100%" height="100%" viewBox="0 0 2445 2417" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
@@ -32,86 +30,71 @@
                                 </g>
                         </svg>
                     </div>
-                    <span class="company-name">
+                    <span class="company-name" id="company-name">
                         Fest
                     </span>
                 </a>
             </div>
-            <div class="nav-bar-rigth">
-
+            <div class="nav-bar-right">
+                <!-- Logged-in User -->
+                <div class="light-dark-container">
+                    <button type="button" class="navigation-button">
+                        <svg width="100%" height="100%" viewBox="0 0 2132 2107" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+                        <rect id="light" x="0" y="0" width="2131.59" height="2106.64" style="fill:none;"/>
+                            <g id="Sun">
+                                <path d="M1059.77,560.616c-266.502,0 -485.721,219.219 -485.721,485.721c0,266.501 219.219,485.72 485.721,485.72c266.501,-0 485.72,-219.219 485.72,-485.72c-0,-266.502 -219.219,-485.721 -485.72,-485.721Z" />
+                                <g>
+                                    <path d="M1059.77,414.47c-51.581,0 -94.565,-42.984 -94.565,-94.565l-0,-150.444c-0,-51.581 42.984,-94.565 94.565,-94.565c51.581,0 94.565,42.984 94.565,94.565l-0,150.444c-0,55.88 -42.984,94.565 -94.565,94.565Z"/>
+                                </g>
+                                <g>
+                                    <path d="M1059.77,1673.9c-51.581,0 -94.565,42.984 -94.565,94.565l-0,154.743c-0,51.581 42.984,94.565 94.565,94.565c51.581,0 94.565,-42.984 94.565,-94.565l-0,-150.444c-0,-55.88 -42.984,-98.864 -94.565,-98.864Z"/>
+                                </g>
+                                <g>
+                                    <path d="M1502.5,599.302c-38.686,-38.686 -38.686,-98.863 -0,-133.251l107.46,-107.46c38.686,-38.686 98.863,-38.686 133.251,0c38.685,38.686 38.685,98.864 -0,133.251l-107.461,107.46c-34.387,38.686 -94.565,38.686 -133.25,0Z"/>
+                                </g>
+                                <g>
+                                    <path d="M612.731,1489.07c-38.686,-38.686 -98.863,-38.686 -133.251,-0l-107.46,107.46c-38.685,38.686 -38.685,98.863 0,133.251c38.686,34.387 98.864,38.685 133.251,-0l107.46,-107.461c38.686,-34.387 38.686,-94.565 0,-133.25Z"/>
+                                </g>
+                                <g>
+                                    <path d="M1687.33,1046.34c0,-51.581 42.984,-94.565 94.565,-94.565l154.743,-0c51.581,-0 94.565,42.984 94.565,94.565c0,51.58 -42.984,94.565 -94.565,94.565l-150.444,-0c-55.88,-0 -98.864,-42.985 -98.864,-94.565Z" /></g><g><path d="M427.9,1046.34c-0,-51.581 -42.985,-94.565 -94.565,-94.565l-150.445,-0c-51.581,-0 -94.565,42.984 -94.565,94.565c0,51.58 42.984,94.565 94.565,94.565l150.445,-0c55.879,-0 94.565,-42.985 94.565,-94.565Z" /></g><g><path d="M1502.5,1489.07c38.685,-38.686 98.863,-38.686 133.25,-0l107.461,107.46c38.685,38.686 38.685,98.863 -0,133.251c-38.686,34.387 -98.864,38.685 -133.251,-0l-107.46,-107.461c-34.387,-34.387 -34.387,-94.565 -0,-133.25Z" /></g><g><path d="M612.731,599.302c38.686,-38.686 38.686,-98.863 0,-133.251l-107.46,-107.46c-38.686,-38.686 -98.864,-38.686 -133.251,0c-38.685,38.686 -38.685,98.864 0,133.251l107.46,107.46c38.686,38.686 98.864,38.686 133.251,0Z" /></g></g></svg>
+                    </button>
+                    <label class="switch">
+                        <input type="checkbox" @click="changeStyleMode()">
+                        <span class="slider round">
+                        </span>
+                    </label>
+                    <button type="button" class="navigation-button">
+                        <svg width="100%" height="100%" viewBox="0 0 2132 2107" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><rect id="Dark" x="0" y="0" width="2131.59" height="2106.64" style="fill:none;"/><path id="Moon" d="M722.015,74.896c-364.954,152.29 -621.455,512.532 -621.455,932.688c-0,557.915 452.278,1010.19 1010.19,1010.19c420.156,0 780.398,-256.501 932.688,-621.455c-119.657,49.932 -250.98,77.505 -388.738,77.505c-557.915,0 -1010.19,-452.278 -1010.19,-1010.19c-0,-137.758 27.573,-269.081 77.505,-388.738Z" /></svg>
+                    </button>
+                </div>
+                <div class="notifications-container">
+                    <button class="navigation-button" type="button">
+                        <svg width="100%" height="100%" viewBox="0 0 2132 2107" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="background-color:none;fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+                            <path id="Alarm--small-" serif:id="Alarm (small)" d="M1295.47,1795.55c-7.921,134.637 -102.958,237.593 -237.594,237.593c-134.635,0 -237.592,-102.956 -237.593,-237.593l475.187,0Zm673.18,-273.939c-15.839,-7.92 -23.759,-15.84 -39.599,-15.84c-71.278,-31.679 -126.716,-110.877 -158.395,-174.235c-55.438,-87.117 -79.198,-190.074 -79.198,-293.031l0,-193.714c0,-324.711 -245.513,-586.064 -554.384,-625.662l0,-87.118c0,-47.519 -31.679,-79.198 -79.198,-79.198c-47.518,0 -79.197,31.679 -79.197,79.198l-0,87.118c-308.872,39.598 -554.384,308.871 -554.384,625.662l-0,193.714c-0,95.037 -23.76,190.074 -63.359,269.272c-31.679,63.358 -71.278,118.797 -126.716,166.315c-23.759,23.76 -55.438,31.679 -79.198,47.519c-23.759,7.92 -39.599,31.679 -39.599,63.358c0,47.519 31.679,79.198 79.198,79.198l1742.35,-0c47.519,-0 79.198,-31.679 79.198,-79.198c-7.92,-15.84 -23.759,-47.519 -47.519,-63.358Z" /></svg>
+                    </button>
+                    <div>
+                        <span class="notification-active"></span>
+                    </div>
+                    
+                </div>
+                <div class="user-profile-container">
+                    <button class="user-profile-button" type="button">
+                        <svg width="100%" height="100%" viewBox="0 0 2132 2107" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;"><rect id="Log-in" serif:id="Log in" x="0" y="-0" width="2131.59" height="2106.64" style="fill:none;"/><ellipse cx="1065.8" cy="1059.12" rx="984.796" ry="985.612" style="fill:#5096fe;stroke:#4f94fa;stroke-width:71.5px;"/><ellipse cx="1052.41" cy="772.697" rx="449.291" ry="456.433" style="fill:#fff;"/><path d="M392.973,1778.58c108.123,-191.275 306.196,-395.105 659.433,-395.105c357.762,-0 564.101,209.085 678.389,402.356c-175.288,160.765 -408.783,258.905 -665,258.905c-260.076,-0 -496.74,-101.119 -672.822,-266.156Z" style="fill:#f6f5f7;"/></svg>
+                    </button>
+                </div>
             </div>
         </div>
     </nav>
+
 </template>
 
 
 // Page styling
 <style scoped>
-.navigation-container {
-    width: 100%;
-    height: 65px;
-    display: flex;
-    
-}
-
-.light {
-    background-color: red;
-}
-
-.dark {
-    background-color: #2C2C2C
-}
-
-.nav-bar {
-    display: flex;
-    width: 100%;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-}
-
-.nav-bar-left, .nav-bar-right {
-    width: 50%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-.nav-bar-left {
-    justify-content: left;
-}
-
-.nav-bar-right {
-    justify-content: right;
-    align-items: center;
-}
-
-.menu-icon-container {
-    height: 20px;
-}
-
-.page-logo-container {
-    margin: 0 0 0 15px;
-}
-
-.page-logo-container {
-    height: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-
-}
-
-.company-logo {
-    width: 35px;
-    display: flex;
-}
-
-.company-name {
-    font-size: 2em;
-    font-weight: 800;
-    margin: 0 0 0 10px;
-}
-
-
+@import "@/styles/NavigationStyles.css";
 </style>
+
+// Page Logic
+
+<script src="../logic/NavigationLogic.js">
+</script>
