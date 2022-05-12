@@ -88,6 +88,7 @@ button {
   border: none;
   justify-content: center;
   display: flex;
+  font-family: "Montserrat", sans-serif;
 }
 
 a {
@@ -136,5 +137,5 @@ ul {
 }
 
 .page-content-container {
-  padding: 20px;
+  padding: 20px 25px;
 }
