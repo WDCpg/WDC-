@@ -1,0 +1,141 @@
+.outerouterdiv {
+    background-color:white;
+}
+
+body button {
+    width: 200px;
+    border-radius: 15px;
+    box-align: center;
+    margin: auto;
+    text-align: center;
+    position: relative;
+    clear: both;
+}
+
+.outer {
+    clear: both;
+    text-align: center;
+    position: relative;
+    border-color: grey;
+    height: 900px;
+    width: 350px;
+    flex-direction: column;
+    border: 1px solid grey;
+    box-align: center;
+    margin: auto;
+    border-radius: 15px;
+    display: flex;
+}
+
+.upperdiv {
+    background-color:#101D42;
+    color:white;
+    position: relative;
+    flex-grow: 1;
+    font-family: sans-serif
+    border: 1px solid grey;
+    text-align: center;
+    position: relative;
+    box-align: center;
+    margin: auto;
+    border-radius: 15px;
+    width: 100%;
+    height: 10%;
+    line-height: 50px;
+}
+
+input {
+    border: 1px solid #9A9A9A;
+    height: 30px;
+    width: 300px;
+    border-radius: 10px
+}
+
+.availability {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.availability input {
+    width: 80%;
+    margin-left: 20px;
+    border-radius: 10px;
+    border: 1px solid #9A9A9A;
+}
+
+.availability select {
+    height: 30px;
+    margin-left: 20px;
+    border-radius: 10px;
+    border: 1px solid #9A9A9A;
+}
+
+input[name=freefrom] {
+    border: 1px solid #9A9A9A;
+    height: 30px;
+    margin-right: 5px;
+    border-radius: 10px;
+}
+
+input[name=freeto] {
+    border: 1px solid #9A9A9A;
+    height: 30px;
+    margin-right: 5px;
+    border-radius: 10px;
+}
+
+.country {
+    display:flex;
+    flex-direction: row;
+}
+
+.country input {
+    width: 80%;
+    margin-left: 20px;
+    border-radius: 10px;
+    border: 1px solid #9A9A9A;
+}
+
+input[name=postcode] {
+    border: 1px solid #9A9A9A;
+    height: 30px;
+    width: 125px;
+    margin-right: 5px;
+    border-radius: 10px;
+}
+
+.lowerdiv {
+    position: relative;
+    flex-grow: 1;
+    border: 1px solid grey;
+    box-align: center;
+    margin: auto;
+    border: 0;
+    width: 100%;
+    height: 90%;
+}
+
+.sync {
+    background-color: #2E81DA;
+    border-color: #2E81DA;
+    color: white;
+    height: 50px;
+    width: 280px;
+    border-radius: 20px;
+}
+
+/* .save {
+    font-size: 50%
+    margin-left: 27px;
+    text-align: left;
+} */
+
+.save {
+    background-color: #2E81DA;
+    border-color: #2E81DA;
+    color: white;
+    height: 50px;
+    width: 280px;
+    border-radius: 20px;
+}

@@ -2,45 +2,33 @@
     background-color:white;
 }
 
-body button {
-    width: 200px;
-    border-radius: 15px;
-    box-align: center;
-    margin: auto;
-    text-align: center;
-    position: relative;
-    clear: both;
-}
-
 .outer {
     clear: both;
     top: 15vh;
     text-align: center;
     position: relative;
-    border-color: grey;
+    border-color: #9A9A9A;
     height: 600px;
     width: 350px;
     flex-direction: column;
-    border: 1px solid grey;
+    border: 1px solid #9A9A9A;
     box-align: center;
     margin: auto;
     border-radius: 15px;
     display: flex;
 }
 
+.join {
+    background-color:#101D42;
+    color:white;
+}
+
 .upperdiv {
     background-color:#101D42;
     color:white;
-    position: relative;
-    flex-grow: 1;
-    font-family: sans-serif
-    border: 1px solid grey;
-    text-align: center;
-    position: relative;
-    box-align: center;
-    margin: auto;
     border-radius: 15px;
     width: 100%;
+    height: 15%;
 }
 
 input[name=email] {
@@ -57,22 +45,23 @@ input[name=password] {
     width: 250px;
 }
 
-.lowerdiv {
-    position: relative;
-    flex-grow: 1;
-    border: 1px solid grey;
-    box-align: center;
-    margin: auto;
-    border: 0;
-    width: 100%;
+.rectangleleft {
+    height: 40px;
+    width: 80px;
+    background-color: #FF8C42;
+    margin-left: auto;;
 }
 
-.emoji {
-    font-size: 5rem;
-    margin: 25px 0;
+.rectangleleft {
+    height: 50px;
+    width: 80px;
+    background-color: #FF8C42;
+    border-radius: 10px;
+    margin-left: 27px;
+    float:left;
 }
 
-.signin {
+.signup {
     background-color: #2E81DA;
     border-color: #2E81DA;
     color: white;
@@ -81,7 +70,9 @@ input[name=password] {
     border-radius: 20px;
 }
 
-.welcomeback {
-    margin: 50px 0px 0px 0px;
-    font-size: 3rem;
+.signin {
+    font-size: 50%
+    margin-left: 27px;
+    text-align: left;
 }
+
