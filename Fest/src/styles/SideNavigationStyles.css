@@ -1,11 +1,11 @@
 .side-menu-container {
-    height: 100%;
+    height: calc(100vh - 65px) ;
     width: 75px;
-    background-color: red;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-start;
+    justify-content: flex-start;
+
 }
 
 .side-menu-container ul {
@@ -21,18 +21,46 @@
     flex-direction: column;
     justify-items: center;
     align-items: center;
+
+}
+
+.side-menu-container span {
+    font-size: 0.7em;
+    font-weight: 500px;
+}
+
+.side-menu-container li:hover {
+    background-color: #E8E8E8;
 }
 
 
 .side-menu-icon {
-    width: 30px;
+    height: 25px;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 0 0 5px 0;
 }
 
 /* Icons */
 .light .side-menu-icon {
-    fill: #777E94;
+    fill: #9A9A9A;
+   
 }
 
+.dark {
+    background-color: #E8E8E8;
+    
+}
+
+.dark svg {
+    fill: #9A9A9A;
+}
+
+.dark span {
+    color: #9A9A9A;
+}
+
+.dark li:hover {
+    background-color: #E0E0E0;
+}

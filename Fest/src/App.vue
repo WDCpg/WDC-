@@ -9,7 +9,16 @@ import SideNavigation from "@/components/SideNavigation.vue"
   <Navigation />
   <main>
     <SideNavigation />
-    <RouterView />
+    <div class="page-container">
+      <div class="page-line">
+          <hr>
+      </div>
+
+      <div class="page-content-container"> 
+        <RouterView />
+      </div>
+    </div>
+    
   </main>
   <footer>
   </footer>

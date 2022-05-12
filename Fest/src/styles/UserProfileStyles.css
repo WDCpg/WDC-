@@ -1,0 +1,114 @@
+body{
+    font-family: 'Montserrat', sans-serif;
+    color:
+}
+
+button {
+    border-radius: 20px;
+    width: 120px;
+    border: none;
+}
+
+.button-blue{
+    background-color: #2E81DA;
+    color: white;
+}
+
+.button-orange{
+    background-color: #FF7551;
+}
+
+input{
+    border: 1px solid #9A9A9A;
+    border-radius: 4px;
+}
+
+.main-content{
+    display:flex;
+    flex-direction:row;
+
+}
+
+.button-google{
+    width:200px;
+    background-color:#2E81DA;
+    color:white;
+}
+.dot{
+    height: 12px;
+    width: 12px;
+    background-color: #FF7551;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.profile-content-right{
+    padding-left:150px;
+    margin-top:25px;
+
+    /* align-content:flex-end; */
+}
+
+.profile-content-left{
+    padding-left:100px;
+    margin-top:25px;
+
+}
+
+.profile-header{
+    flex-direction:row;
+    display:flex;
+}
+
+.remove-availability{
+    justify-content:space-between;
+    display:flex;
+    flex-wrap:wrap;
+    flex-direction:row;
+}
+
+.profile-remove-availability{
+    margin-top:40px;
+}
+
+.profile-add-availability{
+    margin-top:40px;
+}
+
+.add{
+    float:right;
+}
+
+/* .remove{
+    float:right;
+} */
+
+@media (max-width: 1440px){
+    .main-content{
+        flex-direction:column;
+
+    }
+    .profile-content-right{
+        padding-left:100px;
+        margin-top:25px;
+        margin-bottom:25px;
+    }
+
+    .add{
+        float:none;
+        display:block;
+    }
+
+    .remove-availability{
+        flex-direction:column;
+
+        /* justify-content:; */
+    }
+
+    .profile-header{
+        flex-direction: column;
+    }
+
+}
+
+

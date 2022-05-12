@@ -2,4 +2,9 @@
     <h1>
         Dashboard
     </h1>
+    
 </template>
+
+<style scoped>
+@import "@/styles/DashboardStyles.css"
+</style>

@@ -127,3 +127,14 @@ ul {
   fill: white;
 
 }
+
+/* Page content styling */
+.page-container {
+  width: calc(100vw - 75px);
+  display: flex;
+  flex-direction: column;
+}
+
+.page-content-container {
+  padding: 20px;
+}
