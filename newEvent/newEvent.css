@@ -1,0 +1,251 @@
+/*  COMP SCI 7207, SEM 1, 2022
+    Web Application Project,
+    Creator: Ryan Nguyen, Fulei Liu, Chenghui Liu, Santiago Reyes */
+
+body {
+    background-color: #D3D3D3;
+    display: flex;
+}
+
+#newEvent {
+    background-color: #FFFFFF;
+    padding: 20px 40px;
+    width: 33%;
+    float: left;
+}
+
+.topline {
+    position: relative;
+}
+.breadcrumbs {
+    color: #9A9A9A;
+}
+.topline button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(150%, -100%);
+    border: none;
+    border-radius: 25px;
+    background-color: #494949;
+    color: white;
+    cursor: pointer;
+}
+
+.host {
+    display: flex;
+    align-items: center;
+}
+
+.hostImg {
+    margin-right: 20px;
+}
+
+.hostIcon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.emoji {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.emoji-search {
+    border-radius: 25px;
+    border: 1px solid #9A9A9A;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: flex;
+    flex: 1 0 90%;
+    width: auto;
+    height: 20px;
+    max-width: 260px;
+}
+.emoji-search-text {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+.emoji-search-button {
+    height: 100%;
+    cursor: pointer;
+}
+.emoji-clear {
+    display: flex;
+    flex: 1 0 10%;
+    margin-left: 10px;
+    align-items: center;
+}
+.emoji-clear-button {
+    border: none;
+    border-radius: 5px;
+    background-color: #FCAF58;
+    color: white;
+    height: 20px;
+    cursor: pointer;
+}
+.emoji-clear-text {
+    line-height: 0.5em;
+    font-size: 50%;
+    margin-left: 10px;
+}
+.emoji-list {
+    flex-basis: 100%;
+    margin-left: -35px;
+}
+.emoji ul {
+    list-style-type: none;
+}
+.emoji ul li {
+    display: inline;
+}
+.emoji-button {
+    cursor: pointer;
+}
+
+.event-detail textarea{
+    border-radius: 8px;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 90%;
+    resize: none;
+}
+
+.event-time i {
+    font-size: 2.5vw;
+    margin-right: 10px;
+}
+.event-time input {
+    font-size: 1vw;
+    height: auto;
+    width: 10vw;
+}
+.event-date {
+    margin-right: 20px;
+}
+.event-start {
+    font-size: 1vw;
+    display: flex;
+    align-items: flex-end;
+}
+.event-end {
+    font-size: 1vw;
+    display: flex;
+    align-items: flex-end;
+}
+
+.event-photo {
+    font-size: 1vw;
+    display: flex;
+    align-items: flex-end;
+}
+.event-photo i {
+    font-size: 2.5vw;
+    margin-right: 10px;
+}
+.event-photo button {
+    border: none;
+    border-radius: 12px;
+    margin-left: 10px;
+    padding: 5px 30px;
+    background-color: #2E81DA;
+    color: white;
+    font-size: 1vw;
+    cursor: pointer;
+}
+
+.event-group {
+    display: flex;
+    align-items: center;
+}
+.event-group i {
+    font-size: 0.5vw;
+    margin-right: 5px;
+}
+.event-group-selector {
+    margin-right: 20px;
+    padding: 10px 3px;
+    width: 33%;
+    background-color: #9A9A9A;
+    border-radius: 5px;
+}
+.event-group-selector label{
+    font-size: 0.5vw;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    word-wrap: break-word;
+    cursor: pointer;
+}
+.event-group-selector pre{
+    white-space: pre-wrap;
+}
+
+.event-group-selector input {
+    line-height: 0;
+    opacity: 0;
+}
+
+.event-invite-search {
+    border-radius: 25px;
+    border: 1px solid #9A9A9A;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: flex;
+    flex: 1 0 80%;
+    width: auto;
+    height: 20px;
+    max-width: 356px;
+}
+.event-invite-search-text {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+.event-invite-search-button {
+    height: 100%;
+    cursor: pointer;
+}
+
+.people-invited {
+    position: relative;
+    display: inline-block;
+}
+.people-invited img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+.people-invited-delete {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    cursor: pointer;
+}
+
+.event-calendar {
+    display: grid;
+    height: 100%;
+}
+.event-calendar img{
+    max-width: 100%;
+    max-height: 100%;
+    margin: auto;
+    border-radius: 12px;
+}
+
+.event-submit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.event-submit button{
+    border: none;
+    border-radius: 12px;
+    padding: 5px 10px;
+    background-color: #2E81DA;
+    color: white;
+    cursor: pointer;
+}
