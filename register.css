@@ -32,7 +32,6 @@ body button {
     color:white;
     position: relative;
     flex-grow: 1;
-    font-family: sans-serif
     border: 1px solid grey;
     text-align: center;
     position: relative;
@@ -54,18 +53,18 @@ input {
 .availability {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-around;
 }
 
 .availability input {
-    width: 80%;
-    margin-left: 20px;
+    width: 70%;
     border-radius: 10px;
     border: 1px solid #9A9A9A;
 }
 
 .availability select {
     height: 30px;
+    width: 70px;
     margin-left: 20px;
     border-radius: 10px;
     border: 1px solid #9A9A9A;
@@ -74,7 +73,7 @@ input {
 input[name=freefrom] {
     border: 1px solid #9A9A9A;
     height: 30px;
-    margin-right: 5px;
+    margin-left: 16px;
     border-radius: 10px;
 }
 
@@ -124,12 +123,6 @@ input[name=postcode] {
     width: 280px;
     border-radius: 20px;
 }
-
-/* .save {
-    font-size: 50%
-    margin-left: 27px;
-    text-align: left;
-} */
 
 .save {
     background-color: #2E81DA;

@@ -71,8 +71,6 @@ input[name=password] {
 }
 
 .signin {
-    font-size: 50%
-    margin-left: 27px;
-    text-align: left;
+    font-size: 80%
 }
 
