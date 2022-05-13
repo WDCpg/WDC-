@@ -30,6 +30,11 @@
     align-items: center;
 }
 
+a {
+    text-decoration: none;
+    color: blue;
+}
+
 .upperdiv {
     background-color:#101D42;
     color:white;

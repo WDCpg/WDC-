@@ -8,12 +8,11 @@
             </div>
             <div class="lowerdiv">
                 <h2>Email Sign up</h2>
-                <form action="/userdetails.php">
+                <form action="/register">
                     <label for="email">Email</label><br>
                     <input type="text" id="email" name="email"><br><br>
                     <label for="password">Password</label><br>
                     <input type="password" id="password" name="password">
-                </form>
                 <br>
                 <h2>Or...</h2>
                 <div class="rectangleleft"></div>
@@ -21,9 +20,9 @@
                 <div class="rectangleleft"></div><br><br><br>
                 <p class="signin"><a href="/" style="text-decoration: none;">Already got an account? Sign in</a></p>
                 <div class="signup-button-container">
-                    <button class="signup">Sign up</button>
+                    <button type="submit" class="signup">Sign up</button>
                 </div>
-                
+                </form>
             </div>
         </div>
     </div>

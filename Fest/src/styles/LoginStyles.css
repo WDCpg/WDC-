@@ -57,9 +57,13 @@ input[name=password] {
     width: 100%;
 }
 
+a {
+    text-decoration: none;
+    color: blue;
+}
+
 .emoji {
     font-size: 5em;
-
 }
 
 .signin {
