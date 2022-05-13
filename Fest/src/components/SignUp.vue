@@ -1,0 +1,34 @@
+<template>
+    <div class="outerouterdiv">
+        <div class="outer">
+            <div class="upperdiv">
+                <h1 class="join">
+                    Join the Fest!<br>
+                </h1>
+            </div>
+            <div class="lowerdiv">
+                <h2>Email Sign up</h2>
+                <form action="/userdetails.php">
+                    <label for="email">Email</label><br>
+                    <input type="text" id="email" name="email"><br><br>
+                    <label for="password">Password</label><br>
+                    <input type="password" id="password" name="password">
+                </form>
+                <br>
+                <h2>Or...</h2>
+                <div class="rectangleleft"></div>
+                <div class="rectangleleft"></div>
+                <div class="rectangleleft"></div><br><br><br>
+                <p class="signin"><a href="test" style="text-decoration: none;">Already got an account? Sign in</a></p>
+                <div class="signup-button-container">
+                    <button class="signup">Sign up</button>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</template>
+
+<style scoped>
+@import "@/styles/SignUpStyles.css";
+</style>

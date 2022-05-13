@@ -151,6 +151,10 @@ ul {
   overflow-x: hidden;
 }
 
+hr {
+  margin: 0;
+}
+
 
 /* .page-content-container::-webkit-scrollbar {
   width: 8px;

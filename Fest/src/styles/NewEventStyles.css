@@ -9,7 +9,7 @@
     background-color: #FFFFFF;
     padding: 35px 45px 35px 35px;
     width: 35%;
-    height: calc(100vh - (65px + 35px + 20px));
+    height: calc(100vh - (65px + 35px));
     overflow-y: scroll;
     overflow-x: hidden;
     display: flex;
@@ -21,7 +21,7 @@
   }
   
 #newEvent::-webkit-scrollbar-track {
-background-color: #E8E8E8;
+background-color: none;
 border-radius: 20px;
 }
 
@@ -343,9 +343,59 @@ h3 {
 
 /*  Post Content */
 
-.post-container {
-    background-color: red;
+.post-container-major {
+    display: flex;
+    flex-direction: row;
+    padding: 50px 90px;
+    background-color: #F2F2F2;
+    width: 65%;
+    height: 100%;
 }
+
+.post-container {
+    width: 650px;
+    height: 670px;
+    background-color: white;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 15px;
+}
+
+
+.post-image-container {
+    height: 45%;
+    background-image: url("../assets/images/party.jpg");
+    background-size: cover;
+    background-position: center;
+    border-radius: 30px 30px 0  0;
+}
+
+.post-icon-container p {
+    font-size: 4em;
+    position: absolute;
+    bottom: -50px;
+    left: 15px;
+    
+}
+
+.post-details-container {
+    margin: 35px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    padding: 0 30px 30px 30px;
+}
+
+.post-title-container h3 {
+    font-size: 2.5em;
+    font-weight: 600;
+}
+
+.post-description {
+    font-size: 1.5em;
+}
+
+/* Display Style */
 
 .ligth {
     fill: white;

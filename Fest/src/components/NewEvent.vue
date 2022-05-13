@@ -251,10 +251,30 @@ import UserIcon from "../assets/icons/UserIcon.vue"
 
             </div>
             
-            <div class="post-container">
-                <h1>
-                    Post goes here
-                </h1>
+            <div class="post-container-major">
+                <!-- Post -->
+                <div class="post-container">
+                    <div class="post-image-container">
+
+                    </div>
+                
+                    <div class="post-icon-container">
+                        <p>
+                            &#129409;
+                        </p>
+                    </div>
+                    <div class="post-details-container">
+                        <div class="post-title-container">
+                            <h3>
+                                Party at Adelaide Uni!
+                            </h3>
+                        </div>
+                        <p class="post-description">
+                            Static website for the coming Fest Application made by the best PG group!
+                        </p>
+                    </div>
+                    
+                </div>
             </div>
         
         </div>

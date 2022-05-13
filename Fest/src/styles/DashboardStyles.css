@@ -5,6 +5,10 @@
     justify-content: left;
 }
 
+h1 {
+    font-weight: 600;
+}
+
 .dashboard-title-container {
     margin: 0 0 15px 0;
 }

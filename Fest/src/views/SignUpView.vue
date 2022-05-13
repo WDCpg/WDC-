@@ -1,9 +1,9 @@
 <script setup>
-import NewEvent from "@/components/NewEvent.vue"
+import SignUp from "../components/SignUp.vue"
 </script>
 
 <template>
     <div>
-        <NewEvent />
+        <SignUp />
     </div>
 </template>

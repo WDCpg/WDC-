@@ -7,6 +7,8 @@ import SideNavigation from "./components/SideNavigation.vue"
 import Dashboard from "./components/Dashboard.vue"
 import UserProfile from "./components/UserProfile.vue"
 import NewEvent from "./components/NewEvent.vue"
+import SignUp from "./components/SignUp.vue"
+import Login from "./components/Login.vue"
 
 const app = createApp(App);
 
@@ -21,6 +23,7 @@ app.component("SideNavigation", SideNavigation);
 app.component("Dashboard", Dashboard);
 app.component("UserProfile", UserProfile);
 app.component("NewEvent", NewEvent);
-
+app.component("NewEvent", SignUp);
+app.component("NewEvent", Login);
 
 app.mount("#app");
