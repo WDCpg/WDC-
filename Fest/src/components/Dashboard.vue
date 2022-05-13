@@ -22,6 +22,7 @@
 
         <!-- Posts container -->
         <div class="posts-content-container">
+            <!-- Post -->
             <div class="post-container">
                 <div class="post-image-container">
 
@@ -38,13 +39,38 @@
                             Party at Adelaide Uni!
                         </h3>
                     </div>
+                    <p class="post-description">
+                        Static website for the coming Fest Application made by the best PG group!
+                    </p>
+                </div>
+                
+            </div>
+            <!-- Post -->
+            <div class="post-container">
+                <div class="post-image-container">
+
+                </div>
+              
+                <div class="post-icon-container">
                     <p>
+                        &#127928;
+                    </p>
+                </div>
+                <div class="post-details-container">
+                    <div class="post-title-container">
+                        <h3>
+                            Party at Adelaide Uni!
+                        </h3>
+                    </div>
+                    <p class="post-description">
                         Static website for the coming Fest Application made by the best PG group!
                     </p>
                 </div>
                 
             </div>
         </div>
+
+        
     </div>
 </template>
 

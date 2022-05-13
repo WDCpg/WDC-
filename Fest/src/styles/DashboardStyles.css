@@ -63,11 +63,14 @@
     border-radius: 30px;
     display: flex;
     flex-direction: column;
+    margin: 0 15px;
 }
 
 .post-image-container {
     height: 45%;
-    background-color: blue;
+    background-image: url("../assets/images/party.jpg");
+    background-size: cover;
+    background-position: center;
     border-radius: 30px 30px 0  0;
 }
 
@@ -88,4 +91,8 @@
 .post-title-container h3 {
     font-size: 1.5em;
     font-weight: 600;
+}
+
+.post-description {
+    font-size: 0.9em;
 }

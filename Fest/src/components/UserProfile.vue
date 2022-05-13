@@ -5,9 +5,6 @@
         <div class="profile-header">
             <div class="profile-header">
                 <div class="profile-picture">
-                    <span>
-                        <a><i class="bi bi-person-circle"></i></a>
-                    </span>
                 </div>
                 <div class="profile-details">
                     <h2>Santiago Reyes</h2>
@@ -64,8 +61,8 @@
                         <input type="text" id="profile-confirm-pw" placeholder = "Confirm New Password" />
                     </div>
                 </div>
-                <br>
-                <button class="button-blue">Save</button>
+                <!-- <br> -->
+                <button class="button-blue save">Save</button>
                 <button class="button-orange">Cancel</button>
             </form>
         </div>
