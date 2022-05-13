@@ -1,0 +1,4 @@
+<template>
+    <svg width="100%" height="100%" viewBox="0 0 2132 1872" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><rect id="User" x="0" y="-0" width="2131.59" height="1871.62" style="fill:none;"/><g><circle cx="1057.58" cy="560.072" r="453.924"/><path d="M391.071,1494.59c-35.576,52.95 -39.059,121.201 -9.059,177.498c29.999,56.298 88.594,91.468 152.385,91.468c293.012,1.911 762.866,1.911 1060.83,1.911c65.746,0.022 125.929,-36.895 155.707,-95.512c29.777,-58.617 24.098,-128.991 -14.693,-182.075c-118.589,-155.503 -325.672,-320.393 -678.662,-320.393c-357.204,0 -557.358,168.851 -666.506,327.103Z"/></g>
+    </svg>
+</template>

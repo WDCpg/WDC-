@@ -81,6 +81,13 @@ body {
   font-family: "Montserrat", sans-serif;
 }
 
+body::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  overflow-y: hidden;
+}
 button {
   background: none;
   appearance: none;
@@ -134,8 +141,27 @@ ul {
   width: calc(100vw - 75px);
   display: flex;
   flex-direction: column;
+  
 }
 
 .page-content-container {
   padding: 20px 25px;
+  height: calc(100vh - 65px);
+  overflow-y: hidden;
+  overflow-x: hidden;
 }
+
+
+/* .page-content-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.page-content-container::-webkit-scrollbar-track {
+  background-color: #E8E8E8;
+  border-radius: 20px;
+}
+
+.page-content-container::-webkit-scrollbar-thumb {
+  background-color: #888888;
+  border-radius: 20px;
+} */
