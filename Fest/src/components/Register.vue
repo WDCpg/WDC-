@@ -9,7 +9,7 @@
                 </div>
                 <div class="lowerdiv">
                     <h2>Your details</h2>
-                    <form action="/userdetails.php">
+                    <form action="/">
                         <div class="personal-details-container">
                             <label for="firstname">First name</label><br>
                             <input type="text" id="firstname" name="firstname"><br><br>
