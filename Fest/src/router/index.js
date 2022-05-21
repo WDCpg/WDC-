@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from "vue-router";
-// import HomeView from "../views/HomeView.vue";
 import DashboardView from "../views/DashboardView.vue";
 import UserProfileView from "../views/UserProfileView.vue";
 import NewEventView from "../views/NewEventView.vue";
@@ -18,41 +17,26 @@ const router = createRouter({
     {
       path: "/profile",
       name: "profile",
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: UserProfileView,
     },
     {
       path: "/newEvent",
       name: "newEvent",
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: NewEventView,
     },
     {
       path: "/signUp",
       name: "signUp",
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: SignUpView,
     },
     {
       path: "/login",
       name: "login",
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: LoginView,
     },
     {
       path: "/register",
       name: "register",
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: RegisterView,
     },
   ],

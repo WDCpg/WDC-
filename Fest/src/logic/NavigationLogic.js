@@ -15,8 +15,28 @@ export default {
                 elementsToUpdate[i].classList.toggle('dark');
                 elementsToUpdate[i].classList.toggle('light');
             }
+        },
 
-
+        getPostsRequest() {
+            // App Functions
+            var store = {
+                allPosts: []
+            }
+            let xhttp = new XMLHttpRequest();
+        
+            //Run on response
+            xhttp.onreadystatechange = function() {
+            if(this.readyState == 4 && this.status == 200) {
+                store.allPosts = JSON.parse(this.response);
+                console.log(store);
+                return true;
+                }
+            }
+            //Open connection
+            xhttp.open('GET', 'http://localhost:3001/users/getposts', false);
+        
+            //Send request
+            xhttp.send();
         }
     }
 }
