@@ -9,6 +9,19 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
+//mysql
+var mysql = require('mysql');
+//localhost 1
+var dbConnectionPool = mysql.createPool({host: 'localhost', database: 'fest_db', });
+//local env 2
+// var db = mysql.createPool({host: 'localhost', user: 'root', password: 'Roomdly1234', database: 'fest_db'});
+
+//connect to database middleware
+app.use(function(req,res,next){
+    req.db = dbConnectionPool;
+    next();
+});
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -20,9 +33,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-/* 
+/*
   MIDDLEWARE:
-  Allow access from localhost:3000 - Front End Vue Port 
+  Allow access from localhost:3000 - Front End Vue Port
 */
 app.use(function(req, res, next) {
   res.set('Access-Control-Allow-Origin', 'http://localhost:3000')

@@ -1,8 +1,9 @@
-CREATE DATABASE fest;
-SELECT fest;
+DROP DATABASE fest_db;
+CREATE DATABASE fest_db;
+USE fest_db;
 
 CREATE Table users (
-  user_id int NOT NULL,
+  user_id int NOT NULL AUTO_INCREMENT,
   first_name varchar(63),
   last_name varchar(63),
   dob date,
@@ -11,7 +12,7 @@ CREATE Table users (
   city varchar(63),
   street varchar(100),
   country varchar(63),
-  [state] varchar(63),
+  state varchar(63),
   post_code int,
   is_admin boolean,
   profile_picture varchar(255),
@@ -19,7 +20,7 @@ CREATE Table users (
 );
 
 CREATE Table event (
-  event_id int NOT NULL,
+  event_id int NOT NULL AUTO_INCREMENT,
   event_start datetime,
   event_end datetime,
   event_discription varchar(510),
@@ -35,20 +36,20 @@ CREATE Table event (
 );
 
 CREATE Table event_types (
-  type_id int NOT NULL,
+  type_id int NOT NULL AUTO_INCREMENT,
   type_desc varchar(500),
   PRIMARY KEY(type_id)
 );
 
 CREATE Table images (
-  image_id int NOT NULL,
+  image_id int NOT NULL AUTO_INCREMENT,
   event_id int NOT NULL,
   image_loc varchar(255),
   PRIMARY KEY (image_id)
 );
 
 CREATE Table attendance (
-  att_id int NOT NULL,
+  att_id int NOT NULL AUTO_INCREMENT,
   user_id int NOT NULL,
   event_id int NOT NULL,
   user_status int,
@@ -56,21 +57,21 @@ CREATE Table attendance (
 );
 
 CREATE Table organiser (
-  org_id int NOT NULL,
+  org_id int NOT NULL AUTO_INCREMENT,
   event_id int NOT NULL,
   user_id int NOT NULL,
   PRIMARY KEY(org_id)
 );
 
 CREATE Table user_logs (
-  log_id int NOT NULL,
+  log_id int NOT NULL AUTO_INCREMENT,
   user_id int NOT NULL,
   date_time timestamp,
   PRIMARY KEY (log_id)
 );
 
 CREATE Table notifications (
-  notification_id int NOT NULL,
+  notification_id int NOT NULL AUTO_INCREMENT,
   user_id int NOT NULL,
   type_id int NOT NULL,
   created_at timestamp,
@@ -78,8 +79,10 @@ CREATE Table notifications (
 );
 
 CREATE Table notification_type (
-  type_id int NOT NULL,
+  type_id int NOT NULL AUTO_INCREMENT,
   type_desc varchar(100),
   PRIMARY KEY (type_id)
 );
+
+
 
