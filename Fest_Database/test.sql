@@ -74,3 +74,4 @@ CREATE Table notification_type (
   type_desc varchar(100)
 );
 
+//uhdiusad
