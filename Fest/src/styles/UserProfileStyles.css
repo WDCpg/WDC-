@@ -20,9 +20,9 @@ input{
 }
 
 .main-content{
-    display:flex;
-    flex-direction:row;
-
+    padding: 20px 25px;
+    display: flex;
+    flex-direction: row;
 }
 
 .button-google{
@@ -92,10 +92,6 @@ input{
 } */
 
 @media (max-width: 1440px){
-    .main-content{
-        flex-direction:column;
-
-    }
     .profile-content-right{
         padding-left:100px;
         margin-top:25px;
@@ -119,4 +115,10 @@ input{
 
 }
 
+@media (max-width: 1000px){
+    .main-content{
+        flex-direction: column;
+
+    }
+}
 

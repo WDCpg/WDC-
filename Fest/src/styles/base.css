@@ -145,7 +145,7 @@ ul {
 }
 
 .page-content-container {
-  padding: 20px 25px;
+  
   height: calc(100vh - 65px);
   overflow-y: hidden;
   overflow-x: hidden;

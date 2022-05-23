@@ -349,7 +349,7 @@ h3 {
     padding: 50px 90px;
     background-color: #F2F2F2;
     width: 65%;
-    height: 100%;
+    height: calc(100vh - 60px);
 }
 
 .post-container {
