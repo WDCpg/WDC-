@@ -19,6 +19,16 @@ CREATE Table users (
   PRIMARY KEY (user_id)
 );
 
+CREATE Table friends (
+  user_id int NOT NULL,
+  friend_id int NOT NULL
+);
+
+CREATE Table calendar_availability(
+  calendar_id int NOT NULL,
+  user_id int,
+)
+
 CREATE Table event (
   event_id int NOT NULL AUTO_INCREMENT,
   event_start datetime,

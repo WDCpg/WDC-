@@ -7,3 +7,9 @@ router.get('/', function(req, res, next) {
 });
 
 module.exports = router;
+
+router.get('/profile', function(req,res,next){
+    req.db.getConection(function(error,connection){
+
+    });
+})
