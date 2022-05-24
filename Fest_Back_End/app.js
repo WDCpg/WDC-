@@ -12,9 +12,19 @@ var app = express();
 //mysql
 var mysql = require('mysql');
 //localhost 1
-var dbConnectionPool = mysql.createPool({host: 'localhost', database: 'fest_db', });
+// var dbConnectionPool = mysql.createPool({host: 'localhost', database: 'fest_db', });
+
 //local env 2
-// var db = mysql.createPool({host: 'localhost', user: 'root', password: 'Roomdly1234', database: 'fest_db'});
+var dbConnectionPool = mysql.createPool({
+  name: 'fest-db',
+  host: 'localhost', 
+  port: '3306',
+  user: 'root', 
+  password: 'Roomdly1234', 
+  database: 'fest_db'
+});
+
+
 
 //connect to database middleware
 app.use(function(req,res,next){
@@ -42,9 +52,19 @@ app.use(function(req, res, next) {
   next();
 })
 
+// Route Files
+var getUserEvents = require('./routes/getUserEvents');
+
+
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+
+// Custom routes
+app.use('/getUserEvents', getUserEvents);
+
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
