@@ -1,11 +1,12 @@
 <template>
         <div class="logincontent">
-                <div class = "close-button-container">
-                    <button v-on:click="hideLoginModal();" class = "close-button-x">
-                        X
-                    </button>
-                </div>
+
                 <div class="outer">
+                    <div class = "close-button-container">
+                        <button v-on:click="hideLoginModal();" class = "close-button-x">
+                            X
+                        </button>
+                    </div>
                     <div class="upperdiv">
                         <h1 class="welcomeback">
                             Welcome back!
@@ -25,9 +26,10 @@
                         <input type="text" id="email" name="email"><br><br>
                         <label for="password">Password</label><br>
                         <input type="password" id="password" name="password">
-                        </form>
                         <p><a href="/">Forgot password?</a></p>
-                        <button class="signin">Sign in</button>
+                        <button class="signin-button">Sign in</button>
+                        </form>
+
                     </div>
                 </div>
         </div>
