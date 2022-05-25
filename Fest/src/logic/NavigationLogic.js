@@ -1,4 +1,7 @@
+
+
 export default {
+    // import LoginLogic from "./LoginLogic.js";
     methods: {
         changeStyleMode() {
             // Elements to change
@@ -10,7 +13,7 @@ export default {
             let elementsToUpdate = [
                 navBar, menuIcon, companyName, sideNav
             ];
-            
+
             for (let i = 0; i < elementsToUpdate.length; i++) {
                 elementsToUpdate[i].classList.toggle('dark');
                 elementsToUpdate[i].classList.toggle('light');
@@ -23,7 +26,7 @@ export default {
                 allPosts: []
             }
             let xhttp = new XMLHttpRequest();
-        
+
             //Run on response
             xhttp.onreadystatechange = function() {
             if(this.readyState == 4 && this.status == 200) {
@@ -34,9 +37,14 @@ export default {
             }
             //Open connection
             xhttp.open('GET', 'http://localhost:3001/users/getposts', false);
-        
+
             //Send request
             xhttp.send();
-        }
+        },
+
+        displayLoginModal() {
+            document.querySelector(".bg-modal").style.display="flex";
+            getPostsRequest();
+         }
     }
 }

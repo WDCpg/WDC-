@@ -7,7 +7,7 @@ import UserIcon from "../assets/icons/UserIcon.vue"
 <template>
      <!-- ----------------------------------------------------------------------  -->
         <!-- create new event -->
-        <div class="new-event-container ligth">  
+        <div class="new-event-container ligth">
             <div id = "newEvent">
             <!-- ----------------------------------------------------------------------  -->
             <!-- breadcrumbs navigation -->
@@ -30,7 +30,7 @@ import UserIcon from "../assets/icons/UserIcon.vue"
             <!-- ----------------------------------------------------------------------  -->
 
                 <h2>New Event</h2>
-            
+
             <!-- ----------------------------------------------------------------------  -->
             <!-- host details -->
                 <div class = "host">
@@ -69,9 +69,9 @@ import UserIcon from "../assets/icons/UserIcon.vue"
                                 </div>
                             </div>
                         </div>
-                        
 
-                        
+
+
 
                         <div >
                             <ul class = "emoji-list">
@@ -192,7 +192,7 @@ import UserIcon from "../assets/icons/UserIcon.vue"
                             </p>
                     </button>
 
-                    
+
                 </div>
                 <!-- event group end -->
                 <!-- ----------------------------------------------------------------------  -->
@@ -250,14 +250,14 @@ import UserIcon from "../assets/icons/UserIcon.vue"
             </div>
 
             </div>
-            
+
             <div class="post-container-major">
                 <!-- Post -->
                 <div class="post-container">
                     <div class="post-image-container">
 
                     </div>
-                
+
                     <div class="post-icon-container">
                         <p>
                             &#129409;
@@ -273,12 +273,12 @@ import UserIcon from "../assets/icons/UserIcon.vue"
                             Static website for the coming Fest Application made by the best PG group!
                         </p>
                     </div>
-                    
+
                 </div>
             </div>
-        
+
         </div>
-        
+
         <!-- create new event end -->
         <!-- ----------------------------------------------------------------------  -->
 </template>
