@@ -17,10 +17,10 @@ var mysql = require('mysql');
 //local env 2
 var dbConnectionPool = mysql.createPool({
   name: 'fest-db',
-  host: 'localhost', 
+  host: 'localhost',
   port: '3306',
-  user: 'root', 
-  password: 'Roomdly1234', 
+  user: 'root',
+  password: 'Roomdly1234',
   database: 'fest_db'
 });
 
@@ -48,9 +48,9 @@ app.use(express.static(path.join(__dirname, 'public')));
   Allow access from localhost:3000 - Front End Vue Port
 */
 app.use(function(req, res, next) {
-  res.set('Access-Control-Allow-Origin', 'http://localhost:3000')
+  res.set('Access-Control-Allow-Origin', 'http://localhost:3000');
   next();
-})
+});
 
 // Route Files
 var dashboardRouter = require('./routes/dashboard');

@@ -1,5 +1,38 @@
-.outerouterdiv {
+.bg-modal .outerouterdiv {
     background-color:white;
+    opacity:1.0;
+}
+
+.bg-modal .logincontent{
+    background-color:white;
+    border-radius:15px;
+}
+
+.close-button-container {
+  position:absolute;
+  z-index:1;
+  /* display:flex; */
+  /* flex-direction:row; */
+  width:100%;
+}
+
+.logincontent .close-button-x {
+    border: none;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    background-color: #777E94;
+    color: white;
+    cursor: pointer;
+    /* display: flex; */
+    bottom:12px;
+    left:12px;
+    align-items: center;
+    float:right;
+}
+
+.close-button-x{
+    margin:-50px;
 }
 
 .logincontent button {
@@ -13,20 +46,21 @@
 
 .outer {
     text-align: center;
-    border-color: grey;
+    /* border-color: grey; */
     height: 600px;
     width: 350px;
-    border: 1px solid grey;
+    /* border: 1px solid grey; */
     margin: auto;
     border-radius: 15px
 }
 
 .upperdiv {
+    opacity:1;
     background-color:#101D42;
     color:white;
     display: flex;
     flex-direction: column;
-    border: 1px solid grey;
+    /* border: 1px solid grey; */
     text-align: center;
     margin: 0;
     border-radius: 15px;
@@ -50,7 +84,7 @@ input[name=password] {
 .lowerdiv {
     position: relative;
     flex-grow: 1;
-    border: 1px solid grey;
+    /* border: 1px solid grey; */
     box-align: center;
     margin: auto;
     border: 0;
@@ -66,7 +100,7 @@ a {
     font-size: 5em;
 }
 
-.signin {
+.signin-button {
     background-color: #2E81DA;
     border-color: #2E81DA;
     color: white;
@@ -78,6 +112,7 @@ a {
     justify-content: center;
     align-items: center;
     font-weight: 600;
+    cursor:pointer;
 }
 
 .welcomeback {

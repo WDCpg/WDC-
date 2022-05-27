@@ -27,7 +27,7 @@
                 <div class="post-image-container">
 
                 </div>
-              
+
                 <div class="post-icon-container">
                     <p>
                         &#129409;
@@ -43,14 +43,14 @@
                         Static website for the coming Fest Application made by the best PG group!
                     </p>
                 </div>
-                
+
             </div>
             <!-- Post -->
             <div class="post-container">
                 <div class="post-image-container">
 
                 </div>
-              
+
                 <div class="post-icon-container">
                     <p>
                         &#127928;
@@ -66,14 +66,14 @@
                         Static website for the coming Fest Application made by the best PG group!
                     </p>
                 </div>
-                
+
             </div>
         </div>
-
-        
     </div>
 </template>
+
 
 <style scoped>
 @import "@/styles/DashboardStyles.css"
 </style>
+
