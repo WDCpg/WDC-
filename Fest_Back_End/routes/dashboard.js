@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-router.get('/', function(req, res, next) {
+router.get('/getUserEvents', function(req, res, next) {
 
     // Get all user events
     req.db.getConnection(function(error, connection) {
