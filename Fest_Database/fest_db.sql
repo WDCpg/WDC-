@@ -4,6 +4,7 @@ USE fest_db;
 
 CREATE Table users (
   user_id int NOT NULL AUTO_INCREMENT,
+  password varchar(16),
   first_name varchar(63),
   last_name varchar(63),
   dob date,

@@ -27,8 +27,8 @@
                         </div>
                         <div>
                             <br>
-                            <label for="profile-dob"></label>
-                            <input type="text" id="profile-dob" placeholder ="Date of Birth" />
+                            <label for="profile-contact-number"></label>
+                            <input type="text" id="profile-contact-number" placeholder ="Contact Number" />
                             <label for="profile-email"></label>
                             <input type="text" id="profile-email" placeholder ="Email" />
                         </div>
