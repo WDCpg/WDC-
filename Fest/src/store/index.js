@@ -1,7 +1,9 @@
 import { createStore } from "vuex";
+import api from "@/api/DashboardAPI";
 
 
 export default createStore({
+    // State == Data
     state: {
         isError: false,
         isLoading: false,
@@ -41,7 +43,7 @@ export default createStore({
         userCalendar: [
 
         ],
-        exploreEvents: [
+        publicEvents: [
 
         ],
         invitationEvents: [
@@ -82,15 +84,48 @@ export default createStore({
 
     },
 
+    // Getters == Computed properties
     getters: {
 
     },
-    
-    actions: {
 
+    // Actions == Methods
+        //API calls go here.
+        // Actions never update the state
+    actions: {
+        fetchPublicEvents({commit}) {
+            return new Promise((resolve, reject) => {
+                api.getPublicEvents(events => {
+                    commit('setPublicEvents', events);
+                    resolve();
+                })
+            })
+        },
+        
+        updateIsLoading({commit}) {
+            commit('isLoading');
+        }
     },
 
+    // Setting and updating the state.
+    // Mutations only set or update the state. 
     mutations: {
+        isLoading(state) {
+            state.isLoading = !state.isLoading;
+        },
 
+        updateIconCode(state) {
+
+            for (let i = 0; i < state.publicEvents.length; i++) {
+                let rawCode = state.publicEvents[i].icon.replace("U+", "0x");
+                let decoded = String.fromCodePoint(rawCode);
+                state.publicEvents[i].icon = decoded;
+            }    
+        },
+
+        setPublicEvents(state, publicEvents) {
+            state.publicEvents = publicEvents;
+            this.commit('updateIconCode');
+        }
     }
 })

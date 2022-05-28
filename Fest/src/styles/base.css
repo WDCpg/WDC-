@@ -36,6 +36,21 @@
   --section-gap: 160px;
 }
 
+/* Emoji CSS */
+@font-face {
+  font-family: NotoColorEmojiLimited;
+  unicode-range: U+1F1E6-1F1FF;
+  src: url(https://raw.githack.com/googlefonts/noto-emoji/main/fonts/NotoColorEmoji.ttf);
+}
+
+.icon {
+  font-family: 'NotoColorEmojiLimited', -apple-system, BlinkMacSystemFont, 
+  'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 
+  'Segoe UI Emoji', 'Segoe UI Symbol';
+}
+
+
+/* Global styles */
 @media (prefers-color-scheme: dark) {
   :root {
     --color-background: var(--vt-c-black);
@@ -158,8 +173,7 @@ hr {
 .bg-modal {
   width: 100%;
   height:100%;
-  background-color: black;
-  opacity: 0.85;
+  background-color: rgba(0, 0, 0, 0.8);
   position: absolute;
   top: 0;
   display:none;

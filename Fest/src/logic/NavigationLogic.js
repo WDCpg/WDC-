@@ -1,8 +1,11 @@
-
+import store from "@/store/index"
 
 export default {
-    // import LoginLogic from "./LoginLogic.js";
     methods: {
+        getPublicEvents() {
+
+        },
+
         changeStyleMode() {
             // Elements to change
             let navBar = document.getElementById('navigation-container');
@@ -36,7 +39,7 @@ export default {
                 }
             }
             //Open connection
-            xhttp.open('GET', 'http://localhost:3001/users/getposts', false);
+            xhttp.open('GET', 'http://localhost:3001/getUserEvents', false);
 
             //Send request
             xhttp.send();
