@@ -53,7 +53,7 @@ app.use(function(req, res, next) {
 });
 
 // Route Files
-var getUserEvents = require('./routes/getUserEvents');
+var dashboardRouter = require('./routes/dashboard');
 
 
 
@@ -61,7 +61,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
 // Custom routes
-app.use('/getUserEvents', getUserEvents);
+app.use('/', dashboardRouter);
 
 
 
