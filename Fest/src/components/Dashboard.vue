@@ -20,6 +20,40 @@
             </button>
         </div>
 
+       
+            <img v-if="isLoading"
+                src="https://i.imgur.com/JfPpwOA.gif"
+            >
+    
+
+
+        <!-- Posts container -->
+        <div v-if="!isLoading" class="posts-content-container">
+            <!-- Post -->
+            <div v-for="(event, index) in publicEvents" :key="index" class="post-container">
+                <div class="post-image-container">
+
+                </div>
+
+                <div class="post-icon-container">
+                    <p class="icon">
+                        {{event.icon}}
+                    </p>
+                </div>
+                <div class="post-details-container">
+                    <div class="post-title-container">
+                        <h3>
+                            {{event.event_title}}
+                        </h3>
+                    </div>
+                    <p class="post-description">
+                        Static website for the coming Fest Application made by the best PG group!
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
         <!-- Posts container -->
         <div class="posts-content-container">
             <!-- Post -->
@@ -74,6 +108,9 @@
 
 
 <style scoped>
-@import "@/styles/DashboardStyles.css"
+@import "@/styles/DashboardStyles.css";
 </style>
+
+<script src="../logic/DashboardLogic.js">
+</script>
 

@@ -3,7 +3,7 @@ var router = express.Router();
 
 router.get('/getUserEvents', function(req, res, next) {
 
-    // Get all user events
+    //Get all user events
     req.db.getConnection(function(error, connection) {
         if (error) {
             res.sendStatus(500);
