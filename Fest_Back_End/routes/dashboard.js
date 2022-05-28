@@ -10,9 +10,9 @@ router.get('/getUserEvents', function(req, res, next) {
             return;
         }
         
-        let query = 'Call GetUserEvents(?)';
+        let query = 'SELECT * FROM events';
 
-        connection.query(query, req.query.user_id, function(error, rows, fields) {
+        connection.query(query, function(error, rows, fields) {
             connection.release();
             if(error){
                 res.sendStatus(500);
