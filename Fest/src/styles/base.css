@@ -162,7 +162,7 @@ ul {
 .page-content-container {
 
   height: calc(100vh - 65px);
-  overflow-y: hidden;
+  overflow-y: scroll;
   overflow-x: hidden;
 }
 

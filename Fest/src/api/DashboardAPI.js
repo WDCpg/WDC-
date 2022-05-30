@@ -23,7 +23,7 @@ export default {
             }
         }
         //Open connection
-        xhttp.open('GET', `http://localhost:3001/getUserEvents`, false);
+        xhttp.open('GET', `http://localhost:3001/events/getPublicEvents`, false);
 
         //Send request
         xhttp.send();

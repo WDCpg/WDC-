@@ -19,6 +19,11 @@ CREATE Table users (
   PRIMARY KEY (user_id)
 );
 
+CREATE TABLE userLogin (
+  user_id int NOT NULL,
+  password varchar(255) NOT NULL
+);
+
 CREATE Table friends (
   user_id int NOT NULL,
   friend_id int NOT NULL

@@ -2,10 +2,16 @@ var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
+var session = require('express-session');
 var logger = require('morgan');
 
+// Route Files
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var dashboardRouter = require('./routes/dashboard');
+var loginRouter = require('./routes/login');
+var signUpRouter = require('./routes/signup');
+var logOutRouter = require('./routes/logout');
 
 var app = express();
 
@@ -25,12 +31,20 @@ var dbConnectionPool = mysql.createPool({
 });
 
 
-
 //connect to database middleware
 app.use(function(req,res,next){
     req.db = dbConnectionPool;
     next();
 });
+
+
+// Sessions
+app.use(session({
+  secret: 'FestApp',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false }
+}))
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -52,8 +66,7 @@ app.use(function(req, res, next) {
   next();
 });
 
-// Route Files
-var dashboardRouter = require('./routes/dashboard');
+
 
 
 
@@ -62,7 +75,9 @@ app.use('/users', usersRouter);
 
 // Custom routes
 app.use('/', dashboardRouter);
-
+app.use('/', loginRouter);
+app.use('/', signUpRouter);
+app.use('/', logOutRouter);
 
 
 
