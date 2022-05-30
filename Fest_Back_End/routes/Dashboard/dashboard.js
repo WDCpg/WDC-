@@ -68,5 +68,4 @@ router.get('/events/getUserEvents', function(req, res, next) {
         });
     });
 })
-
 module.exports = router;

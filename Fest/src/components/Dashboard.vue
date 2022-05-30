@@ -47,7 +47,7 @@
                         </h3>
                     </div>
                     <p class="post-description">
-                        Static website for the coming Fest Application made by the best PG group!
+                        {{ formatDate(event.event_start) }}
                     </p>
                 </div>
 
