@@ -8,6 +8,7 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
   },
   "dependencies": {
+    "dropzone": "^6.0.0-beta.2",
     "vue": "^3.2.33",
     "vue-router": "^4.0.14",
     "vuex": "^4.0.2"

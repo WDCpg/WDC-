@@ -1,5 +1,6 @@
 import { createStore } from "vuex";
 import api from "@/api/DashboardAPI";
+import userInfoApi from "@/api/UserProfileAPI";
 
 
 export default createStore({
@@ -8,22 +9,12 @@ export default createStore({
         isError: false,
         isLoading: false,
         isDark: false,
-        user: {
-            "first_name": "Santiago",
-            "last_name": "Reyes",
-            "dob": "31-07-1999",
-            "email": "santiago@gmail.com",
-            "street_name": "19 Devon Road",
-            "city": "Ascot Vale, VIC",
-            "country": "Australia",
-            "post_code": 3033,
-            "is_active": true, 
-            "event_type": "public"
-            
+        //userInfo template JSON
+        userInfo: {
         },
         userEvents: [
-            {   
-                "event_id": 1, 
+            {
+                "event_id": 1,
                 "event_title": "Hello my event",
                 "event_description": "Description of my event goes here",
                 "event_start": "14-06-2022T0:600",
@@ -61,7 +52,7 @@ export default createStore({
                 "event_description": "My description goes here",
                 "event_privacy": 2,
                 "friends_invited": [
-                    {   
+                    {
                         "user_id": 2,
                         "first_name": "Ryan",
                         "photo": "path/image.jpg",
@@ -80,7 +71,7 @@ export default createStore({
             }
         ]
 
-         
+
 
     },
 
@@ -101,14 +92,23 @@ export default createStore({
                 })
             })
         },
-        
+
         updateIsLoading({commit}) {
             commit('isLoading');
+        },
+
+        fetchUserInfo({commit}) {
+            return new Promise((resolve, reject) => {
+                userInfoApi.getUserInfo(data => {
+                    commit('setUserInfo', data);
+                    resolve();
+                })
+            })
         }
     },
 
     // Setting and updating the state.
-    // Mutations only set or update the state. 
+    // Mutations only set or update the state.
     mutations: {
         isLoading(state) {
             state.isLoading = !state.isLoading;
@@ -120,12 +120,16 @@ export default createStore({
                 let rawCode = state.publicEvents[i].icon.replace("U+", "0x");
                 let decoded = String.fromCodePoint(rawCode);
                 state.publicEvents[i].icon = decoded;
-            }    
+            }
         },
 
         setPublicEvents(state, publicEvents) {
             state.publicEvents = publicEvents;
             this.commit('updateIconCode');
+        },
+
+        setUserInfo(state, userInfo) {
+            state.userInfo = userInfo;
         }
     }
 })

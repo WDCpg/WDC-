@@ -1,14 +1,89 @@
+
+
+.main-content{
+    padding: 20px 25px;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    width:100%;
+}
+
+.profile-content-right{
+    display:none;
+    padding-left:150px;
+    margin-top:25px;
+
+    /* align-content:flex-end; */
+}
+
+.profile-content-left{
+    padding-left:70px;
+    margin-top:25px;
+    width:500px;
+
+}
+
+.page_index a{
+    color:black;
+    text-decoration: underline;
+    font-style:italic;
+}
+
+.edit_button{
+    position:absolute;
+    bottom: 0;
+    left:20px;
+}
+
+.edit_button img{
+    width:26px;
+    height:26px;
+}
+
+.profile-header{
+    flex-direction:row;
+    display:flex;
+    /* margin-bottom:20px; */
+    margin-top:10px;
+}
+
+.profile-picture{
+    height:80px;
+    width:80px;
+    border-radius:50px;
+    background-image:url("../assets/images/party.jpg");
+    background-size: cover;
+    background-position: center;
+    margin-right:30px;
+}
+
+.personal_details, .residence {
+    display:flex;
+    flex-direction: column;
+}
+
+.personal_details_top, .personal_details_bottom, .residence_top, .residence_bottom {
+    display:flex;
+    flex-direction: row;
+    justify-content:space-between;
+    margin-bottom:5px;
+    margin-top:5px;
+}
+
 button {
-    border-radius: 20px;
+    border-radius: 25px;
     width: 120px;
+    height:25px;
     border: none;
+    cursor:pointer;
+    text-align:center;
+    display:inline-block;
 }
 
 .button-blue{
     background-color: #2E81DA;
     color: white;
 }
-
 .button-orange{
     background-color: #FF7551;
     color:white;
@@ -17,13 +92,10 @@ button {
 input{
     border: 1px solid #9A9A9A;
     border-radius: 4px;
+    height:25px;
 }
 
-.main-content{
-    padding: 20px 25px;
-    display: flex;
-    flex-direction: row;
-}
+
 
 .button-google{
     width:200px;
@@ -38,34 +110,25 @@ input{
     display: inline-block;
 }
 
-.profile-content-right{
-    padding-left:150px;
-    margin-top:25px;
 
-    /* align-content:flex-end; */
+.personal_details_container, .residence_container, .password_container{
+    margin-top:20px;
 }
 
-.profile-content-left{
-    padding-left:100px;
-    margin-top:25px;
-
+.profile-change-pw div{
+    margin-top:5px;
+    margin-bottom: 5px;
 }
 
-.profile-header{
-    flex-direction:row;
+.residence_button{
     display:flex;
-    margin-bottom:20px;
-    margin-top:10px;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 20px;
 }
 
-.profile-picture{
-    height:80px;
-    width:80px;
-    border-radius:50px;
-    background-image:url("../assets/images/party.jpg");
-    background-size: cover;
-    background-position: center;
-    margin-right:30px;
+.button-orange .cancel{
+    float:right;
 }
 
 .remove-availability{
@@ -85,6 +148,91 @@ input{
 
 .add{
     float:right;
+}
+
+.upload_modal {
+    position:absolute;
+    width: 100%;
+    height:100%;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+}
+
+.upload_form {
+    height:60%;
+    width:40%;
+    background-color:white;
+    border-radius:10px;
+}
+
+.dropzone{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items: center;
+    row-gap:16px;
+    border: 2px dashed #2E81DA;
+    background-color: white;
+    height:80%;
+    border-radius:10px;
+}
+
+.dropzone label {
+    padding: 8px 12px;
+    color: white;
+    background-color: #2E81DA;
+    cursor:pointer;
+    border-radius:5px;
+    border:none;
+}
+
+.dropzone input{
+    display:none;
+}
+
+.upload_modal{
+    display:none;
+    justify-content:center;
+    align-items:center;
+    position:absolute;
+    z-index:1;
+    transition: 1px transform 2s;
+}
+
+.upload_container{
+    display:flex;
+    flex-direction:column;
+    width:300px;
+    height:500px;
+    background-color:rgba(255,255,255,1);
+    border-radius: 10px;
+}
+
+.close_button{
+    position:absolute;
+    z-index:1;
+    width:100%;
+}
+
+.close_button button{
+    float:right;
+    border:none;
+    border-radius: 50%;
+    height:40px;
+    width:40px;
+    background-color:#777E94;
+    color:white;
+    cursor:pointer;
+    bottom:12px;
+    left:12px;
+    align-items:center;
+}
+
+.modal_heading{
+    text-align:center;
+    height:10%;
+    margin-top:10px;
 }
 
 /* .remove{

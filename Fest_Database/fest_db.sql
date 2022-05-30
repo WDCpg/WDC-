@@ -4,7 +4,6 @@ USE fest_db;
 
 CREATE Table users (
   user_id int NOT NULL AUTO_INCREMENT,
-  password varchar(16),
   first_name varchar(63),
   last_name varchar(63),
   dob date,
@@ -22,9 +21,9 @@ CREATE Table users (
 
 CREATE Table friends (
   user_id int NOT NULL,
-  friend_id int NOT NULL
-  FOREIGN KEY(user_id) REFERENCES users(user_id) ON DELETE CASCADE,
-  FOREIGN KEY(friend_id) REFERENCES users(user_id) ON DELETE CASCADE
+  friend_id int NOT NULL,
+  FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
+  FOREIGN KEY (friend_id) REFERENCES users(user_id) ON DELETE CASCADE
 
 );
 
@@ -35,7 +34,13 @@ CREATE Table calendar_availability(
   end_date datetime,
   PRIMARY KEY (calendar_id),
   FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
-)
+);
+
+CREATE Table event_types (
+  type_id int NOT NULL AUTO_INCREMENT,
+  type_desc varchar(500),
+  PRIMARY KEY (type_id)
+);
 
 CREATE Table events (
   event_id int NOT NULL AUTO_INCREMENT,
@@ -52,12 +57,6 @@ CREATE Table events (
   event_type int,
   PRIMARY KEY (event_id),
   FOREIGN KEY (event_type) REFERENCES event_types(type_id)
-);
-
-CREATE Table event_types (
-  type_id int NOT NULL AUTO_INCREMENT,
-  type_desc varchar(500),
-  PRIMARY KEY(type_id),
 );
 
 CREATE Table event_images (
@@ -80,7 +79,7 @@ CREATE Table organiser (
   org_id int NOT NULL AUTO_INCREMENT,
   event_id int NOT NULL,
   user_id int NOT NULL,
-  PRIMARY KEY(org_id),
+  PRIMARY KEY (org_id),
   FOREIGN KEY (event_id) REFERENCES events(event_id) ON DELETE CASCADE,
   FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
 );
