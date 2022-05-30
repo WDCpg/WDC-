@@ -176,6 +176,9 @@ input{
     background-color: white;
     height:80%;
     border-radius:10px;
+    background-color: rgb(255,255,255);
+    color:rgb(0,0,0);
+
 }
 
 .dropzone label {
@@ -198,15 +201,18 @@ input{
     position:absolute;
     z-index:1;
     transition: 1px transform 2s;
+    color: rgb(255,255,255);
 }
 
 .upload_container{
     display:flex;
     flex-direction:column;
+    justify-content:space-between;
     width:300px;
     height:500px;
-    background-color:rgba(255,255,255,1);
     border-radius: 10px;
+    background-color: #101D42;
+
 }
 
 .close_button{
