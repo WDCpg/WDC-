@@ -1,5 +1,4 @@
 import store from "@/store/index";
-import api from "@/api/DashboardAPI";
 
 export default {
     methods: {

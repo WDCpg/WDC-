@@ -2,6 +2,7 @@ import { createStore } from "vuex";
 import api from "@/api/DashboardAPI";
 import userInfoApi from "@/api/UserProfileAPI";
 import NewEventAPI from "../api/NewEventAPI";
+import LoginsAPI from "../api/LoginsAPI";
 
 
 export default createStore({
@@ -103,6 +104,16 @@ export default createStore({
             let clear = '';
             
             commit('setNewEventNone', [clear, type]);  
+        },
+
+        // Login 
+        submitLogin(auth, data) {
+           
+            return new Promise((resolve, reject) => {
+                LoginsAPI.postLogin({auth, data});
+                resolve();
+                
+            })
         }
 
     },

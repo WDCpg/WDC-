@@ -25,7 +25,6 @@ export default {
 
         displayLoginModal() {
             document.querySelector(".bg-modal").style.display="flex";
-            getPostsRequest();
          }
     }
 }
