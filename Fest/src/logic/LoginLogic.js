@@ -3,5 +3,7 @@ export default {
         hideLoginModal() {
             document.querySelector(".bg-modal").style.display="none";
         }
-    }
+    },
+
+    
 }

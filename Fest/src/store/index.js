@@ -1,6 +1,7 @@
 import { createStore } from "vuex";
 import api from "@/api/DashboardAPI";
 import userInfoApi from "@/api/UserProfileAPI";
+import NewEventAPI from "../api/NewEventAPI";
 
 
 export default createStore({
@@ -9,8 +10,11 @@ export default createStore({
         isError: false,
         isLoading: false,
         isDark: false,
+        isTitleChanged: false,
+        isDescriptionChanged: false,
         //userInfo template JSON
         userInfo: {
+            "first_name": "Santiago"
         },
         userEvents: [
             {
@@ -44,34 +48,10 @@ export default createStore({
 
         ],
         // Bind to the input when creating a new element
-        newEvent: [
-            {
-                "event_temp_id": 1,
-                "icon": "&#128047;",
-                "event_title": "My title",
-                "event_description": "My description goes here",
-                "event_privacy": 2,
-                "friends_invited": [
-                    {
-                        "user_id": 2,
-                        "first_name": "Ryan",
-                        "photo": "path/image.jpg",
-                        "availability": [
-                            {
-                                "day": "Monday",
-                                "date": "12-03-2022",
-                                is_available: {
-                                    "9:00": true,
-                                    "9:30": false
-                                }
-                            }
-                        ]
-                    }
-                ]
-            }
-        ]
-
-
+        newEventData: { 
+            
+        }
+    
 
     },
 
@@ -84,6 +64,11 @@ export default createStore({
         //API calls go here.
         // Actions never update the state
     actions: {
+        // Post New Event
+        postNewEvent() {
+            NewEventAPI.postNewEvent(this.state.newEventData);
+        },
+
         fetchPublicEvents({commit}) {
             return new Promise((resolve, reject) => {
                 api.getPublicEvents(events => {
@@ -104,7 +89,22 @@ export default createStore({
                     resolve();
                 })
             })
+        },
+
+        fetchNewEventDefault({commit}) {
+            let newEventDefault = {
+                "title": "Your event's title",
+                "description": "Your description"
+            }
+            commit('setNewEventDefault', newEventDefault);
+        },
+
+        clearInput({commit}, type) {
+            let clear = '';
+            
+            commit('setNewEventNone', [clear, type]);  
         }
+
     },
 
     // Setting and updating the state.
@@ -114,8 +114,27 @@ export default createStore({
             state.isLoading = !state.isLoading;
         },
 
-        updateIconCode(state) {
+        setNewEventDefault(state, newEventDefault) {
+            state.newEventData = newEventDefault;
+        },
 
+        setNewEventNone(state, [data, type]) {
+            if (type === "title" && !state.isTitleChanged) {
+                state.newEventData.title = data;
+                state.isTitleChanged = true;
+            }
+            else if (type === "description" && !state.isDescriptionChanged) {
+                state.newEventData.description = data;
+                state.isDescriptionChanged = true;
+            }
+            else {
+                return;
+            }
+            
+        },
+
+        updateIconCode(state, emoji) {
+            
             for (let i = 0; i < state.publicEvents.length; i++) {
                 let rawCode = state.publicEvents[i].icon.replace("U+", "0x");
                 let decoded = String.fromCodePoint(rawCode);

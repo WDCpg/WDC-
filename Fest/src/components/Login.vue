@@ -9,7 +9,7 @@
                     </div>
                     <div class="upperdiv">
                         <h1 class="welcomeback">
-                            Welcome back!
+                            Welcome back! 
                         </h1>
 
                         <div>
