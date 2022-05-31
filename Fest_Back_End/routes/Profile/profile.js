@@ -5,7 +5,20 @@
 var express = require('express');
 var router = express.Router();
 var multer = require('multer');
-var upload = multer({dest: '../public/'});
+var upload = multer({dest: '../assets/'});
+
+var uploaded_images =[];
+
+router.post('/upload', upload..array('file', 12));
+
+router.post('/upload', function(req,res,next){
+    console.log(req.files);
+    req.files.forEach(function(file){
+        uploaded_images.push(file.filename);
+    });
+
+    res.send();
+});
 
 router.post('/profile', function(req,res,next){
     req.db.getConnection(function(error, connection){

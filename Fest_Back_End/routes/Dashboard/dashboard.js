@@ -5,14 +5,14 @@ var router = express.Router();
     Public Routes:
     Not logged in.
 */
-router.get('/events/getPublicEvents', function(req, res, next) {        
+router.get('/events/getPublicEvents', function(req, res, next) {
     //Get all user events
     req.db.getConnection(function(error, connection) {
         if (error) {
             res.sendStatus(500);
             return;
         }
-        
+
         let query = 'SELECT * FROM events';
 
         connection.query(query, function(error, rows, fields) {
@@ -39,7 +39,7 @@ router.use('/events/', function(req, res, next) {
     else {
         next();
     }
-})
+});
 
 
 /*
@@ -48,14 +48,14 @@ router.use('/events/', function(req, res, next) {
 */
 
 
-router.get('/events/getUserEvents', function(req, res, next) {        
+router.get('/events/getUserEvents', function(req, res, next) {
     //Get all user events
     req.db.getConnection(function(error, connection) {
         if (error) {
             res.sendStatus(500);
             return;
         }
-        
+
         let query = 'SELECT * FROM events';
 
         connection.query(query, function(error, rows, fields) {

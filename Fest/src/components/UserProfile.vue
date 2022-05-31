@@ -172,11 +172,11 @@
             <div class = "modal_heading">
                 <h2>Upload Image</h2>
             </div>
-            <div class = "dropzone">
+            <div action="/upload" class = "dropzone">
                 <span>Drag n Drop Image</span>
                 <span>OR</span>
                 <label for = "dropzoneFile"> Select File</label>
-                <input type = "file" id="dropzoneFile"/>
+                <input action="/upload" type = "file" id="dropzoneFile"/>
             </div>
         </div>
     </div>
