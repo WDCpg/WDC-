@@ -18,6 +18,15 @@ export default {
     },
 
     methods: {
+        async submit(e) {
+            let body = new FormData(e.target);
+            let name = e.target.elements.first_name.value;
+            console.log(body);
+            // let body = {
+
+            },
+            // store.dispatch('updateUserDetails', body);
+
         hideModal: function(){
             document.querySelector(".upload_modal").style.display="none";
             document.querySelector(".main-content").style.filter = "none";
@@ -28,6 +37,7 @@ export default {
             document.querySelector(".main-content").style.filter = "blur(8px)";
             document.querySelector(".upload_modal").style.display="flex";
         }
+
     }
 }
 

@@ -12,6 +12,7 @@ var dashboardRouter = require('./routes/Dashboard/dashboard');
 var loginRouter = require('./routes/User_Auth/login');
 var signUpRouter = require('./routes/User_Auth/signup');
 var logOutRouter = require('./routes/User_Auth/logout');
+var profileRouter = require('./routes/Profile/profile');
 
 var app = express();
 
@@ -78,6 +79,7 @@ app.use('/', dashboardRouter);
 app.use('/', loginRouter);
 app.use('/', signUpRouter);
 app.use('/', logOutRouter);
+app.use('/', profileRouter);
 
 
 

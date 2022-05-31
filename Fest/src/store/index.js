@@ -107,6 +107,16 @@ export default createStore({
         }
     },
 
+    //     updateUserDetails({commit}, body) {
+    //         return new Promise((resolve, reject) => {
+    //             userInfoApi.postUserInfo(body) (data => {
+    //                 commit('setUserInfo', data);
+    //                 resolve();
+    //             })
+    //         })
+    //     }
+    // },
+
     // Setting and updating the state.
     // Mutations only set or update the state.
     mutations: {

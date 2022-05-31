@@ -16,6 +16,28 @@ export default {
     getUserInfo (events) {
         events(userInfo) //ajax call
     }
-}
+
+    // postUseInfo (userInfo, body) {
+    //     let xhttp = new XMLHttpRequest();
+
+    //     //Run on response
+    //     xhttp.onreadystatechange = function() {
+    //     if(this.readyState == 4 && this.status == 200) {
+    //         console.log(JSON.parse(this.response))
+    //         return userInfo (JSON.parse(this.response));
+    //         }
+    //     }
+
+    //     //Open connection
+
+    //     xhttp.open('POST', `http://localhost:3001/events/updateUserData`, false);
+    //     xhttp.setRequestHeader('content-type', 'application/json; charset=UTF-8' );
+
+    //     //Send request
+    //     xhttp.send(JSON.stringify(body));
+
+    //     // setTimeout(() => events(publicEvents), 3000)
+    //     }
+    }
 
 //3) See Store/index.js -- create Action

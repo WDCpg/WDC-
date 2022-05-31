@@ -22,12 +22,12 @@
                 <div>
                     <h3> <span class="dot"></span>   Personal Details</h3>
                 </div>
-                <form>
+                <form @submit.prevent='submit'>
                     <div class="personal_details">
                         <div class = "personal_details_top">
                             <div class = "first_name">
                                 <label for="profile-first-name">First Name</label><br>
-                                <input type="text" id="profile-first-name" :placeholder = "userInfo.first_name" />
+                                <input type="text" name="first_name" :placeholder = "userInfo.first_name" />
                             </div>
                             <div class = "last_name">
                                 <label for="profile-last-name">Last Name</label><br>
@@ -93,7 +93,7 @@
                     </div>
                     <div class="residence_button">
                         <div>
-                            <button class="button-blue save">Save</button>
+                            <button type="submit" class="button-blue save">Save</button>
                         </div>
                         <div>
                             <button class="button-orange cancel">Cancel</button>
@@ -172,12 +172,13 @@
             <div class = "modal_heading">
                 <h2>Upload Image</h2>
             </div>
-            <div action="/upload" class = "dropzone">
+            <form action="/uploadInfo" method ="post" class = "dropzone" enctype="multipart/form-data">
                 <span>Drag n Drop Image</span>
                 <span>OR</span>
-                <label for = "dropzoneFile"> Select File</label>
-                <input action="/upload" type = "file" id="dropzoneFile"/>
-            </div>
+                <label for = "dropzoneFile">Select File</label>
+                <input type = "file" name="file"/>
+                <input type = "submit"/>
+            </form>
         </div>
     </div>
 

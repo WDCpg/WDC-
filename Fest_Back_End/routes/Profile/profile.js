@@ -4,20 +4,31 @@
 
 var express = require('express');
 var router = express.Router();
+var path = require('path');
 var multer = require('multer');
-var upload = multer({dest: '../assets/'});
+var storage = multer.diskStorage({
+    destination: (req,file,cb) => {
+        cb(null, '../assets')
+    },
+    filename:(req,file,cb) => {
+        console.log(file)
+        cb(null, Date.now() + path.extname(file.originalname));
+    },
+});
+
+var upload = multer({storage: storage});
 
 var uploaded_images =[];
 
-router.post('/upload', upload..array('file', 12));
+router.post('/uploadInfo', upload.array('file', 12));
 
-router.post('/upload', function(req,res,next){
+router.post('/uploadInfo', function(req,res,next){
     console.log(req.files);
     req.files.forEach(function(file){
         uploaded_images.push(file.filename);
     });
 
-    res.send();
+    res.send("success");
 });
 
 router.post('/profile', function(req,res,next){
@@ -40,29 +51,30 @@ router.post('/profile', function(req,res,next){
     });
 });
 
-router.post('/change_password', function(req,res,next){
-    req.db.getConnection(functon(error, connection){
-        if(error){
-            console.log(error);
-            res.sendStatus(500);
-            return;
-        }
+// router.post('/change_password', function(req,res,next){
+//     req.db.getConnection(functon(error, connection){
+//         if(error){
+//             console.log(error);
+//             res.sendStatus(500);
+//             return;
+//         }
 
-        //password verification
-        if('profile-password'in req.body && req.body.profile-password){
-            let query = "INSERT INTO users (password) VALUES (?) where password = SHA2(?,224) && user_id = ?;";
-            connection.quuery(query, [req.body.newPassword, req.body.userPassword, req.session.userId], function(error, rows, fields){
-                connection.release();
-                if(error){
-                    res.sendStatus(500);
-                    return;
-                }
-                res.end();
-            });
-        } else {
-            res.sendStatus(401);
-            return;
-        }
+//         //password verification
+//         if('profile-password'in req.body && req.body.profile-password){
+//             let query = "INSERT INTO users (password) VALUES (?) where password = SHA2(?,224) && user_id = ?;";
+//             connection.query(query, [req.body.newPassword, req.body.userPassword, req.session.userId], function(error, rows, fields){
+//                 connection.release();
+//                 if(error){
+//                     res.sendStatus(500);
+//                     return;
+//                 } else {
+//                 res.sendStatus(401);
+//                 return;
+//                 }
+//                 res.end();
+//             });
+//         });
+//     });
+// });
 
-    });
-});
+module.exports = router;

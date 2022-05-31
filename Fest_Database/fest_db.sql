@@ -6,6 +6,7 @@ CREATE Table users (
   user_id int NOT NULL AUTO_INCREMENT,
   first_name varchar(63),
   last_name varchar(63),
+  password varchar(255),
   dob date,
   email varchar(100),
   contact_number int,
