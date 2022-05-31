@@ -389,6 +389,7 @@ h3 {
 .post-title-container h3 {
     font-size: 2.5em;
     font-weight: 600;
+    min-height: 60px;
 }
 
 .post-description {

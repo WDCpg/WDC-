@@ -23,28 +23,6 @@ export default {
             }
         },
 
-        getPostsRequest() {
-            // App Functions
-            var store = {
-                allPosts: []
-            }
-            let xhttp = new XMLHttpRequest();
-
-            //Run on response
-            xhttp.onreadystatechange = function() {
-            if(this.readyState == 4 && this.status == 200) {
-                store.allPosts = JSON.parse(this.response);
-                console.log(store);
-                return true;
-                }
-            }
-            //Open connection
-            xhttp.open('GET', 'http://localhost:3001/getUserEvents', false);
-
-            //Send request
-            xhttp.send();
-        },
-
         displayLoginModal() {
             document.querySelector(".bg-modal").style.display="flex";
             getPostsRequest();

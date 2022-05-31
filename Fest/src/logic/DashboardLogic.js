@@ -8,8 +8,17 @@ export default {
                 return;
             }
             const date = new Date(dateString);
-                // Then specify how you want your dates to be formatted
-            return new Intl.DateTimeFormat('default', {dateStyle: 'long'}).format(date);
+            return new Intl.DateTimeFormat('default', {dateStyle: 'long'}).format(date) + " " + date.toLocaleTimeString(('en-US'), { hour: '2-digit', minute: '2-digit' });
+        },
+        
+        formatLocation(event) {
+            if (event.street === null) {
+                return '';
+            }
+            else {
+                return event.street + ", " + event.city;
+            }
+            
         }
     },
     computed: {
@@ -19,6 +28,10 @@ export default {
         
         isLoading() {
             return store.state.isLoading;
+        },
+
+        userInfo() {
+            return store.state.userInfo;
         }
     },
 

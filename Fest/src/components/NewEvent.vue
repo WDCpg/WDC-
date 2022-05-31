@@ -1,8 +1,4 @@
-<script setup>
-import HeartIcon from "../assets/icons/HeartIcon.vue"
-import StarIcon from "../assets/icons/StarIcon.vue";
-import UserIcon from "../assets/icons/UserIcon.vue"
-</script>
+
 
 <template>
      <!-- ----------------------------------------------------------------------  -->
@@ -38,7 +34,7 @@ import UserIcon from "../assets/icons/UserIcon.vue"
                         <img class="hostIcon" src="../assets/images/P1.jpeg"  alt = " ">
                     </div>
                     <div>
-                        <div class="host-name">User Name</div>
+                        <div class="host-name"> {{ userInfo.first_name }}</div>
                         <div><small class = "hostTitle">Host</small></div>
                     </div>
                 </div>
@@ -76,7 +72,7 @@ import UserIcon from "../assets/icons/UserIcon.vue"
                         <div >
                             <ul class = "emoji-list">
                                 <li><button class = "emoji-button">&#128513;</button></li>
-                                <li><button class = "emoji-button">&#128514;</button></li>
+                                <li><button class = "emoji-button" title="U+263A"><span>U+263A;</span></button></li>
                                 <li><button class = "emoji-button">&#128515;</button></li>
                                 <li><button class = "emoji-button">&#128516;</button></li>
                                 <li><button class = "emoji-button">&#128517;</button></li>
@@ -93,10 +89,10 @@ import UserIcon from "../assets/icons/UserIcon.vue"
                 <!-- ----------------------------------------------------------------------  -->
                 <!-- event detail -->
                 <div class = "event-detail">
-                    <textarea rows="2">Event title...</textarea>
+                    <textarea v-model="newEventData.title" @click="clearInput('title')" placeholder="Event title..." rows="2"></textarea>
                 <br>
                 <br>
-                    <textarea rows="10">Event description...</textarea>
+                    <textarea @click="clearInput('description')" v-model="newEventData.description" placeholder="Event description..." rows="10"></textarea>
                 </div>
                 <br>
                 <!-- event detail end -->
@@ -246,7 +242,7 @@ import UserIcon from "../assets/icons/UserIcon.vue"
             <!-- ----------------------------------------------------------------------  -->
 
             <div class= "event-submit">
-                <button>Create Event !!!</button>
+                <button type="button" @click="submitNewEvent">Create Event !!!</button>
             </div>
 
             </div>
@@ -266,11 +262,11 @@ import UserIcon from "../assets/icons/UserIcon.vue"
                     <div class="post-details-container">
                         <div class="post-title-container">
                             <h3>
-                                Party at Adelaide Uni!
+                                {{ newEventData.title }}
                             </h3>
                         </div>
                         <p class="post-description">
-                            Static website for the coming Fest Application made by the best PG group!
+                            {{ newEventData.description }}
                         </p>
                     </div>
 
@@ -286,4 +282,8 @@ import UserIcon from "../assets/icons/UserIcon.vue"
 <style scoped>
 @import "@/styles/NewEventStyles.css";
 </style>
+
+<script src="@/logic/CreateNewEventLogic.js">
+</script>
+
 
