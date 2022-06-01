@@ -48,11 +48,13 @@ export default createStore({
 
         ],
         // Bind to the input when creating a new element
-        newEventData: { 
-            
-        }
-    
+        newEventData: {
 
+        },
+
+        newUserData: {
+
+        }
     },
 
     // Getters == Computed properties
@@ -67,6 +69,10 @@ export default createStore({
         // Post New Event
         postNewEvent() {
             NewEventAPI.postNewEvent(this.state.newEventData);
+        },
+
+        postNewUserData(){
+            userInfoApi.postNewUserData(this.state.newUserData);
         },
 
         fetchPublicEvents({commit}) {
@@ -101,8 +107,8 @@ export default createStore({
 
         clearInput({commit}, type) {
             let clear = '';
-            
-            commit('setNewEventNone', [clear, type]);  
+
+            commit('setNewEventNone', [clear, type]);
         }
 
     },
@@ -140,11 +146,11 @@ export default createStore({
             else {
                 return;
             }
-            
+
         },
 
         updateIconCode(state, emoji) {
-            
+
             for (let i = 0; i < state.publicEvents.length; i++) {
                 let rawCode = state.publicEvents[i].icon.replace("U+", "0x");
                 let decoded = String.fromCodePoint(rawCode);

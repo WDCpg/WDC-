@@ -31,7 +31,7 @@ router.post('/uploadInfo', function(req,res,next){
     res.send("success");
 });
 
-router.post('/profile', function(req,res,next){
+router.post('/updateUserData', function(req,res,next){
     req.db.getConnection(function(error, connection){
         if (error){
             console.log(error);

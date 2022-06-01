@@ -8,6 +8,10 @@ export default {
 
         isLoading() {
             return store.state.isLoading;
+        },
+
+        newUserData(){
+            return store.state.newUserData;
         }
     },
 
@@ -24,7 +28,7 @@ export default {
             console.log(body);
             // let body = {
 
-            },
+        },
             // store.dispatch('updateUserDetails', body);
 
         hideModal: function(){
@@ -36,6 +40,10 @@ export default {
         displayModal: function(){
             document.querySelector(".main-content").style.filter = "blur(8px)";
             document.querySelector(".upload_modal").style.display="flex";
+        },
+
+        submitNewUserData() {
+            store.dispatch('postNewUserData');
         }
 
     }

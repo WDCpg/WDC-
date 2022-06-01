@@ -13,8 +13,21 @@ const userInfo = {
 
 //2) create export api call / ajax function
 export default {
-    getUserInfo (events) {
-        events(userInfo) //ajax call
+    getUserInfo (newUserData) {
+        let xhttp = new XMLHttpRequest();
+
+        //Run on response
+        xhttp.onreadystatechange = function() {
+        if(this.readyState == 4 && this.status == 200) {
+            return this.response;
+            }
+        }
+        //Open connection
+        xhttp.open('POST', `http://localhost:3001/updateUserData`, true);
+        xhttp.setRequestHeader('Content-type', 'application/json; charset=UTF-8' );
+        //Send request
+        xhttp.send(JSON.stringify(newUserData));
+
     }
 
     // postUseInfo (userInfo, body) {
