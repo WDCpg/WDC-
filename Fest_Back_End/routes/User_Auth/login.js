@@ -25,9 +25,9 @@ router.post('/login', function(req, res, next) {
                         return;
                     }
 
-                    // Result from my sql to JSON 
+                    // Result from my sql to JSON
                     var result = Object.values(JSON.parse(JSON.stringify(rows)));
-                    
+
                     // Check if user id is on db
                     if (result.length > 0) {
                         // Check if password matches db
@@ -35,12 +35,11 @@ router.post('/login', function(req, res, next) {
                             req.session.user = result[0].user_id;
                             res.sendStatus(200);
                             return;
-    
                         } else {
                             res.status(401).send('Wrong password');
                             return;
                         }
-                        
+
                     } else {
                         connection.release();
                         // User not registered
@@ -56,8 +55,8 @@ router.post('/login', function(req, res, next) {
             return;
         }
     }
-    
-    
+
+
 })
 
 module.exports = router;

@@ -5,6 +5,8 @@ import NewEventView from "../views/NewEventView.vue";
 import SignUpView from "../views/SignUpView.vue";
 import LoginView from "../views/LoginView.vue";
 import RegisterView from "../views/RegisterView.vue";
+import CalendarView from "../views/CalendarView.vue";
+import AdminView from "../views/AdminView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -38,6 +40,16 @@ const router = createRouter({
       path: "/register",
       name: "register",
       component: RegisterView,
+    },
+    {
+      path:"/calendar",
+      name: "calendar",
+      component: CalendarView,
+    },
+    {
+      path: "/admin",
+      name:"admin",
+      component: AdminView,
     },
   ],
 });

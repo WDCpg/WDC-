@@ -15,7 +15,7 @@ export default createStore({
         isDescriptionChanged: false,
         //userInfo template JSON
         userInfo: {
-            "first_name": "Santiago"
+            // "first_name": "Santiago"
         },
         userEvents: [
             {
@@ -53,9 +53,14 @@ export default createStore({
 
         },
 
+        //update user's profile information
         newUserData: {
 
+        },
+        //new password
+        newUserPassword: {
         }
+
     },
 
     // Getters == Computed properties
@@ -71,10 +76,17 @@ export default createStore({
         postNewEvent() {
             NewEventAPI.postNewEvent(this.state.newEventData);
         },
-
-        postNewUserData(){
-            userInfoApi.postNewUserData(this.state.newUserData);
+        //update user's password
+        postNewUserPassword(){
+            userInfoApi.postUserPassword(this.state.newUserPassword);
         },
+
+        //update user's profile information
+        postNewUserData(){
+            userInfoApi.postUserInfo(this.state.newUserData);
+        },
+
+
 
         fetchPublicEvents({commit}) {
             return new Promise((resolve, reject) => {

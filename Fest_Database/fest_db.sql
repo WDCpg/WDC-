@@ -1,4 +1,3 @@
-DROP DATABASE fest_db;
 CREATE DATABASE fest_db;
 USE fest_db;
 
@@ -112,6 +111,8 @@ CREATE Table notification_type (
   type_desc varchar(100),
   PRIMARY KEY (type_id)
 );
+
+
 
 
 

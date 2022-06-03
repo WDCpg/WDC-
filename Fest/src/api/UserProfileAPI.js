@@ -13,7 +13,11 @@ const userInfo = {
 
 //2) create export api call / ajax function
 export default {
-    getUserInfo (newUserData) {
+    getUserInfo (events){
+        events(userInfo);
+    },
+
+    postUserInfo (newUserData) {
         let xhttp = new XMLHttpRequest();
 
         //Run on response
@@ -23,34 +27,30 @@ export default {
             }
         }
         //Open connection
-        xhttp.open('POST', `http://localhost:3001/updateUserData`, true);
+        xhttp.open('POST', `https://chobbiwan-code50-16236897-vgqjwwq6fx9g5-8080.githubpreview.dev/updateUserData`, true);
         xhttp.setRequestHeader('Content-type', 'application/json; charset=UTF-8' );
         //Send request
         xhttp.send(JSON.stringify(newUserData));
 
+    },
+
+    postUserPassword(newUserPassword) {
+        console.log(newUserPassword);
+        let xhttp = new XMLHttpRequest();
+
+        //Run on response
+        xhttp.onreadystatechange = function() {
+        if(this.readyState == 4 && this.status == 200) {
+            return this.response;
+            }
+        }
+        //Open connection
+        xhttp.open('POST', `https://chobbiwan-code50-16236897-vgqjwwq6fx9g5-8080.githubpreview.dev/UpdatePassword`, true);
+        xhttp.setRequestHeader('Content-type', 'application/json; charset=UTF-8' );
+        //Send request
+        xhttp.send(JSON.stringify(newUserPassword));
+
     }
+}
 
-    // postUseInfo (userInfo, body) {
-    //     let xhttp = new XMLHttpRequest();
 
-    //     //Run on response
-    //     xhttp.onreadystatechange = function() {
-    //     if(this.readyState == 4 && this.status == 200) {
-    //         console.log(JSON.parse(this.response))
-    //         return userInfo (JSON.parse(this.response));
-    //         }
-    //     }
-
-    //     //Open connection
-
-    //     xhttp.open('POST', `http://localhost:3001/events/updateUserData`, false);
-    //     xhttp.setRequestHeader('content-type', 'application/json; charset=UTF-8' );
-
-    //     //Send request
-    //     xhttp.send(JSON.stringify(body));
-
-    //     // setTimeout(() => events(publicEvents), 3000)
-    //     }
-    }
-
-//3) See Store/index.js -- create Action

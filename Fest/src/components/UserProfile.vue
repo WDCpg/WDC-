@@ -20,14 +20,14 @@
 
             <div class = "personal_details_container">
                 <div>
-                    <h3> <span class="dot"></span>   Personal Details</h3>
+                    <h3> <span class="dot"></span>   Change User Personal Details</h3>
                 </div>
                 <form @submit.prevent='submit'>
                     <div class="personal_details">
                         <div class = "personal_details_top">
                             <div class = "first_name">
                                 <label for="profile-first-name">First Name</label><br>
-                                <input type="text" name="first_name" :placeholder="userInfo.first_name" v-model="newUserData.first_name" />
+                                <input type="text" name="first_name" :placeholder = "userInfo.first_name" v-model="newUserData.first_name" />
                             </div>
                             <div class = "last_name">
                                 <label for="profile-last-name">Last Name</label><br>
@@ -72,33 +72,37 @@
                             </div>
                         </div>
                     </div>
-                    <div class = "password_container">
+                     <div class="residence_button">
                         <div>
-                            <h3><span class="dot"></span>   Change Passwords</h3>
-                        </div>
-                        <div class="profile-change-pw">
-                            <div>
-                                <label for="profile-password">Enter existing password</label><br>
-                                <input type="text" id="profile-password" placeholder = "Current Password" />
-                            </div>
-                            <div>
-                                <label for="profile-new-password">Enter new password</label><br>
-                                <input type="text" id="profile-new-password" placeholder = "New Password" /> <br>
-                            </div>
-                            <div>
-                                <label for="profile-confirm-pw">Confirm new password</label><br>
-                                <input type="text" id="profile-confirm-password" placeholder = "Confirm New Password" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="residence_button">
-                        <div>
-                            <button type="submit" class="button-blue save" @onclick="submitNewUserData">Save</button>
+                            <button type="button" class="button-blue save" @click="submitNewUserData()">Save</button>
                         </div>
                         <div>
                             <button class="button-orange cancel">Cancel</button>
                         </div>
                     </div>
+                    <div class = "password_container">
+                        <div>
+                            <h3><span class="dot"></span>   Change User Password</h3>
+                        </div>
+                        <div class="profile-change-pw">
+                            <div class="profile_password">
+                                <label for="profile-password">Enter existing password</label><br>
+                                <input type="password" id="profile-password" placeholder = "Current Password" v-model="newUserPassword.user_password" />
+                            </div>
+                            <div class = "profile_new_password">
+                                <label for="profile-new-password">Enter new password</label><br>
+                                <input type="password" id="profile-new-password" placeholder = "New Password" /> <br>
+                            </div>
+                            <div class="confirm_password">
+                                <label for="profile-confirm-pw">Confirm new password</label><br>
+                                <input type="password" id="profile-confirm-password" placeholder = "Confirm New Password" v-model="newUserPassword.new_password" />
+                            </div>
+                        </div>
+                        <div class="password_button">
+                            <button type = "button" class = "button-password" @click = "submitNewUserPassword()">Confirm Change Password</button>
+                        </div>
+                    </div>
+
                 </form>
             </div>
         </div>
@@ -172,7 +176,7 @@
             <div class = "modal_heading">
                 <h2>Upload Image</h2>
             </div>
-            <form action="/uploadInfo" method ="post" class = "dropzone" enctype="multipart/form-data">
+            <form action="https://chobbiwan-code50-16236897-vgqjwwq6fx9g5-8080.githubpreview.dev/UploadPicture" method ="post" class = "dropzone" enctype="multipart/form-data">
                 <span>Drag n Drop Image</span>
                 <span>OR</span>
                 <label for = "dropzoneFile">Select File</label>

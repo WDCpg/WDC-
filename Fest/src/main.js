@@ -3,6 +3,7 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 
+
 /* Components */
 import Navigation from "./components/Navigation.vue";
 import SideNavigation from "./components/SideNavigation.vue";
