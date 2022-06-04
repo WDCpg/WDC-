@@ -1,5 +1,5 @@
 <script setup>
-import Dashboard from "@/components/Admin.vue"
+import Admin from "@/components/Admin.vue"
 </script>
 
 <template>
