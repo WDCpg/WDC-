@@ -1,20 +1,25 @@
 export default {
-    postLogin (auth) {
-        console.log(auth.data)
+    // First parameter has data, second returns status
+    postLogin (auth, status) {
+        console.log(auth)
         let xhttp = new XMLHttpRequest();
 
         //Run on response
         xhttp.onreadystatechange = function() {
-        if(this.readyState == 4 && this.status == 200) {
-            return this.response;
+            if(this.readyState == 4 && this.status == 200) {
+                return status(this.status);
+            }
+            else if (this.readyState == 4)  {
+                return status([this.status, {test: 56}]);
             }
         }
+        
         //Open connection
-        xhttp.open('POST', `http://localhost:3001/login`, true);
+        xhttp.open('POST', `http://localhost:8080/login`, true);
         xhttp.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
         
         //Send request
-        console.log(JSON.stringify(auth.data))
-        xhttp.send(JSON.stringify(auth.data));
+        console.log(JSON.stringify(auth))
+        xhttp.send(JSON.stringify(auth));
     }
 }

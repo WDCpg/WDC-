@@ -1,9 +1,9 @@
 <template>
-    <nav class="navigation-container light" id="navigation-container">
+    <nav :class="isDark ? 'dark' : 'light'" class="navigation-container" id="navigation-container">
         <div class="nav-bar">
             <div class="nav-bar-left" id="nav-bar">
                <!-- Menu button display -->
-                <button  type="button" class="menu-icon-container">
+                <button title="homepage"  type="button" class="menu-icon-container">
                     <svg id="menu-button" width="100%" height="100%" viewBox="0 0 3559 2417" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.5;">
                         <rect id="MenuIcon" x="0" y="0" width="3558.62" height="2416.17" style="fill:none;"/>
                         <g>
@@ -77,10 +77,21 @@
                     </div>
 
                 </div>
-                <div class="user-profile-container">
+                <div v-if="userInfo.user_id != undefined" class="user-profile-container">
                     <button v-on:click="displayLoginModal();" class="user-profile-button" type="button">
                         <svg width="100%" height="100%" viewBox="0 0 2132 2107" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;"><rect id="Log-in" serif:id="Log in" x="0" y="-0" width="2131.59" height="2106.64" style="fill:none;"/><ellipse cx="1065.8" cy="1059.12" rx="984.796" ry="985.612" style="fill:#5096fe;stroke:#4f94fa;stroke-width:71.5px;"/><ellipse cx="1052.41" cy="772.697" rx="449.291" ry="456.433" style="fill:#fff;"/><path d="M392.973,1778.58c108.123,-191.275 306.196,-395.105 659.433,-395.105c357.762,-0 564.101,209.085 678.389,402.356c-175.288,160.765 -408.783,258.905 -665,258.905c-260.076,-0 -496.74,-101.119 -672.822,-266.156Z" style="fill:#f6f5f7;"/></svg>
                     </button>
+                </div>
+                <div v-else class="user-profile-container-login">
+                    <!-- Sign up -->
+                    <button type="button" v-on:click="displayLoginModal();" class="user-logs-button" :class="{ dark: isDark }">
+                        Sign Up
+                    </button>
+                    <!-- Login button -->
+                    <button type="button" v-on:click="displayLoginModal();" class="user-logs-button-login" :class="{ dark: isDark }">
+                        Log In
+                    </button>
+                    
                 </div>
             </div>
         </div>

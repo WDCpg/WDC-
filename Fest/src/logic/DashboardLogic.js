@@ -22,7 +22,14 @@ export default {
     },
     computed: {
         publicEvents() {
-            return store.state.publicEvents;
+            let publicEvents = store.state.publicEvents;
+            for (let i = 0; i < publicEvents.length; i++) {
+                if(publicEvents[i].event_title.length > 30) {
+                    // If title string is too long remove characters
+                    publicEvents[i].event_title = publicEvents[i].event_title.slice(0, 30) + '..'
+                }
+            }
+            return publicEvents;
         },
         
         isLoading() {

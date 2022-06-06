@@ -8,29 +8,29 @@ import Login from "@/components/Login.vue"
 </script>
 
 <template>
+  <div>
+      <Navigation />
+    <main>
+      <SideNavigation />
+      <div class="page-container">
+        <div class="page-line">
+            <hr>
+        </div>
 
-  <Navigation />
-  <main>
-    <SideNavigation />
-    <div class="page-container">
-      <div class="page-line">
-          <hr>
+        <div class="page-content-container">
+          <RouterView />
+        </div>
       </div>
 
-      <div class="page-content-container">
-        <RouterView />
+    </main>
+    <footer>
+    </footer>
+    <div class="bg-modal">
+      <div class = "login">
+        <Login/>
       </div>
-    </div>
-
-  </main>
-  <footer>
-  </footer>
-  <div class="bg-modal">
-    <div class = "login">
-      <Login/>
     </div>
   </div>
-
 </template>
 
 <style>
@@ -39,6 +39,8 @@ import Login from "@/components/Login.vue"
 main {
   display: flex;
   flex-direction: row;
+  height: calc(100vh - 65px);
+  background-color: #F6F5F7;
 }
 </style>
 

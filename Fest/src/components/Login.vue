@@ -39,5 +39,6 @@
 <style scoped>
 @import "@/styles/LoginStyles.css";
 </style>
+
 <script src="../logic/LoginLogic.js">
 </script>

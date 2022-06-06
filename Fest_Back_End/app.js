@@ -62,7 +62,7 @@ app.use(express.static(path.join(__dirname, 'public')));
   Allow access from localhost:3000 - Front End Vue Port
 */
 app.use(function(req, res, next) {
-  res.set('Access-Control-Allow-Origin', 'http://localhost:3000');
+  res.set('Access-Control-Allow-Origin', '*');
   res.header("Access-Control-Allow-Headers","*");
   res.set('Access-Control-Allow-Methods', 'GET, POST');
   next();

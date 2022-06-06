@@ -1,5 +1,5 @@
 <template>
-    <nav class="side-menu-container light" id="side-menu-container">
+    <nav :class="isDark ? 'dark' : 'light' "  class="side-menu-container " id="side-menu-container">
         <ul>
             <!-- Home -->
             <li>
@@ -65,3 +65,7 @@
 <style scoped>
 @import "@/styles/SideNavigationStyles.css";
 </style>
+
+<script src="@/logic/SideNavigationLogic.js">
+
+</script>

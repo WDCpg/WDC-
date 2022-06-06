@@ -107,13 +107,33 @@ export default createStore({
         },
 
         // Login 
-        submitLogin(auth, data) {
+        submitLogin({commit}, auth) {
            
             return new Promise((resolve, reject) => {
-                LoginsAPI.postLogin({auth, data});
-                resolve();
+                LoginsAPI.postLogin(auth, status => {
+                    // Forbidden wrong email or password
+                    if (status[0] == 200) {
+                        console.log('Login successful');
+                        
+                    }
+                    else if (status[0] == 403) {
+                        console.log(status)
+                        console.log('Bad login');
+                    }
+                    else {
+                        console.log('Error');
+                    }
+                    resolve();
+                });
+                
+                
                 
             })
+        },
+
+        // Change page style - Light / Dark
+        updatePageStyle({commit}) {
+            commit('togglePageStyle');
         }
 
     },
@@ -121,6 +141,12 @@ export default createStore({
     // Setting and updating the state.
     // Mutations only set or update the state.
     mutations: {
+        // Change page style - Light / Dark
+        togglePageStyle(state) {
+            state.isDark = !state.isDark;
+            console.log(state.isDark)
+        },
+
         isLoading(state) {
             state.isLoading = !state.isLoading;
         },
