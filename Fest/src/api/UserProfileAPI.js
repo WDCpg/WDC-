@@ -13,9 +13,44 @@ const userInfo = {
 
 //2) create export api call / ajax function
 export default {
-    getUserInfo (events) {
-        events(userInfo) //ajax call
+    getUserInfo (events){
+        events(userInfo);
+    },
+
+    postUserInfo (newUserData) {
+        let xhttp = new XMLHttpRequest();
+
+        //Run on response
+        xhttp.onreadystatechange = function() {
+        if(this.readyState == 4 && this.status == 200) {
+            return this.response;
+            }
+        }
+        //Open connection
+        xhttp.open('POST', `https://chobbiwan-code50-16236897-vgqjwwq6fx9g5-8080.githubpreview.dev/updateUserData`, true);
+        xhttp.setRequestHeader('Content-type', 'application/json; charset=UTF-8' );
+        //Send request
+        xhttp.send(JSON.stringify(newUserData));
+
+    },
+
+    postUserPassword(newUserPassword) {
+        console.log(newUserPassword);
+        let xhttp = new XMLHttpRequest();
+
+        //Run on response
+        xhttp.onreadystatechange = function() {
+        if(this.readyState == 4 && this.status == 200) {
+            return this.response;
+            }
+        }
+        //Open connection
+        xhttp.open('POST', `https://chobbiwan-code50-16236897-vgqjwwq6fx9g5-8080.githubpreview.dev/UpdatePassword`, true);
+        xhttp.setRequestHeader('Content-type', 'application/json; charset=UTF-8' );
+        //Send request
+        xhttp.send(JSON.stringify(newUserPassword));
+
     }
 }
 
-//3) See Store/index.js -- create Action
+

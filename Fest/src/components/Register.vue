@@ -18,7 +18,7 @@
                             <label for="dateofbirth">Date of birth</label><br>
                             <input type="date" id="dateofbirth" name="dateofbirth">
                         </div>
-                        
+
                         <div class="personal-details-container">
                                                 <h2>Your address</h2>
                         <label for="Streetname">Street name</label><br>

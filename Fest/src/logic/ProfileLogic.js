@@ -8,6 +8,14 @@ export default {
 
         isLoading() {
             return store.state.isLoading;
+        },
+
+        newUserData(){
+            return store.state.newUserData;
+        },
+
+        newUserPassword(){
+            return store.state.newUserPassword;
         }
     },
 
@@ -18,6 +26,16 @@ export default {
     },
 
     methods: {
+        // async submit(e) {
+        //     let body = new FormData(e.target);
+        //     let name = e.target.elements.first_name.value;
+        //     console.log(body);
+        //     // let body = {
+
+        // },
+
+            // store.dispatch('updateUserDetails', body);
+
         hideModal: function(){
             document.querySelector(".upload_modal").style.display="none";
             document.querySelector(".main-content").style.filter = "none";
@@ -27,7 +45,45 @@ export default {
         displayModal: function(){
             document.querySelector(".main-content").style.filter = "blur(8px)";
             document.querySelector(".upload_modal").style.display="flex";
+        },
+
+        submitNewUserData() {
+            store.dispatch('postNewUserData');
+        },
+
+        submitNewUserPassword() {
+            let newPassword = document.getElementById("profile-new-password").value;
+            let confirmPassword = document.getElementById("profile-confirm-password").value;
+            let password = document.getElementById("profile-password").value;
+
+           if(password.replace(/\s/g, '').length == 0 && !document.querySelector(".error_message1")){
+                let errorMessage = document.createElement("p");
+                errorMessage.className="error_message1";
+                errorMessage.innerText = "Please Input Your Current Password";
+                errorMessage.style.color = "red";
+                document.querySelector(".profile_password").appendChild(errorMessage);
+            } else if (password.replace(/\s/g, '').length > 0 && document.querySelector(".error_message1") ){
+                document.querySelector(".error_message1").remove();
+            }
+
+            if (newPassword != confirmPassword || newPassword.replace(/\s/g, '').length==0 && !document.querySelector(".error_message2")){
+                let errorMessage2 = document.createElement("p");
+                errorMessage2.className="error_message2";
+                errorMessage2.innerText = "Confirmation Password Does Not Match";
+                errorMessage2.style.color = "red";
+                document.querySelector(".confirm_password").appendChild(errorMessage2);
+            } else if(newPassword == confirmPassword && newPassword.replace(/\s/g, '').length>0 && document.querySelector(".error_message2")){
+                document.querySelector(".error_message2").remove();
+            }
+
+            if(password.replace(/\s/g, '').length != 0 && newPassword == confirmPassword){
+                store.dispatch('postNewUserPassword');
+            }
+
         }
+
+
+
     }
 }
 

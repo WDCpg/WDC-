@@ -15,7 +15,7 @@ export default createStore({
         isDescriptionChanged: false,
         //userInfo template JSON
         userInfo: {
-            "first_name": "Santiago"
+            // "first_name": "Santiago"
         },
         userEvents: [
             {
@@ -49,10 +49,17 @@ export default createStore({
 
         ],
         // Bind to the input when creating a new element
-        newEventData: { 
-            
+        newEventData: {
+
+        },
+
+        //update user's profile information
+        newUserData: {
+
+        },
+        //new password
+        newUserPassword: {
         }
-    
 
     },
 
@@ -69,6 +76,17 @@ export default createStore({
         postNewEvent() {
             NewEventAPI.postNewEvent(this.state.newEventData);
         },
+        //update user's password
+        postNewUserPassword(){
+            userInfoApi.postUserPassword(this.state.newUserPassword);
+        },
+
+        //update user's profile information
+        postNewUserData(){
+            userInfoApi.postUserInfo(this.state.newUserData);
+        },
+
+
 
         fetchPublicEvents({commit}) {
             return new Promise((resolve, reject) => {
@@ -102,8 +120,8 @@ export default createStore({
 
         clearInput({commit}, type) {
             let clear = '';
-            
-            commit('setNewEventNone', [clear, type]);  
+
+            commit('setNewEventNone', [clear, type]);
         },
 
         // Login 
@@ -138,6 +156,16 @@ export default createStore({
 
     },
 
+    //     updateUserDetails({commit}, body) {
+    //         return new Promise((resolve, reject) => {
+    //             userInfoApi.postUserInfo(body) (data => {
+    //                 commit('setUserInfo', data);
+    //                 resolve();
+    //             })
+    //         })
+    //     }
+    // },
+
     // Setting and updating the state.
     // Mutations only set or update the state.
     mutations: {
@@ -167,11 +195,11 @@ export default createStore({
             else {
                 return;
             }
-            
+
         },
 
         updateIconCode(state, emoji) {
-            
+
             for (let i = 0; i < state.publicEvents.length; i++) {
                 let rawCode = state.publicEvents[i].icon.replace("U+", "0x");
                 let decoded = String.fromCodePoint(rawCode);

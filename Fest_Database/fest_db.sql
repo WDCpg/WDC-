@@ -1,4 +1,3 @@
-DROP DATABASE fest_db;
 CREATE DATABASE fest_db;
 USE fest_db;
 
@@ -6,6 +5,7 @@ CREATE Table users (
   user_id int NOT NULL AUTO_INCREMENT,
   first_name varchar(63),
   last_name varchar(63),
+  password varchar(255),
   dob date,
   email varchar(100),
   contact_number int,
@@ -111,6 +111,8 @@ CREATE Table notification_type (
   type_desc varchar(100),
   PRIMARY KEY (type_id)
 );
+
+
 
 
 
