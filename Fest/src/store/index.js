@@ -3,6 +3,7 @@ import api from "@/api/DashboardAPI";
 import userInfoApi from "@/api/UserProfileAPI";
 import NewEventAPI from "../api/NewEventAPI";
 import LoginsAPI from "../api/LoginsAPI";
+import RefreshLoginAPI from "../api/RefreshLoginAPI";
 
 
 export default createStore({
@@ -65,7 +66,9 @@ export default createStore({
 
     // Getters == Computed properties
     getters: {
-
+        isDarkGetter(state) {
+            return state.isDark;
+        }
     },
 
     // Actions == Methods
@@ -85,8 +88,6 @@ export default createStore({
         postNewUserData(){
             userInfoApi.postUserInfo(this.state.newUserData);
         },
-
-
 
         fetchPublicEvents({commit}) {
             return new Promise((resolve, reject) => {
@@ -126,15 +127,17 @@ export default createStore({
 
         // Login 
         submitLogin({commit}, auth) {
-           
             return new Promise((resolve, reject) => {
                 LoginsAPI.postLogin(auth, status => {
                     // Forbidden wrong email or password
-                    if (status[0] == 200) {
+                    if (status.status == 200) {
+                        // Commit user info to state
+                        // location.replace("/");
+                        console.log(status.rows)
+                        commit('setUserInfo', status.rows[0]);
                         console.log('Login successful');
-                        
                     }
-                    else if (status[0] == 403) {
+                    else if (status.status == 403) {
                         console.log(status)
                         console.log('Bad login');
                     }
@@ -143,9 +146,29 @@ export default createStore({
                     }
                     resolve();
                 });
-                
-                
-                
+            })
+        },
+
+        loginOnOpen({commit}) {
+            return new Promise((resolve, reject) => {
+                RefreshLoginAPI.postLogin(status => {
+                    // Forbidden wrong email or password
+                    if (status.status == 200) {
+                        // Commit user info to state
+                        // location.replace("/");
+                        console.log(status.rows)
+                        commit('setUserInfo', status.rows);
+                        console.log('Login successful');
+                    }
+                    else if (status.status == 403) {
+                        console.log(status)
+                        console.log('Bad login');
+                    }
+                    else {
+                        console.log('Error');
+                    }
+                    resolve();
+                });
             })
         },
 
@@ -155,16 +178,6 @@ export default createStore({
         }
 
     },
-
-    //     updateUserDetails({commit}, body) {
-    //         return new Promise((resolve, reject) => {
-    //             userInfoApi.postUserInfo(body) (data => {
-    //                 commit('setUserInfo', data);
-    //                 resolve();
-    //             })
-    //         })
-    //     }
-    // },
 
     // Setting and updating the state.
     // Mutations only set or update the state.

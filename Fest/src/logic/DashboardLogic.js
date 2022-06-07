@@ -43,6 +43,7 @@ export default {
 
     created() {
         store.dispatch('updateIsLoading');
+        
         store.dispatch('fetchPublicEvents')
             .then(() => store.dispatch('updateIsLoading'));
     }

@@ -174,8 +174,12 @@ input:checked + .slider:before {
 }
 
 .user-logs-button-login {
-  border: solid 1px #101d42;
+  border: solid 1px none;
   border-radius: 10px;
+  background-color: #2E81DA;
+  color: white;
+  font-weight: 600;
+
 }
 
 /* Dark Mode */
@@ -184,7 +188,7 @@ input:checked + .slider:before {
 }
 
 .dark .user-logs-button-login {
-  border: solid 1px white;
+  border: solid 1px none;
 }
 
 
