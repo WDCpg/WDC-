@@ -3,7 +3,7 @@ import api from "@/api/DashboardAPI";
 import userInfoApi from "@/api/UserProfileAPI";
 import NewEventAPI from "../api/NewEventAPI";
 import LoginsAPI from "../api/LoginsAPI";
-
+import registerApi from "../api/RegisterAPI";
 
 export default createStore({
     // State == Data
@@ -59,8 +59,11 @@ export default createStore({
         },
         //new password
         newUserPassword: {
-        }
+        },
 
+        //new registration info
+        newRegisterData: {
+        }
     },
 
     // Getters == Computed properties
@@ -86,7 +89,14 @@ export default createStore({
             userInfoApi.postUserInfo(this.state.newUserData);
         },
 
+        postRegisterData(){
+            registerApi.postRegisterInfo(this.state.newRegisterData);
+        },
 
+        //updates users info when they register
+        // postNewRegisterInfo(){
+        //     registerApi.postRegisterInfo(this.state.newRegisterData);
+        // },
 
         fetchPublicEvents({commit}) {
             return new Promise((resolve, reject) => {
@@ -124,15 +134,15 @@ export default createStore({
             commit('setNewEventNone', [clear, type]);
         },
 
-        // Login 
+        // Login
         submitLogin({commit}, auth) {
-           
+
             return new Promise((resolve, reject) => {
                 LoginsAPI.postLogin(auth, status => {
                     // Forbidden wrong email or password
                     if (status[0] == 200) {
                         console.log('Login successful');
-                        
+
                     }
                     else if (status[0] == 403) {
                         console.log(status)
@@ -143,9 +153,9 @@ export default createStore({
                     }
                     resolve();
                 });
-                
-                
-                
+
+
+
             })
         },
 

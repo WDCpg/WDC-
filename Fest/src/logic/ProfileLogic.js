@@ -58,7 +58,7 @@ export default {
 
            if(password.replace(/\s/g, '').length == 0 && !document.querySelector(".error_message1")){
                 let errorMessage = document.createElement("p");
-                errorMessage.className="error_message1";
+                errorMessage.className="error_message1";    
                 errorMessage.innerText = "Please Input Your Current Password";
                 errorMessage.style.color = "red";
                 document.querySelector(".profile_password").appendChild(errorMessage);
