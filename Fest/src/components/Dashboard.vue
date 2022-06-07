@@ -2,7 +2,7 @@
     <div class="dashboard-content-container">
         <div class="dashboard-title-container">
             <h1>
-                Dashboard - Your events {{ userInfo.first_name }}
+                Dashboard <span v-if="userInfo.user_id != undefined"> - Your events </span>
             </h1>
         </div>
         <div class="dashboard-buttons-container">
@@ -20,15 +20,16 @@
             </button>
         </div>
 
-
+        <!-- Loading icon -->
+        <div v-if="isLoading" class="loading-container">
             <img v-if="isLoading"
-                src="https://i.imgur.com/JfPpwOA.gif"
+                src="../assets/images/loading.gif" alt="loading circle"
             >
-
-
+        </div>
+    
 
         <!-- Posts container -->
-        <div v-if="!isLoading" class="posts-content-container">
+        <div v-else class="posts-content-container">
             <!-- Post -->
             <div v-for="(event, index) in publicEvents" :key="index" class="post-container">
                 <div class="post-image-container">
@@ -51,56 +52,6 @@
                     </p>
                     <p class="post-description-location">
                         {{ formatLocation(event) }}
-                    </p>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- Posts container -->
-        <div class="posts-content-container">
-            <!-- Post -->
-            <div class="post-container">
-                <div class="post-image-container">
-
-                </div>
-
-                <div class="post-icon-container">
-                    <p>
-                        &#129409;
-                    </p>
-                </div>
-                <div class="post-details-container">
-                    <div class="post-title-container">
-                        <h3>
-                            Party at Adelaide Uni!
-                        </h3>
-                    </div>
-                    <p class="post-description">
-                        Static website for the coming Fest Application made by the best PG group!
-                    </p>
-                </div>
-
-            </div>
-            <!-- Post -->
-            <div class="post-container">
-                <div class="post-image-container">
-
-                </div>
-
-                <div class="post-icon-container">
-                    <p>
-                        &#127928;
-                    </p>
-                </div>
-                <div class="post-details-container">
-                    <div class="post-title-container">
-                        <h3>
-                            Party at Adelaide Uni!
-                        </h3>
-                    </div>
-                    <p class="post-description">
-                        Static website for the coming Fest Application made by the best PG group!
                     </p>
                 </div>
 

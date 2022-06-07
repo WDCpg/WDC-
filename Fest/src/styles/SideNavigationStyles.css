@@ -49,18 +49,26 @@
 }
 
 .dark {
-    background-color: #E8E8E8;
+    background-color: #1A1A1A;
     
 }
 
 .dark svg {
-    fill: #9A9A9A;
+    fill: white;
 }
 
 .dark span {
-    color: #9A9A9A;
+    color: white;
 }
 
 .dark li:hover {
     background-color: #E0E0E0;
+}
+
+.dark  #cross-icon {
+    stroke: black;
+}
+
+.light  #cross-icon {
+    stroke: white;
 }

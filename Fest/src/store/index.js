@@ -3,6 +3,7 @@ import api from "@/api/DashboardAPI";
 import userInfoApi from "@/api/UserProfileAPI";
 import NewEventAPI from "../api/NewEventAPI";
 import LoginsAPI from "../api/LoginsAPI";
+import RefreshLoginAPI from "../api/RefreshLoginAPI";
 
 
 export default createStore({
@@ -15,7 +16,7 @@ export default createStore({
         isDescriptionChanged: false,
         //userInfo template JSON
         userInfo: {
-            
+
             // "first_name": "Santiago"
         },
         userEvents: [
@@ -66,7 +67,11 @@ export default createStore({
 
     // Getters == Computed properties
     getters: {
-        getImageUrl(state) {
+        isDarkGetter(state) {
+            return state.isDark;
+        },
+
+        getImages(state){
             return state.userInfo.profile_picture;
         }
     },
@@ -88,8 +93,6 @@ export default createStore({
         postNewUserData(){
             userInfoApi.postUserInfo(this.state.newUserData);
         },
-
-
 
         fetchPublicEvents({commit}) {
             return new Promise((resolve, reject) => {
@@ -128,30 +131,68 @@ export default createStore({
         },
 
         // Login
-        submitLogin(auth, data) {
-
+        submitLogin({commit}, auth) {
             return new Promise((resolve, reject) => {
-                LoginsAPI.postLogin({auth, data});
-                resolve();
-
+                LoginsAPI.postLogin(auth, status => {
+                    // Forbidden wrong email or password
+                    if (status.status == 200) {
+                        // Commit user info to state
+                        // location.replace("/");
+                        console.log(status.rows)
+                        commit('setUserInfo', status.rows[0]);
+                        console.log('Login successful');
+                    }
+                    else if (status.status == 403) {
+                        console.log(status)
+                        console.log('Bad login');
+                    }
+                    else {
+                        console.log('Error');
+                    }
+                    resolve();
+                });
             })
+        },
+
+        loginOnOpen({commit}) {
+            return new Promise((resolve, reject) => {
+                RefreshLoginAPI.postLogin(status => {
+                    // Forbidden wrong email or password
+                    if (status.status == 200) {
+                        // Commit user info to state
+                        // location.replace("/");
+                        console.log(status.rows)
+                        commit('setUserInfo', status.rows);
+                        console.log('Login successful');
+                    }
+                    else if (status.status == 403) {
+                        console.log(status)
+                        console.log('Bad login');
+                    }
+                    else {
+                        console.log('Error');
+                    }
+                    resolve();
+                });
+            })
+        },
+
+        // Change page style - Light / Dark
+        updatePageStyle({commit}) {
+            commit('togglePageStyle');
         }
 
     },
 
-    //     updateUserDetails({commit}, body) {
-    //         return new Promise((resolve, reject) => {
-    //             userInfoApi.postUserInfo(body) (data => {
-    //                 commit('setUserInfo', data);
-    //                 resolve();
-    //             })
-    //         })
-    //     }
-    // },
-
     // Setting and updating the state.
     // Mutations only set or update the state.
     mutations: {
+        // Change page style - Light / Dark
+        togglePageStyle(state) {
+            state.isDark = !state.isDark;
+            console.log(state.isDark)
+        },
+
         isLoading(state) {
             state.isLoading = !state.isLoading;
         },

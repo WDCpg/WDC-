@@ -22,13 +22,13 @@
                     <div class="lowerdiv">
                         <p><a href="/">Not a member? Sign up</a></p>
                         <br>
-                        <form action="/">
+                        <form action="submitLogin">
                             <label for="email">Email</label><br>
                             <input type="text" id="email" name="email"><br><br>
                             <label for="password">Password</label><br>
                             <input minlength="8" type="password" id="password" name="password">
                             <p><a href="/">Forgot password?</a></p>
-                            <button type="button" @click="submitLogin" class="signin-button">Sign in</button>
+                            <button type="submit" @click="submitLogin" class="signin-button">Sign in</button>
                         </form>
 
                     </div>
@@ -39,5 +39,6 @@
 <style scoped>
 @import "@/styles/LoginStyles.css";
 </style>
+
 <script src="../logic/LoginLogic.js">
 </script>

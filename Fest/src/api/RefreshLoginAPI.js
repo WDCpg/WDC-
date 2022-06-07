@@ -1,6 +1,6 @@
 export default {
     // First parameter has data, second returns status
-    postLogin (auth, status) {
+    postLogin (status) {
         let xhttp = new XMLHttpRequest();
 
         //Run on response
@@ -18,6 +18,6 @@ export default {
         xhttp.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
         
         //Send request
-        xhttp.send(JSON.stringify(auth));
+        xhttp.send(JSON.stringify({}));
     }
 }
