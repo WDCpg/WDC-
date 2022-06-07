@@ -14,7 +14,8 @@ export default createStore({
         isDescriptionChanged: false,
         //userInfo template JSON
         userInfo: {
-            "first_name": "Santiago"
+            "first_name": "Santiago",
+            "profile_picture": "P1.jpeg"
         },
         userEvents: [
             {
@@ -48,11 +49,16 @@ export default createStore({
 
         ],
         // Bind to the input when creating a new element
-        newEventData: { 
-            
-        }
-    
+        newEventData: {
 
+        },
+
+        friendInfo: [
+            {id:1, firstName:'Mark', lastName:'Leo', icon:'P1.jpeg'},
+            {id:2, firstName:'Carlos ', lastName:'Liu', icon:'P2.jpeg'},
+            {id:3, firstName:'Alex', lastName:'G', icon:'P3.jpeg'},
+            {id:4, firstName:'Monkey', lastName:'D', icon:'P4.jpeg'}
+        ]
     },
 
     // Getters == Computed properties
@@ -78,6 +84,7 @@ export default createStore({
             })
         },
 
+
         updateIsLoading({commit}) {
             commit('isLoading');
         },
@@ -94,17 +101,33 @@ export default createStore({
         fetchNewEventDefault({commit}) {
             let newEventDefault = {
                 "title": "Your event's title",
-                "description": "Your description"
+                "description": "Your description",
+                "start_date" : "dd/mm/yyyy",
+                "start_time": "--/--",
+                "end_date": "dd/mm/yyyy",
+                "end_time": "--/--",
+                "privacy" : "Public"
             }
             commit('setNewEventDefault', newEventDefault);
         },
 
+        cancelCreate() {
+            location.replace("/");
+        },
+
         clearInput({commit}, type) {
             let clear = '';
-            
-            commit('setNewEventNone', [clear, type]);  
-        }
 
+            commit('setNewEventNone', [clear, type]);
+        },
+
+        inviteFriend() {
+            let search = '';
+            return this.friendInfo.filter((friend) =>{
+                friend.firstName.toLowerCase().includes(this.search.toLowerCase()) ||
+                friend.lastName.toLowerCase().includes(this.search.toLowerCase())
+            });
+        }
     },
 
     // Setting and updating the state.
@@ -130,11 +153,10 @@ export default createStore({
             else {
                 return;
             }
-            
         },
 
         updateIconCode(state, emoji) {
-            
+
             for (let i = 0; i < state.publicEvents.length; i++) {
                 let rawCode = state.publicEvents[i].icon.replace("U+", "0x");
                 let decoded = String.fromCodePoint(rawCode);
@@ -150,5 +172,6 @@ export default createStore({
         setUserInfo(state, userInfo) {
             state.userInfo = userInfo;
         }
+
     }
 })
