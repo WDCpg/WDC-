@@ -12,15 +12,17 @@ var dashboardRouter = require('./routes/Dashboard/dashboard');
 var loginRouter = require('./routes/User_Auth/login');
 var signUpRouter = require('./routes/User_Auth/signup');
 var logOutRouter = require('./routes/User_Auth/logout');
+var profileRouter = require('./routes/Profile/profile');
 
 var app = express();
 
 //mysql
 var mysql = require('mysql');
+const router = require('./routes/index');
 //localhost 1
-// var dbConnectionPool = mysql.createPool({host: '127.0.0.1', database: 'fest_db', });
+//var dbConnectionPool = mysql.createPool({host: '127.0.0.1', database: 'fest_db', });
 
-//local env 2
+// local env 2
 var dbConnectionPool = mysql.createPool({
   name: 'fest-db',
   host: 'localhost',
@@ -40,10 +42,15 @@ app.use(function(req,res,next){
 
 // Sessions
 app.use(session({
-  secret: 'FestApp',
-  resave: false,
+  name: 'FestApp2',
+  secret: 'FestApp12345@',
+  resave: true,
   saveUninitialized: true,
-  cookie: { secure: false }
+  cookie: { 
+    name: 'FestAppCookie',
+    secure: false,
+    expires : 360000 + Date.now()
+  }
 }))
 
 // view engine setup
@@ -62,12 +69,18 @@ app.use(express.static(path.join(__dirname, 'public')));
   Allow access from localhost:3000 - Front End Vue Port
 */
 app.use(function(req, res, next) {
-  res.set('Access-Control-Allow-Origin', 'http://localhost:3000');
+  res.set('Access-Control-Allow-Origin', '*');
+  res.header("Access-Control-Allow-Headers","*");
+  res.set('Access-Control-Allow-Methods', 'GET, POST');
   next();
 });
 
-
-
+router.use('/', function(req, res, next) {
+  
+  console.log(req.session);
+  
+  next();
+})
 
 
 app.use('/', indexRouter);
@@ -78,6 +91,7 @@ app.use('/', dashboardRouter);
 app.use('/', loginRouter);
 app.use('/', signUpRouter);
 app.use('/', logOutRouter);
+app.use('/', profileRouter);
 
 
 

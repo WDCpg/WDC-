@@ -1,5 +1,5 @@
 <template>
-    <nav class="side-menu-container light" id="side-menu-container">
+    <nav :class="isDark ? 'dark' : 'light' "  class="side-menu-container " id="side-menu-container">
         <ul>
             <!-- Home -->
             <li>
@@ -26,7 +26,12 @@
             <li>
                 <a href="/">
                 <div class="side-menu-icon">
-                    <svg width="100%" height="100%" viewBox="0 0 2132 2107" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;"><rect id="Add" x="0" y="0" width="2131.59" height="2106.64" style="fill:none;"/><circle cx="1085.24" cy="1066.69" r="1009.91"/><g><path d="M1084.4,676.852l-0,779.669" style="fill:none;stroke:#fff;stroke-width:167.1px;"/><path d="M694.568,1066.69l779.669,0" style="fill:none;stroke:#fff;stroke-width:167.1px;"/></g></svg>
+                    <svg width="100%" height="100%" viewBox="0 0 2132 2107" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;"><rect id="Add" x="0" y="0" width="2131.59" height="2106.64" style="fill:none;"/><circle cx="1085.24" cy="1066.69" r="1009.91"/>
+                        <g id="cross-icon">
+                            <path d="M1084.4,676.852l-0,779.669" style="fill:none;stroke-width:167.1px;"/>
+                            <path d="M694.568,1066.69l779.669,0" style="fill:none;stroke-width:167.1px;"/>
+                        </g>
+                    </svg>
                 </div>
                 <span>New Event</span>
                 </a>
@@ -65,3 +70,7 @@
 <style scoped>
 @import "@/styles/SideNavigationStyles.css";
 </style>
+
+<script src="@/logic/SideNavigationLogic.js">
+
+</script>

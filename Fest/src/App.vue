@@ -1,36 +1,39 @@
 <script setup>
 import { RouterLink, RouterView } from "vue-router";
-
 import Navigation from "@/components/Navigation.vue"
 import SideNavigation from "@/components/SideNavigation.vue"
 import Login from "@/components/Login.vue"
+import store from "@/store/index";
+import { computed,} from 'vue';
 
+// const isDark = computed(() => store.state.isDark);
+const isDark = computed(() => store.getters.isDarkGetter)
 </script>
 
 <template>
+  <div>
+      <Navigation />
+    <main :class="isDark ? 'dark' : 'light'">
+      <SideNavigation />
+      <div class="page-container">
+        <div class="page-line">
+            <hr>
+        </div>
 
-  <Navigation />
-  <main>
-    <SideNavigation />
-    <div class="page-container">
-      <div class="page-line">
-          <hr>
+        <div class="page-content-container">
+          <RouterView />
+        </div>
       </div>
 
-      <div class="page-content-container">
-        <RouterView />
+    </main>
+    <footer>
+    </footer>
+    <div class="bg-modal">
+      <div class = "login">
+        <Login/>
       </div>
-    </div>
-
-  </main>
-  <footer>
-  </footer>
-  <div class="bg-modal">
-    <div class = "login">
-      <Login/>
     </div>
   </div>
-
 </template>
 
 <style>
@@ -39,6 +42,15 @@ import Login from "@/components/Login.vue"
 main {
   display: flex;
   flex-direction: row;
+  height: calc(100vh - 65px);
+}
+
+.ligth {
+  background-color: #F6F5F7;
+}
+
+.dark {
+  background-color: #1A1A1A;
 }
 </style>
 

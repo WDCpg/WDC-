@@ -4,7 +4,7 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: left;
-    background-color: #F6F5F7;
+    width: 100%;
 }
 
 h1 {
@@ -64,7 +64,7 @@ h1 {
 
 .post-container {
     width: 300px;
-    height: 320px;
+    height: 310px;
     background-color: white;
     border-radius: 30px;
     display: flex;
@@ -81,7 +81,7 @@ h1 {
 }
 
 .post-image-container {
-    height: 45%;
+    height: 50%;
     background-image: url("../assets/images/party.jpg");
     background-size: cover;
     background-position: center;
@@ -96,7 +96,7 @@ h1 {
 }
 
 .post-details-container {
-    margin: 35px 0 0 0;
+    margin: 40px 0 10px 0;
     display: flex;
     flex-direction: column;
     padding: 0 18px 10px 18px;
@@ -105,6 +105,7 @@ h1 {
 .post-title-container h3 {
     font-size: 1.5em;
     font-weight: 600;
+    line-height: 1.2;
 }
 
 .post-description {
@@ -119,11 +120,4 @@ h1 {
     color: #9C9C9C;
 }
 
-/* .bg-modal {
-    width: 100%;
-    height:100%;
-    background-color: black;
-    opacity: 0.7;
-    position: absolute;
-    top: 0;
-} */
+

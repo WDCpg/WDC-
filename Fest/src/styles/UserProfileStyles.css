@@ -1,4 +1,6 @@
-
+h1{
+    font-weight: 600;
+}
 
 .main-content{
     padding: 20px 25px;
@@ -6,6 +8,8 @@
     flex-direction: row;
     justify-content:space-between;
     width:100%;
+    /* background-color: #F6F5F7; */
+
 }
 
 .profile-content-right{
@@ -51,13 +55,17 @@
     height:80px;
     width:80px;
     border-radius:50px;
-    background-image:url("../assets/images/party.jpg");
     background-size: cover;
     background-position: center;
     margin-right:30px;
 }
 
-.personal_details, .residence {
+.user-profile-picture{
+    border-radius:50px;
+    width:100%;
+}
+
+.personal_details, .residence, .password_container {
     display:flex;
     flex-direction: column;
 }
@@ -70,6 +78,11 @@
     margin-top:5px;
 }
 
+.profile_password, .profile_new_password, .confirm_password {
+    margin-bottom:8px;
+    margin-top:8px;
+}
+
 button {
     border-radius: 25px;
     width: 120px;
@@ -78,15 +91,24 @@ button {
     cursor:pointer;
     text-align:center;
     display:inline-block;
+    font-weight:bold;
 }
 
 .button-blue{
     background-color: #2E81DA;
     color: white;
 }
+
 .button-orange{
     background-color: #FF7551;
     color:white;
+}
+
+.button-password{
+    width:250px;
+    background-color: #2E81DA;
+    color: white;
+    height:25px;
 }
 
 input{
@@ -115,12 +137,12 @@ input{
     margin-top:20px;
 }
 
-.profile-change-pw div{
+.profile-change-pw {
     margin-top:5px;
     margin-bottom: 5px;
 }
 
-.residence_button{
+.residence_button, .password_button{
     display:flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -190,8 +212,16 @@ input{
     border:none;
 }
 
-.dropzone input{
+
+#dropzoneFile{
     display:none;
+}
+
+.dropzone_button{
+    cursor:pointer;
+    border-radius:5px;
+    background-color:#FF7551;
+    color:white;
 }
 
 .upload_modal{

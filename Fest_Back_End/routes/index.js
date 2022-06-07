@@ -6,10 +6,11 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-module.exports = router;
 
 router.get('/profile', function(req,res,next){
     req.db.getConection(function(error,connection){
 
     });
 })
+
+module.exports = router;

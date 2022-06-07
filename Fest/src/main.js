@@ -3,6 +3,7 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 
+
 /* Components */
 import Navigation from "./components/Navigation.vue";
 import SideNavigation from "./components/SideNavigation.vue";
@@ -29,8 +30,8 @@ app.component("SideNavigation", SideNavigation);
 app.component("Dashboard", Dashboard);
 app.component("UserProfile", UserProfile);
 app.component("NewEvent", NewEvent);
-app.component("NewEvent", SignUp);
-app.component("NewEvent", Login);
+app.component("SignUp", SignUp);
+app.component("Login", Login);
 
 // Mount app on HTML
 app.mount("#app");
