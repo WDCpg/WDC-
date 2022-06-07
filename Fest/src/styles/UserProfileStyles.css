@@ -8,7 +8,7 @@ h1{
     flex-direction: row;
     justify-content:space-between;
     width:100%;
-    background-color: #F6F5F7;
+    /* background-color: #F6F5F7; */
 
 }
 
@@ -55,10 +55,14 @@ h1{
     height:80px;
     width:80px;
     border-radius:50px;
-    background-image:url("../assets/images/party.jpg");
     background-size: cover;
     background-position: center;
     margin-right:30px;
+}
+
+.user-profile-picture{
+    border-radius:50px;
+    width:100%;
 }
 
 .personal_details, .residence, .password_container {
@@ -208,9 +212,17 @@ input{
     border:none;
 }
 
-/* #dropzoneFile{
+
+#dropzoneFile{
     display:none;
-} */
+}
+
+.dropzone_button{
+    cursor:pointer;
+    border-radius:5px;
+    background-color:#FF7551;
+    color:white;
+}
 
 .upload_modal{
     display:none;

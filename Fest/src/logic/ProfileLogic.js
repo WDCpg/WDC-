@@ -1,4 +1,6 @@
 import store from "@/store/index";
+import Dropzone from "dropzone";
+
 
 export default {
     computed: {
@@ -16,13 +18,29 @@ export default {
 
         newUserPassword(){
             return store.state.newUserPassword;
+        },
+
+        getImage() {
+            let url = store.state.userInfo.profile_picture;
+            console.log(url)
+            if (url != undefined) {
+                let style = `./assets/${url}`;
+                return style;
+            }
+            return "/src/assets/images/party.jpg";
+
         }
+
+        // urlImage() {
+        //     return getImage();
+        // }
     },
 
     created() {
         store.dispatch('updateIsLoading');
         store.dispatch('fetchUserInfo')
             .then(() => store.dispatch('updateIsLoading'));
+
     },
 
     methods: {
@@ -35,6 +53,7 @@ export default {
         // },
 
             // store.dispatch('updateUserDetails', body);
+
 
         hideModal: function(){
             document.querySelector(".upload_modal").style.display="none";

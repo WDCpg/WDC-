@@ -15,6 +15,7 @@ export default createStore({
         isDescriptionChanged: false,
         //userInfo template JSON
         userInfo: {
+            
             // "first_name": "Santiago"
         },
         userEvents: [
@@ -65,7 +66,9 @@ export default createStore({
 
     // Getters == Computed properties
     getters: {
-
+        getImageUrl(state) {
+            return state.userInfo.profile_picture;
+        }
     },
 
     // Actions == Methods

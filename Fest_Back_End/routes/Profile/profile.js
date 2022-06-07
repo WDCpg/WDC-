@@ -8,7 +8,7 @@ var path = require('path');
 var multer = require('multer');
 var storage = multer.diskStorage({
     destination: (req,file,cb) => {
-        cb(null, '../assets')
+        cb(null, '../Fest/assets')
     },
     filename:(req,file,cb) => {
         console.log(file)
@@ -23,17 +23,24 @@ var uploaded_images =[];
 router.post('/UploadPicture', upload.array('file', 12));
 
 router.post('/UploadPicture', function(req,res,next){
-    console.log(req.files);
-    req.files.forEach(function(file){
-        uploaded_images.push(file.filename);
-        let query = "INSERT INTO users (profile_picture) VALUES (?) WHERE user_id = ?;";
-        connection.query(query,[file.filename, 11], function(error, rows, fields){
-            connection.release();
-            if(error){
-                res.sendStatus(500);
-                return;
-            }
-            res.end();
+    req.db.getConnection(function(error, connection){
+        if (error){
+            console.log(error);
+            res.sendStatus(500);
+            return;
+        }
+        console.log(req.files);
+        req.files.forEach(function(file){
+            uploaded_images.push(file.filename);
+            let query = "UPDATE users SET profile_picture=? WHERE user_id = ?;";
+            connection.query(query,[file.filename, 11], function(error, rows, fields){
+                connection.release();
+                if(error){
+                    res.sendStatus(500);
+                    return;
+                }
+                res.send("success");
+            });
         });
     });
 });
