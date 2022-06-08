@@ -14,7 +14,6 @@
                         <p>
                         {{ newRegisterData.first_name }}
                         </p>
-                        <div class="g-signin2" data-onsuccess="onSignIn">"sign in goes here"</div>
                         <label for="firstname">First name</label><br>
                         <input type="text" id="firstname" name="firstname" placeholder="First name..." v-model="newRegisterData.first_name"><br><br>
                         <label for="lastname">Last name</label><br>
@@ -62,15 +61,4 @@
 </style>
 <script src="@/logic/RegisterLogic.js">
 </script>
-<meta name="google-signin-client_id" content="533508693712-8002ktdbreq7k44in1avt3cj6jjg0v3n.apps.googleusercontent.com">
-<meta name="google-signin-plugin_name" content="APP">
-
-
-
-<!-- <script src="https://apis.google.com/js/platform.js" async defer></script> goes in head -->
-<!-- <meta name="google-signin-client_id" content="533508693712-8002ktdbreq7k44in1avt3cj6jjg0v3n.apps.googleusercontent.com"> replaced with client ID (goes in head)-->
-
-<!-- <meta name="google-signin-plugin_name" content="APP"> goes in head -->
-<!-- <div class="g-signin2" data-onsuccess="onSignIn"></div> goes into the html page -->
-
 
