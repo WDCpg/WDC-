@@ -22,12 +22,24 @@ export default {
         console.log(JSON.stringify(auth))
         xhttp.send(JSON.stringify(auth));
     },
-    xhttp.onreadystatechange = function() {
-        if(this.readyState == 4 && this.status == 200) {
-            return status(this.status);
+
+    googleLogin (auth, status) {
+        console.log(auth)
+        let xhttp = new XMLHttpRequest();
+
+        xhttp.onreadystatechange = function() {
+            if(this.readyState == 4 && this.status == 200) {
+                return status(this.status);
+            }
+            else if (this.readyState == 4)  {
+                return status([this.status, {test: 56}]);
+            }
         }
-        else if (this.readyState == 4)  {
-            return status([this.status, {test: 56}]);
-        }
-    }
+        
+        xhttp.open('POST', `http://localhost:8080/login`, true);
+        xhttp.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
+
+        //Send request
+        console.log(JSON.stringify(auth))
+        xhttp.send(JSON.stringify(auth));
 }
