@@ -64,7 +64,7 @@
 
 
 <!-- <script src="https://apis.google.com/js/platform.js" async defer></script> goes in head -->
-<!-- <meta name="google-signin-client_id" content="533508693712-b3eriebuf4c4h97aarn009ad5091o1a8.apps.googleusercontent.com" replaced with client ID (goes in head)-->
+<!-- <meta name="google-signin-client_id" content="533508693712-8002ktdbreq7k44in1avt3cj6jjg0v3n.apps.googleusercontent.com" replaced with client ID (goes in head)-->
 
 <!-- <meta name="google-signin-plugin_name" content="APP"> goes in head -->
 <!-- <div class="g-signin2" data-onsuccess="onSignIn"></div> goes into the html page -->
