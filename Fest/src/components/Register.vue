@@ -40,10 +40,6 @@
                         <div class="post_code_country">
                         </div>
                     </div>
-                    <h2>Your availability</h2>
-                    <div class="button-container">
-                        <button class="sync" type="button" @click="syncGoogleCalender()">Sync Google Calender </button>
-                    </div>
                     <div class="button-container">
                         <button type="button" class="save" @click="postNewRegisterInfo()">Save</button>
                     </div>
