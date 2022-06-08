@@ -151,10 +151,6 @@ export default createStore({
             })
         },
 
-        onSignIn(){
-
-        },
-
         // Change page style - Light / Dark
         updatePageStyle({commit}) {
             commit('togglePageStyle');
