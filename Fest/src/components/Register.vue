@@ -12,7 +12,7 @@
                     <form action="/">
                     <div class="personal-details-container">
                         <p>
-                        {{ newRegisterData.first_name }}
+                        {{ newRegisterData.state }}
                         </p>
                         <label for="firstname">First name</label><br>
                         <input type="text" id="firstname" name="firstname" placeholder="First name..." v-model="newRegisterData.first_name"><br><br>
