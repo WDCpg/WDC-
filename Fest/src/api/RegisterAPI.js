@@ -19,4 +19,9 @@ export default {
     }
 }
 
+// client id 533508693712-b3eriebuf4c4h97aarn009ad5091o1a8.apps.googleusercontent.com 3000
+// client secret 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
+
+
+
 
