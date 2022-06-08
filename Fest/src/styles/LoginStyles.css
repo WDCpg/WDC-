@@ -125,4 +125,5 @@ a {
 .signinbuttons {
     float:left;
     display: flex;
+    gap: 13px;
 }

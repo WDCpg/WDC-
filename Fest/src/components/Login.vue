@@ -27,7 +27,7 @@
                             <input type="text" id="email" name="email"><br><br>
                             <label for="password">Password</label><br>
                             <input minlength="8" type="password" id="password" name="password">
-                            <p><a href="/">Forgot password?</a></p>
+                            <p><a href="/">Forgot password?</a></p><br>
                             <div class="signinbuttons">
                             <button type="button" @click="submitLogin" class="signin-button">Sign in</button><br>
                             <div class="g-signin2" data-onsuccess="onSignIn">"sign in goes here"</div>
