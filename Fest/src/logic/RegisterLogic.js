@@ -29,10 +29,18 @@ export default {
                 }
             }
         },
-        syncGoogleCalender() {
+        loginGoogle() {
+            function onSignIn(googleUser) {
+                var profile = googleUser.getBasicProfile();
+                console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+                console.log('Name: ' + profile.getName());
+                console.log('Image URL: ' + profile.getImageUrl());
+                console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+            }
         }
     }
 }
+
 
 // function onSignIn(googleUser) {
 //     var profile = googleUser.getBasicProfile();
@@ -87,7 +95,7 @@ export default {
 
 // followed guide and put in the google signin button and linked to developer account,
 //we then go to server side, once login is successful we make ajax request we send login token itself to the serverside
-// once we receive the login token, we validate the login token and use that the login the user based on common information about user, IE email, no need for a passsword 
+// once we receive the login token, we validate the login token and use that the login the user based on common information about user, IE email, no need for a passsword
 
 
 
