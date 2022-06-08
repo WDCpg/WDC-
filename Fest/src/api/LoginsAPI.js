@@ -41,6 +41,6 @@ export default {
 
         //Send request
         console.log(JSON.stringify(token))
-        xhttp.send(JSON.stringify({token: goolUser.getAuthResponse().id_token}));
+        xhttp.send(JSON.stringify({token: googleUser.getAuthResponse().id_token}));
     }
 }
