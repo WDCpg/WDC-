@@ -9,7 +9,7 @@ export default {
             }
         }
         //Open connection
-        xhttp.open('POST', `https://fulzske-code50-61676631-9pr7w7wq27rwr-8080.githubpreview.dev/register`, true);
+        //xhttp.open('POST', `https://fulzske-code50-61676631-9pr7w7wq27rwr-8080.githubpreview.dev/register`, true);
         //xhttp.open('POST', `http://127.0.0.1:3000/register`, true);
         //xhttp.open('POST', `*`, true);
 
