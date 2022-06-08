@@ -9,7 +9,7 @@
                     </div>
                     <div class="upperdiv">
                         <h1 class="welcomeback">
-                            Welcome back! 
+                            Welcome back!
                         </h1>
 
                         <div>
@@ -29,6 +29,7 @@
                             <input minlength="8" type="password" id="password" name="password">
                             <p><a href="/">Forgot password?</a></p>
                             <button type="button" @click="submitLogin" class="signin-button">Sign in</button>
+                            <div class="g-signin2" data-onsuccess="onSignIn">"sign in goes here"</div>
                         </form>
 
                     </div>
