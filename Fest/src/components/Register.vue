@@ -29,10 +29,10 @@
                         <input type="text" id="city" name="city" placeholder="City..." v-model="newRegisterData.city"><br><br>
                         <label for="country">Country</label>
                         <input type="text" id="country" name="country" placeholder="Country..." v-model="newRegisterData.country"><br><br>
-                        <div class="country">
+                        <div class="state">
                             <div>
-                                <label for="country">Country</label>
-                                <input type="text" id="country" name="country" placeholder="Country..." v-model="newRegisterData.country">
+                                <label for="state">State</label>
+                                <input type="text" id="state" name="state" placeholder="State..." v-model="newRegisterData.state">
                             </div>
                             <div>
                                 <label for="Post code">Post code</label>

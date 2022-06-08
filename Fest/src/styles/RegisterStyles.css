@@ -102,12 +102,12 @@ input[name=freeto] {
     border-radius: 10px;
 }
 
-.country {
+.state {
     display:flex;
     flex-direction: row;
 }
 
-.country input {
+.state input {
     width: 80%;
     margin-left: 20px;
     border-radius: 10px;
