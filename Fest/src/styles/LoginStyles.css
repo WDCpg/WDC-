@@ -121,14 +121,6 @@ a {
     line-height: 1em;
     font-weight: 600;
 }
-
-.signinbuttons {
-    float:left;
-    display: flex;
-    gap: 13px;
-}
-
 .g-signin2 {
-    width: 100px;
-    height: -100px;
+    width: 90%;
 }
