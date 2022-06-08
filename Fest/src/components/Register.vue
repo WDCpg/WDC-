@@ -14,6 +14,7 @@
                         <p>
                         {{ newRegisterData.first_name }}
                         </p>
+                        <div class="g-signin2" data-onsuccess="onSignIn">"sign in goes here"</div>
                         <label for="firstname">First name</label><br>
                         <input type="text" id="firstname" name="firstname" placeholder="First name..." v-model="newRegisterData.first_name"><br><br>
                         <label for="lastname">Last name</label><br>
@@ -68,3 +69,5 @@
 
 <!-- <meta name="google-signin-plugin_name" content="APP"> goes in head -->
 <!-- <div class="g-signin2" data-onsuccess="onSignIn"></div> goes into the html page -->
+
+
