@@ -148,11 +148,10 @@ export default createStore({
                     }
                     resolve();
                 });
-
-
-
             })
         },
+
+        onSignIn()
 
         // Change page style - Light / Dark
         updatePageStyle({commit}) {
