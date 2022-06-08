@@ -28,9 +28,9 @@
                             <label for="password">Password</label><br>
                             <input minlength="8" type="password" id="password" name="password">
                             <p><a href="/">Forgot password?</a></p>
-                            <button type="button" @click="submitLogin" class="signin-button">Sign in</button>
-                            <div class="g-signin2" data-onsuccess="onSignIn">"sign in goes here"</div>
+                            <button type="button" @click="submitLogin" class="signin-button">Sign in</button><br>
                         </form>
+                        <div class="g-signin2" data-onsuccess="onSignIn">"sign in goes here"</div>
 
                     </div>
                 </div>
