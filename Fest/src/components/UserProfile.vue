@@ -6,7 +6,8 @@
             <h1>User Profile</h1>
             <div class="profile-header">
                 <div class="profile-header">
-                    <div class="profile-picture">
+                    <div class="profile-picture" >
+                    <img class="user-profile-picture" :src="getImage">
                         <button class = "edit_button" v-on:click="displayModal()">
                             <img src="data:image/png;base64,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">
                         </button>
@@ -178,11 +179,9 @@
                 <h2>Upload Image</h2>
             </div>
             <form action="https://chobbiwan-code50-16236897-vgqjwwq6fx9g5-8080.githubpreview.dev/UploadPicture" method ="post" class = "dropzone" enctype="multipart/form-data">
-                <span>Drag n Drop Image</span>
-                <span>OR</span>
                 <label for = "dropzoneFile">Select File</label>
-                <input type = "file" name="file"/>
-                <input type = "submit"/>
+                <input type = "file" name="file" id="dropzoneFile"/>
+                <button type = "submit" class="dropzone_button">Submit</button>
             </form>
         </div>
     </div>

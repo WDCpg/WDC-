@@ -9,7 +9,8 @@ const userInfo = {
     "city": "adelaoide",
     "country": "australia",
     "post_code": 5000,
-    "user_id": 12
+    "user_id": 12,
+    "profile_picture": "1654505601342.png"
 };
 
 //2) create export api call / ajax function

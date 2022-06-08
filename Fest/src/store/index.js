@@ -19,6 +19,9 @@ export default createStore({
         loginModal: false,
         //userInfo template JSON
         userInfo: {
+            "first_name": "Santiago",
+            "profile_picture": "P1.jpeg"
+
             // "first_name": "Santiago"
         },
         userEvents: [
@@ -60,6 +63,12 @@ export default createStore({
         newUserPassword: {
         }
 
+        friendInfo: [
+            {id:1, firstName:'Mark', lastName:'Leo', icon:'P1.jpeg'},
+            {id:2, firstName:'Carlos ', lastName:'Liu', icon:'P2.jpeg'},
+            {id:3, firstName:'Alex', lastName:'G', icon:'P3.jpeg'},
+            {id:4, firstName:'Monkey', lastName:'D', icon:'P4.jpeg'}
+        ]
     },
 
     // Getters == Computed properties
@@ -68,8 +77,13 @@ export default createStore({
             return state.isDark;
         },
 
+<<<<<<< HEAD
         isLoginModal(state) {
             return state.loginModal;
+=======
+        getImages(state){
+            return state.userInfo.profile_picture;
+>>>>>>> b06bccee5127b5d036c61acc9171fafdbd2264a4
         }
     },
 
@@ -105,6 +119,7 @@ export default createStore({
             })
         },
 
+
         updateIsLoading({commit}) {
             commit('isLoading');
         },
@@ -121,9 +136,18 @@ export default createStore({
         fetchNewEventDefault({commit}) {
             let newEventDefault = {
                 "title": "Your event's title",
-                "description": "Your description"
+                "description": "Your description",
+                "start_date" : "dd/mm/yyyy",
+                "start_time": "--/--",
+                "end_date": "dd/mm/yyyy",
+                "end_time": "--/--",
+                "privacy" : "Public"
             }
             commit('setNewEventDefault', newEventDefault);
+        },
+
+        cancelCreate() {
+            location.replace("/");
         },
 
         clearInput({commit}, type) {
@@ -132,8 +156,9 @@ export default createStore({
             commit('setNewEventNone', [clear, type]);
         },
 
-        // Login 
-        submitLogin({dispatch, commit}, auth) {
+        
+        // Login
+        submitLogin({commit}, auth) {
             return new Promise((resolve, reject) => {
                 LoginsAPI.postLogin(auth, status => {
                     // Forbidden wrong email or password
@@ -207,6 +232,16 @@ export default createStore({
 
         
 
+            // commit('setNewEventNone', [clear, type]);
+        },
+
+        inviteFriend() {
+            let search = '';
+            return this.friendInfo.filter((friend) =>{
+                friend.firstName.toLowerCase().includes(this.search.toLowerCase()) ||
+                friend.lastName.toLowerCase().includes(this.search.toLowerCase())
+            });
+        }
     },
 
     // Setting and updating the state.
@@ -268,5 +303,6 @@ export default createStore({
         setUserInfo(state, userInfo) {
             state.userInfo = userInfo;
         }
+
     }
 })
