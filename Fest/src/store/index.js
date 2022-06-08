@@ -93,11 +93,6 @@ export default createStore({
             registerApi.postRegisterInfo(this.state.newRegisterData);
         },
 
-        //updates users info when they register
-        // postNewRegisterInfo(){
-        //     registerApi.postRegisterInfo(this.state.newRegisterData);
-        // },
-
         fetchPublicEvents({commit}) {
             return new Promise((resolve, reject) => {
                 api.getPublicEvents(events => {
