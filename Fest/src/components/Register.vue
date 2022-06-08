@@ -41,7 +41,6 @@
                                     <option value="WA">WA</option>
                                     <option value="ACT">ACT</option>
                                     <option value="NT">NT</option>
-
                                 </select>
                             </div>
                             <div>
