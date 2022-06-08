@@ -32,7 +32,8 @@
                         <div class="state">
                             <div>
                                 <label for="state">State</label>
-                                <select id="state" name="state" placeholder="State..." v-model="newRegisterData.state">
+                                <select id="state" name="state v-model="newRegisterData.state">
+                                    <option value="" disabled selected hidden>Please Choose...</option>
                                     <option value="SA">SA</option>
                                     <option value="WA">WA</option>
                                     <option value="TAS">TAS</option>
