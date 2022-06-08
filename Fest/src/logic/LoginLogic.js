@@ -14,7 +14,6 @@ export default {
                     "email": email,
                     "password": password
                 }
-
                 store.dispatch('submitLogin', auth);
             }
             else {
