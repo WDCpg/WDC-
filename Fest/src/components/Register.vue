@@ -14,6 +14,7 @@
                         <p>
                         {{ newRegisterData.first_name }}
                         </p>
+                        <script src="https://apis.google.com/js/platform.js" async defer></script>
                         <div class="g-signin2" data-onsuccess="onSignIn">"sign in goes here"</div>
                         <label for="firstname">First name</label><br>
                         <input type="text" id="firstname" name="firstname" placeholder="First name..." v-model="newRegisterData.first_name"><br><br>
