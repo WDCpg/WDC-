@@ -32,7 +32,17 @@
                         <div class="state">
                             <div>
                                 <label for="state">State</label>
-                                <input type="text" id="state" name="state" placeholder="State..." v-model="newRegisterData.state">
+                                <select id="state" name="state" placeholder="State..." v-model="newRegisterData.state">
+                                    <option value="SA">SA</option>
+                                    <option value="WA">WA</option>
+                                    <option value="TAS">TAS</option>
+                                    <option value="SYD">SYD</option>
+                                    <option value="QLD">QLD</option>
+                                    <option value="WA">WA</option>
+                                    <option value="ACT">ACT</option>
+                                    <option value="NT">NT</option>
+
+                                </select>
                             </div>
                             <div>
                                 <label for="Post code">Post code</label>
