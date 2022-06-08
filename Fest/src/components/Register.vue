@@ -27,6 +27,8 @@
                         <input type="text" id="streetname" name="streetname" placeholder="Street name..." v-model="newRegisterData.street"><br><br>
                         <label for="city">City</label><br>
                         <input type="text" id="city" name="city" placeholder="City..." v-model="newRegisterData.city"><br><br>
+                        <label for="country">Country</label>
+                        <input type="text" id="country" name="country" placeholder="Country..." v-model="newRegisterData.country"><br><br>
                         <div class="country">
                             <div>
                                 <label for="country">Country</label>
