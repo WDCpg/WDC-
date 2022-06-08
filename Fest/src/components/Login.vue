@@ -31,7 +31,7 @@
                             <div class="signinbuttons">
                             <button type="button" @click="submitLogin" class="signin-button">Sign in</button><br>
                             <div class="g-signin2" data-onsuccess="onSignIn"></div>
-                            <button type="button" onclick="signOut()">Sign out</button>
+                            <a href="#" onclick="signOut()">Sign out</a>
                             </div>
                         </form>
 
