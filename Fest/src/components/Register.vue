@@ -33,7 +33,6 @@
                             <div>
                                 <label for="state">State</label>
                                 <select required id="state" name="state" v-model="newRegisterData.state">
-                                     <option value="" disabled selected>Select your option</option>>
                                     <option value="SA">SA</option>
                                     <option value="WA">WA</option>
                                     <option value="TAS">TAS</option>
