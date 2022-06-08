@@ -27,7 +27,8 @@ export default {
             console.log('Image URL: ' + profile.getImageUrl());
             console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
 
-            googleUser.getAuthResponse().id_token;
+            var id_token = googleUser.getAuthResponse().id_token;
+            console.log("ID Token: " + id_token)
         }
     },
         signOut() {
