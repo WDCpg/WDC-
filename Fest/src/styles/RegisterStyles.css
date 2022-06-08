@@ -107,18 +107,11 @@ input[name=freeto] {
     flex-direction: row;
 }
 
-.state input {
-    width: 80%;
-    margin-left: 20px;
-    border-radius: 10px;
-    border: 1px solid #9A9A9A;
-}
-
 input[name=postcode] {
     border: 1px solid #9A9A9A;
     height: 30px;
     width: 125px;
-    margin-right: 5px;
+    margin-left: 35px;
     border-radius: 10px;
 }
 
@@ -164,5 +157,9 @@ h2 {
 }
 
 .state select {
-    
+    border: 1px solid #9A9A9A;
+    height: 30px;
+    width: 125px;
+    margin-left: 10px;
+    border-radius: 10px;
 }
