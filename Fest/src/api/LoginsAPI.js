@@ -24,7 +24,7 @@ export default {
     },
 
     googleLogin (token, status) {
-        console.log(auth)
+        console.log(token)
         let xhttp = new XMLHttpRequest();
 
         xhttp.onreadystatechange = function() {
@@ -36,7 +36,7 @@ export default {
             }
         }
 
-        xhttp.open('POST', `http://localhost:8080/login`, true);
+        xhttp.open('POST', `https://fulzske-code50-61676631-9pr7w7wq27rwr-3000.githubpreview.dev/login`, true);
         xhttp.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
 
         //Send request
