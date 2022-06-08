@@ -61,7 +61,7 @@ export default createStore({
         },
         //new password
         newUserPassword: {
-        }
+        },
 
         friendInfo: [
             {id:1, firstName:'Mark', lastName:'Leo', icon:'P1.jpeg'},
@@ -77,13 +77,12 @@ export default createStore({
             return state.isDark;
         },
 
-<<<<<<< HEAD
         isLoginModal(state) {
             return state.loginModal;
-=======
+        },
+
         getImages(state){
             return state.userInfo.profile_picture;
->>>>>>> b06bccee5127b5d036c61acc9171fafdbd2264a4
         }
     },
 
@@ -203,7 +202,7 @@ export default createStore({
         // Change page style - Light / Dark
         updatePageStyle({commit}) {
             commit('togglePageStyle');
-        }
+        },
 
         // loginOnOpen({commit}) {
         //     return new Promise((resolve, reject) => {
@@ -233,7 +232,7 @@ export default createStore({
         
 
             // commit('setNewEventNone', [clear, type]);
-        },
+    
 
         inviteFriend() {
             let search = '';
