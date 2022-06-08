@@ -127,3 +127,7 @@ a {
     display: flex;
     gap: 13px;
 }
+
+.g-signin2 {
+    width: 100px;
+}
