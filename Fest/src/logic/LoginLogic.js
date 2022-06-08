@@ -5,7 +5,6 @@ export default {
         hideLoginModal() {
             document.querySelector(".bg-modal").style.display="none";
         },
-
         submitLogin() {
             let email = document.getElementById("email").value;
             let password = document.getElementById("password").value;
@@ -21,7 +20,6 @@ export default {
             else {
                 return;
             }
-
         },
         onSignIn() {
             var profile = googleUser.getBasicProfile();
@@ -29,6 +27,7 @@ export default {
             console.log('Name: ' + profile.getName());
             console.log('Image URL: ' + profile.getImageUrl());
             console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+            console.log('hi');
         }
     }
 }
