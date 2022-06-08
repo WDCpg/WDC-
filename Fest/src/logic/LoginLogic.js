@@ -3,7 +3,7 @@ import store from "@/store/index";
 export default {
     methods: {
         hideLoginModal() {
-            document.querySelector(".bg-modal").style.display="none";
+            store.dispatch('toggleLoginModal');
         },
 
         submitLogin() {

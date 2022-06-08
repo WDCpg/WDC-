@@ -8,7 +8,8 @@ const userInfo = {
     "street": "123 aslkdm",
     "city": "adelaoide",
     "country": "australia",
-    "post_code": 5000
+    "post_code": 5000,
+    "user_id": 12
 };
 
 //2) create export api call / ajax function

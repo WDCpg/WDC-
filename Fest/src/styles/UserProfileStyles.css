@@ -8,8 +8,6 @@ h1{
     flex-direction: row;
     justify-content:space-between;
     width:100%;
-    background-color: #F6F5F7;
-
 }
 
 .profile-content-right{
@@ -28,7 +26,6 @@ h1{
 }
 
 .page_index a{
-    color:black;
     text-decoration: underline;
     font-style:italic;
 }

@@ -1,9 +1,11 @@
-import { createStore } from "vuex";
+import { createStore, storeKey } from "vuex";
+import router from "../router/index";
 import api from "@/api/DashboardAPI";
 import userInfoApi from "@/api/UserProfileAPI";
 import NewEventAPI from "../api/NewEventAPI";
 import LoginsAPI from "../api/LoginsAPI";
 import RefreshLoginAPI from "../api/RefreshLoginAPI";
+import NotificationsAPI from "../api/NotificationsAPI";
 
 
 export default createStore({
@@ -14,6 +16,7 @@ export default createStore({
         isDark: false,
         isTitleChanged: false,
         isDescriptionChanged: false,
+        loginModal: false,
         //userInfo template JSON
         userInfo: {
             // "first_name": "Santiago"
@@ -30,12 +33,7 @@ export default createStore({
             }
         ],
         notifications: [
-            {
-                "type": "Event invitation",
-                "viewed": false,
-                "description": "Your friend invited you to xx event.",
-                "action": "/eventId"
-            }
+            
         ],
         userCalendar: [
 
@@ -68,6 +66,10 @@ export default createStore({
     getters: {
         isDarkGetter(state) {
             return state.isDark;
+        },
+
+        isLoginModal(state) {
+            return state.loginModal;
         }
     },
 
@@ -75,6 +77,11 @@ export default createStore({
         //API calls go here.
         // Actions never update the state
     actions: {
+        // Update Login Modal
+        toggleLoginModal({commit}) {
+            commit('updateLoginModal');
+        },
+
         // Post New Event
         postNewEvent() {
             NewEventAPI.postNewEvent(this.state.newEventData);
@@ -126,16 +133,21 @@ export default createStore({
         },
 
         // Login 
-        submitLogin({commit}, auth) {
+        submitLogin({dispatch, commit}, auth) {
             return new Promise((resolve, reject) => {
                 LoginsAPI.postLogin(auth, status => {
                     // Forbidden wrong email or password
                     if (status.status == 200) {
                         // Commit user info to state
-                        // location.replace("/");
-                        console.log(status.rows)
                         commit('setUserInfo', status.rows[0]);
+                        commit('updateLoginModal');
+
+                        // Notifications call
+                        dispatch('fetchNotifications', status.rows[0].user_id);
+
                         console.log('Login successful');
+                        // router.push({ name: '/' });
+                        
                     }
                     else if (status.status == 403) {
                         console.log(status)
@@ -149,26 +161,17 @@ export default createStore({
             })
         },
 
-        loginOnOpen({commit}) {
+        // Fetch User Notifications
+        fetchNotifications({commit}, user_id) {
             return new Promise((resolve, reject) => {
-                RefreshLoginAPI.postLogin(status => {
-                    // Forbidden wrong email or password
-                    if (status.status == 200) {
-                        // Commit user info to state
-                        // location.replace("/");
-                        console.log(status.rows)
-                        commit('setUserInfo', status.rows);
-                        console.log('Login successful');
-                    }
-                    else if (status.status == 403) {
-                        console.log(status)
-                        console.log('Bad login');
+                NotificationsAPI.getNotifications(user_id, notifications => {
+                    if (notifications.status == 200) {
+                        commit('updateNotifications', notifications.rows[0]);
                     }
                     else {
-                        console.log('Error');
+                        console.log('error');
                     }
-                    resolve();
-                });
+                })
             })
         },
 
@@ -177,11 +180,48 @@ export default createStore({
             commit('togglePageStyle');
         }
 
+        // loginOnOpen({commit}) {
+        //     return new Promise((resolve, reject) => {
+        //         RefreshLoginAPI.postLogin(status => {
+        //             // Forbidden wrong email or password
+        //             if (status.status == 200) {
+        //                 // Commit user info to state
+                        
+        //                 // console.log(status.rows)
+        //                 // commit('setUserInfo', status.rows);
+        //                 // console.log('Login successful');
+        //                 router.push({ name: 'login' });
+        //                 return;
+        //             }
+        //             else if (status.status == 403) {
+        //                 console.log(status)
+        //                 console.log('Bad login');
+        //             }
+        //             else {
+        //                 console.log('Error');
+        //             }
+        //             resolve();
+        //         });
+        //     })
+        // },
+
+        
+
     },
 
     // Setting and updating the state.
     // Mutations only set or update the state.
     mutations: {
+        // Update Notifications
+        updateNotifications(state, notifications) {
+            state.notifications = notifications;
+        },
+
+        // Update Login Modal
+        updateLoginModal(state) {
+            state.loginModal = !state.loginModal;
+        },
+
         // Change page style - Light / Dark
         togglePageStyle(state) {
             state.isDark = !state.isDark;

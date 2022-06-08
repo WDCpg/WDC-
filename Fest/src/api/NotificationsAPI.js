@@ -1,23 +1,25 @@
 export default {
     // First parameter has data, second returns status
-    postLogin (auth, status) {
+    getNotifications (user_id, notifications) {
         let xhttp = new XMLHttpRequest();
 
         //Run on response
         xhttp.onreadystatechange = function() {
             if(this.readyState == 4 && this.status == 200) {
-                return status(JSON.parse(this.response));
+                return notifications(JSON.parse(this.response));
             }
             else if (this.readyState == 4)  {
-                return status(this.status);
+                return notifications(this.status);
             }
         }
         
         //Open connection
-        xhttp.open('POST', `http://localhost:8080/login`, true);
+        xhttp.open('POST', `http://localhost:8080/getNotifications`, true);
         xhttp.setRequestHeader('Content-type', 'application/json');
         
+        let body = { "user_id": user_id}
+
         //Send request
-        xhttp.send(JSON.stringify(auth));
+        xhttp.send(JSON.stringify(body));
     }
 }

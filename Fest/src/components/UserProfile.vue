@@ -1,7 +1,8 @@
 <template>
+
     <div class="main-content">
         <div class="profile-content-left">
-            <p class="page_index"><a href="">Home</a> > <a href="">User profile</a></p>
+            <p class="page_index"><router-link to="/" href="">Home</router-link> > <router-link to='' href="">User profile</router-link></p>
             <h1>User Profile</h1>
             <div class="profile-header">
                 <div class="profile-header">
@@ -167,7 +168,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> 
     <div class = "upload_modal">
         <div class="upload_container">
             <div class = "close_button">
@@ -185,6 +186,10 @@
             </form>
         </div>
     </div>
+    
+   
+
+
 
 </template>
 

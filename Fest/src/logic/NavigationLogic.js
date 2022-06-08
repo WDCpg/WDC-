@@ -23,7 +23,7 @@ export default {
         },
 
         displayLoginModal() {
-            document.querySelector(".bg-modal").style.display="flex";
+            store.dispatch('toggleLoginModal');
          }
     },
     computed: {
@@ -33,6 +33,10 @@ export default {
         
         isDark() {
             return store.state.isDark;
+        },
+
+        notifications() {
+            return store.state.notifications;
         }
     }
 }

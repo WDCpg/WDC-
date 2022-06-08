@@ -1,5 +1,6 @@
 import store from "@/store/index";
 
+
 export default {
     computed: {
         userInfo() {
@@ -17,6 +18,7 @@ export default {
         newUserPassword(){
             return store.state.newUserPassword;
         }
+        
     },
 
     created() {

@@ -7,7 +7,8 @@ import store from "@/store/index";
 import { computed,} from 'vue';
 
 // const isDark = computed(() => store.state.isDark);
-const isDark = computed(() => store.getters.isDarkGetter)
+const isDark = computed(() => store.getters.isDarkGetter);
+const isLoginModal = computed(() => store.getters.isLoginModal);
 </script>
 
 <template>
@@ -28,7 +29,7 @@ const isDark = computed(() => store.getters.isDarkGetter)
     </main>
     <footer>
     </footer>
-    <div class="bg-modal">
+    <div v-if="isLoginModal" class="bg-modal">
       <div class = "login">
         <Login/>
       </div>
@@ -42,7 +43,7 @@ const isDark = computed(() => store.getters.isDarkGetter)
 main {
   display: flex;
   flex-direction: row;
-  height: calc(100vh - 65px);
+  min-height: calc(100vh - 65px);
 }
 
 .ligth {
@@ -52,5 +53,14 @@ main {
 .dark {
   background-color: #1A1A1A;
 }
+
+.dark a {
+  color: white;
+}
+
+.bg-modal {
+  display: flex;
+}
+
 </style>
 
