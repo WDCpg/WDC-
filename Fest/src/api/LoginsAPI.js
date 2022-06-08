@@ -23,7 +23,7 @@ export default {
         xhttp.send(JSON.stringify(auth));
     },
 
-    googleLogin (auth, status) {
+    googleLogin (token, status) {
         console.log(auth)
         let xhttp = new XMLHttpRequest();
 
@@ -35,11 +35,12 @@ export default {
                 return status([this.status, {test: 56}]);
             }
         }
-        
+
         xhttp.open('POST', `http://localhost:8080/login`, true);
         xhttp.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
 
         //Send request
-        console.log(JSON.stringify(auth))
-        xhttp.send(JSON.stringify(auth));
+        console.log(JSON.stringify(token))
+        xhttp.send(JSON.stringify({token: goolUser.getAuthResponse().id_token}));
+    }
 }
