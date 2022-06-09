@@ -27,6 +27,7 @@ export default {
             //store.dispatch('inviteFriend', friend);
             friend['status'] = true;
             this.invitedFriends.push(friend);
+            
             //console.log(this.invitedFriends);
         },
 
