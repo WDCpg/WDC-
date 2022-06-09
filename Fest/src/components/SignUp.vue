@@ -10,7 +10,7 @@
                 <h2>Email Sign up</h2>
                 <form action="/register">
                     <label for="email">Email</label><br>
-                    <input type="text" id="email" name="email" v-model="newSignupData.email"><br><br>
+                    <input type="email" pattern=".+@globex\.com" size="30" required id="email" name="email" v-model="newSignupData.email"><br><br>
                     <label for="password">Password</label><br>
                     <input type="password" id="password" name="password" v-model="newSignupData.password">
                 <br>
