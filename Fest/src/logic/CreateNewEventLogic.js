@@ -29,10 +29,11 @@ export default {
             this.invitedFriends.push(friend);
         },
 
-        inviteSent(invitedFriends) {
-            for (let x in invitedFriends) {
-                console.log(x);
-            }
+        inviteSent() {
+            console.log(this.invitedFriends);
+            // for (let x in this.invitedFriends) {
+            //     console.log(x.status);
+            // }
         },
 
         cancelInvited(invitedFriends, index) {
