@@ -18,8 +18,7 @@ import gAuthPlugin from 'vue3-google-oauth2';
 // need to install command before google sign in will work
 //npm i vue3-google-oauth2
 
-let gauthClientId = "533508693712-b3eriebuf4c4h97aarn009ad5091o1a8.apps.googleusercontent.com";
-
+let gauthClientId = "533508693712-r61sce51m123m23fv89sohgch0ej1r6n.apps.googleusercontent.com";
 
 /* APP ARCHITECTURE */
 const app = createApp(App);
