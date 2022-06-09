@@ -24,6 +24,9 @@
                 </div>
                 </form>
                 <div class="signUpError">
+                <p>
+                {{ newSignupData }}
+                </p>
                 </div>
             </div>
         </div>
