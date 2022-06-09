@@ -102,7 +102,7 @@ input[name=freeto] {
     border-radius: 10px;
 }
 
-.state {
+.bottomDiv {
     display:flex;
     flex-direction: row;
 }
@@ -156,10 +156,10 @@ h2 {
     border-radius: 20px;
 }
 
-.state select {
+.state {
     border: 1px solid #9A9A9A;
     height: 30px;
-    width: 125px;
+    width: 5px;
     margin-left: 10px;
     border-radius: 10px;
 }
