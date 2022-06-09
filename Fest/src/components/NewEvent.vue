@@ -102,7 +102,6 @@
                 <!-- event time -->
                 <div class = "event-time">
                     <form class = "event-start">
-                        <div><i class = "fa fa-calendar" ></i></div>
                         <div class = "event-date">
                             <div>
                                 <label>Start Date:</label>
@@ -119,7 +118,6 @@
                     <br>
 
                     <form class = "event-end">
-                        <div><i class = "fa fa-calendar" ></i></div>
                         <div class = "event-date">
                             <div>
                                 <label>End Date:</label>
@@ -140,20 +138,14 @@
 
                 <!-- ----------------------------------------------------------------------  -->
                 <!-- event location -->
-                <div class = "event-detail">
-                    <textarea v-model="newEventData.title" @click="clearInput('title')" placeholder="Event title..." rows="2" maxlength="30"></textarea>
+
                 <br>
-                <br>
-                    <textarea @click="clearInput('description')" v-model="newEventData.description" placeholder="Event description..." rows="10" maxlength="300"></textarea>
-                </div>
-                <br>
-                <!-- event detail end -->
+                <!-- event location end -->
                 <!-- ----------------------------------------------------------------------  -->
 
                 <!-- ----------------------------------------------------------------------  -->
                 <!-- event photo -->
                 <div class = "event-photo">
-                    <i class = "fa fa-camera"></i>
                     <label>Upload a cover photo</label>
                     <input type="file" @change="uploadImage" name="cover" accept="image/*">
 
