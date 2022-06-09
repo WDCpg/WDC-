@@ -8,6 +8,13 @@
 </template>
 
 <script>
+/**
+* You should first need to place these 2 lines of code in your APP ENTRY file, e.g. src/main.js
+*
+* import GAuth from 'vue-google-oauth2'
+* Vue.use(GAuth, {clientId: '4584XXXXXXXX-2gqknkvdjfkdfkvb8uja2k65sldsms7qo9.apps.googleusercontent.com'})
+*
+*/
 export default {
   name: 'test',
   data () {

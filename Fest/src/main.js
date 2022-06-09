@@ -3,7 +3,6 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 
-
 /* Components */
 import Navigation from "./components/Navigation.vue";
 import SideNavigation from "./components/SideNavigation.vue";
@@ -13,19 +12,15 @@ import NewEvent from "./components/NewEvent.vue";
 import SignUp from "./components/SignUp.vue";
 import Login from "./components/Login.vue";
 
-/* Google Login */
-//import gAuthPlugin from 'vue3-google-oauth2';
-
-// need to install command before google sign in will work
-//npm i vue3-google-oauth2
-
 /* APP ARCHITECTURE */
 const app = createApp(App);
 
-import GoogleAuth from 'vue3-google-oauth2';
-
-Vue.use(GoogleAuth, { clientID: '533508693712-r61sce51m123m23fv89sohgch0ej1r6n.apps.googleusercontent.com' });
-Vue.googleAuth().load();
+import GAuth from 'vue-google-oauth2'
+const gauthOption = {
+  clientId: 'CLIENT_ID.apps.googleusercontent.com',
+  scope: 'profile email',
+  prompt: 'select_account'
+}
 
 // Router
 app.use(router);
@@ -42,8 +37,6 @@ app.component("NewEvent", NewEvent);
 app.component("SignUp", SignUp);
 app.component("Login", Login);
 
-// google signin
-//app.use(gAuthPlugin, { clientId: gauthClientId, scope: 'email', prompt: 'consent'});
 
 // Mount app on HTML
 app.mount("#app");
