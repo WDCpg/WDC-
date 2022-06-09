@@ -29,9 +29,13 @@ export default {
             this.invitedFriends.push(friend);
         },
 
-        inviteSent(invitedFriends,index) {
-            if (invitedFriends.status == true) {
-                return true;
+        inviteSent(invitedFriends) {
+            if (nvitedFriends.length > 0) {
+                for (let x in invitedFriends) {
+                    if (x.status == true) {
+                        return true;
+                    }
+                }
             }
             else {
                 return false;
