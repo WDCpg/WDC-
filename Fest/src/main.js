@@ -16,18 +16,6 @@ import Login from "./components/Login.vue";
 /* Google Login */
 //import gAuthPlugin from 'vue3-google-oauth2';
 
-import GAuth from 'vue3-google-oauth2';
-const gauthOption = {
-    clientId: '533508693712-r61sce51m123m23fv89sohgch0ej1r6n.apps.googleusercontent.com',
-    scope: 'profile_email',
-    prompt: 'consent',
-    fetch_basic_profile: true
-};
-
-Vue.use(GAuth, gauthOption);
-
-
-
 // need to install command before google sign in will work
 //npm i vue3-google-oauth2
 

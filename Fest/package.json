@@ -13,6 +13,7 @@
     "tui-calendar": "^1.15.3",
     "vue": "^3.2.33",
     "vue-cal": "^4.2.0",
+    "vue-google-auth": "^1.0.5",
     "vue-router": "^4.0.14",
     "vue3-google-oauth2": "^1.0.6",
     "vuetify": "^2.6.6",

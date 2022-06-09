@@ -1,23 +1,90 @@
- <template>
-  <div id="app">
-  <button @click="login()">CLICK HERE</button>
+<template>
+  <div class="container container-table">
+    <!-- Errors -->
+    <div v-if=response class="text-red"><p>{{response}}</p></div>
+
+    <!-- login Button -->
+    <a id="signin-button" v-on:click="signIn">
+      <i class="fa fa-google-plus-official fa-3x"></i>
+      Sign in with Google
+    </a>
   </div>
 </template>
 
 <script>
-export default {
-  name: "App",
-  data() {
+/** -----------------------------------------------------------------------------------------------------------
+  * You would first need to place these 3 lines of code in your APP ENTRY file, e.g. src/main.js
+  *
+  * import GoogleAuth from 'vue-google-auth'
+  * Vue.use(GoogleAuth, { client_id: 'xxxxxxxx-xxxxxxxxxxxxxxxxxxxxxx.apps.googleusercontent.com' })
+  * Vue.googleAuth().load()
+  *
+  * -----------------------------------------------------------------------------------------------------------
+  */
+import Vue from 'vue'
+
+module.exports = {
+  name: 'Login',
+  data: function (router) {
     return {
-      isLogin:false
-    };
+      section: 'Login',
+      loading: '',
+      response: ''
+    }
   },
   methods: {
-    async login(){
-      const googleUser=await this.$gAuth.signIn();
-      console.log('googleUser', googleUser);
+    signIn: function () {
+      Vue.googleAuth().signIn(this.onSignInSuccess, this.onSignInError)
     },
-  },
-};
+    onSignInSuccess: function (authorizationCode) {
+      this.toggleLoading()
+      this.resetResponse()
+
+      this.$http.post('http://your-backend-server.com/auth/google', { code: authorizationCode, redirect_uri: 'postmessage' }).then(function (response) {
+        if (response.body) {
+          var data = response.body
+
+          // Save to vuex
+          var token = 'Bearer ' + data.token
+          this.$store.commit('SET_USER', data.user_data)
+          this.$store.commit('SET_TOKEN', token)
+
+          // Save to local storage as well
+          // ( or you can install the vuex-persistedstate plugin so that you won't have to do this step, only store to Vuex is sufficient )
+          if (window.localStorage) {
+            window.localStorage.setItem('user', JSON.stringify(data.user_data))
+            window.localStorage.setItem('token', token)
+          }
+
+          // redirect to the dashboard
+          this.$router.push({ name: 'home' })
+        }
+      }, function (response) {
+        var data = response.body
+        this.response = data.error
+        console.log('BACKEND SERVER - SIGN-IN ERROR', data)
+      })
+    },
+    onSignInError: function (error) {
+      this.response = 'Failed to sign-in'
+      console.log('GOOGLE SERVER - SIGN-IN ERROR', error)
+    },
+    toggleLoading: function () {
+      this.loading = (this.loading === '') ? 'loading' : ''
+    },
+    resetResponse: function () {
+      this.response = ''
+    }
+  }
+}
 </script>
 
+<style>
+
+/**
+ * ----------------------------------------------------
+ *  Styling? It's time to show your designing skills!
+ * ----------------------------------------------------
+ */
+
+</style>
