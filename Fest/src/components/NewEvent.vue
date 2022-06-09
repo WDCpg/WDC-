@@ -123,7 +123,7 @@
                 <!-- ----------------------------------------------------------------------  -->
                 <!-- event location -->
                 <div class = "event-location">
-                    <div class = "event-location-street">
+                    <div class = "street">
                         <label>Street</label>
                         <br>
                         <input type="text" v-model="newEventData.street" placeholder="street...">
