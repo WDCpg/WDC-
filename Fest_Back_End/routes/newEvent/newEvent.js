@@ -24,7 +24,6 @@ router.post('/createEvent', function(req,res,next){
             return;
         }
         console.log(req.files);
-        req.files.forEach(function(file){
             let query = "UPDATE users SET profile_picture=? WHERE user_id = ?;";
             connection.query(query,[file.filename, 11], function(error, rows, fields){
                 connection.release();
@@ -34,7 +33,6 @@ router.post('/createEvent', function(req,res,next){
                 }
                 res.send("success");
             });
-        });
     });
 });
 
