@@ -123,22 +123,24 @@
                 <!-- ----------------------------------------------------------------------  -->
                 <!-- event location -->
                 <div class = "event-location">
-                    <div class = "event-location-box">
+                    <div class = "event-location-street">
                         <label>Street</label>
                         <br>
                         <input type="text" v-model="newEventData.street" placeholder="street...">
                     </div>
 
-                    <div class = "event-location-box">
-                        <label>City</label>
-                        <br>
-                        <input type="text" v-model="newEventData.city" placeholder="city...">
-                    </div>
+                    <div classs = "event-location-city-state">
+                        <div class = "event-location-box">
+                            <label>City</label>
+                            <br>
+                            <input type="text" v-model="newEventData.city" placeholder="city...">
+                        </div>
 
-                    <div class = "event-location-box">
-                        <label>State</label>
-                        <br>
-                        <input type="text" v-model="newEventData.state" placeholder="state...">
+                        <div class = "event-location-box">
+                            <label>State</label>
+                            <br>
+                            <input type="text" v-model="newEventData.state" placeholder="state...">
+                        </div>
                     </div>
 
                     <div class = "event-location-box">
