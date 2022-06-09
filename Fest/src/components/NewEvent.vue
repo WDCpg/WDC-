@@ -143,7 +143,7 @@
                 <div class = "event-photo">
                     <i class = "fa fa-camera"></i>
                     <label>Upload a cover photo</label>
-                    <input type="file" @change="image = e.target.file[0]" name="cover" accept="image/*">
+                    <input type="file" @change="uploadImage" name="cover" accept="image/*">
 
                 </div>
                 <br>

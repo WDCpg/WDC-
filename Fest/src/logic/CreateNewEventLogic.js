@@ -23,22 +23,6 @@ export default {
         },
 
         submitNewEvent() {
-            let fd= new FormData()
-
-            fd.append('image', this.image)
-
-            axios.post('/upload-image', fd)
-              .then(resp => {
-                 this.imagePath = resp.data.path
-
-                 let data = {
-                   imagePath: this.imagePath,
-                   productSpect: this.productSpect
-                 }
-
-                 axios.post('/path/to/save', data)
-              })
-
             store.dispatch('postNewEvent');
         },
 
