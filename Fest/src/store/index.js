@@ -1,9 +1,13 @@
-import { createStore } from "vuex";
+import { createStore, storeKey } from "vuex";
+import router from "../router/index";
 import api from "@/api/DashboardAPI";
 import userInfoApi from "@/api/UserProfileAPI";
 import NewEventAPI from "../api/NewEventAPI";
 import LoginsAPI from "../api/LoginsAPI";
 import registerApi from "../api/RegisterAPI";
+import RefreshLoginAPI from "../api/RefreshLoginAPI";
+import NotificationsAPI from "../api/NotificationsAPI";
+
 
 export default createStore({
     // State == Data
@@ -13,6 +17,8 @@ export default createStore({
         isDark: false,
         isTitleChanged: false,
         isDescriptionChanged: false,
+        loginModal: false,
+        showNotifications: false,
         //userInfo template JSON
         userInfo: {
             // "first_name": "Santiago"
@@ -29,12 +35,7 @@ export default createStore({
             }
         ],
         notifications: [
-            {
-                "type": "Event invitation",
-                "viewed": false,
-                "description": "Your friend invited you to xx event.",
-                "action": "/eventId"
-            }
+
         ],
         userCalendar: [
 
@@ -63,18 +64,45 @@ export default createStore({
 
         //new registration info
         newRegisterData: {
-        }
+        },
+        
+        friendInfo: [
+            {id:1, firstName:'Mark', lastName:'Leo', icon:'P1.jpeg'},
+            {id:2, firstName:'Carlos ', lastName:'Liu', icon:'P2.jpeg'},
+            {id:3, firstName:'Alex', lastName:'G', icon:'P3.jpeg'},
+            {id:4, firstName:'Monkey', lastName:'D', icon:'P4.jpeg'}
+        ]
     },
 
     // Getters == Computed properties
     getters: {
+        isDarkGetter(state) {
+            return state.isDark;
+        },
 
+        isLoginModal(state) {
+            return state.loginModal;
+        },
+
+        getImages(state){
+            return state.userInfo.profile_picture;
+        }
     },
 
     // Actions == Methods
         //API calls go here.
         // Actions never update the state
     actions: {
+        // Update Show Notifications
+        toggleShowNotifications({commit}) {
+            commit('updateShowNotifications');
+        },
+
+        // Update Login Modal
+        toggleLoginModal({commit}) {
+            commit('updateLoginModal');
+        },
+
         // Post New Event
         postNewEvent() {
             NewEventAPI.postNewEvent(this.state.newEventData);
@@ -102,6 +130,7 @@ export default createStore({
             })
         },
 
+
         updateIsLoading({commit}) {
             commit('isLoading');
         },
@@ -118,9 +147,18 @@ export default createStore({
         fetchNewEventDefault({commit}) {
             let newEventDefault = {
                 "title": "Your event's title",
-                "description": "Your description"
+                "description": "Your description",
+                "start_date" : "dd/mm/yyyy",
+                "start_time": "--/--",
+                "end_date": "dd/mm/yyyy",
+                "end_time": "--/--",
+                "privacy" : "Public"
             }
             commit('setNewEventDefault', newEventDefault);
+        },
+
+        cancelCreate() {
+            location.replace("/");
         },
 
         clearInput({commit}, type) {
@@ -129,17 +167,26 @@ export default createStore({
             commit('setNewEventNone', [clear, type]);
         },
 
-        // Login
-        submitLogin({commit}, auth) {
 
+        // Login
+        submitLogin({commit, dispatch}, auth) {
             return new Promise((resolve, reject) => {
                 LoginsAPI.postLogin(auth, status => {
                     // Forbidden wrong email or password
-                    if (status[0] == 200) {
+                    if (status.status == 200) {
+                        // Commit user info to state
+                        commit('setUserInfo', status.rows[0]);
+                        commit('updateLoginModal');
+
+                        // Notifications call
+                        dispatch('fetchNotifications', status.rows[0].user_id);
+
                         console.log('Login successful');
 
+                        // router.push({ name: '/' });
+
                     }
-                    else if (status[0] == 403) {
+                    else if (status.status == 403) {
                         console.log(status)
                         console.log('Bad login');
                     }
@@ -151,26 +198,87 @@ export default createStore({
             })
         },
 
+        // Fetch User Notifications
+        fetchNotifications({commit}, user_id) {
+            return new Promise((resolve, reject) => {
+                NotificationsAPI.getNotifications(user_id, notifications => {
+                    if (notifications.status == 200) {
+                        commit('updateNotifications', notifications.rows);
+                        this.commit('updateIconCode', "notifications");
+                    }
+                    else {
+                        console.log('error');
+                    }
+                })
+            })
+        },
+
         // Change page style - Light / Dark
         updatePageStyle({commit}) {
             commit('togglePageStyle');
+        },
+
+        loginOnOpen({commit, dispatch}) {
+            return new Promise((resolve, reject) => {
+                RefreshLoginAPI.postLogin(status => {
+                    // Forbidden wrong email or password
+                    if (status.status == 200) {
+                        // Commit user info to state
+
+                        // Notifications call
+                        dispatch('fetchNotifications', status.rows[0].user_id);
+
+                        console.log(status.rows)
+                        commit('setUserInfo', status.rows);
+                        console.log('Login successful');
+                        // router.push({ name: 'login' });
+                        return;
+                    }
+                    else if (status.status == 403) {
+                        console.log(status)
+                        console.log('Bad login');
+                    }
+                    else {
+                        console.log('Error');
+                    }
+                    resolve();
+                });
+            })
+        },
+
+
+
+            // commit('setNewEventNone', [clear, type]);
+
+
+        inviteFriend() {
+            let search = '';
+            return this.friendInfo.filter((friend) =>{
+                friend.firstName.toLowerCase().includes(this.search.toLowerCase()) ||
+                friend.lastName.toLowerCase().includes(this.search.toLowerCase())
+            });
         }
-
     },
-
-    //     updateUserDetails({commit}, body) {
-    //         return new Promise((resolve, reject) => {
-    //             userInfoApi.postUserInfo(body) (data => {
-    //                 commit('setUserInfo', data);
-    //                 resolve();
-    //             })
-    //         })
-    //     }
-    // },
 
     // Setting and updating the state.
     // Mutations only set or update the state.
     mutations: {
+        // Update Show Notifications
+        updateShowNotifications(state) {
+            state.showNotifications = !state.showNotifications;
+
+        },
+
+        // Update Notifications
+        updateNotifications(state, notifications) {
+            state.notifications = notifications;
+        },
+
+        // Update Login Modal
+        updateLoginModal(state) {
+            state.loginModal = !state.loginModal;
+        },
+
         // Change page style - Light / Dark
         togglePageStyle(state) {
             state.isDark = !state.isDark;
@@ -200,22 +308,22 @@ export default createStore({
 
         },
 
-        updateIconCode(state, emoji) {
-
-            for (let i = 0; i < state.publicEvents.length; i++) {
-                let rawCode = state.publicEvents[i].icon.replace("U+", "0x");
+        updateIconCode(state, stateElement) {
+            for (let i = 0; i < state[stateElement].length; i++) {
+                let rawCode = state[stateElement][i].icon.replace("U+", "0x");
                 let decoded = String.fromCodePoint(rawCode);
-                state.publicEvents[i].icon = decoded;
+                state[stateElement][i].icon = decoded;
             }
         },
 
         setPublicEvents(state, publicEvents) {
             state.publicEvents = publicEvents;
-            this.commit('updateIconCode');
+            this.commit('updateIconCode', "publicEvents");
         },
 
         setUserInfo(state, userInfo) {
             state.userInfo = userInfo;
         }
+
     }
 })

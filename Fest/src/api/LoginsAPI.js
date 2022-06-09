@@ -1,25 +1,30 @@
 export default {
     // First parameter has data, second returns status
     postLogin (auth, status) {
-        console.log(auth)
         let xhttp = new XMLHttpRequest();
 
         //Run on response
         xhttp.onreadystatechange = function() {
             if(this.readyState == 4 && this.status == 200) {
-                return status(this.status);
+                return status(JSON.parse(this.response));
             }
             else if (this.readyState == 4)  {
-                return status([this.status, {test: 56}]);
+                return status(this.status);
             }
         }
 
         //Open connection
+<<<<<<< HEAD
         xhttp.open('POST', `https://fulzske-code50-61676631-9pr7w7wq27rwr-3000.githubpreview.dev/login`, true);
         xhttp.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
 
+=======
+        xhttp.open('POST', `http://localhost:8080/login`, true);
+        xhttp.withCredentials = true;
+        xhttp.setRequestHeader('Content-type', 'application/json');
+        
+>>>>>>> milestone2
         //Send request
-        console.log(JSON.stringify(auth))
         xhttp.send(JSON.stringify(auth));
     },
 

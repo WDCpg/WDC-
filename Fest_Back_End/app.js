@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var logger = require('morgan');
+var cors = require('cors');
 
 // Route Files
 var indexRouter = require('./routes/index');
@@ -13,13 +14,19 @@ var loginRouter = require('./routes/User_Auth/login');
 var signUpRouter = require('./routes/User_Auth/signup');
 var logOutRouter = require('./routes/User_Auth/logout');
 var profileRouter = require('./routes/Profile/profile');
+<<<<<<< HEAD
 var registerRouter = require('./routes/User_Auth/register');
+=======
+var notificationsRouter = require('./routes/Notifications/notifications');
+>>>>>>> milestone2
 
 var app = express();
 
 //mysql
 var mysql = require('mysql');
+const router = require('./routes/index');
 //localhost 1
+<<<<<<< HEAD
 var dbConnectionPool = mysql.createPool({host: '127.0.0.1', database: 'fest_db'});
 
 //local env 2
@@ -31,6 +38,19 @@ var dbConnectionPool = mysql.createPool({host: '127.0.0.1', database: 'fest_db'}
 //   password: 'Roomdly1234',
 //   database: 'fest_db'
 // });
+=======
+//var dbConnectionPool = mysql.createPool({host: '127.0.0.1', database: 'fest_db', });
+
+// local env 2
+var dbConnectionPool = mysql.createPool({
+  name: 'fest-db',
+  host: 'localhost',
+  port: '3306',
+  user: 'root',
+  password: 'Roomdly1234',
+  database: 'fest_db'
+});
+>>>>>>> milestone2
 
 
 //connect to database middleware
@@ -39,14 +59,6 @@ app.use(function(req,res,next){
     next();
 });
 
-
-// Sessions
-app.use(session({
-  secret: 'FestApp',
-  resave: false,
-  saveUninitialized: true,
-  cookie: { secure: false }
-}))
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -63,14 +75,35 @@ app.use(express.static(path.join(__dirname, 'public')));
   MIDDLEWARE:
   Allow access from localhost:3000 - Front End Vue Port
 */
-app.use(function(req, res, next) {
-  res.set('Access-Control-Allow-Origin', '*');
-  res.header("Access-Control-Allow-Headers","*");
-  res.set('Access-Control-Allow-Methods', 'GET, POST');
-  next();
-});
+app.use(cors({
+  origin: [
+    'http://localhost:3000'
+  ],
+  methods: "GET, POST",
+  credentials: true
+  // exposedHeaders: ['set-cookie'],
+  // allowedHeaders: '*'
+}))
 
+// app.use(function(req, res, next) {
+//   res.set('Access-Control-Allow-Origin', '*');
+//   res.header("Access-Control-Allow-Headers","*");
+//   res.set('Access-Control-Allow-Methods', 'GET, POST');
+//   next();
+// });
 
+// Sessions
+app.use(session({
+  name: 'FestApp2',
+  secret: 'FestApp12345@',
+  resave: true,
+  saveUninitialized: false,
+  cookie: { 
+    name: 'FestAppCookie2',
+    secure: false,
+    expires : 360000 + Date.now()
+  }
+}))
 
 
 
@@ -83,7 +116,11 @@ app.use('/', loginRouter);
 app.use('/', signUpRouter);
 app.use('/', logOutRouter);
 app.use('/', profileRouter);
+<<<<<<< HEAD
 app.use('/', registerRouter);
+=======
+app.use('/', notificationsRouter);
+>>>>>>> milestone2
 
 
 

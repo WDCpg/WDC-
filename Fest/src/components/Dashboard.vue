@@ -31,7 +31,7 @@
         <!-- Posts container -->
         <div v-else class="posts-content-container">
             <!-- Post -->
-            <div v-for="(event, index) in publicEvents" :key="index" class="post-container">
+            <router-link :to="'/event/' + event.event_id" v-for="(event, index) in publicEvents" :key="index" class="post-container">
                 <div class="post-image-container">
 
                 </div>
@@ -55,7 +55,7 @@
                     </p>
                 </div>
 
-            </div>
+            </router-link>
         </div>
     </div>
 </template>
