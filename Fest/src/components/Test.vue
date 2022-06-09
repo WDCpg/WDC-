@@ -1,68 +1,76 @@
 <template>
-  <div>
-    <h1>Test</h1>
-    <button @click="handleClickGetAuth" :disabled="!isInit">get auth code</button>
-    <button @click="handleClickSignIn" v-if="!isSignIn" :disabled="!isInit">signIn</button>
-    <button @click="handleClickSignOut" v-if="isSignIn" :disabled="!isInit">signOout</button>
+  <div class="hello">
+    <h1>{{ msg }}</h1>
+
+    <h1>Is Initialized: {{ Vue3GoogleOauth.isInit }}</h1>
+    <h1>Is Authorized: {{ Vue3GoogleOauth.isAuthorized }}</h1>
+    <h2 v-if='user'>Logged in user: {{ user }}</h2>
+
+    <button @click='handleSignIn' :disabled='!Vue3GoogleOauth.isInit || Vue3GoogleOauth.isAuthorized'>Sign In</button>
+    <button @click='handleSignOut' :disabled='!Vue3GoogleOauth.isAuthorized'>Sign Out</button>
   </div>
 </template>
 
 <script>
-/**
-* You should first need to place these 2 lines of code in your APP ENTRY file, e.g. src/main.js
-*
-* import GAuth from 'vue-google-oauth2'
-* Vue.use(GAuth, {clientId: '4584XXXXXXXX-2gqknkvdjfkdfkvb8uja2k65sldsms7qo9.apps.googleusercontent.com'})
-*
-*/
+import { inject } from 'vue';
 export default {
-  name: 'test',
-  data () {
+  name: 'HelloWorld',
+  props: {
+    msg: String
+  },
+  data() {
     return {
-      isInit: false,
-      isSignIn: false
+      user: '',
     }
   },
-
   methods: {
-    async handleClickGetAuth() {
+    async handleSignIn() {
       try {
-        const authCode = await this.$gAuth.getAuthCode()
-        const response = await this.$http.post('http://your-backend-server.com/auth/google', { code: authCode, redirect_uri: 'postmessage' })
+        const googleUser = await this.$gAuth.signIn();
+        // console.log(this.$gAuth.signIn);
+        if (!googleUser) {
+          return null;
+        }
+        this.user = googleUser.getBasicProfile().getEmail();
       } catch (error) {
-        // On fail do something
-      }
-    },
-
-    async handleClickSignIn(){
-      try {
-        const googleUser = await this.$gAuth.signIn()
-        console.log('user', googleUser)
-        this.isSignIn = this.$gAuth.isAuthorized
-      } catch (error) {
-        // On fail do something
-        console.error(error);
+        console.log(error);
         return null;
       }
-    },
 
-    async handleClickSignOut(){
+    },
+    async handleSignOut() {
       try {
-        await this.$gAuth.signOut()
-        this.isSignIn = this.$gAuth.isAuthorized
+        await this.$gAuth.signOut();
+        // console.log(this.$gAuth.signOut);
+        this.user = '';
       } catch (error) {
-        // On fail do something
+        console.log(error);
       }
     }
   },
-  mounted(){
-    let that = this
-    let checkGauthLoad = setInterval(function(){
-      that.isInit = that.$gAuth.isInit
-      that.isSignIn = that.$gAuth.isAuthorized
-      if(that.isInit) clearInterval(checkGauthLoad)
-    }, 1000);
+  setup() {
+    const Vue3GoogleOauth = inject('Vue3GoogleOauth');
+    return {
+      Vue3GoogleOauth,
+    };
   }
-
 }
 </script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+h3 {
+  margin: 40px 0 0;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+li {
+  display: inline-block;
+  margin: 0 10px;
+}
+a {
+  color: #42b983;
+}
+</style>
