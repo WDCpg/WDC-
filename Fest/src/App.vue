@@ -17,22 +17,10 @@ const checkUser = () => {
 
 checkUser();
 
-import HelloWorld from './components/Test.vue'
-export default {
-  name: 'App',
-  components: {
-    Test
-  }
-}
-
 
 </script>
 
 <template>
-
-  <img alt="Vue logo" src="./assets/1654505601342.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
-
   <div>
       <Navigation />
     <main :class="isDark ? 'dark' : 'light'">
@@ -81,16 +69,6 @@ main {
 
 .bg-modal {
   display: flex;
-}
-
-
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
 }
 
 </style>
