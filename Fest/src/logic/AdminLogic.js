@@ -12,5 +12,8 @@ export default {
         },
     },
     computed: {
+        adminEmailData() {
+            return store.state.adminEmailData;
+        }
     }
 }
