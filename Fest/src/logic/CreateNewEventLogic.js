@@ -41,8 +41,9 @@ export default {
         },
 
         cancelInvited(invitedFriends, index) {
-            invitedFriends.splice(index, 1);
+            console.log('invite', invitedFriends);
             let friendIndex = this.friendInfo.findIndex(friend => friend.id === invitedFriends.id);
+            invitedFriends.splice(index, 1);
             //this.friendInfo[friendIndex].inviteActive = false;
             console.log(this.friendInfo)
             console.log(friendIndex)
