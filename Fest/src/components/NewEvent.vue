@@ -210,7 +210,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr v-for="(friend, index) in findFriend" :key="index">
+                                <tr v-for="(friend, index) in findFriend" :key="friend.id">
                                     <td>
                                         <img class="friendIcon" :src="'src/assets/images/' + friend.icon"  alt = " ">
                                     </td>
