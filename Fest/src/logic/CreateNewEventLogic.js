@@ -6,7 +6,7 @@ export default {
             search: '',
             showFriends: false,
             invitedFriends: [],
-            inviteSent: false
+            inviteSent: true
         }
     },
 
