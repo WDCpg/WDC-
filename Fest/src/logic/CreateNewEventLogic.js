@@ -40,6 +40,7 @@ export default {
 
         cancelInvited(invitedFriends, index) {
             invitedFriends.splice(index, 1);
+            this.invit
             console.log(invitedFriends);
         }
     },
@@ -66,6 +67,10 @@ export default {
         },
 
         friendInfo() {
+            let friends = store.state.friendInfo;
+            for (let i = 0; friends.length; i++) {
+                friends[i]['inviteActive'] = false;
+            }
             return store.state.friendInfo;
         }
     },
