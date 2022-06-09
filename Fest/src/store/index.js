@@ -258,22 +258,6 @@ export default createStore({
                 state.newEventData.description = data;
                 state.isDescriptionChanged = true;
             }
-            else if (type === "street" && !state.isDescriptionChanged) {
-                state.newEventData.street = data;
-                state.isDescriptionChanged = true;
-            }
-            else if (type === "city" && !state.isDescriptionChanged) {
-                state.newEventData.city = data;
-                state.isDescriptionChanged = true;
-            }
-            else if (type === "state" && !state.isDescriptionChanged) {
-                state.newEventData.state = data;
-                state.isDescriptionChanged = true;
-            }
-            else if (type === "post_code" && !state.isDescriptionChanged) {
-                state.newEventData.post_code = data;
-                state.isDescriptionChanged = true;
-            }
             else {
                 return;
             }
