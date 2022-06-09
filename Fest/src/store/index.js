@@ -152,8 +152,8 @@ export default createStore({
             let newEventDefault = {
                 "title": "Your event's title",
                 "description": "Your description",
-                "event_start" : "dd/mm/yyyy",
-                "event_end": "dd/mm/yyyy",
+                "event_start" : "2022-06-09T23:41",
+                "event_end": "2022-06-09T23:41",
                 "country": "Australia",
                 "city": "Adelaide",
                 "street": "1 KingWilliam St",
