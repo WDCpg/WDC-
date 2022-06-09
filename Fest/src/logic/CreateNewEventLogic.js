@@ -32,7 +32,7 @@ export default {
         inviteSent(invitedFriends) {
             if (nvitedFriends.length > 0) {
                 for (let x in invitedFriends) {
-                    if (x.status == true) {
+                    if (x.status === true) {
                         return true;
                     }
                 }
