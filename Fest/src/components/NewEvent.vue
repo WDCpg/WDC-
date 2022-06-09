@@ -122,7 +122,19 @@
 
                 <!-- ----------------------------------------------------------------------  -->
                 <!-- event location -->
-                
+                <div class = "event-location">
+                    <div>
+                        <textarea v-model="newEventData.street" placeholder="street..." rows="2" maxlength="30"></textarea>
+                    </div>
+                    <div>
+                        <textarea v-model="newEventData.street" placeholder="street..." rows="2" maxlength="30"></textarea>
+                    </div>
+
+                    <div>
+                        <textarea v-model="newEventData.street" placeholder="street..." rows="2" maxlength="30"></textarea>
+                    </div>
+
+                </div>
                 <!-- event location end -->
                 <!-- ----------------------------------------------------------------------  -->
 
