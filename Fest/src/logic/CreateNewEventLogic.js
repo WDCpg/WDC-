@@ -29,7 +29,9 @@ export default {
             this.invitedFriends.push(friend);
             //console.log(this.invitedFriends);
             for (let x in invitedFriends) {
-                if (x.status)
+                if (x.status == true) {
+                    disable
+                }
             }
         },
 
