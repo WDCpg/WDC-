@@ -54,7 +54,7 @@ export default {
     computed: {
         findFriend() {
             let search = this.search.toLowerCase();
-            let friends = store.state.friendInfo;
+            var friends = store.state.friendInfo;
 
             console.log(friends)
             // for (let i = 0; friends.length; i++) {
