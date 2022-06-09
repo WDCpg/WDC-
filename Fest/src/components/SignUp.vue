@@ -12,7 +12,7 @@
                     <label for="email">Email</label><br>
                     <input type="email" id="email" name="email" v-model="newSignupData.email"><br><br>
                     <label for="password">Password</label><br>
-                    <input type="password" id="password" name="password" v-model="newSignupData.password">
+                    <input type="password" id="password" name="password" minlength="8" required v-model="newSignupData.password">
                 <br>
                 <h2>Or...</h2>
                 <div class="rectangleleft"></div>
