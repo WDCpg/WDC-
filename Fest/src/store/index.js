@@ -89,6 +89,15 @@ export default createStore({
         getImages(state){
             return state.userInfo.profile_picture;
         },
+
+        // invitedFriends(state) {
+        //     if (state.invitedFriends.length > 0) {
+        //         return state.invitedFriends.filter(friend => friend.status == true);
+        //     }
+        //     else {
+        //         return state.invitedFriends;
+        //     }
+        // }
     },
 
     // Actions == Methods
@@ -141,15 +150,15 @@ export default createStore({
 
         fetchNewEventDefault({commit}) {
             let newEventDefault = {
-                "event_title": "Your event's title",
-                "event_description": "Your description",
+                "title": "Your event's title",
+                "description": "Your description",
                 "event_start" : "dd/mm/yyyy",
                 "event_end": "dd/mm/yyyy",
                 "country": "Australia",
                 "city": "Adelaide",
                 "street": "1 KingWilliam St",
                 "post_code": "5000",
-                "privacy" : "Public",
+                "privacy" : "Public"
             }
             commit('setNewEventDefault', newEventDefault);
         },
@@ -240,12 +249,12 @@ export default createStore({
         },
 
         setNewEventNone(state, [data, type]) {
-            if (type === "event_title" && !state.isTitleChanged) {
-                state.newEventData.event_title = data;
+            if (type === "title" && !state.isTitleChanged) {
+                state.newEventData.title = data;
                 state.isTitleChanged = true;
             }
-            else if (type === "event_description" && !state.isDescriptionChanged) {
-                state.newEventData.event_description = data;
+            else if (type === "description" && !state.isDescriptionChanged) {
+                state.newEventData.description = data;
                 state.isDescriptionChanged = true;
             }
             else {
