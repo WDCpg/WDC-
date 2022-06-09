@@ -125,26 +125,31 @@
                 <div class = "event-location">
                     <div class = "event-location-box">
                         <label>Street</label>
+                        <br>
                         <input type="text" v-model="newEventData.street" placeholder="street...">
                     </div>
 
                     <div class = "event-location-box">
                         <label>City</label>
+                        <br>
                         <input type="text" v-model="newEventData.city" placeholder="city...">
                     </div>
 
                     <div class = "event-location-box">
                         <label>State</label>
+                        <br>
                         <input type="text" v-model="newEventData.state" placeholder="state...">
                     </div>
 
                     <div class = "event-location-box">
                         <label>Country</label>
+                        <br>
                         <input type="text" v-model="newEventData.country" placeholder="country...">
                     </div>
 
                     <div class = "event-location-box">
                         <label>PostCode</label>
+                        <br>
                         <input type="text" v-model="newEventData.post_code" placeholder="postcode...">
                     </div>
                 </div>
