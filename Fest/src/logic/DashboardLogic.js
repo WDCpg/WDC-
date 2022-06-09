@@ -9,7 +9,7 @@ export default {
             const date = new Date(dateString);
             return new Intl.DateTimeFormat('default', {dateStyle: 'long'}).format(date) + " " + date.toLocaleTimeString(('en-US'), { hour: '2-digit', minute: '2-digit' });
         },
-        
+
         formatLocation(event) {
             if (event.street === null) {
                 return '';
@@ -17,7 +17,7 @@ export default {
             else {
                 return event.street + ", " + event.city;
             }
-            
+
         }
     },
     computed: {
@@ -31,7 +31,7 @@ export default {
             }
             return publicEvents;
         },
-        
+
         isLoading() {
             return store.state.isLoading;
         },
@@ -43,7 +43,7 @@ export default {
 
     created() {
         store.dispatch('updateIsLoading');
-        
+
         store.dispatch('fetchPublicEvents')
             .then(() => store.dispatch('updateIsLoading'));
     }

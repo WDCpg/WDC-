@@ -3,13 +3,16 @@ import store from "@/store/index";
 export default {
     data () {
         return {
-            search: ''
+            search: '',
+            showFriends: false,
+            invitedFriends: []
         }
     },
 
     methods: {
         cancelCreate() {
-            store.dispatch('cancelCreate');
+            location.replace("/");
+            //store.dispatch('cancelCreate');
         },
 
         clearInput(type) {
@@ -18,15 +21,33 @@ export default {
 
         submitNewEvent() {
             store.dispatch('postNewEvent');
+        },
+
+        inviteFriend(friend) {
+            //store.dispatch('inviteFriend', friend);
+            friend['status'] = true;
+            this.invitedFriends.push(friend);
+            //console.log(this.invitedFriends);
+        },
+
+        cancelInvited(invitedFriends, index) {
+            invitedFriends.splice(index, 1);
+            console.log(invitedFriends);
         }
+
     },
     computed: {
-        inviteFriend() {
+        findFriend() {
             let search = this.search.toLowerCase();
             let friends = store.state.friendInfo;
-            return friends.filter(friend => friend.firstName.toLowerCase().includes(search) ||
-            friend.lastName.toLowerCase().includes(search));
+            return friends.filter(friend =>
+                friend.firstName.toLowerCase().includes(search)
+                || friend.lastName.toLowerCase().includes(search));
         },
+
+        // invitedFriends() {
+        //     return store.getters.invitedFriends;
+        // },
 
         userInfo() {
             return store.state.userInfo;

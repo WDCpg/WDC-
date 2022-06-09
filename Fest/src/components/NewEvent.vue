@@ -9,7 +9,7 @@
             <!-- breadcrumbs navigation -->
                 <div class = "topline">
                     <div class="close-button-container">
-                        <button class="event-create-cancel" type="button" @click="cancelCreate" >
+                        <button class="event-create-cancel" @click="cancelCreate" >
                             X
                         </button>
                     </div>
@@ -164,9 +164,6 @@
                 <div class = "event-group">
                     <input type="radio" id="closeFriend" name="eventGroup" v-model="newEventData.privacy" value="Close Friend">
                     <label for="closeFriend" class="event-group-selector">
-                            <div>
-                                <HeartIcon />
-                            </div>
                             <p>
                                 Close <br> Friends
                             </p>
@@ -174,9 +171,6 @@
 
                     <input type="radio" id="allFriend" name="eventGroup" v-model="newEventData.privacy" value="All Friend">
                     <label for="allFriend" class="event-group-selector">
-                            <div>
-                                <StarIcon />
-                            </div>
                             <p>
                                 All <br> Friends
                             </p>
@@ -184,9 +178,6 @@
 
                     <input type="radio" id="allPublic" name="eventGroup" v-model="newEventData.privacy" value="All Public">
                     <label for="allPublic" class="event-group-selector">
-                            <div>
-                                <UserIcon />
-                            </div>
                             <p>
                                 All <br> Public
                             </p>
@@ -201,45 +192,46 @@
                 <!-- event invite -->
                 <div class = "event-invite">
                     <form class = "event-invite-search">
-                        <input class = "event-invite-search-text" type="text" v-model="search" placeholder="Search friend to invite..." name ="searchFriend">
+                        <input class="event-invite-search-text" type="text" placeholder="Search friend to invite..." name ="searchFriend"
+                        v-model="search" @focus="showFriends = true"/>
                         <svg class = "event-invite-search-button" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg>
                     </form>
+                    <br>
+                    <div class="friendList" id="friendList" v-if="showFriends">
+                        <table id="myTable">
+                            <thead>
+                                <tr>
+                                    <th>Portrait</th>
+                                    <th>FirstName</th>
+                                    <th>LastName</th>
+                                    <th>
+                                        <button class="hideFriends" @click="showFriends = false" >Close</button>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="friend in findFriend" :key="friend.id">
+                                    <td>
+                                        <img class="friendIcon" :src="'src/assets/images/' + friend.icon"  alt = " ">
+                                    </td>
+                                    <td>{{ friend.firstName }}</td>
+                                    <td>{{ friend.lastName }}</td>
+                                    <td><button @click="inviteFriend(friend)">Invite</button></td>
 
-                    <table class="table" id="myTable">
-                        <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>FirstName</th>
-                            <th>LastName</th>
-                        </tr>
-                        </thead>
-                        <tbody>
+                                </tr>
+                            </tbody>
+                        </table>
 
-                        <tr v-for="friend in inviteFriend" :key="friend.id">
-                            <td>{{ friend.id }}</td>
-                            <td>{{ friend.firstName }}</td>
-                            <td>{{ friend.lastName }}</td>
-                        </tr>
-                        </tbody>
-                    </table>
-
+                    </div>
                 </div>
 
-                <div>
+                <div v-if="invitedFriends.length > 0">
                     <p>Invitations will sent to...</p>
-                    <div class="people-invited">
-                        <span class="people-invited-delete">&#9940;</span>
-                        <img src="../assets/images/P2.jpeg">
-                    </div>
-
-                    <div class="people-invited">
-                        <span class="people-invited-delete">&#9940;</span>
-                        <img src="../assets/images/P3.jpeg">
-                    </div>
-
-                    <div class="people-invited">
-                        <span class="people-invited-delete">&#9940;</span>
-                        <img src="../assets/images/P4.jpeg">
+                    <div v-for="(friendInvited, index) in invitedFriends" :key="index"  class="people-invited">
+                        <div >
+                            <span class="people-invited-delete" @click="cancelInvited(invitedFriends, index)">&#9940;</span>
+                            <img :src="'src/assets/images/' + friendInvited.icon">
+                        </div>
                     </div>
                 </div>
                 <!-- event invite end -->

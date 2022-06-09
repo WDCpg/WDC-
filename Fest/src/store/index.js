@@ -63,15 +63,21 @@ export default createStore({
         },
         //new password
         newUserPassword: {
-        }
+        },
 
         friendInfo: [
             {id:1, firstName:'Mark', lastName:'Leo', icon:'P1.jpeg'},
             {id:2, firstName:'Carlos ', lastName:'Liu', icon:'P2.jpeg'},
             {id:3, firstName:'Alex', lastName:'G', icon:'P3.jpeg'},
             {id:4, firstName:'Monkey', lastName:'D', icon:'P4.jpeg'}
+            ],
+
+        invitedFriends: [
+
         ]
     },
+
+
 
     // Getters == Computed properties
     getters: {
@@ -81,13 +87,29 @@ export default createStore({
 
         getImages(state){
             return state.userInfo.profile_picture;
-        }
+        },
+
+        // invitedFriends(state) {
+        //     if (state.invitedFriends.length > 0) {
+        //         return state.invitedFriends.filter(friend => friend.status == true);
+        //     }
+        //     else {
+        //         return state.invitedFriends;
+        //     }
+        // }
     },
 
     // Actions == Methods
         //API calls go here.
         // Actions never update the state
     actions: {
+        // Invite friend
+        // inviteFriend({commit}, friend) {
+        //     commit('updateFriendsInvited', friend);
+
+        // },
+
+
         // Post New Event
         postNewEvent() {
             NewEventAPI.postNewEvent(this.state.newEventData);
@@ -136,10 +158,6 @@ export default createStore({
                 "privacy" : "Public"
             }
             commit('setNewEventDefault', newEventDefault);
-        },
-
-        cancelCreate() {
-            location.replace("/");
         },
 
         clearInput({commit}, type) {
@@ -198,23 +216,21 @@ export default createStore({
         // Change page style - Light / Dark
         updatePageStyle({commit}) {
             commit('togglePageStyle');
-        }
+
 
             commit('setNewEventNone', [clear, type]);
         },
-
-        inviteFriend() {
-            let search = '';
-            return this.friendInfo.filter((friend) =>{
-                friend.firstName.toLowerCase().includes(this.search.toLowerCase()) ||
-                friend.lastName.toLowerCase().includes(this.search.toLowerCase())
-            });
-        }
     },
 
     // Setting and updating the state.
     // Mutations only set or update the state.
     mutations: {
+        // Invite Friend
+        // updateFriendsInvited(state, friend) {
+        //     friend['status'] = true;
+        //     state.invitedFriends.push(friend);
+        // },
+
         // Change page style - Light / Dark
         togglePageStyle(state) {
             state.isDark = !state.isDark;
