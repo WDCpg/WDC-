@@ -19,7 +19,7 @@ export default {
 
             if (checkFirstname.value && checkFirstname.value.length > 0 && checkLastname.value && checkLastname.value.length > 0 && checkDOB.value && checkDOB.value.length > 0 && CheckStreetname.value && CheckStreetname.value.length > 0 && checkCity.value && checkCity.value.length > 0 && checkCountry.value && checkCountry.value.length > 0 && checkState.value && checkState.value.length > 0 && checkPostcode.value && checkPostcode.value.length > 0) {
                 store.dispatch('postRegisterData');
-                this.$router.push('/');
+                // this.$router.push('/');
             } else if (checkFirstname.value || checkFirstname.value.length <= 0 || checkLastname.value || checkLastname.value.length <= 0 || checkDOB.value || checkDOB.value.length <= 0 || CheckStreetname.value || CheckStreetname.value.length <= 0 || checkCity.value || checkCity.value.length <= 0 || checkCountry.value || checkCountry.value.length <= 0 || checkState.value || checkState.value.length <=0 || checkPostcode.value || checkPostcode.value.length <= 0) {
                 if(!document.querySelector(".errorMessage")) {
                     let error = document.createElement("p");
