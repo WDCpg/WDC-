@@ -30,8 +30,6 @@ export default {
             friend['status'] = true;
             this.invitedFriends.push(friend);
             this.inviteCount.push(index);
-            this.$refs.btnInvite.innerText = 'Invited!';
-            //this.$refs.btnInvite.style.background = #76cf9f;
         },
         inviteSent(index) {
             if (this.inviteCount[index] == index) {
