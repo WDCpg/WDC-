@@ -89,15 +89,6 @@ export default createStore({
         getImages(state){
             return state.userInfo.profile_picture;
         },
-
-        // invitedFriends(state) {
-        //     if (state.invitedFriends.length > 0) {
-        //         return state.invitedFriends.filter(friend => friend.status == true);
-        //     }
-        //     else {
-        //         return state.invitedFriends;
-        //     }
-        // }
     },
 
     // Actions == Methods
