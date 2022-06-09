@@ -1,7 +1,6 @@
  <template>
   <div id="app">Vuejs Google Signin</div>
   <button>CLICK HERE</button>
-  Login mi ? {{isLogin}}
   </div>
 </template>
 
