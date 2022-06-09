@@ -5,7 +5,7 @@ export default {
         return {
             search: '',
             showFriends: false,
-            invitedFriends: [],
+            invitedFriends: []
         }
     },
 
@@ -31,12 +31,12 @@ export default {
 
         inviteSent(invitedFriends) {
             console.log(invitedFriends);
-            for (let x in invitedFriends) {
+        //     for (let x in invitedFriends) {
 
-        //         if (x.status == true) {
-        //             return true;
-        //         }
-            }
+        // //         if (x.status == true) {
+                     return true;
+        // //         }
+        //     }
         },
 
         cancelInvited(invitedFriends, index) {
