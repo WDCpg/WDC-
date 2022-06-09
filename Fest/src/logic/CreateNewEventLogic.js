@@ -6,7 +6,6 @@ export default {
             search: '',
             showFriends: false,
             invitedFriends: [],
-            inviteSent: false
         }
     },
 
@@ -36,12 +35,16 @@ export default {
             // }
         },
 
+        inviteFriend(invitedFriends) {
+            inviteSent: true;
+        },
+
         cancelInvited(invitedFriends, index) {
             invitedFriends.splice(index, 1);
             console.log(invitedFriends);
         }
-
     },
+
     computed: {
         findFriend() {
             let search = this.search.toLowerCase();
