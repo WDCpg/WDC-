@@ -8,7 +8,7 @@ export default {
             invitedFriends: [],
             inviteActived: false,
             inviteCount: [],
-            friendInfo: []
+            friendInfo: [] = []
         }
     },
 
@@ -61,7 +61,7 @@ export default {
             }
 
             this.friendInfo = friends;
-            return friends.filter(friend =>
+            return friendInfo.filter(friend =>
                 friend.firstName.toLowerCase().includes(search)
                 || friend.lastName.toLowerCase().includes(search));
         },
