@@ -67,6 +67,8 @@
                         </div>
 
 
+
+
                         <div >
                             <ul class = "emoji-list">
                                 <li><button class = "emoji-button">&#128513;</button></li>
@@ -162,9 +164,7 @@
                 <div class = "event-group">
                     <input type="radio" id="closeFriend" name="eventGroup" v-model="newEventData.privacy" value="Close Friend">
                     <label for="closeFriend" class="event-group-selector">
-                            </div>
-                                &#128151;
-                            <div>
+                            <div>&#128151;</div>
                             <p>
                                 Close <br> Friends
                             </p>
