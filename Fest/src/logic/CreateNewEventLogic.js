@@ -45,7 +45,6 @@ export default {
 
             let friendIndex = this.friendInfo.findIndex(friend => friend.id === friendInvited.id);
 
-
             invitedFriends.splice(index, 1);
             this.friendInfo[friendIndex].inviteActive = false;
 
@@ -64,10 +63,6 @@ export default {
                 friend.firstName.toLowerCase().includes(search)
                 || friend.lastName.toLowerCase().includes(search));
         },
-
-        // invitedFriends() {
-        //     return store.getters.invitedFriends;
-        // },
 
         userInfo() {
             return store.state.userInfo;
