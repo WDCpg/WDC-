@@ -166,7 +166,6 @@
                 <div class = "event-photo">
                     <label>Upload a cover photo</label>
                     <input type="file" @change="uploadImage" name="cover" accept="image/*">
-
                 </div>
                 <br>
                 <!-- event photo end -->
