@@ -18,7 +18,7 @@ export default {
             } else {
                 if(!document.querySelector(".errorMessage")) {
                     let error = document.createElement("p");
-                    error.innerText = "Please enter all fields";
+                    error.innerText = "Requirements not met, please try again";
                     error.className="errorMessage";
                     error.style.color = "red";
                     document.querySelector(".signUpError").appendChild(error);

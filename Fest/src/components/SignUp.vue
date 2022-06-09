@@ -23,10 +23,8 @@
                     <button type="button" @click="postNewSignupInfo()" class="signup">Sign up</button>
                 </div>
                 </form>
+                <br>
                 <div class="signUpError">
-                <p>
-                {{ newSignupData }}
-                </p>
                 </div>
             </div>
         </div>
