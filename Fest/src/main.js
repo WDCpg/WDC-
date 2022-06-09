@@ -39,7 +39,7 @@ app.component("SignUp", SignUp);
 app.component("Login", Login);
 
 // google signin
-app.use(gAuthPlugin, { clientId: gauthClientId, scope: 'email', prompt: 'consent', fetch_basic_profile: false });
+app.use(gAuthPlugin, { clientId: gauthClientId, scope: 'email', prompt: 'consent'});
 
 // Mount app on HTML
 app.mount("#app");
