@@ -18,6 +18,8 @@ import gAuthPlugin from 'vue3-google-oauth2';
 // need to install command before google sign in will work
 //npm i vue3-google-oauth2
 
+let gauthClientId = "768834812579-ivi0oopbkqe05cg6t41p83t7gteekut6.apps.googleusercontent.com";
+
 
 /* APP ARCHITECTURE */
 const app = createApp(App);
@@ -37,5 +39,8 @@ app.component("NewEvent", NewEvent);
 app.component("SignUp", SignUp);
 app.component("Login", Login);
 
+app.use(gAuthPlugin, { clientId: gauthClientId, scope: 'email', prompt: 'consent', fetch_basic_profile: false })
+
 // Mount app on HTML
 app.mount("#app");
+
