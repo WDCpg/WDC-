@@ -185,6 +185,7 @@ h2 {
 .event-start {
     display: flex;
     justify-content: space-between;
+    gap:10px;
     font-size: 1vw;
 }
 .event-end {
