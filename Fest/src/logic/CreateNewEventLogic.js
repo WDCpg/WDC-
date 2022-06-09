@@ -28,8 +28,8 @@ export default {
             friend['status'] = true;
             this.invitedFriends.push(friend);
             //console.log(this.invitedFriends);
-            for (let x in friend) {
-                
+            for (let x in invitedFriends) {
+                if (x.status)
             }
         },
 
