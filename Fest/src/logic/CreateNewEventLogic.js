@@ -29,6 +29,15 @@ export default {
             this.invitedFriends.push(friend);
         },
 
+        inviteSent(invitedFriends,index) {
+            if (invitedFriends.status == true) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        },
+
         cancelInvited(invitedFriends, index) {
             invitedFriends.splice(index, 1);
             console.log(invitedFriends);
