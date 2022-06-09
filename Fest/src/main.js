@@ -21,7 +21,7 @@ import gAuthPlugin from 'vue3-google-oauth2';
 /* APP ARCHITECTURE */
 const app = createApp(App);
 
-let gauthClientId = "969523079180-h159s1iajq5pkcvvtrdjpb2905vpol3r.apps.googleusercontent.com";
+let gauthClientId = "768834812579-ivi0oopbkqe05cg6t41p83t7gteekut6.apps.googleusercontent.com";
 
 // Router
 app.use(router);
