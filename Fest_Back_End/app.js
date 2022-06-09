@@ -14,11 +14,8 @@ var loginRouter = require('./routes/User_Auth/login');
 var signUpRouter = require('./routes/User_Auth/signup');
 var logOutRouter = require('./routes/User_Auth/logout');
 var profileRouter = require('./routes/Profile/profile');
-<<<<<<< HEAD
 var registerRouter = require('./routes/User_Auth/register');
-=======
 var notificationsRouter = require('./routes/Notifications/notifications');
->>>>>>> milestone2
 
 var app = express();
 
@@ -26,7 +23,6 @@ var app = express();
 var mysql = require('mysql');
 const router = require('./routes/index');
 //localhost 1
-<<<<<<< HEAD
 var dbConnectionPool = mysql.createPool({host: '127.0.0.1', database: 'fest_db'});
 
 //local env 2
@@ -38,7 +34,6 @@ var dbConnectionPool = mysql.createPool({host: '127.0.0.1', database: 'fest_db'}
 //   password: 'Roomdly1234',
 //   database: 'fest_db'
 // });
-=======
 //var dbConnectionPool = mysql.createPool({host: '127.0.0.1', database: 'fest_db', });
 
 // local env 2
@@ -50,7 +45,6 @@ var dbConnectionPool = mysql.createPool({
   password: 'Roomdly1234',
   database: 'fest_db'
 });
->>>>>>> milestone2
 
 
 //connect to database middleware
@@ -98,7 +92,7 @@ app.use(session({
   secret: 'FestApp12345@',
   resave: true,
   saveUninitialized: false,
-  cookie: { 
+  cookie: {
     name: 'FestAppCookie2',
     secure: false,
     expires : 360000 + Date.now()
@@ -116,11 +110,8 @@ app.use('/', loginRouter);
 app.use('/', signUpRouter);
 app.use('/', logOutRouter);
 app.use('/', profileRouter);
-<<<<<<< HEAD
 app.use('/', registerRouter);
-=======
 app.use('/', notificationsRouter);
->>>>>>> milestone2
 
 
 
