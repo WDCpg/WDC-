@@ -25,7 +25,6 @@ router.post('/UploadCover', function(req,res,next){
         }
         console.log(req.files);
         req.files.forEach(function(file){
-            uploaded_images.push(file.filename);
             let query = "UPDATE users SET profile_picture=? WHERE user_id = ?;";
             connection.query(query,[file.filename, 11], function(error, rows, fields){
                 connection.release();
