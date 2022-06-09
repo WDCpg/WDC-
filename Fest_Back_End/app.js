@@ -71,7 +71,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 */
 app.use(cors({
   origin: [
-    'http://localhost:3000'
+    'http://localhost:3000',
+    'https://fulzske-code50-61676631-9pr7w7wq27rwr-3000.githubpreview.dev'
   ],
   methods: "GET, POST",
   credentials: true
