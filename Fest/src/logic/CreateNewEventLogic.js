@@ -8,7 +8,7 @@ export default {
             invitedFriends: [],
             inviteActived: false,
             inviteCount: [],
-            friendInfo: [] = []
+            friendInfo: []
         }
     },
 
