@@ -7,7 +7,7 @@ export default {
             showFriends: false,
             invitedFriends: [],
             inviteActived: false,
-            inviteCount: []
+            inviteCount: [],
         }
     },
 
@@ -33,13 +33,14 @@ export default {
         },
         inviteSent(index) {
             if (this.inviteCount[index] == index) {
-                    this.inviteActived = true;
+                    this.inviteActived = !true;
                 return this.inviteActived;
             }
         },
 
         cancelInvited(invitedFriends, index) {
             invitedFriends.splice(index, 1);
+
             console.log(invitedFriends);
         }
     },
