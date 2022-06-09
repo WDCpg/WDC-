@@ -8,6 +8,7 @@ export default {
             invitedFriends: [],
             inviteActived: false,
             inviteCount: [],
+            friendInfo: []
         }
     },
 
@@ -28,6 +29,7 @@ export default {
         inviteFriend(friend,index) {
             //store.dispatch('inviteFriend', friend);
             friend['status'] = true;
+            friend.inviteActive = !friend.inviteActive;
             this.invitedFriends.push(friend);
             this.inviteCount.push(index);
         },
@@ -66,12 +68,13 @@ export default {
             return store.state.newEventData;
         },
 
-        friendInfo() {
+        friendInfoParser() {
             let friends = store.state.friendInfo;
             for (let i = 0; friends.length; i++) {
                 friends[i]['inviteActive'] = false;
             }
-            return store.state.friendInfo;
+            this.friendInfo = friends;
+
         }
     },
 
