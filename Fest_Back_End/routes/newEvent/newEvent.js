@@ -14,7 +14,7 @@ var storage = multer.diskStorage({
 
 var upload = multer({storage: storage});
 
-router.post('/createEvent', upload.array('file', 12));
+router.post('/uploadCoverPhoto', upload.array('file', 12));
 
 router.post('/createEvent', function(req,res,next){
     req.db.getConnection(function(error, connection){
