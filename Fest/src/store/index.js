@@ -65,7 +65,10 @@ export default createStore({
         //new registration info
         newRegisterData: {
         },
-        
+
+        //new signup info
+        newSign
+
         friendInfo: [
             {id:1, firstName:'Mark', lastName:'Leo', icon:'P1.jpeg'},
             {id:2, firstName:'Carlos ', lastName:'Liu', icon:'P2.jpeg'},
