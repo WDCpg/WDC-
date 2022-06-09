@@ -14,7 +14,7 @@ import SignUp from "./components/SignUp.vue";
 import Login from "./components/Login.vue";
 
 /* Google Login */
-//import gAuthPlugin from 'vue3-google-oauth2';
+import gAuthPlugin from 'vue3-google-oauth2';
 
 
 /* APP ARCHITECTURE */
