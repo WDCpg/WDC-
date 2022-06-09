@@ -29,11 +29,11 @@ export default {
             friend['status'] = true;
             this.invitedFriends.push(friend);
             //console.log(this.invitedFriends);
-            for (let x in this.invitedFriends) {
-                if (x.status == true) {
-                    this.inviteSent = true;
-                }
-            }
+            // for (let x in this.invitedFriends) {
+            //     if (x.status == true) {
+            //         this.inviteSent = true;
+            //     }
+            // }
         },
 
         cancelInvited(invitedFriends, index) {
