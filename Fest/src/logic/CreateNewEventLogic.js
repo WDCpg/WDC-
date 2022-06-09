@@ -28,7 +28,9 @@ export default {
             //store.dispatch('inviteFriend', friend);
             friend['status'] = true;
             this.invitedFriends.push(friend);
-            this.inviteSent = true;
+            if ( friend.status == true ) {
+                this.inviteSent = true;
+            }
         },
 
         cancelInvited(invitedFriends, index) {
