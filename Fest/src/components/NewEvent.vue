@@ -143,16 +143,18 @@
                         </div>
                     </div>
 
-                    <div class = "event-location-box">
-                        <label>Country</label>
-                        <br>
-                        <input type="text" v-model="newEventData.country" placeholder="country...">
-                    </div>
+                    <div classs = "event-location-country-postcode">
+                        <div class = "event-location-box">
+                            <label>Country</label>
+                            <br>
+                            <input type="text" v-model="newEventData.country" placeholder="country...">
+                        </div>
 
-                    <div class = "event-location-box">
-                        <label>PostCode</label>
-                        <br>
-                        <input type="text" v-model="newEventData.post_code" placeholder="postcode...">
+                        <div class = "event-location-box">
+                            <label>PostCode</label>
+                            <br>
+                            <input type="text" v-model="newEventData.post_code" placeholder="postcode...">
+                        </div>
                     </div>
                 </div>
                 <!-- event location end -->
