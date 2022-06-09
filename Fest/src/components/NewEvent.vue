@@ -172,6 +172,7 @@
 
                     <input type="radio" id="allFriend" name="eventGroup" v-model="newEventData.privacy" value="All Friend">
                     <label for="allFriend" class="event-group-selector">
+                            <div>&#11088;</div>
                             <p>
                                 All <br> Friends
                             </p>
