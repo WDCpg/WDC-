@@ -139,6 +139,18 @@
                 <!-- ----------------------------------------------------------------------  -->
 
                 <!-- ----------------------------------------------------------------------  -->
+                <!-- event location -->
+                <div class = "event-detail">
+                    <textarea v-model="newEventData.title" @click="clearInput('title')" placeholder="Event title..." rows="2" maxlength="30"></textarea>
+                <br>
+                <br>
+                    <textarea @click="clearInput('description')" v-model="newEventData.description" placeholder="Event description..." rows="10" maxlength="300"></textarea>
+                </div>
+                <br>
+                <!-- event detail end -->
+                <!-- ----------------------------------------------------------------------  -->
+
+                <!-- ----------------------------------------------------------------------  -->
                 <!-- event photo -->
                 <div class = "event-photo">
                     <i class = "fa fa-camera"></i>
