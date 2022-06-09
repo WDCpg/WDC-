@@ -1,5 +1,4 @@
 <template>
-
 <div>
   <h1>IsInit: {{ Vue3GoogleOauth.isInit }}</h1>
   <h1>IsAuthorized: {{ Vue3GoogleOauth.isAuthorized }}</h1>
@@ -9,12 +8,7 @@
   <button @click="handleClickSignOut" :disabled="!Vue3GoogleOauth.isAuthorized">sign out</button>
   <button @click="handleClickDisconnect" :disabled="!Vue3GoogleOauth.isAuthorized">disconnect</button>
 </div>
-
-
-
 </template>
-
-<script>
 
 <script>
 import { inject, toRefs } from "vue";
@@ -115,5 +109,3 @@ button:disabled {
   cursor: not-allowed;
 }
 </style>
-
-
