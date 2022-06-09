@@ -30,8 +30,9 @@ export default {
         },
 
         inviteSent(invitedFriends) {
+            console.log(invitedFriends);
             for (let x in invitedFriends) {
-                console.log(x.status);
+
         //         if (x.status == true) {
         //             return true;
         //         }
