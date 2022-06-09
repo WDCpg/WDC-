@@ -7,6 +7,7 @@ import LoginsAPI from "../api/LoginsAPI";
 import registerApi from "../api/RegisterAPI";
 import RefreshLoginAPI from "../api/RefreshLoginAPI";
 import NotificationsAPI from "../api/NotificationsAPI";
+import signupAPI from "../api/signupAPI";
 
 
 export default createStore({
@@ -126,7 +127,7 @@ export default createStore({
         },
 
         postSignupData(){
-            registerApi.postSignupInfo(this.state.newSignupData);
+            signupAPI.postSignupInfo(this.state.newSignupData);
         },
 
         fetchPublicEvents({commit}) {
