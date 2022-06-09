@@ -90,7 +90,6 @@ h2 {
 .emoji {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
@@ -99,6 +98,7 @@ h2 {
 .emoji-search-container {
     display: flex;
     flex-direction: row;
+    align-items: center;
 }
 
 .emoji-search {
