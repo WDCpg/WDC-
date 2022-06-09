@@ -84,5 +84,6 @@ export default {
         //         friends[i]['inviteActive'] = false;
         //     }
         this.friendInfo = friends;
+        console.log('this friend', this.friendInfo)
     }
 }
