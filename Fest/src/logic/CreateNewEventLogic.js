@@ -29,13 +29,13 @@ export default {
             this.invitedFriends.push(friend);
         },
 
-        inviteSent(invitedFriends) {
-            for (let x in invitedFriends) {
-                if (x.status == true) {
-                    return true;
-                }
-            }
-        },
+        // inviteSent(invitedFriends) {
+        //     for (let x in invitedFriends) {
+        //         if (x.status == true) {
+        //             return true;
+        //         }
+        //     }
+        // },
 
         cancelInvited(invitedFriends, index) {
             invitedFriends.splice(index, 1);
