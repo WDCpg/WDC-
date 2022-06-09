@@ -124,14 +124,15 @@
                 <!-- event location -->
                 <div class = "event-location">
                     <div>
-                        <textarea v-model="newEventData.street" placeholder="street..." rows="2" maxlength="30"></textarea>
-                    </div>
-                    <div>
-                        <textarea v-model="newEventData.street" placeholder="street..." rows="2" maxlength="30"></textarea>
+                        <input type="text" v-model="newEventData.street" placeholder="street...">
                     </div>
 
                     <div>
-                        <textarea v-model="newEventData.street" placeholder="street..." rows="2" maxlength="30"></textarea>
+                        <input type="text" v-model="newEventData.city" placeholder="city...">
+                    </div>
+
+                    <div>
+                        <input type="text" v-model="newEventData.street" placeholder="street...">
                     </div>
 
                 </div>
