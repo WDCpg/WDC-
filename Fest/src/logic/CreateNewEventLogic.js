@@ -34,6 +34,7 @@ export default {
         inviteSent(index) {
             if (this.inviteCount[index] == index) {
                     this.inviteActived = true;
+                    this.$refs.btnInvite.innerText = 'Invited!';
                 return this.inviteActived;
             }
         },
