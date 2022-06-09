@@ -31,3 +31,6 @@
 <style scoped>
 @import "@/styles/SignUpStyles.css";
 </style>
+
+<script src="@/logic/SignupLogic.js">
+</script>
