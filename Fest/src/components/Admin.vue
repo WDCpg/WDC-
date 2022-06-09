@@ -56,7 +56,7 @@
                                             <td>JamesEdmond@gmail.com</td>
                                             <td>Underdale SA 5000</td>
                                             <td>
-                                                <button type="button" >
+                                                <button type="button" v-on:click="displayModalUser">
                                                     <span class="edit_button"></span>
                                                 </button>
                                                 <button type="button" >
@@ -185,8 +185,114 @@
                     </div>
                 </div>
             </div>
+            <div class="edit_user_modal">
+                <div class = "admin_management">
+                    <div class = "modal_button2">
+                        <button class="close_modal_button" v-on:click="hideModalUser()">X</button>
+                    </div>
+                    <div class = "admin_management_top">
+                        <div class = "admin_management_title">
+                            <h2>Edit User</h2>
+                        </div>
+                        <div class="admin_management_stat">
+                            <div>
+                                <h1>Ryan Nguyen</h1>
+                            </div>
+                            <div class="active_admin">
+                                <h2>a1669953</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class = "admin_management_bottom">
+                        <div class = "admin_management_nav">
+                            <div class = "admin_management_title">
+                                <h2>Manage User Information</h2>
+                            </div>
+                            <div class = "personal_details">
+                                <div class = "personal_details_top">
+                                    <div class = "first_name">
+                                        <label for="profile-first-name">First Name</label><br>
+                                        <input type="text" name="first_name" placeholder = "userInfo.first_name"/>
+                                    </div>
+                                    <div class = "last_name">
+                                        <label for="profile-last-name">Last Name</label><br>
+                                        <input type="text" id="profile-last-name" placeholder = "userInfo.last_name"  />
+                                    </div>
+                                </div>
+                                <div class = "personal_details_bottom">
+                                    <div>
+                                        <label for="profile-contact-number">Contact Number</label><br>
+                                        <input type="text" id="profile-contact-number" placeholder ="userInfo.contact_number" />
+                                    </div>
+                                    <div>
+                                        <label for="profile-email">Email</label><br>
+                                        <input type="text" id="profile-email" placeholder ="userInfo.email"  />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class = "residence_container">
+                                <div>
+                                    <h3><span class="dot"></span>   Residence</h3>
+                                </div>
+                                <div class = "residence">
+                                    <div class = "residence_top">
+                                        <div>
+                                            <label for="profile-street-name">Street</label><br>
+                                            <input type="text" id="profile-street-name" placeholder = "userInfo.street" />
+                                        </div>
+                                        <div>
+                                            <label for="profile-city">City/Suburb</label><br>
+                                            <input type="text" id="profile-city" placeholder = "userInfo.city" />
+                                        </div>
+                                    </div>
+                                    <div class="residence_bottom">
+                                        <div>
+                                            <label for="profile-country">Country</label><br>
+                                            <input type="text" id="profile-country" placeholder ="userInfo.country" />
+                                        </div>
+                                        <div>
+                                            <label for="profile-postcode">Postcode</label><br>
+                                            <input type="text" id="profile-postcode" placeholder ="userInfo.post_code" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class = "password_container">
+                                <div>
+                                    <h3><span class="dot"></span>   Change User Password</h3>
+                                </div>
+                                <div class="profile-change-pw">
+                                    <div class = "profile_new_password">
+                                        <label for="profile-new-password">Enter new password</label><br>
+                                        <input type="password" id="profile-new-password" placeholder = "New Password" /> <br>
+                                    </div>
+                                    <div class="confirm_password">
+                                        <label for="profile-confirm-pw">Confirm new password</label><br>
+                                        <input type="password" id="profile-confirm-password" placeholder = "Confirm New Password" />
+                                    </div>
+                                </div>
+                                <div class="admin_status">
+                                    <label for="user_admin">Admin Status</label><br>
+                                    <input type="radio" id="user_admin" name="admin"/>
+                                    <input type="radio" id="user_admin" name="admin"/>
+                                </div>
+                                <div class="residence_button">
+                                    <div>
+                                        <button type="button" class="button-blue save" @click="submitNewUserData()">Save</button>
+                                    </div>
+                                    <div>
+                                        <button class="button-orange cancel">Cancel</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+
 </template>
 
 <style scoped>

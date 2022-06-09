@@ -5,6 +5,7 @@ import userInfoApi from "@/api/UserProfileAPI";
 import NewEventAPI from "../api/NewEventAPI";
 import LoginsAPI from "../api/LoginsAPI";
 import RefreshLoginAPI from "../api/RefreshLoginAPI";
+import CalendarAPI from "../api/CalendarAPI";
 import NotificationsAPI from "../api/NotificationsAPI";
 
 
@@ -20,8 +21,13 @@ export default createStore({
         showNotifications: false,
         //userInfo template JSON
         userInfo: {
+
             // "first_name": "Santiago"
         },
+        //get user availability
+        userAvailability:  [
+        ],
+
         userEvents: [
             {
                 "event_id": 1,
@@ -34,7 +40,7 @@ export default createStore({
             }
         ],
         notifications: [
-            
+
         ],
         userCalendar: [
 
@@ -81,6 +87,10 @@ export default createStore({
 
         getImages(state){
             return state.userInfo.profile_picture;
+        },
+
+        userId(state) {
+            return state.userInfo.user_id;
         }
     },
 
@@ -120,6 +130,25 @@ export default createStore({
                 })
             })
         },
+        //--CALENDAR ACTIONS--//
+        fetchUserAvailability({commit}) {
+            return new Promise((resolve, reject) => {
+                CalendarAPI.getUserAvailability1(events => {
+                    commit('setUserAvailability', events);
+                    commit('updateDatetimeCalendar');
+                    resolve();
+                })
+            })
+        },
+
+        saveUserCalendar({commit}, calendarEvents){
+
+            for(let i = 0; i<calendarEvents.length; i++){
+                // console.log(calendarEvents[i].start);
+                // CalendarAPI.postUserCalendar(calendarEvents[i]);
+                commit('setUserCalendar', calendarEvents[i]);
+            }
+        },
 
 
         updateIsLoading({commit}) {
@@ -158,7 +187,7 @@ export default createStore({
             commit('setNewEventNone', [clear, type]);
         },
 
-        
+
         // Login
         submitLogin({commit, dispatch}, auth) {
             return new Promise((resolve, reject) => {
@@ -174,7 +203,7 @@ export default createStore({
 
                         console.log('Login successful');
                         // router.push({ name: '/' });
-                        
+
                     }
                     else if (status.status == 403) {
                         console.log(status)
@@ -214,7 +243,7 @@ export default createStore({
                     // Forbidden wrong email or password
                     if (status.status == 200) {
                         // Commit user info to state
-                        
+
                         // Notifications call
                         dispatch('fetchNotifications', status.rows[0].user_id);
 
@@ -236,10 +265,10 @@ export default createStore({
             })
         },
 
-        
+
 
             // commit('setNewEventNone', [clear, type]);
-    
+
 
         inviteFriend() {
             let search = '';
@@ -256,7 +285,7 @@ export default createStore({
         // Update Show Notifications
         updateShowNotifications(state) {
             state.showNotifications = !state.showNotifications;
-            
+
         },
 
         // Update Notifications
@@ -298,6 +327,7 @@ export default createStore({
 
         },
 
+       
         updateIconCode(state, stateElement) {
             for (let i = 0; i < state[stateElement].length; i++) {
                 let rawCode = state[stateElement][i].icon.replace("U+", "0x");
@@ -313,6 +343,21 @@ export default createStore({
 
         setUserInfo(state, userInfo) {
             state.userInfo = userInfo;
+        },
+
+        setUserAvailability (state, userAvailability){
+            state.userAvailability=userAvailability;
+        },
+
+        updateDatetimeCalendar(state) {
+            for(let i = 0; i<state.userAvailability.length;i++){
+                state.userAvailability[i].start = new Date(state.userAvailability[i].start);
+                state.userAvailability[i].end = new Date(state.userAvailability[i].end);
+            }
+        },
+
+        setUserCalendar(state, calendarEvents){
+            state.userAvailability.push(calendarEvents);
         }
 
     }
