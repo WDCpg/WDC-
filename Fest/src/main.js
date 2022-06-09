@@ -24,7 +24,7 @@ const app = createApp(App);
 
 //let gauthClientId = "157894589863-r23fj5vh1a7m6pkj1kijgiv5r6ijreor.apps.googleusercontent.com";
 
-import GoogleAuth from 'vue-google-auth'
+import GoogleAuth from 'vue-google-oauth2'
 
 Vue.use(GoogleAuth, { clientID: '157894589863-r23fj5vh1a7m6pkj1kijgiv5r6ijreor.apps.googleusercontent.com' })
 Vue.googleAuth().load()

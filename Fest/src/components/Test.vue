@@ -1,90 +1,61 @@
 <template>
-  <div class="container container-table">
-    <!-- Errors -->
-    <div v-if=response class="text-red"><p>{{response}}</p></div>
-
-    <!-- login Button -->
-    <a id="signin-button" v-on:click="signIn">
-      <i class="fa fa-google-plus-official fa-3x"></i>
-      Sign in with Google
-    </a>
+  <div>
+    <h1>Test</h1>
+    <button @click="handleClickGetAuth" :disabled="!isInit">get auth code</button>
+    <button @click="handleClickSignIn" v-if="!isSignIn" :disabled="!isInit">signIn</button>
+    <button @click="handleClickSignOut" v-if="isSignIn" :disabled="!isInit">signOout</button>
   </div>
 </template>
 
 <script>
-/** -----------------------------------------------------------------------------------------------------------
-  * You would first need to place these 3 lines of code in your APP ENTRY file, e.g. src/main.js
-  *
-  * import GoogleAuth from 'vue-google-auth'
-  * Vue.use(GoogleAuth, { client_id: 'xxxxxxxx-xxxxxxxxxxxxxxxxxxxxxx.apps.googleusercontent.com' })
-  * Vue.googleAuth().load()
-  *
-  * -----------------------------------------------------------------------------------------------------------
-  */
-import Vue from 'vue'
-
-module.exports = {
-  name: 'Login',
-  data: function (router) {
+export default {
+  name: 'test',
+  data () {
     return {
-      section: 'Login',
-      loading: '',
-      response: ''
+      isInit: false,
+      isSignIn: false
     }
   },
+
   methods: {
-    signIn: function () {
-      Vue.googleAuth().signIn(this.onSignInSuccess, this.onSignInError)
+    async handleClickGetAuth() {
+      try {
+        const authCode = await this.$gAuth.getAuthCode()
+        const response = await this.$http.post('http://your-backend-server.com/auth/google', { code: authCode, redirect_uri: 'postmessage' })
+      } catch (error) {
+        // On fail do something
+      }
     },
-    onSignInSuccess: function (authorizationCode) {
-      this.toggleLoading()
-      this.resetResponse()
 
-      this.$http.post('http://your-backend-server.com/auth/google', { code: authorizationCode, redirect_uri: 'postmessage' }).then(function (response) {
-        if (response.body) {
-          var data = response.body
-
-          // Save to vuex
-          var token = 'Bearer ' + data.token
-          this.$store.commit('SET_USER', data.user_data)
-          this.$store.commit('SET_TOKEN', token)
-
-          // Save to local storage as well
-          // ( or you can install the vuex-persistedstate plugin so that you won't have to do this step, only store to Vuex is sufficient )
-          if (window.localStorage) {
-            window.localStorage.setItem('user', JSON.stringify(data.user_data))
-            window.localStorage.setItem('token', token)
-          }
-
-          // redirect to the dashboard
-          this.$router.push({ name: 'home' })
-        }
-      }, function (response) {
-        var data = response.body
-        this.response = data.error
-        console.log('BACKEND SERVER - SIGN-IN ERROR', data)
-      })
+    async handleClickSignIn(){
+      try {
+        const googleUser = await this.$gAuth.signIn()
+        console.log('user', googleUser)
+        this.isSignIn = this.$gAuth.isAuthorized
+      } catch (error) {
+        // On fail do something
+        console.error(error);
+        return null;
+      }
     },
-    onSignInError: function (error) {
-      this.response = 'Failed to sign-in'
-      console.log('GOOGLE SERVER - SIGN-IN ERROR', error)
-    },
-    toggleLoading: function () {
-      this.loading = (this.loading === '') ? 'loading' : ''
-    },
-    resetResponse: function () {
-      this.response = ''
+
+    async handleClickSignOut(){
+      try {
+        await this.$gAuth.signOut()
+        this.isSignIn = this.$gAuth.isAuthorized
+      } catch (error) {
+        // On fail do something
+      }
     }
+  },
+  mounted(){
+    let that = this
+    let checkGauthLoad = setInterval(function(){
+      that.isInit = that.$gAuth.isInit
+      that.isSignIn = that.$gAuth.isAuthorized
+      if(that.isInit) clearInterval(checkGauthLoad)
+    }, 1000);
   }
+
 }
 </script>
-
-<style>
-
-/**
- * ----------------------------------------------------
- *  Styling? It's time to show your designing skills!
- * ----------------------------------------------------
- */
-
-</style>
