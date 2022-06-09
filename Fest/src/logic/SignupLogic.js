@@ -16,13 +16,13 @@ export default {
                 console.log(checkPassword);
                 store.dispatch('postSignupData');
             } else {
-                if(!document.querySelector(".errorMessage")) {
+
                     let error = document.createElement("p");
                     error.innerText = "Please enter all fields";
                     error.className="errorMessage";
                     error.style.color = "red";
                     document.querySelector(".post_code_country").appendChild(error);
-                }
+                
             }
         }
     }
