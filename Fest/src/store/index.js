@@ -67,7 +67,8 @@ export default createStore({
         },
 
         //new signup info
-        newSign
+        newSignupData: {
+        },
 
         friendInfo: [
             {id:1, firstName:'Mark', lastName:'Leo', icon:'P1.jpeg'},
@@ -122,6 +123,10 @@ export default createStore({
 
         postRegisterData(){
             registerApi.postRegisterInfo(this.state.newRegisterData);
+        },
+
+        postSignupData(){
+            registerApi.postSignupInfo(this.state.newSignupData);
         },
 
         fetchPublicEvents({commit}) {
