@@ -35,8 +35,8 @@ export default {
             // }
         },
 
-        inviteFriend(invitedFriends) {
-            inviteSent: true;
+        inviteSent(invitedFriends) {
+            return true;
         },
 
         cancelInvited(invitedFriends, index) {
