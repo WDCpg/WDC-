@@ -24,11 +24,13 @@ export default {
             store.dispatch('postNewEvent');
         },
 
-        inviteFriend(friend,Index) {
+        inviteFriend(friend,index) {
             //store.dispatch('inviteFriend', friend);
             friend['status'] = true;
             this.invitedFriends.push(friend);
-            console.log(Index);
+            if (friend.status = true) {
+                this.inviteSent = true;
+            }
         },
 
         cancelInvited(invitedFriends, index) {

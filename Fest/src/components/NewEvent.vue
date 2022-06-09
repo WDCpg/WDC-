@@ -210,13 +210,13 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr v-for="friend in findFriend" :key="Index">
+                                <tr v-for="(friend, index) in findFriend" :key="index">
                                     <td>
                                         <img class="friendIcon" :src="'src/assets/images/' + friend.icon"  alt = " ">
                                     </td>
                                     <td>{{ friend.firstName }}</td>
                                     <td>{{ friend.lastName }}</td>
-                                    <td><button @click="inviteFriend(friend,Index)" :disabled="inviteSent">Invite</button></td>
+                                    <td><button @click="inviteFriend(friend,index)" :disabled="inviteSent">Invite</button></td>
                                 </tr>
                             </tbody>
                         </table>
