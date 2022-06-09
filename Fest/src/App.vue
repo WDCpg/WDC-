@@ -30,7 +30,7 @@ export default {
 
 <template>
 
-  <img alt="Vue logo" src="./assets/logo.png">
+  <img alt="Vue logo" src="./assets/1654505601342.png">
   <HelloWorld msg="Welcome to Your Vue.js App"/>
 
   <div>
