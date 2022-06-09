@@ -20,7 +20,7 @@
                 <div class="rectangleleft"></div><br><br><br>
                 <p class="signin"><a href="/" style="text-decoration: none;">Already got an account? Sign in</a></p>
                 <div class="signup-button-container">
-                    <button type="submit" class="signup">Sign up</button>
+                    <button type="button" class="signup">Sign up</button>
                 </div>
                 </form>
             </div>
