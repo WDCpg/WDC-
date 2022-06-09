@@ -28,7 +28,7 @@ export default createStore({
                 "event_description": "Description of my event goes here",
                 "event_start": "14-06-2022T0:600",
                 "event_end": "21-07-2022T0:800",
-                
+
                 "icon": "&#128047;",
                 "image": "path/image.jpg "
             }
@@ -150,12 +150,14 @@ export default createStore({
 
         fetchNewEventDefault({commit}) {
             let newEventDefault = {
-                "title": "Your event's title",
-                "description": "Your description",
-                "start_date" : "dd/mm/yyyy",
-                "start_time": "--/--",
-                "end_date": "dd/mm/yyyy",
-                "end_time": "--/--",
+                "event_title": "Your event's title",
+                "event_description": "Your description",
+                "event_start" : "dd/mm/yyyy",
+                "event_end": "dd/mm/yyyy",
+                "country": "Australia",
+                "city": "Adelaide",
+                "street": "1 KingWilliam St",
+                "post_code": "5000",
                 "privacy" : "Public"
             }
             commit('setNewEventDefault', newEventDefault);
