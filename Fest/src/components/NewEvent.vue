@@ -229,7 +229,7 @@
                     <p>Invitations will sent to...</p>
                     <div v-for="(friendInvited, index) in invitedFriends" :key="index"  class="people-invited">
                         <div >
-                            <span class="people-invited-delete" @click="cancelInvited(invitedFriends, index)">&#9940;</span>
+                            <span class="people-invited-delete" @click="cancelInvited(invitedFriends, friendInvited, index)">&#9940;</span>
                             <img :src="'src/assets/images/' + friendInvited.icon">
                         </div>
                     </div>
