@@ -177,10 +177,6 @@ h2 {
     resize: none;
 }
 
-.event-time i {
-    font-size: 2.5vw;
-    margin-right: 10px;
-}
 .event-time input {
     font-size: 1vw;
     height: auto;
