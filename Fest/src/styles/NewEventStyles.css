@@ -223,7 +223,7 @@ h3 {
 .event-photo {
     display: flex;
     font-size: 1vw;
-    gap: 20px;
+    gap: 15px;
 }
 .event-photo input[type=file]::file-selector-button {
     border: none;
