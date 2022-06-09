@@ -32,7 +32,7 @@
                         <div class="bottomDiv">
                             <div>
                                 <label for="state">State</label>
-                                <input type="number" id="state" name="state" placeholder="State..." v-model="newRegisterData.state"><br><br>
+                                <input type="text" id="state" name="state" placeholder="State..." v-model="newRegisterData.state"><br><br>
                             </div>
                             <div>
                                 <label for="Post code">Post code</label>
