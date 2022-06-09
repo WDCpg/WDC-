@@ -155,6 +155,7 @@ export default createStore({
                 "event_start" : "2022-06-09T23:41",
                 "event_end": "2022-06-09T23:41",
                 "country": "Australia",
+                "state": "South Australia",
                 "city": "Adelaide",
                 "street": "1 KingWilliam St",
                 "post_code": "5000",

@@ -124,17 +124,29 @@
                 <!-- event location -->
                 <div class = "event-location">
                     <div>
+                        <label>Street</label>
                         <input type="text" v-model="newEventData.street" placeholder="street...">
                     </div>
 
                     <div>
+                        <label>City</label>
                         <input type="text" v-model="newEventData.city" placeholder="city...">
                     </div>
 
                     <div>
-                        <input type="text" v-model="newEventData.street" placeholder="street...">
+                        <label>State</label>
+                        <input type="text" v-model="newEventData.state" placeholder="state...">
                     </div>
 
+                    <div>
+                        <label>Country</label>
+                        <input type="text" v-model="newEventData.country" placeholder="country...">
+                    </div>
+
+                    <div>
+                        <label>PostCode</label>
+                        <input type="text" v-model="newEventData.post_code" placeholder="postcode...">
+                    </div>
                 </div>
                 <!-- event location end -->
                 <!-- ----------------------------------------------------------------------  -->
