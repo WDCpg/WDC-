@@ -21,9 +21,9 @@ const gauthOption = {
     scope: 'profile_email',
     prompt: 'consent',
     fetch_basic_profile: true
-}
+};
 
-Vue.use(GAuth, gauthOption)
+Vue.use(GAuth, gauthOption);
 
 
 
