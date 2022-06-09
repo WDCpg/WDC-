@@ -13,14 +13,17 @@ export default {
             if (checkPassword.value.length && checkEmail.value.length > 8) {
                 console.log(checkEmail);
                 console.log(checkPassword);
-                store.dispatch('postRegisterData');
+                store.dispatch('postSignupData');
             } else {
-
+                let error = document.createElement("p");
+                    error.innerText = "Email or Password requirements not met";
+                    error.className="errorMessage";
+                    error.style.color = "red";
+                    document.querySelector(".signUpError").appendChild(error);
             }
         }
     }
 }
-
 
 
 

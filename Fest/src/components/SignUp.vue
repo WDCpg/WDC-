@@ -23,6 +23,8 @@
                     <button type="button" class="signup">Sign up</button>
                 </div>
                 </form>
+                <div class="signUpError">
+                </div>
             </div>
         </div>
     </div>
