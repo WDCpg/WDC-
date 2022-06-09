@@ -28,6 +28,7 @@ export default {
             friend['status'] = true;
             this.invitedFriends.push(friend);
             //console.log(this.invitedFriends);
+            for ()
         },
 
         cancelInvited(invitedFriends, index) {
