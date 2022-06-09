@@ -221,6 +221,7 @@ h3 {
 }
 
 .event-photo {
+    display: flex;
     font-size: 1vw;
     gap: 20px;
 }
