@@ -42,19 +42,6 @@ app.use(function(req,res,next){
 });
 
 
-// Sessions
-app.use(session({
-  name: 'FestApp2',
-  secret: 'FestApp12345@',
-  resave: false,
-  saveUninitialized: false,
-  cookie: { 
-    name: 'FestAppCookie2',
-    secure: false,
-    expires : 360000 + Date.now()
-  }
-}))
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -75,9 +62,9 @@ app.use(cors({
     'http://localhost:3000'
   ],
   methods: "GET, POST",
-  credentials: true,
-  exposedHeaders: ['set-cookie'],
-  allowedHeaders: '*'
+  credentials: true
+  // exposedHeaders: ['set-cookie'],
+  // allowedHeaders: '*'
 }))
 
 // app.use(function(req, res, next) {
@@ -87,6 +74,18 @@ app.use(cors({
 //   next();
 // });
 
+// Sessions
+app.use(session({
+  name: 'FestApp2',
+  secret: 'FestApp12345@',
+  resave: true,
+  saveUninitialized: false,
+  cookie: { 
+    name: 'FestAppCookie2',
+    secure: false,
+    expires : 360000 + Date.now()
+  }
+}))
 
 
 

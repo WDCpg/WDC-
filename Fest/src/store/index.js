@@ -17,11 +17,9 @@ export default createStore({
         isTitleChanged: false,
         isDescriptionChanged: false,
         loginModal: false,
+        showNotifications: false,
         //userInfo template JSON
         userInfo: {
-            "first_name": "Santiago",
-            "profile_picture": "P1.jpeg"
-
             // "first_name": "Santiago"
         },
         userEvents: [
@@ -90,6 +88,11 @@ export default createStore({
         //API calls go here.
         // Actions never update the state
     actions: {
+        // Update Show Notifications
+        toggleShowNotifications({commit}) {
+            commit('updateShowNotifications');
+        },
+
         // Update Login Modal
         toggleLoginModal({commit}) {
             commit('updateLoginModal');
@@ -157,7 +160,7 @@ export default createStore({
 
         
         // Login
-        submitLogin({commit}, auth) {
+        submitLogin({commit, dispatch}, auth) {
             return new Promise((resolve, reject) => {
                 LoginsAPI.postLogin(auth, status => {
                     // Forbidden wrong email or password
@@ -190,7 +193,8 @@ export default createStore({
             return new Promise((resolve, reject) => {
                 NotificationsAPI.getNotifications(user_id, notifications => {
                     if (notifications.status == 200) {
-                        commit('updateNotifications', notifications.rows[0]);
+                        commit('updateNotifications', notifications.rows);
+                        this.commit('updateIconCode', "notifications");
                     }
                     else {
                         console.log('error');
@@ -204,30 +208,33 @@ export default createStore({
             commit('togglePageStyle');
         },
 
-        // loginOnOpen({commit}) {
-        //     return new Promise((resolve, reject) => {
-        //         RefreshLoginAPI.postLogin(status => {
-        //             // Forbidden wrong email or password
-        //             if (status.status == 200) {
-        //                 // Commit user info to state
+        loginOnOpen({commit, dispatch}) {
+            return new Promise((resolve, reject) => {
+                RefreshLoginAPI.postLogin(status => {
+                    // Forbidden wrong email or password
+                    if (status.status == 200) {
+                        // Commit user info to state
                         
-        //                 // console.log(status.rows)
-        //                 // commit('setUserInfo', status.rows);
-        //                 // console.log('Login successful');
-        //                 router.push({ name: 'login' });
-        //                 return;
-        //             }
-        //             else if (status.status == 403) {
-        //                 console.log(status)
-        //                 console.log('Bad login');
-        //             }
-        //             else {
-        //                 console.log('Error');
-        //             }
-        //             resolve();
-        //         });
-        //     })
-        // },
+                        // Notifications call
+                        dispatch('fetchNotifications', status.rows[0].user_id);
+
+                        console.log(status.rows)
+                        commit('setUserInfo', status.rows);
+                        console.log('Login successful');
+                        // router.push({ name: 'login' });
+                        return;
+                    }
+                    else if (status.status == 403) {
+                        console.log(status)
+                        console.log('Bad login');
+                    }
+                    else {
+                        console.log('Error');
+                    }
+                    resolve();
+                });
+            })
+        },
 
         
 
@@ -246,6 +253,12 @@ export default createStore({
     // Setting and updating the state.
     // Mutations only set or update the state.
     mutations: {
+        // Update Show Notifications
+        updateShowNotifications(state) {
+            state.showNotifications = !state.showNotifications;
+            
+        },
+
         // Update Notifications
         updateNotifications(state, notifications) {
             state.notifications = notifications;
@@ -285,18 +298,17 @@ export default createStore({
 
         },
 
-        updateIconCode(state, emoji) {
-
-            for (let i = 0; i < state.publicEvents.length; i++) {
-                let rawCode = state.publicEvents[i].icon.replace("U+", "0x");
+        updateIconCode(state, stateElement) {
+            for (let i = 0; i < state[stateElement].length; i++) {
+                let rawCode = state[stateElement][i].icon.replace("U+", "0x");
                 let decoded = String.fromCodePoint(rawCode);
-                state.publicEvents[i].icon = decoded;
+                state[stateElement][i].icon = decoded;
             }
         },
 
         setPublicEvents(state, publicEvents) {
             state.publicEvents = publicEvents;
-            this.commit('updateIconCode');
+            this.commit('updateIconCode', "publicEvents");
         },
 
         setUserInfo(state, userInfo) {

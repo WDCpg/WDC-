@@ -68,7 +68,7 @@
                     </button>
                 </div>
                 <div v-if="Object.keys(userInfo).length > 0" class="notifications-container">
-                    <button class="navigation-button" type="button">
+                    <button class="navigation-button" type="button" @click="toggleShowNotifications()">
                         <svg width="100%" height="100%" viewBox="0 0 2132 2107" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="background-color:none;fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
                             <path id="Alarm--small-" serif:id="Alarm (small)" d="M1295.47,1795.55c-7.921,134.637 -102.958,237.593 -237.594,237.593c-134.635,0 -237.592,-102.956 -237.593,-237.593l475.187,0Zm673.18,-273.939c-15.839,-7.92 -23.759,-15.84 -39.599,-15.84c-71.278,-31.679 -126.716,-110.877 -158.395,-174.235c-55.438,-87.117 -79.198,-190.074 -79.198,-293.031l0,-193.714c0,-324.711 -245.513,-586.064 -554.384,-625.662l0,-87.118c0,-47.519 -31.679,-79.198 -79.198,-79.198c-47.518,0 -79.197,31.679 -79.197,79.198l-0,87.118c-308.872,39.598 -554.384,308.871 -554.384,625.662l-0,193.714c-0,95.037 -23.76,190.074 -63.359,269.272c-31.679,63.358 -71.278,118.797 -126.716,166.315c-23.759,23.76 -55.438,31.679 -79.198,47.519c-23.759,7.92 -39.599,31.679 -39.599,63.358c0,47.519 31.679,79.198 79.198,79.198l1742.35,-0c47.519,-0 79.198,-31.679 79.198,-79.198c-7.92,-15.84 -23.759,-47.519 -47.519,-63.358Z" /></svg>
                     </button>
@@ -98,17 +98,36 @@
             
         </div>
         <!-- Notifications Popup -->
-        <div v-if="Object.keys(userInfo).length" class="notifications-container-box">
+        <div v-if="showNotifications" class="notifications-container-box">
+            
             <div class="notifications-content">
-                <div class="notifications-line">
+                <!-- Default no notifications -->
+                <div v-if="notifications.length == 0" class="notifications-line">
                     <div class="notifications-icon">
-                        <p>&#129409;</p>
+                        <p>&#128557;</p>
                     </div>
                     <p>
                         You have no notifications
                     </p>
                 </div>
+                <!-- Notifications List -->
+                <router-link :to="'/event/' + notification.event_id" @click="toggleShowNotifications" v-for="(notification, index) in notifications" :key="index" :id="notification.event_id" class="notifications-line">
+                    <div class="notifications-icon" >
+                        <p>{{ notification.icon }}</p>
+                    </div>
+                    <p>
+                        <span v-if="notification.type_id == 1" class="notification-invited">
+                            Invited: 
+                        </span> 
+                        <span v-if="notification.type_id == 2" class="notification-attending"> 
+                            New attendant to your event: 
+                        </span>
+                        <br>
+                        {{ notification.event_title }}
+                    </p>
+                </router-link>
             </div>
+            
         </div>
     </nav>
 

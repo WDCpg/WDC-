@@ -4,11 +4,20 @@ import Navigation from "@/components/Navigation.vue"
 import SideNavigation from "@/components/SideNavigation.vue"
 import Login from "@/components/Login.vue"
 import store from "@/store/index";
-import { computed,} from 'vue';
-
-// const isDark = computed(() => store.state.isDark);
+import { computed } from 'vue';
 const isDark = computed(() => store.getters.isDarkGetter);
 const isLoginModal = computed(() => store.getters.isLoginModal);
+
+// Check if user is logged in
+const checkUser = () => {
+  store.dispatch('loginOnOpen');
+  console.log('Checking login');
+  return;
+}
+
+checkUser();
+
+
 </script>
 
 <template>

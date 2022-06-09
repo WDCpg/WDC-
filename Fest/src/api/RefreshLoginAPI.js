@@ -15,9 +15,10 @@ export default {
         
         //Open connection
         xhttp.open('POST', `http://localhost:8080/login`, true);
+        xhttp.withCredentials = true;
         xhttp.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
         
         //Send request
-        xhttp.send(JSON.stringify({}));
+        xhttp.send(JSON.stringify({"email": "", "password": ""}));
     }
 }
