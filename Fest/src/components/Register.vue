@@ -29,7 +29,7 @@
                         <input type="text" id="city" name="city" placeholder="City..." v-model="newRegisterData.city"><br><br>
                         <label for="country">Country</label>
                         <input type="text" id="country" name="country" placeholder="Country..." v-model="newRegisterData.country"><br><br>
-                        <div class="state">
+                        <div class="bottomDiv">
                             <div>
                                 <label for="state">State</label>
                                 <input type="state" id="state" name="state" placeholder="State..." v-model="newRegisterData.state"><br><br>
