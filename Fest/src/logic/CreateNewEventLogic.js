@@ -55,6 +55,12 @@ export default {
         findFriend() {
             let search = this.search.toLowerCase();
             let friends = store.state.friendInfo;
+
+            for (let i = 0; friends.length; i++) {
+                friends[i]['inviteActive'] = false;
+            }
+
+            this.friendInfo = friends;
             return friends.filter(friend =>
                 friend.firstName.toLowerCase().includes(search)
                 || friend.lastName.toLowerCase().includes(search));
@@ -70,16 +76,8 @@ export default {
 
         newEventData() {
             return store.state.newEventData;
-        },
-
-        friendInfoParser() {
-            let friends = store.state.friendInfo;
-            for (let i = 0; friends.length; i++) {
-                friends[i]['inviteActive'] = false;
-            }
-            this.friendInfo = friends;
-
         }
+
     },
 
     created() {
