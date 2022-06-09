@@ -184,12 +184,12 @@ h2 {
 }
 .event-start {
     display: flex;
-    gap:30px;
+    gap:33px;
     font-size: 1vw;
 }
 .event-end {
     display: flex;
-    gap:38px;
+    gap:41px;
     font-size: 1vw;
 }
 
@@ -197,7 +197,7 @@ h2 {
     font-size: 1vw;
 }
 .street input{
-    width: 11vw
+    width: 20vw;
 }
 .city-state, .country-postcode{
     display: flex;
