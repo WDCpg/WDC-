@@ -30,8 +30,9 @@ export default {
         },
 
         inviteSent(invitedFriends) {
-            console.log(invitedFriends)
-            return true;
+            for (let x in invitedFriends) {
+                console.log(x);
+            }
         },
 
         cancelInvited(invitedFriends, index) {
