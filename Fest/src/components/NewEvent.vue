@@ -164,7 +164,7 @@
                 <div class = "event-group">
                     <input type="radio" id="closeFriend" name="eventGroup" v-model="newEventData.privacy" value="Close Friend">
                     <label for="closeFriend" class="event-group-selector">
-                            <div>&#128151;</div>
+                            <div>&#128525;</div>
                             <p>
                                 Close <br> Friends
                             </p>
@@ -172,7 +172,7 @@
 
                     <input type="radio" id="allFriend" name="eventGroup" v-model="newEventData.privacy" value="All Friend">
                     <label for="allFriend" class="event-group-selector">
-                            <div>&#11088;</div>
+                            <div>&#129321;</div>
                             <p>
                                 All <br> Friends
                             </p>
@@ -180,6 +180,7 @@
 
                     <input type="radio" id="allPublic" name="eventGroup" v-model="newEventData.privacy" value="All Public">
                     <label for="allPublic" class="event-group-selector">
+                            <div>&#128516;</div>
                             <p>
                                 All <br> Public
                             </p>
