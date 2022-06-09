@@ -1,6 +1,6 @@
  <template>
-  <div id="app">Vuejs Google Signin</div>
-  <button>CLICK HERE</button>
+  <div id="app">
+  <button @click="login()">CLICK HERE</button>
   </div>
 </template>
 

@@ -14,8 +14,9 @@ import SignUp from "./components/SignUp.vue";
 import Login from "./components/Login.vue";
 
 /* Google Login */
-import gAuthPlugin from 'vue3-google-oauth2';
-import GAuth from 'vue-google-oauth2';
+//import gAuthPlugin from 'vue3-google-oauth2';
+
+import GAuth from 'vue3-google-oauth2';
 const gauthOption = {
     clientId: '533508693712-r61sce51m123m23fv89sohgch0ej1r6n.apps.googleusercontent.com',
     scope: 'profile_email',
