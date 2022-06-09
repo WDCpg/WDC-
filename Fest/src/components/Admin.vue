@@ -38,7 +38,7 @@
                                 </div>
                                 <div class = "user_search_nav">
                                     <input type="search" placeholder="  Search User name"/>
-                                    <input type="search" placeholder = "  User email" v-model="adminEmailData.state/>
+                                    <input type="search" placeholder = "  User email"/>
                                     <input type ="search" placeholder = "  User id"/>
                                 </div>
                                 <div class = "user_result_nav">
