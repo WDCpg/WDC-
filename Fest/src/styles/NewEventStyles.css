@@ -193,6 +193,15 @@ h2 {
     font-size: 1vw;
 }
 
+.event-location {
+    font-size: 1vw;
+}
+.event-location input{
+    font-size: 0.8vw;
+    height: auto;
+    width: 11vw;
+}
+
 h3 {
     font-size: 1.2em;
     font-weight: 600;
