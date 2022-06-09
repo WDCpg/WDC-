@@ -70,7 +70,7 @@
                         <div >
                             <ul class = "emoji-list">
                                 <li><button class = "emoji-button">&#128513;</button></li>
-                                <li><button class = "emoji-button" title="U+263A"><span>U+263A;</span></button></li>
+                                <li><button class = "emoji-button">&#128514;</button></li>
                                 <li><button class = "emoji-button">&#128515;</button></li>
                                 <li><button class = "emoji-button">&#128516;</button></li>
                                 <li><button class = "emoji-button">&#128517;</button></li>
