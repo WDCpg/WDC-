@@ -6,7 +6,6 @@ export default {
             search: '',
             showFriends: false,
             invitedFriends: [],
-            inviteSent: false
         }
     },
 
@@ -28,6 +27,9 @@ export default {
             //store.dispatch('inviteFriend', friend);
             friend['status'] = true;
             this.invitedFriends.push(friend);
+        },
+        inviteSent(index) {
+            return true;
         },
 
         cancelInvited(invitedFriends, index) {
