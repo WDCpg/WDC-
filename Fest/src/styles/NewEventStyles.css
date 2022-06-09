@@ -196,9 +196,7 @@ h2 {
 .event-location {
     font-size: 1vw;
 }
-.street input{
-    width: 20vw;
-}
+
 .city-state, .country-postcode{
     display: flex;
     flex-direction: row;
@@ -208,6 +206,10 @@ h2 {
     font-size: 0.8vw;
     height: auto;
     width: 11vw;
+}
+
+.street input{
+    width: 20vw;
 }
 
 h3 {
