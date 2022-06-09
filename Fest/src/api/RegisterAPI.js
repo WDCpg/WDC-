@@ -14,6 +14,8 @@ export default {
 
         xhttp.setRequestHeader('Content-type', 'application/json; charset=UTF-8' );
         //Send request
+
+        console.log(newRegisterData);
         xhttp.send(JSON.stringify(newRegisterData));
     }
 }
