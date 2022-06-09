@@ -67,8 +67,6 @@
                         </div>
 
 
-
-
                         <div >
                             <ul class = "emoji-list">
                                 <li><button class = "emoji-button">&#128513;</button></li>
