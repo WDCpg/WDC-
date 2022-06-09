@@ -1,15 +1,13 @@
 <template>
-    <div>
-    <h1>IsInit: {{ Vue3GoogleOauth.isInit }}</h1>
-    <h1>IsAuthorized: {{ Vue3GoogleOauth.isAuthorized }}</h1>
-    <h2 v-if="user">signed user: {{user}}</h2>
-    <button @click="handleClickSignIn" :disabled="!Vue3GoogleOauth.isInit || Vue3GoogleOauth.isAuthorized">sign in</button>
-    <button @click="handleClickGetAuthCode" :disabled="!Vue3GoogleOauth.isInit">get authCode</button>
-    <button @click="handleClickSignOut" :disabled="!Vue3GoogleOauth.isAuthorized">sign out</button>
-    <button @click="handleClickDisconnect" :disabled="!Vue3GoogleOauth.isAuthorized">disconnect</button>
-    <h1>test
-    </h1>
-    </div>
+<div>
+  <h1>IsInit: {{ Vue3GoogleOauth.isInit }}</h1>
+  <h1>IsAuthorized: {{ Vue3GoogleOauth.isAuthorized }}</h1>
+  <h2 v-if="user">signed user: {{user}}</h2>
+  <button @click="handleClickSignIn" :disabled="!Vue3GoogleOauth.isInit || Vue3GoogleOauth.isAuthorized">sign in</button>
+  <button @click="handleClickGetAuthCode" :disabled="!Vue3GoogleOauth.isInit">get authCode</button>
+  <button @click="handleClickSignOut" :disabled="!Vue3GoogleOauth.isAuthorized">sign out</button>
+  <button @click="handleClickDisconnect" :disabled="!Vue3GoogleOauth.isAuthorized">disconnect</button>
+</div>
 </template>
 
 <script>
@@ -111,5 +109,3 @@ button:disabled {
   cursor: not-allowed;
 }
 </style>
-
-
