@@ -19,7 +19,8 @@ import GAuth from 'vue-google-oauth2';
 const gauthOption = {
     clientId: '533508693712-r61sce51m123m23fv89sohgch0ej1r6n.apps.googleusercontent.com',
     scope: 'profile_email',
-    prompt: 'consent'
+    prompt: 'consent',
+    fetch_basic_profile: true 
 }
 
 Vue.use(GAuth, gauthOption)
