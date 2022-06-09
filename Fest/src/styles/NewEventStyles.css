@@ -182,13 +182,12 @@ h2 {
     height: auto;
     width: 11vw;
 }
-.event-date {
-    margin-right: 20px;
-}
 .event-start {
+    display: flex;
     font-size: 1vw;
 }
 .event-end {
+    display: flex;
     font-size: 1vw;
 }
 
