@@ -218,7 +218,7 @@
                                     <td>{{ friend.lastName }}</td>
                                     <td><button @click="inviteFriend(friend,index)"
                                                 :disabled="inviteSent(index)"
-                                                ref="btnInvite">Invite</button></td>
+                                                :class{invited: isActive}">Invite</button></td>
                                 </tr>
                             </tbody>
                         </table>
