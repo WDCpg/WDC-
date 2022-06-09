@@ -6,7 +6,7 @@ export default {
             search: '',
             showFriends: false,
             invitedFriends: [],
-            inviteSent: true
+            inviteSent: false
         }
     },
 
@@ -29,7 +29,7 @@ export default {
             friend['status'] = true;
             this.invitedFriends.push(friend);
             //console.log(this.invitedFriends);
-            for (let x in invitedFriends) {
+            for (let x in this.invitedFriends) {
                 if (x.status == true) {
                     this.inviteSent = true;
                 }
