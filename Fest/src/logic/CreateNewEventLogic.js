@@ -40,7 +40,9 @@ export default {
 
         cancelInvited(invitedFriends, index) {
             invitedFriends.splice(index, 1);
-
+            if (this.inviteCount[index] == index) {
+                this.inviteActived = false;
+            }
             console.log(invitedFriends);
         }
     },
