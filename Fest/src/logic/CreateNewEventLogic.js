@@ -55,9 +55,6 @@ export default {
         findFriend() {
             let search = this.search.toLowerCase();
 
-
-            console.log(friends)
-
             return this.friendInfo.filter(friend =>
                 friend.firstName.toLowerCase().includes(search)
                 || friend.lastName.toLowerCase().includes(search));
