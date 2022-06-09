@@ -28,8 +28,10 @@ export default {
             //store.dispatch('inviteFriend', friend);
             friend['status'] = true;
             this.invitedFriends.push(friend);
-            if ( friend.status == true ) {
-                this.inviteSent = true;
+            for (let x in friend) {
+                if ( x.status == true ) {
+                    this.inviteSent = true;
+                }
             }
         },
 
