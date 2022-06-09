@@ -55,6 +55,26 @@ main {
   min-height: calc(100vh - 65px);
 }
 
+/* Scroll bar */
+.page-content-container::-webkit-scrollbar {
+    width: 5px;
+  }
+
+.page-content-container::-webkit-scrollbar-track {
+background-color: none;
+border-radius: 20px;
+}
+
+.page-content-container::-webkit-scrollbar-thumb {
+background-color: #9A9A9A;
+border-radius: 20px;
+}
+
+.dark .page-content-container::-webkit-scrollbar-thumb {
+background-color: #C6C6C6;
+border-radius: 20px;
+}
+
 .ligth {
   background-color: #F6F5F7;
 }
