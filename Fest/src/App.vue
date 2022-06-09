@@ -8,15 +8,6 @@ import { computed } from 'vue';
 const isDark = computed(() => store.getters.isDarkGetter);
 const isLoginModal = computed(() => store.getters.isLoginModal);
 
-import Test from './components/Test.vue';
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
-
-
 // Check if user is logged in
 const checkUser = () => {
   store.dispatch('loginOnOpen');
@@ -30,9 +21,6 @@ checkUser();
 </script>
 
 <template>
-
-  <img alt="Vue logo" src="./assets/1654505601342.png">
-  <Test msg="Welcome to Your Vue.js App"/>
   <div>
       <Navigation />
     <main :class="isDark ? 'dark' : 'light'">
