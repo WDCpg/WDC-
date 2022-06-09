@@ -15,6 +15,8 @@ import Login from "./components/Login.vue";
 
 /* Google Login */
 import gAuthPlugin from 'vue3-google-oauth2';
+// need to install command before google sign in will work
+//npm i vue3-google-oauth2
 
 
 /* APP ARCHITECTURE */
