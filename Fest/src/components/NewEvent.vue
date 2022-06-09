@@ -256,7 +256,7 @@
             <!-- ----------------------------------------------------------------------  -->
 
             <div class= "event-submit">
-                <button type="button" @click="submitNewEvent">Create Event !!!</button>
+                <button type="submit" @click="submitNewEvent">Create Event !!!</button>
             </div>
 
             </div>
