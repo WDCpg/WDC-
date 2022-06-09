@@ -180,20 +180,16 @@ h2 {
 .event-time input {
     font-size: 0.8vw;
     height: auto;
-    width: 10vw;
+    width: 11vw;
 }
 .event-date {
     margin-right: 20px;
 }
 .event-start {
     font-size: 1vw;
-    display: flex;
-    align-items: flex-end;
 }
 .event-end {
     font-size: 1vw;
-    display: flex;
-    align-items: flex-end;
 }
 
 h3 {
