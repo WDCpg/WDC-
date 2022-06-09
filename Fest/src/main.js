@@ -12,6 +12,8 @@ import NewEvent from "./components/NewEvent.vue";
 import SignUp from "./components/SignUp.vue";
 import Login from "./components/Login.vue";
 
+/* APP ARCHITECTURE */
+const app = createApp(App);
 
 import gAuthPlugin from 'vue3-google-oauth2';
 let gauthClientId = '676785461988-icoil0dtlld2fcp5kb22llst7t94mans.apps.googleusercontent.com';
@@ -22,10 +24,6 @@ app.use(gAuthPlugin, {
 })
 
 
-
-
-/* APP ARCHITECTURE */
-const app = createApp(App);
 
 // Router
 app.use(router);

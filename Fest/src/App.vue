@@ -9,7 +9,12 @@ const isDark = computed(() => store.getters.isDarkGetter);
 const isLoginModal = computed(() => store.getters.isLoginModal);
 
 import Test from './components/Test.vue';
-
+export default {
+  name: 'App',
+  components: {
+    HelloWorld
+  }
+}
 
 
 // Check if user is logged in
