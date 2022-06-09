@@ -7,9 +7,7 @@ export default {
         }
     },
     methods: {
-        postSignupInfo() {
 
-        }
     }
 }
 
