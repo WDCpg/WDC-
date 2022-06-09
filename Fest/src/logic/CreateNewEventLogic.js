@@ -54,14 +54,10 @@ export default {
     computed: {
         findFriend() {
             let search = this.search.toLowerCase();
-            var friends = store.state.friendInfo;
+
 
             console.log(friends)
-            // for (let i = 0; friends.length; i++) {
-            //     friends[i]['inviteActive'] = false;
-            // }
 
-            this.friendInfo = friends;
             return this.friendInfo.filter(friend =>
                 friend.firstName.toLowerCase().includes(search)
                 || friend.lastName.toLowerCase().includes(search));
@@ -83,5 +79,10 @@ export default {
 
     created() {
         store.dispatch('fetchNewEventDefault');
+        var friends = JSON.parse(JSON.stringify(store.state.friendInfo));
+        // for (let i = 0; friends.length; i++) {
+        //         friends[i]['inviteActive'] = false;
+        //     }
+        this.friendInfo = friends;
     }
 }
