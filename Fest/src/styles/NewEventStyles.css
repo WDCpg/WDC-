@@ -184,12 +184,12 @@ h2 {
 }
 .event-start {
     display: flex;
-    justify-content: space-between;
-    gap:10px;
+    gap:20px;
     font-size: 1vw;
 }
 .event-end {
     display: flex;
+    gap:28px;
     font-size: 1vw;
 }
 
