@@ -56,12 +56,13 @@ export default {
             let search = this.search.toLowerCase();
             let friends = store.state.friendInfo;
 
-            for (let i = 0; friends.length; i++) {
-                friends[i]['inviteActive'] = false;
-            }
+            console.log(friends)
+            // for (let i = 0; friends.length; i++) {
+            //     friends[i]['inviteActive'] = false;
+            // }
 
             this.friendInfo = friends;
-            return friendInfo.filter(friend =>
+            return this.friendInfo.filter(friend =>
                 friend.firstName.toLowerCase().includes(search)
                 || friend.lastName.toLowerCase().includes(search));
         },
