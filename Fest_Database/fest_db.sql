@@ -35,8 +35,11 @@ CREATE Table friends (
 CREATE Table calendar_availability(
   calendar_id int NOT NULL,
   user_id int,
-  start_date datetime,
-  end_date datetime,
+  start_date datetime AS start,
+  end_date datetime AS end,
+  title varchar(30),
+  content varchar(100),
+  class varchar(20),
   PRIMARY KEY (calendar_id),
   FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
 );

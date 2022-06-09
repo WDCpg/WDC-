@@ -4,6 +4,7 @@ import userInfoApi from "@/api/UserProfileAPI";
 import NewEventAPI from "../api/NewEventAPI";
 import LoginsAPI from "../api/LoginsAPI";
 import RefreshLoginAPI from "../api/RefreshLoginAPI";
+import CalendarAPI from "../api/CalendarAPI";
 
 
 export default createStore({
@@ -16,9 +17,13 @@ export default createStore({
         isDescriptionChanged: false,
         //userInfo template JSON
         userInfo: {
-
+            user_id: "1231"
             // "first_name": "Santiago"
         },
+        //get user availability
+        userAvailability:  [
+        ],
+
         userEvents: [
             {
                 "event_id": 1,
@@ -73,6 +78,10 @@ export default createStore({
 
         getImages(state){
             return state.userInfo.profile_picture;
+        },
+
+        userId(state) {
+            return state.userInfo.user_id;
         }
     },
 
@@ -101,6 +110,25 @@ export default createStore({
                     resolve();
                 })
             })
+        },
+        //--CALENDAR ACTIONS--//
+        fetchUserAvailability({commit}) {
+            return new Promise((resolve, reject) => {
+                CalendarAPI.getUserAvailability1(events => {
+                    commit('setUserAvailability', events);
+                    commit('updateDatetimeCalendar');
+                    resolve();
+                })
+            })
+        },
+
+        saveUserCalendar({commit}, calendarEvents){
+
+            for(let i = 0; i<calendarEvents.length; i++){
+                // console.log(calendarEvents[i].start);
+                // CalendarAPI.postUserCalendar(calendarEvents[i]);
+                commit('setUserCalendar', calendarEvents[i]);
+            }
         },
 
         updateIsLoading({commit}) {
@@ -217,7 +245,6 @@ export default createStore({
         },
 
         updateIconCode(state, emoji) {
-
             for (let i = 0; i < state.publicEvents.length; i++) {
                 let rawCode = state.publicEvents[i].icon.replace("U+", "0x");
                 let decoded = String.fromCodePoint(rawCode);
@@ -232,6 +259,22 @@ export default createStore({
 
         setUserInfo(state, userInfo) {
             state.userInfo = userInfo;
+        },
+
+        setUserAvailability (state, userAvailability){
+            state.userAvailability=userAvailability;
+        },
+
+        updateDatetimeCalendar(state) {
+            for(let i = 0; i<state.userAvailability.length;i++){
+                state.userAvailability[i].start = new Date(state.userAvailability[i].start);
+                state.userAvailability[i].end = new Date(state.userAvailability[i].end);
+            }
+        },
+
+        setUserCalendar(state, calendarEvents){
+            state.userAvailability.push(calendarEvents);
         }
+
     }
 })

@@ -14,37 +14,41 @@
                     <h2>Manage Your Calendar</h2>
                     <button @click="selectedDate = new Date()">TODAY'S DATE</button>
                 </div>
-                <vue-cal ref="vuecal"
-                xsmall
-                hide-weekends
-                :disable-views="['years']"
-                :time="false"
-                today-button
-                active-view="month"
-                style="height: 500px"
-                :selected-date="selectedDate"
-                :events="events">
-  <!-- Optional slot for the custom button. -->
-                <template v-slot:today-button>
-    <!-- Using Vuetify -->
-                <v-tooltip>
-                <template v-slot:activator="{ on }">
-                <v-btn v-on="on">
-                <v-icon>my_location</v-icon>
-                </v-btn>
-                <span>Go to Today's date</span>
-                </template>
-                </v-tooltip>
-                </template>
-                </vue-cal>
-
-
+                    <vue-cal ref="vuecal"
+                    @event-title-change="newCalEvent('event-title-change', $event)"
+                    xsmall
+                    :disable-views="['years']"
+                    :time="true"
+                    today-button
+                    active-view="month"
+                    style="height: 500px"
+                    :selected-date="selectedDate"
+                    :events="userAvailability"
+                    events-on-month-view="short"
+                    events-count-on-year-view
+                    @event-delete="logEvents('event-delete', $event)"
+                    class="vuecal--full-height-delete"
+                    editable-events>
+    <!-- Optional slot for the custom button. -->
+                    <template v-slot:today-button>
+        <!-- Using Vuetify -->
+                    <v-tooltip>
+                    <template v-slot:activator="{ on }">
+                    <v-btn v-on="on">
+                    <v-icon>my_location</v-icon>
+                    </v-btn>
+                    <span>Go to Today's date</span>
+                    </template>
+                    </v-tooltip>
+                    </template>
+                    </vue-cal>
+                    <div class="submit_calendar">
+                        <button v-on:click="submitUserCalendar">Save Calendar</button>
+                    </div>
             </div>
         </div>
-        <div>
-
-        </div>
     </div>
+
 </template>
 <script src="@/logic/CalendarLogic.js">
 </script>

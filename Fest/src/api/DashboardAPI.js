@@ -6,14 +6,14 @@ export default {
         xhttp.onreadystatechange = function() {
         if(this.readyState == 4 && this.status == 200) {
             console.log(JSON.parse(this.response))
-      
+
             return events (JSON.parse(this.response));
 
-            
+
             }
         }
         //Open connection
-        xhttp.open('GET', `http://localhost:8080/events/getPublicEvents`, false);
+        xhttp.open('GET', `https://chobbiwan-code50-16236897-vgqjwwq6fx9g5-8080.githubpreview.dev/events/getPublicEvents`, false);
 
         //Send request
         xhttp.send();
