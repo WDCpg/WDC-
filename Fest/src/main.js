@@ -22,10 +22,10 @@ import Login from "./components/Login.vue";
 /* APP ARCHITECTURE */
 const app = createApp(App);
 
-import GoogleAuth from 'vue-google-oauth2'
+import GoogleAuth from 'vue3-google-oauth2';
 
-Vue.use(GoogleAuth, { clientID: '533508693712-r61sce51m123m23fv89sohgch0ej1r6n.apps.googleusercontent.com' })
-Vue.googleAuth().load()
+Vue.use(GoogleAuth, { clientID: '533508693712-r61sce51m123m23fv89sohgch0ej1r6n.apps.googleusercontent.com' });
+Vue.googleAuth().load();
 
 // Router
 app.use(router);
