@@ -129,7 +129,7 @@
                         <input type="text" v-model="newEventData.street" placeholder="street...">
                     </div>
 
-                    <div classs = "event-location-city-state">
+                    <div class = "event-location-city-state">
                         <div class = "event-location-box">
                             <label>City</label>
                             <br>
@@ -143,7 +143,7 @@
                         </div>
                     </div>
 
-                    <div classs = "event-location-country-postcode">
+                    <div class = "event-location-country-postcode">
                         <div class = "event-location-box">
                             <label>Country</label>
                             <br>
