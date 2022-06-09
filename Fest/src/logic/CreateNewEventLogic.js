@@ -6,7 +6,6 @@ export default {
             search: '',
             showFriends: false,
             invitedFriends: [],
-            inviteSent: true
         }
     },
 
@@ -22,6 +21,11 @@ export default {
 
         submitNewEvent() {
             store.dispatch('postNewEvent');
+        },
+
+        inviteSent(inviteFriends) {
+            console.log(inviteFriends)
+            return true;
         },
 
         inviteFriend(friend) {
