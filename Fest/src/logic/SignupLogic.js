@@ -4,6 +4,7 @@ export default {
     computed: {
         newSignupData(){
             return store.state.newSignupData;
+            console.log(newSignupData);
         }
     },
     methods: {
