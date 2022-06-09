@@ -69,23 +69,23 @@ app.use(express.static(path.join(__dirname, 'public')));
   MIDDLEWARE:
   Allow access from localhost:3000 - Front End Vue Port
 */
-app.use(cors({
-  origin: [
-    'http://localhost:3000',
-    'https://fulzske-code50-61676631-9pr7w7wq27rwr-3000.githubpreview.dev'
-  ],
-  methods: "GET, POST",
-  credentials: true
-  // exposedHeaders: ['set-cookie'],
-  // allowedHeaders: '*'
-}))
+// app.use(cors({
+//   origin: [
+//     'http://localhost:3000',
+//     'https://fulzske-code50-61676631-9pr7w7wq27rwr-3000.githubpreview.dev'
+//   ],
+//   methods: "GET, POST",
+//   credentials: true
+//   // exposedHeaders: ['set-cookie'],
+//   // allowedHeaders: '*'
+// }))
 
-// app.use(function(req, res, next) {
-//   res.set('Access-Control-Allow-Origin', '*');
-//   res.header("Access-Control-Allow-Headers","*");
-//   res.set('Access-Control-Allow-Methods', 'GET, POST');
-//   next();
-// });
+app.use(function(req, res, next) {
+  res.set('Access-Control-Allow-Origin', '*');
+  res.header("Access-Control-Allow-Headers","*");
+  res.set('Access-Control-Allow-Methods', 'GET, POST');
+  next();
+});
 
 // Sessions
 app.use(session({
