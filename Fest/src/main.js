@@ -15,12 +15,20 @@ import Login from "./components/Login.vue";
 /* APP ARCHITECTURE */
 const app = createApp(App);
 
-import GAuth from 'vue-google-oauth2'
-const gauthOption = {
-  clientId: 'CLIENT_ID.apps.googleusercontent.com',
-  scope: 'profile email',
-  prompt: 'select_account'
-}
+// import GAuth from 'vue-google-oauth2'
+// const gauthOption = {
+//   clientId: 'CLIENT_ID.apps.googleusercontent.com',
+//   scope: 'profile email',
+//   prompt: 'select_account'
+// }
+
+import gAuthPlugin from 'vue3-google-oauth2';
+let gauthClientId = '676785461988-icoil0dtlld2fcp5kb22llst7t94mans.apps.googleusercontent.com';
+app.use(gAuthPlugin, {
+  clientId: gauthClientId,
+  scope: 'email',
+  prompt: 'consent',
+});
 
 // Router
 app.use(router);
