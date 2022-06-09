@@ -27,13 +27,7 @@ export default {
             //store.dispatch('inviteFriend', friend);
             friend['status'] = true;
             this.invitedFriends.push(friend);
-        },
-
-        inviteSent() {
-            console.log(this.invitedFriends);
-            // for (let x in this.invitedFriends) {
-            //     console.log(x.status);
-            // }
+            disabled
         },
 
         cancelInvited(invitedFriends, index) {
