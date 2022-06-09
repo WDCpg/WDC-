@@ -4,10 +4,20 @@ import Navigation from "@/components/Navigation.vue"
 import SideNavigation from "@/components/SideNavigation.vue"
 import Login from "@/components/Login.vue"
 import store from "@/store/index";
-import { computed,} from 'vue';
+import { computed } from 'vue';
+const isDark = computed(() => store.getters.isDarkGetter);
+const isLoginModal = computed(() => store.getters.isLoginModal);
 
-// const isDark = computed(() => store.state.isDark);
-const isDark = computed(() => store.getters.isDarkGetter)
+// Check if user is logged in
+const checkUser = () => {
+  store.dispatch('loginOnOpen');
+  console.log('Checking login');
+  return;
+}
+
+checkUser();
+
+
 </script>
 
 <template>
@@ -28,7 +38,7 @@ const isDark = computed(() => store.getters.isDarkGetter)
     </main>
     <footer>
     </footer>
-    <div class="bg-modal">
+    <div v-if="isLoginModal" class="bg-modal">
       <div class = "login">
         <Login/>
       </div>
@@ -42,7 +52,7 @@ const isDark = computed(() => store.getters.isDarkGetter)
 main {
   display: flex;
   flex-direction: row;
-  height: calc(100vh - 65px);
+  min-height: calc(100vh - 65px);
 }
 
 .ligth {
@@ -52,5 +62,14 @@ main {
 .dark {
   background-color: #1A1A1A;
 }
+
+.dark a {
+  color: white;
+}
+
+.bg-modal {
+  display: flex;
+}
+
 </style>
 

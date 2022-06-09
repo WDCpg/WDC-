@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var logger = require('morgan');
+var cors = require('cors');
 
 // Route Files
 var indexRouter = require('./routes/index');
@@ -14,6 +15,7 @@ var signUpRouter = require('./routes/User_Auth/signup');
 var logOutRouter = require('./routes/User_Auth/logout');
 var profileRouter = require('./routes/Profile/profile');
 var calendarRouter = require('./routes/Calendar/calendar');
+var notificationsRouter = require('./routes/Notifications/notifications');
 
 var app = express();
 
@@ -69,12 +71,35 @@ app.use(express.static(path.join(__dirname, 'public')));
   MIDDLEWARE:
   Allow access from localhost:3000 - Front End Vue Port
 */
-app.use(function(req, res, next) {
-  res.set('Access-Control-Allow-Origin', '*');
-  res.header("Access-Control-Allow-Headers","*");
-  res.set('Access-Control-Allow-Methods', 'GET, POST');
-  next();
-});
+app.use(cors({
+  origin: [
+    'http://localhost:3000'
+  ],
+  methods: "GET, POST",
+  credentials: true
+  // exposedHeaders: ['set-cookie'],
+  // allowedHeaders: '*'
+}))
+
+// app.use(function(req, res, next) {
+//   res.set('Access-Control-Allow-Origin', '*');
+//   res.header("Access-Control-Allow-Headers","*");
+//   res.set('Access-Control-Allow-Methods', 'GET, POST');
+//   next();
+// });
+
+// Sessions
+app.use(session({
+  name: 'FestApp2',
+  secret: 'FestApp12345@',
+  resave: true,
+  saveUninitialized: false,
+  cookie: {
+    name: 'FestAppCookie2',
+    secure: false,
+    expires : 360000 + Date.now()
+  }
+}))
 
 router.use('/', function(req, res, next) {
 
@@ -94,6 +119,7 @@ app.use('/', signUpRouter);
 app.use('/', logOutRouter);
 app.use('/', profileRouter);
 app.use('/', calendarRouter);
+app.use('/', notificationsRouter);
 
 
 

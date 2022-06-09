@@ -20,7 +20,7 @@
 #newEvent::-webkit-scrollbar {
     width: 5px;
   }
-  
+
 #newEvent::-webkit-scrollbar-track {
 background-color: none;
 border-radius: 20px;
@@ -219,7 +219,8 @@ h3 {
     font-size: 2.5vw;
     margin-right: 10px;
 }
-.event-photo button {
+
+.event-photo input[type=file]::file-selector-button {
     border: none;
     border-radius: 12px;
     margin-left: 10px;
@@ -238,7 +239,10 @@ h3 {
     font-size: 0.5vw;
     margin-right: 5px;
 }
-.event-group-selector {
+.event-group input[type="radio"] {
+    display: none;
+  }
+.event-group label {
     margin-right: 20px;
     padding: 10px 10px;
     width: 33%;
@@ -250,7 +254,11 @@ h3 {
     align-items: center;
     text-align: left;
     color: white;
-    
+    cursor: pointer;
+}
+.event-group input[type="radio"]:checked + label {
+    background-color: #76cf9f;
+    border-color: #666;
 }
 
 .event-group-selector p {
@@ -262,22 +270,6 @@ h3 {
     width: 25px;
 }
 
-.event-group-selector label{
-    font-size: 0.5vw;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    word-wrap: break-word;
-    cursor: pointer;
-}
-.event-group-selector pre{
-    white-space: pre-wrap;
-}
-
-.event-group-selector input {
-    line-height: 0;
-    opacity: 0;
-}
 
 .event-invite-search {
     border-radius: 25px;
@@ -377,7 +369,7 @@ h3 {
     position: absolute;
     bottom: -50px;
     left: 15px;
-    
+
 }
 
 .post-details-container {
@@ -395,6 +387,7 @@ h3 {
 
 .post-description {
     font-size: 1.5em;
+    white-space: pre-line;
 }
 
 /* Display Style */

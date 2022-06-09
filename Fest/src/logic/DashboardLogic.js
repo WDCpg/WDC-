@@ -41,10 +41,11 @@ export default {
         }
     },
 
-    //automatically calls action to retrieve data to the state. 
+    //automatically calls action to retrieve data to the state.
     created() {
         store.dispatch('updateIsLoading');
 
+        // store.dispatch('loginOnOpen');
         store.dispatch('fetchPublicEvents')
             .then(() => store.dispatch('updateIsLoading'));
     }

@@ -63,6 +63,9 @@ router.post('/login', function(req, res, next) {
                                     res.status(500).send(error.sqlMessage);
                                     return;
                                 }
+
+                                // Set cookie login 
+                                res.cookie('session_id', result[0].user_id);
                                 res.json({rows, status: 200});
                                 return;
 

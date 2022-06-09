@@ -103,10 +103,12 @@ CREATE Table user_logs (
 CREATE Table notifications (
   notification_id int NOT NULL AUTO_INCREMENT,
   user_id int NOT NULL,
+  event_id int NOT NULL,
   type_id int NOT NULL,
-  created_at timestamp,
+  created_at DEFAULT CURRENT_TIMESTAMP ,
   PRIMARY KEY (notification_id),
   FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
+  FOREIGN KEY (event_id) REFERENCES events(event_id) ON DELETE CASCADE
 );
 
 CREATE Table notification_type (
@@ -114,6 +116,15 @@ CREATE Table notification_type (
   type_desc varchar(100),
   PRIMARY KEY (type_id)
 );
+
+CREATE TABLE `user_login` (
+  `user_id` int NOT NULL,
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+-- Notification Types
+INSERT INTO notification_type (type_desc)  VALUES ("Invited"), ("Attending");
 
 
 

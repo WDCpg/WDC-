@@ -14,8 +14,9 @@ export default {
         }
 
         //Open connection
-        xhttp.open('POST', `https://chobbiwan-code50-16236897-vgqjwwq6fx9g5-8080.githubpreview.dev/login`, true);
-        xhttp.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
+        xhttp.open('POST', `http://localhost:8080/login`, true);
+        xhttp.withCredentials = true;
+        xhttp.setRequestHeader('Content-type', 'application/json');
 
         //Send request
         xhttp.send(JSON.stringify(auth));
