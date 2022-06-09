@@ -6,7 +6,7 @@ export default {
             search: '',
             showFriends: false,
             invitedFriends: [],
-            inviteSent: false,
+            inviteActived: false,
             inviteCount: [],
         }
     },
@@ -30,23 +30,17 @@ export default {
             friend['status'] = true;
             this.invitedFriends.push(friend);
             this.inviteCount.push(index);
+        },
+        inviteSent(index) {
             if (this.inviteCount[index] == index) {
-                this.inviteSent = true;
+                    this.inviteActived = true;
+                return this.inviteActived;
             }
         },
-        // inviteSent(index) {
-        //     if (this.inviteCount[index] == index) {
-        //             this.inviteSent = true;
-        //         return this.inviteActived;
-        //     }
-        // },
 
         cancelInvited(invitedFriends, index) {
             invitedFriends.splice(index, 1);
-            if (this.inviteCount[index] == index) {
-                this.inviteActived = false;
-            }
-            console.log(invitedFriends);
+            //console.log(invitedFriends);
         }
     },
 
