@@ -6,7 +6,8 @@ export default {
             search: '',
             showFriends: false,
             invitedFriends: [],
-            //inviteSent: false,
+            inviteActived: false,
+            inviteCount: []
         }
     },
 
@@ -28,9 +29,15 @@ export default {
             //store.dispatch('inviteFriend', friend);
             friend['status'] = true;
             this.invitedFriends.push(friend);
+            this.inviteCount.push(index);
+            this.$refs.btnInvite.innerText = 'Invited!';
+            //this.$refs.btnInvite.style.background = #76cf9f;
         },
         inviteSent(index) {
-            return true;
+            if (this.inviteCount[index] == index) {
+                    this.inviteActived = true;
+                return this.inviteActived;
+            }
         },
 
         cancelInvited(invitedFriends, index) {
