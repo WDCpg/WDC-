@@ -16,11 +16,13 @@ export default {
                 console.log(checkPassword);
                 store.dispatch('postSignupData');
             } else {
-                let error = document.createElement("p");
-                    error.innerText = "Email or Password requirements not met";
+                if(!document.querySelector(".errorMessage")) {
+                    let error = document.createElement("p");
+                    error.innerText = "Please enter all fields";
                     error.className="errorMessage";
                     error.style.color = "red";
-                    document.querySelector(".signUpError").appendChild(error);
+                    document.querySelector(".post_code_country").appendChild(error);
+                }
             }
         }
     }
