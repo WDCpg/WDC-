@@ -196,9 +196,10 @@ h2 {
 .event-location {
     font-size: 1vw;
 }
-.event-location-city-state {
-    display: inline-block;
+.city-state, .country-postcode{
+    display: flex;
     flex-direction: row;
+    gap: 20px;
 }
 .event-location input{
     font-size: 0.8vw;
