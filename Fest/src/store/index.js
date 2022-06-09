@@ -158,7 +158,7 @@ export default createStore({
                 "city": "Adelaide",
                 "street": "1 KingWilliam St",
                 "post_code": "5000",
-                "privacy" : "Public"
+                "privacy" : "Public",
             }
             commit('setNewEventDefault', newEventDefault);
         },
@@ -249,12 +249,12 @@ export default createStore({
         },
 
         setNewEventNone(state, [data, type]) {
-            if (type === "title" && !state.isTitleChanged) {
-                state.newEventData.title = data;
+            if (type === "event_title" && !state.isTitleChanged) {
+                state.newEventData.event_title = data;
                 state.isTitleChanged = true;
             }
-            else if (type === "description" && !state.isDescriptionChanged) {
-                state.newEventData.description = data;
+            else if (type === "event_description" && !state.isDescriptionChanged) {
+                state.newEventData.event_description = data;
                 state.isDescriptionChanged = true;
             }
             else {

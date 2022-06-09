@@ -89,10 +89,10 @@
                 <!-- ----------------------------------------------------------------------  -->
                 <!-- event detail -->
                 <div class = "event-detail">
-                    <textarea v-model="newEventData.title" @click="clearInput('title')" placeholder="Event title..." rows="2" maxlength="30"></textarea>
+                    <textarea v-model="newEventData.event_title" @click="clearInput('title')" placeholder="Event title..." rows="2" maxlength="30"></textarea>
                 <br>
                 <br>
-                    <textarea @click="clearInput('description')" v-model="newEventData.description" placeholder="Event description..." rows="10" maxlength="300"></textarea>
+                    <textarea @click="clearInput('description')" v-model="newEventData.event_description" placeholder="Event description..." rows="10" maxlength="300"></textarea>
                 </div>
                 <br>
                 <!-- event detail end -->
@@ -267,20 +267,20 @@
                     <div class="post-details-container">
                         <div class="post-title-container">
                             <h3>
-                                {{ newEventData.title }}
+                                {{ newEventData.event_title }}
                             </h3>
                         </div>
                         <p class="post-description">
-                            {{ newEventData.description }}
+                            {{ newEventData.event_description }}
                         </p>
                     </div>
 
                     <div class="post-time-container">
                         <p>
-                            {{ newEventData.start_date }}: {{ newEventData.start_time }}
+                            {{newEventData.event_start}}
                         </p>
                         <p>
-                            {{ newEventData.end_date }}: {{ newEventData.end_time }}
+                            {{newEventData.event_end}}
                         </p>
                     </div>
 
