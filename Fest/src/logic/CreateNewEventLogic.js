@@ -33,7 +33,7 @@ export default {
         },
         inviteSent(index) {
             if (this.inviteCount[index] == index) {
-                    this.inviteActived = !true;
+                    this.inviteActived = true;
                 return this.inviteActived;
             }
         },
