@@ -22,11 +22,9 @@ import Login from "./components/Login.vue";
 /* APP ARCHITECTURE */
 const app = createApp(App);
 
-//let gauthClientId = "157894589863-r23fj5vh1a7m6pkj1kijgiv5r6ijreor.apps.googleusercontent.com";
-
 import GoogleAuth from 'vue-google-oauth2'
 
-Vue.use(GoogleAuth, { clientID: '157894589863-r23fj5vh1a7m6pkj1kijgiv5r6ijreor.apps.googleusercontent.com' })
+Vue.use(GoogleAuth, { clientID: '533508693712-r61sce51m123m23fv89sohgch0ej1r6n.apps.googleusercontent.com' })
 Vue.googleAuth().load()
 
 // Router
