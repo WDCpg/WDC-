@@ -24,7 +24,7 @@ export default {
             store.dispatch('postNewEvent');
         },
 
-        inviteFriend(friend) {
+        inviteFriend(friend,index) {
             //store.dispatch('inviteFriend', friend);
             friend['status'] = true;
             this.invitedFriends.push(friend);
