@@ -28,6 +28,7 @@ export default createStore({
                 "event_description": "Description of my event goes here",
                 "event_start": "14-06-2022T0:600",
                 "event_end": "21-07-2022T0:800",
+                
                 "icon": "&#128047;",
                 "image": "path/image.jpg "
             }
