@@ -40,7 +40,7 @@ export default {
 
         cancelInvited(invitedFriends, index) {
             invitedFriends.splice(index, 1);
-            //console.log(invitedFriends);
+            console.log(invitedFriends);
         }
     },
 
