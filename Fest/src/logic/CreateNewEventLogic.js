@@ -5,7 +5,8 @@ export default {
         return {
             search: '',
             showFriends: false,
-            invitedFriends: []
+            invitedFriends: [],
+            inviteSent: false
         }
     },
 
@@ -30,7 +31,7 @@ export default {
             //console.log(this.invitedFriends);
             for (let x in invitedFriends) {
                 if (x.status == true) {
-                    disable
+                    this.inviteSent = true;
                 }
             }
         },
