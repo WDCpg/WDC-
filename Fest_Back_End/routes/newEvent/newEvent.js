@@ -38,7 +38,7 @@ var router = express.Router();
 
 // router.post('/uploadCoverPhoto', upload.array('file', 12));
 
-// router.post('/createEvent', function(req,res,next){
+// router.post('/newEvent', function(req,res,next){
 //     req.db.getConnection(function(error, connection){
 //         if (error){
 //             console.log(error);
