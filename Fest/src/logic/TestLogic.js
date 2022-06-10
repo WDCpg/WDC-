@@ -17,7 +17,7 @@ export default {
             const myuser = user
             console.log(profile)
             console.log(myuser)
-            // store.dispatch()
+            store.dispatch(googleData)
           },
 
           signOut() {

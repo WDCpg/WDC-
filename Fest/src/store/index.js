@@ -68,6 +68,7 @@ export default createStore({
         },
 
         googleData: {
+        
         },
 
         friendInfo: [
