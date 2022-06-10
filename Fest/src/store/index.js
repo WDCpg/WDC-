@@ -75,7 +75,7 @@ export default createStore({
         newSignupData: {
         },
 
-        googleData: {
+        googleUserProfile: {
         },
 
         friendInfo: [

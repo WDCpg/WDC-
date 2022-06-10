@@ -7,8 +7,8 @@ export default {
         })
     },
     // computed: {
-    //     googleData(){
-    //         return store.state.googleData;
+    //     googleUserProfile(){
+    //         return store.state.googleUserProfile;
     //     }
     // },
     methods: {
