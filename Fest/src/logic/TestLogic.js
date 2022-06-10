@@ -6,11 +6,11 @@ export default {
           onsuccess: this.onSignIn
         })
     },
-    computed: {
-        googleData(){
-            return store.state.googleData;
-        }
-    },
+    // computed: {
+    //     googleData(){
+    //         return store.state.googleData;
+    //     }
+    // },
     methods: {
         onSignIn (user) {
             console.log("hello")
