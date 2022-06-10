@@ -5,7 +5,7 @@ import SideNavigation from "@/components/SideNavigation.vue"
 import Login from "@/components/Login.vue"
 import store from "@/store/index";
 import { computed } from 'vue';
-import Test from './components/Test.vue';
+
 const isDark = computed(() => store.getters.isDarkGetter);
 const isLoginModal = computed(() => store.getters.isLoginModal);
 
@@ -17,6 +17,7 @@ const checkUser = () => {
 }
 
 checkUser();
+
 
 
 </script>
