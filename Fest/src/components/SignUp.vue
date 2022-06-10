@@ -15,7 +15,7 @@
                     <input type="password" id="password" name="password" minlength="8" required v-model="newSignupData.password">
                 <br>
                 <h2>Or...</h2>
-                <div id="google-signin-button">
+                
                 <div class="rectangleleft"></div>
                 <div class="rectangleleft"></div>
                 <div class="rectangleleft"></div><br><br><br>
