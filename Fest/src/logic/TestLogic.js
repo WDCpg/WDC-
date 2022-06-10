@@ -25,7 +25,6 @@ export default {
               console.log('User signed out')
                 }))
           }
-        
     }
 }
 
