@@ -75,9 +75,11 @@ export default createStore({
         newSignupData: {
         },
 
-        googleUserProfile: {
-        },
+        googleUserProfile: [
+        ],
 
+        googleToken: [
+        ],
 
         friendInfo: [
             {id:1, firstName:'Mark', lastName:'Leo', icon:'P1.jpeg'},
@@ -140,6 +142,11 @@ export default createStore({
 
         postSignupData(){
             signupAPI.postSignupInfo(this.state.newSignupData);
+        },
+
+        postGoogleLogin({commit}, profile, token) {
+            commit('setGoogleProfile', profile);
+            commit('setGoogleToken', token)
         },
 
         fetchPublicEvents({commit}) {
@@ -379,7 +386,14 @@ export default createStore({
 
         setUserCalendar(state, calendarEvents){
             state.userAvailability.push(calendarEvents);
-        }
+        },
 
+        setGoogleProfile(state, profile) {
+            state.googleUserProfile = profile;
+        },
+
+        setGoogleToken(state, token) {
+            state.googleToken = token;
+        }
     }
 })

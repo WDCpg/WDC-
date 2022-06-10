@@ -19,6 +19,7 @@ export default {
             console.log(myuser)
             console.log(user.getAuthResponse())
             
+
           },
 
           signOut() {
