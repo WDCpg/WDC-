@@ -55,6 +55,7 @@ export default {
 
             invitedFriends.splice(index, 1);
             this.friendInfo[friendIndex].inviteActive = false;
+            store.dispatch('InviteList', invitedFriends);
             console.log(invitedFriends);
         }
     },

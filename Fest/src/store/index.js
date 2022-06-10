@@ -117,6 +117,10 @@ export default createStore({
             commit('updateNewEventPrivacy',privacy);
         },
 
+        InviteList({commit}, invitedFriends) {
+            commit('updateInviteList', invitedFriends);
+        },
+
         // Post New Event
         postNewEvent() {
             NewEventAPI.postNewEvent(this.state.newEventData);
@@ -251,6 +255,10 @@ export default createStore({
 
         updateNewEventPrivacy(state,privacy) {
             state.newEventData.privacy = privacy;
+        },
+
+        updateInviteList(state, invitedFriends) {
+            state.invitedFriends = invitedFriends;
         },
 
         // Change page style - Light / Dark
