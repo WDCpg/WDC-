@@ -1,8 +1,8 @@
 <template>
 <div class="g-signin2" data-onsuccess="onSignIn()"></div>
 
-</template>
 
+</template>
 <script>
   function onSignIn(googleUser) {
     console.log('WORKING');
@@ -10,3 +10,4 @@
 }
 
 </script>
+

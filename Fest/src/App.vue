@@ -18,6 +18,12 @@ const checkUser = () => {
 
 checkUser();
 
+  function onSignIn(googleUser) {
+    console.log('WORKING');
+    console.log('user is ' +JSON.stringify(googleUser));
+}
+
+
 
 
 </script>
