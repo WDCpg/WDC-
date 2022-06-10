@@ -145,7 +145,7 @@ export default createStore({
         },
 
         postGoogleLogin({commit}, profile, token) {
-            commit('setGoogleProfile', profile);
+            commit('setGoogleProfile', profile),
             commit('setGoogleToken', token)
         },
 
