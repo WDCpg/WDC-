@@ -4,6 +4,6 @@ export default {
     }
 
     postFriendInvited(friendInfo) {
-
+        console.log(friendInfo)
     }
 }
