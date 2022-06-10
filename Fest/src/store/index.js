@@ -1,9 +1,12 @@
-import { createStore } from "vuex";
+import { createStore, storeKey } from "vuex";
+import router from "../router/index";
 import api from "@/api/DashboardAPI";
 import userInfoApi from "@/api/UserProfileAPI";
 import NewEventAPI from "../api/NewEventAPI";
 import LoginsAPI from "../api/LoginsAPI";
 import RefreshLoginAPI from "../api/RefreshLoginAPI";
+import CalendarAPI from "../api/CalendarAPI";
+import NotificationsAPI from "../api/NotificationsAPI";
 
 
 export default createStore({
@@ -14,13 +17,17 @@ export default createStore({
         isDark: false,
         isTitleChanged: false,
         isDescriptionChanged: false,
+        loginModal: false,
+        showNotifications: false,
         //userInfo template JSON
         userInfo: {
-            "first_name": "Santiago",
-            "profile_picture": "P1.jpeg"
 
             // "first_name": "Santiago"
         },
+        //get user availability
+        userAvailability:  [
+        ],
+
         userEvents: [
             {
                 "event_id": 1,
@@ -34,12 +41,7 @@ export default createStore({
             }
         ],
         notifications: [
-            {
-                "type": "Event invitation",
-                "viewed": false,
-                "description": "Your friend invited you to xx event.",
-                "action": "/eventId"
-            }
+
         ],
         userCalendar: [
 
@@ -86,10 +88,15 @@ export default createStore({
             return state.isDark;
         },
 
+        isLoginModal(state) {
+            return state.loginModal;
+        },
+
         getImages(state){
             return state.userInfo.profile_picture;
         },
 
+<<<<<<< HEAD
         // invitedFriends(state) {
         //     if (state.invitedFriends.length > 0) {
         //         return state.invitedFriends.filter(friend => friend.status == true);
@@ -98,12 +105,18 @@ export default createStore({
         //         return state.invitedFriends;
         //     }
         // }
+=======
+        userId(state) {
+            return state.userInfo.user_id;
+        }
+>>>>>>> b759056b344f58af2e0c5542765eb57c09b9bf7c
     },
 
     // Actions == Methods
         //API calls go here.
         // Actions never update the state
     actions: {
+<<<<<<< HEAD
         // Invite friend
         // inviteFriend({commit}, friend) {
         //     commit('updateFriendsInvited', friend);
@@ -119,6 +132,16 @@ export default createStore({
 
         InviteList({commit}, invitedFriends) {
             commit('updateInviteList', invitedFriends);
+=======
+        // Update Show Notifications
+        toggleShowNotifications({commit}) {
+            commit('updateShowNotifications');
+        },
+
+        // Update Login Modal
+        toggleLoginModal({commit}) {
+            commit('updateLoginModal');
+>>>>>>> b759056b344f58af2e0c5542765eb57c09b9bf7c
         },
 
         // Post New Event
@@ -147,6 +170,25 @@ export default createStore({
                     resolve();
                 })
             })
+        },
+        //--CALENDAR ACTIONS--//
+        fetchUserAvailability({commit}) {
+            return new Promise((resolve, reject) => {
+                CalendarAPI.getUserAvailability1(events => {
+                    commit('setUserAvailability', events);
+                    commit('updateDatetimeCalendar');
+                    resolve();
+                })
+            })
+        },
+
+        saveUserCalendar({commit}, calendarEvents){
+
+            for(let i = 0; i<calendarEvents.length; i++){
+                // console.log(calendarEvents[i].start);
+                // CalendarAPI.postUserCalendar(calendarEvents[i]);
+                commit('setUserCalendar', calendarEvents[i]);
+            }
         },
 
 
@@ -186,17 +228,23 @@ export default createStore({
             commit('setNewEventNone', [clear, type]);
         },
 
+
         // Login
-        submitLogin({commit}, auth) {
+        submitLogin({commit, dispatch}, auth) {
             return new Promise((resolve, reject) => {
                 LoginsAPI.postLogin(auth, status => {
                     // Forbidden wrong email or password
                     if (status.status == 200) {
                         // Commit user info to state
-                        // location.replace("/");
-                        console.log(status.rows)
                         commit('setUserInfo', status.rows[0]);
+                        commit('updateLoginModal');
+
+                        // Notifications call
+                        dispatch('fetchNotifications', status.rows[0].user_id);
+
                         console.log('Login successful');
+                        // router.push({ name: '/' });
+
                     }
                     else if (status.status == 403) {
                         console.log(status)
@@ -210,16 +258,41 @@ export default createStore({
             })
         },
 
-        loginOnOpen({commit}) {
+        // Fetch User Notifications
+        fetchNotifications({commit}, user_id) {
+            return new Promise((resolve, reject) => {
+                NotificationsAPI.getNotifications(user_id, notifications => {
+                    if (notifications.status == 200) {
+                        commit('updateNotifications', notifications.rows);
+                        this.commit('updateIconCode', "notifications");
+                    }
+                    else {
+                        console.log('error');
+                    }
+                })
+            })
+        },
+
+        // Change page style - Light / Dark
+        updatePageStyle({commit}) {
+            commit('togglePageStyle');
+        },
+
+        loginOnOpen({commit, dispatch}) {
             return new Promise((resolve, reject) => {
                 RefreshLoginAPI.postLogin(status => {
                     // Forbidden wrong email or password
                     if (status.status == 200) {
                         // Commit user info to state
-                        // location.replace("/");
+
+                        // Notifications call
+                        dispatch('fetchNotifications', status.rows[0].user_id);
+
                         console.log(status.rows)
                         commit('setUserInfo', status.rows);
                         console.log('Login successful');
+                        // router.push({ name: 'login' });
+                        return;
                     }
                     else if (status.status == 403) {
                         console.log(status)
@@ -233,6 +306,7 @@ export default createStore({
             })
         },
 
+<<<<<<< HEAD
         // Change page style - Light / Dark
         updatePageStyle({commit}) {
             commit('togglePageStyle');
@@ -240,11 +314,26 @@ export default createStore({
 
             commit('setNewEventNone', [clear, type]);
         },
+=======
+
+
+            // commit('setNewEventNone', [clear, type]);
+
+
+        inviteFriend() {
+            let search = '';
+            return this.friendInfo.filter((friend) =>{
+                friend.firstName.toLowerCase().includes(this.search.toLowerCase()) ||
+                friend.lastName.toLowerCase().includes(this.search.toLowerCase())
+            });
+        }
+>>>>>>> b759056b344f58af2e0c5542765eb57c09b9bf7c
     },
 
     // Setting and updating the state.
     // Mutations only set or update the state.
     mutations: {
+<<<<<<< HEAD
         // Invite Friend
         // updateFriendsInvited(state, friend) {
         //     friend['status'] = true;
@@ -260,6 +349,22 @@ export default createStore({
 
         updateInviteList(state, invitedFriends) {
             state.invitedFriends = invitedFriends;
+=======
+        // Update Show Notifications
+        updateShowNotifications(state) {
+            state.showNotifications = !state.showNotifications;
+
+        },
+
+        // Update Notifications
+        updateNotifications(state, notifications) {
+            state.notifications = notifications;
+        },
+
+        // Update Login Modal
+        updateLoginModal(state) {
+            state.loginModal = !state.loginModal;
+>>>>>>> b759056b344f58af2e0c5542765eb57c09b9bf7c
         },
 
         // Change page style - Light / Dark
@@ -291,22 +396,37 @@ export default createStore({
 
         },
 
-        updateIconCode(state, emoji) {
-
-            for (let i = 0; i < state.publicEvents.length; i++) {
-                let rawCode = state.publicEvents[i].icon.replace("U+", "0x");
+       
+        updateIconCode(state, stateElement) {
+            for (let i = 0; i < state[stateElement].length; i++) {
+                let rawCode = state[stateElement][i].icon.replace("U+", "0x");
                 let decoded = String.fromCodePoint(rawCode);
-                state.publicEvents[i].icon = decoded;
+                state[stateElement][i].icon = decoded;
             }
         },
 
         setPublicEvents(state, publicEvents) {
             state.publicEvents = publicEvents;
-            this.commit('updateIconCode');
+            this.commit('updateIconCode', "publicEvents");
         },
 
         setUserInfo(state, userInfo) {
             state.userInfo = userInfo;
+        },
+
+        setUserAvailability (state, userAvailability){
+            state.userAvailability=userAvailability;
+        },
+
+        updateDatetimeCalendar(state) {
+            for(let i = 0; i<state.userAvailability.length;i++){
+                state.userAvailability[i].start = new Date(state.userAvailability[i].start);
+                state.userAvailability[i].end = new Date(state.userAvailability[i].end);
+            }
+        },
+
+        setUserCalendar(state, calendarEvents){
+            state.userAvailability.push(calendarEvents);
         }
 
     }

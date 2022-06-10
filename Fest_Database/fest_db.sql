@@ -35,8 +35,11 @@ CREATE Table friends (
 CREATE Table calendar_availability(
   calendar_id int NOT NULL,
   user_id int,
-  start_date datetime,
-  end_date datetime,
+  start_date datetime AS start,
+  end_date datetime AS end,
+  title varchar(30),
+  content varchar(100),
+  class varchar(20),
   PRIMARY KEY (calendar_id),
   FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
 );
@@ -101,10 +104,12 @@ CREATE Table user_logs (
 CREATE Table notifications (
   notification_id int NOT NULL AUTO_INCREMENT,
   user_id int NOT NULL,
+  event_id int NOT NULL,
   type_id int NOT NULL,
-  created_at timestamp,
+  created_at DEFAULT CURRENT_TIMESTAMP ,
   PRIMARY KEY (notification_id),
   FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
+  FOREIGN KEY (event_id) REFERENCES events(event_id) ON DELETE CASCADE
 );
 
 CREATE Table notification_type (
@@ -112,6 +117,15 @@ CREATE Table notification_type (
   type_desc varchar(100),
   PRIMARY KEY (type_id)
 );
+
+CREATE TABLE `user_login` (
+  `user_id` int NOT NULL,
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+-- Notification Types
+INSERT INTO notification_type (type_desc)  VALUES ("Invited"), ("Attending");
 
 
 

@@ -2,6 +2,7 @@ import store from "@/store/index";
 import Dropzone from "dropzone";
 
 
+
 export default {
     computed: {
         userInfo() {
@@ -30,6 +31,7 @@ export default {
             return "/src/assets/images/party.jpg";
 
         }
+        
 
         // urlImage() {
         //     return getImage();

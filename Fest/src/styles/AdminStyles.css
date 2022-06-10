@@ -169,24 +169,24 @@ td button{
 }
 
 /*--Admin Modal--*/
-.admin_modal{
+.admin_modal, .edit_user_modal{
     width: 100%;
     height:100%;
     background-color: rgba(0, 0, 0, 0.8);
     position: absolute;
     top: 0;
-    display:none;
+    display:flex;
     justify-content:center;
     align-items: center;
 }
 
-.modal_button{
+.modal_button, .modal_button2{
     position:absolute;
     z-index:1;
     width:100%;
 }
 
-.modal_button button{
+.modal_button button, .modal_button2 button{
     float:right;
     border:none;
     border-radius: 50%;
@@ -202,6 +202,70 @@ td button{
 
 .admin_management{
     width:400px;
-    height:500px;
+    height:700px;
+    display:flex;
+    flex-direction:column;
 }
+
+/*-----EDIT USER MODAL---------*/
+.admin_management_bottom{
+    display:flex;
+    flex-direction: column;
+}
+
+
+
+.admin_management_nav{
+    display:flex;
+    flex-direction: column;
+    height:100%;
+    justify-content:space-evenly;
+}
+
+.personal_details_top, .personal_details_bottom, .residence_top, .residence_bottom, .profile-change-pw, .admin_status, .residence_button{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.personal_details_top div, .personal_details_bottom div, .residence_top div, .residence_bottom div, .profile-change-pw div, .admin_status div, .residence_button div{
+    margin-top:3px;
+    margin-bottom:3px;
+}
+
+.dot{
+    height: 12px;
+    width: 12px;
+    background-color: #FF7551;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+button {
+    border-radius: 25px;
+    width: 120px;
+    height:25px;
+    border: none;
+    cursor:pointer;
+    text-align:center;
+    display:inline-block;
+    font-weight:bold;
+}
+
+.button-blue{
+    background-color: #2E81DA;
+    color: white;
+}
+
+.button-orange{
+    background-color: #FF7551;
+    color:white;
+}
+
+.edit_user_modal input{
+    border: 1px solid #9A9A9A;
+    border-radius: 10px;
+    height:25px;
+}
+
 

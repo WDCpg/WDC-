@@ -41,7 +41,6 @@ router.use('/events/', function(req, res, next) {
     }
 });
 
-
 /*
     Private Routes:
     User must be logged in to access these routes.

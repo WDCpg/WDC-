@@ -5,26 +5,15 @@ export default {
         changeStyleMode() {
             // Update state
             store.dispatch('updatePageStyle');
-
-            // Elements to change
-            // let navBar = document.getElementById('navigation-container');
-            // let menuIcon = document.getElementById('menu-button');
-            // let companyName = document.getElementById('company-name');
-            // let sideNav = document.getElementById('side-menu-container');
-
-            // let elementsToUpdate = [
-            //     navBar, menuIcon, companyName, sideNav
-            // ];
-
-            // for (let i = 0; i < elementsToUpdate.length; i++) {
-            //     elementsToUpdate[i].classList.toggle('dark');
-            //     elementsToUpdate[i].classList.toggle('light');
-            // }
         },
 
         displayLoginModal() {
-            document.querySelector(".bg-modal").style.display="flex";
-         }
+            store.dispatch('toggleLoginModal');
+        },
+
+        toggleShowNotifications() {
+            store.dispatch('toggleShowNotifications');
+        }
     },
     computed: {
         userInfo() {
@@ -33,6 +22,22 @@ export default {
         
         isDark() {
             return store.state.isDark;
+        },
+
+        showNotifications() {
+            return store.state.showNotifications;
+        },
+
+        notifications() {
+            let notifications = store.state.notifications;
+            for (let i = 0; i < notifications.length; i++) {
+                if(notifications[i].event_title.length > 30) {
+                    // If title string is too long remove characters
+                    notifications[i].event_title = notifications[i].event_title.slice(0, 30) + '..'
+                }
+            }
+            return notifications;
+         
         }
     }
 }

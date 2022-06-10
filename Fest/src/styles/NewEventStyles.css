@@ -224,6 +224,10 @@ h3 {
 .event-photo {
     font-size: 1vw;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> b759056b344f58af2e0c5542765eb57c09b9bf7c
 .event-photo input[type=file]::file-selector-button {
     border: none;
     border-radius: 12px;
@@ -403,6 +407,7 @@ h3 {
     display: flex;
     flex-direction: column;
     margin: 0 15px;
+    transition: box-shadow .24s cubic-bezier(.4,0,.3,1),background-color .24s cubic-bezier(.4,0,.3,1);
 }
 
 
