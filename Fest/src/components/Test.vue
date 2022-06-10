@@ -17,6 +17,7 @@ export default {
       const myuser = user
       console.log(profile)
       console.log(myuser)
+      
     },
 
     signOut() {
