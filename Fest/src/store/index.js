@@ -245,10 +245,6 @@ export default createStore({
             state.newEventData['emoji'] = emojiCode;
         },
 
-        updateInvitedFriends(state, invitedFriends) {
-            state.invitedFriends= invitedFriends;
-        },
-
         // Change page style - Light / Dark
         togglePageStyle(state) {
             state.isDark = !state.isDark;
