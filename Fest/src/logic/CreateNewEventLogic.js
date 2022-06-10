@@ -13,6 +13,10 @@ export default {
     },
 
     methods: {
+        postEmoji(emojiCode) {
+            store.dispatch('newEventEmoji', emojiCode);
+        },
+
         cancelCreate() {
             location.replace("/");
             //store.dispatch('cancelCreate');

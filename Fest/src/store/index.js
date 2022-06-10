@@ -109,7 +109,9 @@ export default createStore({
         //     commit('updateFriendsInvited', friend);
 
         // },
-
+        newEventEmoji({commit}, emojiCode) {
+            commit('updateNewEventEmoji', emojiCode);
+        },
 
         // Post New Event
         postNewEvent() {
@@ -234,6 +236,10 @@ export default createStore({
         //     friend['status'] = true;
         //     state.invitedFriends.push(friend);
         // },
+        updateNewEventEmoji(state, emojiCode) {
+            state.newEventData['emoji'] = emojiCode;
+        },
+
 
         // Change page style - Light / Dark
         togglePageStyle(state) {
