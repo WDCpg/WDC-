@@ -37,5 +37,11 @@ export default {
         auth2.signOut().then(function () {
           console.log('User signed out.');
         });
+
+        function signOut() {
+            gapi.auth2.getAuthInstance().signOut().then(function() {
+              console.log("User signed out")
+              })
+          }
     }
 }
