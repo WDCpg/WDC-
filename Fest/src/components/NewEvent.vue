@@ -53,7 +53,7 @@
                     <div class = "emoji">
                         <div class="emoji-search-container">
                             <form class = "emoji-search">
-                                <input class = "emoji-search-text" type="search" placeholder="Search Emoji...Coming Soon..." name ="emoji">
+                                <input v-model="newEventData.icon" class = "emoji-search-text" type="search" placeholder="Search Emoji...Coming Soon..." name ="emoji">
                                 <svg class = "emoji-search-button" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg>
                             </form>
 
@@ -68,14 +68,14 @@
 
                         <div >
                             <ul class = "emoji-list">
-                                <li><button v-model="newEventData.icon" @click="postEmoji('U+1F600')" type="button" class = "emoji-button">&#x1F600;</button></li>
-                                <li><button v-model="newEventData.icon" @click="postEmoji('U+1F606')" type="button" class = "emoji-button">&#x1F606;</button></li>
-                                <li><button v-model="newEventData.icon" @click="postEmoji('U+1F923')" type="button" class = "emoji-button">&#x1F923;</button></li>
-                                <li><button v-model="newEventData.icon" @click="postEmoji('U+1F929')" type="button" class = "emoji-button">&#x1F929;</button></li>
-                                <li><button v-model="newEventData.icon" @click="postEmoji('U+1F973')" type="button" class = "emoji-button">&#x1F973;</button></li>
-                                <li><button v-model="newEventData.icon" @click="postEmoji('U+1F3C7')" type="button" class = "emoji-button">&#x1F3C7;</button></li>
-                                <li><button v-model="newEventData.icon" @click="postEmoji('U+1F6B5')" type="button" class = "emoji-button">&#x1F6B5;</button></li>
-                                <li><button v-model="newEventData.icon" @click="postEmoji('U+1F46F')" type="button" class = "emoji-button">&#x1F46F;</button></li>
+                                <li><button @click="postEmoji('U+1F600')" type="button" class = "emoji-button">&#x1F600;</button></li>
+                                <li><button @click="postEmoji('U+1F606')" type="button" class = "emoji-button">&#x1F606;</button></li>
+                                <li><button @click="postEmoji('U+1F923')" type="button" class = "emoji-button">&#x1F923;</button></li>
+                                <li><button @click="postEmoji('U+1F929')" type="button" class = "emoji-button">&#x1F929;</button></li>
+                                <li><button @click="postEmoji('U+1F973')" type="button" class = "emoji-button">&#x1F973;</button></li>
+                                <li><button @click="postEmoji('U+1F3C7')" type="button" class = "emoji-button">&#x1F3C7;</button></li>
+                                <li><button @click="postEmoji('U+1F6B5')" type="button" class = "emoji-button">&#x1F6B5;</button></li>
+                                <li><button @click="postEmoji('U+1F46F')" type="button" class = "emoji-button">&#x1F46F;</button></li>
                             </ul>
                         </div>
                     </div>
@@ -291,7 +291,7 @@
 
                     <div class="post-icon-container">
                         <p>
-                            &#129409;
+                            {{newEventData.icon}};
                         </p>
                     </div>
                     <div class="post-details-container">
