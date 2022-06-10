@@ -119,7 +119,7 @@ export default createStore({
         },
         // Post Frient Invited
         postFriendInvited() {
-            NewEventAPI.postinvitedFriends(this.state.invitedFriends);
+            NewEventAPI.postFriendInvited(this.state.invitedFriends);
         },
 
         //update user's password
