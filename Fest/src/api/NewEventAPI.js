@@ -15,7 +15,7 @@ export default {
         xhttp.setRequestHeader('Content-type', 'application/json; charset=UTF-8' );
         //Send request
         xhttp.send(JSON.stringify(newEventData));
-    },
+    }
 
     // postFriendInvited(invitedFriends) {
     //     console.log(invitedFriends)
