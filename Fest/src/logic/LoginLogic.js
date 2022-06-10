@@ -28,10 +28,11 @@ export default {
         onSignIn (user) {
             var profile = user.getBasicProfile()
             var myuser = user
-            //const tokenInfo = await oAuth2Client.getTokenInfo('my-access-token')
-            console.log(tokeninfo)
-            console.log(profile)
-            console.log(user)
+            var id_token = user.getAuthResponse().id_token
+            console.log("hey")
+            console.log(id_token)
+            //console.log(profile)
+            //console.log(user)
             store.dispatch('postGoogleLogin', profile, user)
 
           },
