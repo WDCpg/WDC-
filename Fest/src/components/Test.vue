@@ -10,7 +10,8 @@ export default {
     onSignIn(googleUser) {
     console.log('WORKING');
     console.log('user is ' +JSON.stringify(googleUser.getBasicProfile()));
-  },
+    }
+  }
 }
 
 </script>
