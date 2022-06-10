@@ -20,10 +20,11 @@ export default {
     },
 
     signOut() {
-            gapi.auth2.getAuthInstance().signOut().then((function() {
-              console.log('User signed out')
-            }))
-          }
-  }
+      gapi.auth2.getAuthInstance().signOut().then((function() {
+        console.log('User signed out')
+          }))
+        }
+    }
 }
+
 </script>
