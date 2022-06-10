@@ -42,7 +42,7 @@ export default {
         },
 
         cancelInvited(invitedFriends, friendInvited, index) {
-            console.log('invite', friendInvited);
+            //console.log('invite', friendInvited);
 
             let friendIndex = this.friendInfo.findIndex(friend => friend.id === friendInvited.id);
 
