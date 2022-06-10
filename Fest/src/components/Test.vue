@@ -7,7 +7,7 @@
 
 export default {
   methods: {
-    onSignIn(googleUser) {
+    onSignIn(hey) {
     console.log('WORKING');
     console.log('user is ' +JSON.stringify(googleUser.getBasicProfile()));
     }
