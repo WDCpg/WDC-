@@ -68,14 +68,14 @@
 
                         <div >
                             <ul class = "emoji-list">
-                                <li><button @click="postEmoji('U+1F600')" type="button" class = "emoji-button">1F600;</button></li>
-                                <li><button class = "emoji-button">&#128514;</button></li>
-                                <li><button class = "emoji-button">&#128515;</button></li>
-                                <li><button class = "emoji-button">&#128516;</button></li>
-                                <li><button class = "emoji-button">&#128517;</button></li>
-                                <li><button class = "emoji-button">&#128518;</button></li>
-                                <li><button class = "emoji-button">&#128519;</button></li>
-                                <li><button class = "emoji-button">&#128520;</button></li>
+                                <li><button @click="postEmoji('U+1F600')" type="button" class = "emoji-button">&#x1F600;</button></li>
+                                <li><button @click="postEmoji('U+1F600')" type="button" class = "emoji-button">&#x1F600;</button></li>
+                                <li><button @click="postEmoji('U+1F600')" type="button" class = "emoji-button">&#x1F600;</button></li>
+                                <li><button @click="postEmoji('U+1F600')" type="button" class = "emoji-button">&#x1F600;</button></li>
+                                <li><button @click="postEmoji('U+1F600')" type="button" class = "emoji-button">&#x1F600;</button></li>
+                                <li><button @click="postEmoji('U+1F600')" type="button" class = "emoji-button">&#x1F600;</button></li>
+                                <li><button @click="postEmoji('U+1F600')" type="button" class = "emoji-button">&#x1F600;</button></li>
+                                <li><button @click="postEmoji('U+1F600')" type="button" class = "emoji-button">&#x1F600;</button></li>
                             </ul>
                         </div>
                     </div>
