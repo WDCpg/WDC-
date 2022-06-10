@@ -109,7 +109,7 @@
 
                     <form class = "event-end">
                         <div>
-                            <label>End Date and Time:</label>
+                            <label>-End Date and Time:</label>
                         </div>
                         <div>
                             <input type = "datetime-local" v-model="newEventData.event_end">
