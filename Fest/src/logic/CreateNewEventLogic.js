@@ -30,10 +30,8 @@ export default {
             store.dispatch('clearInput', type);
         },
 
-        submitNewEvent(invitedFriends) {
-            console.log(invitedFriends);
+        submitNewEvent() {
             store.dispatch('postNewEvent');
-            store.dispatch('postFriendInvited', invitedFriends);
         },
 
         inviteFriend(friend,index) {
