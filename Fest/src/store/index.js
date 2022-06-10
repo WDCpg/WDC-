@@ -245,8 +245,8 @@ export default createStore({
             state.newEventData['emoji'] = emojiCode;
         },
 
-        updateinvitedFriends(state, emojiCode) {
-            state.newEventData['emoji'] = emojiCode;
+        updateInvitedFriends(state, invitedFriends) {
+            state.invitedFriends= invitedFriends;
         },
 
         // Change page style - Light / Dark
