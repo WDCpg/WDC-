@@ -317,6 +317,24 @@
                         </p>
                     </div>
 
+                    <div class="post-location-container">
+                        <p>
+                            {{newEventData.street}}
+                        </p>
+                        <p>
+                            {{newEventData.city}}
+                        </p>
+                        <p>
+                            {{newEventData.state}}
+                        </p>
+                        <p>
+                            {{newEventData.country}}
+                        </p>
+                        <p>
+                            {{newEventData.post_code}}
+                        </p>
+                    </div>
+
                     <div class="post-privacy-container">
                         <p>{{ newEventData.privacy }}</p>
                     </div>
