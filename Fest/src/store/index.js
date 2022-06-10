@@ -174,7 +174,7 @@ export default createStore({
                 "city": "Adelaide",
                 "street": "1 KingWilliam St",
                 "post_code": "5000",
-                "icon": "None",
+                "icon": "U+1F389",
                 "privacy" : "Public"
             }
             commit('setNewEventDefault', newEventDefault);
