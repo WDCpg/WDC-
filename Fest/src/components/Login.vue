@@ -37,6 +37,8 @@
                             <button type="submit" @click="submitLogin" class="signin-button">Sign in</button>
                         </form>
 
+                        <div class="g-signin2"></div>
+
                     </div>
                 </div>
         </div>
