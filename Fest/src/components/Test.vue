@@ -1,6 +1,8 @@
 <template>
 <div class="g-signin2" data-onsuccess="onSignIn()"></div>
+
 <div id="content"></div>
+<button onclick="signOut()">Sign out</button>
 
 </template>
 <script>
