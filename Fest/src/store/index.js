@@ -144,9 +144,9 @@ export default createStore({
             signupAPI.postSignupInfo(this.state.newSignupData);
         },
 
-        postGoogleLogin({commit}, profile, token) {
+        postGoogleLogin({commit}, profile, id_token) {
             commit('setGoogleProfile', profile),
-            commit('setGoogleToken', token)
+            commit('setGoogleToken', id_token)
         },
 
         fetchPublicEvents({commit}) {
@@ -390,8 +390,8 @@ export default createStore({
             console.log('googleUserProfile: ', this.googleUserProfile);
         },
 
-        setGoogleToken(state, token) {
-            state.googleToken = token;
+        setGoogleToken(state, id_token) {
+            state.googleToken = id_token;
             console.log('googleToken: ', this.googleToken);
         }
     }
