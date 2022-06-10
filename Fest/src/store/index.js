@@ -113,6 +113,10 @@ export default createStore({
             commit('updateNewEventEmoji', emojiCode);
         },
 
+        newEventPrivacy({commit},privacy) {
+            commit('updateNewEventPrivacy',privacy);
+        },
+
         // Post New Event
         postNewEvent() {
             NewEventAPI.postNewEvent(this.state.newEventData);
@@ -243,6 +247,10 @@ export default createStore({
         // },
         updateNewEventEmoji(state, emojiCode) {
             state.newEventData['emoji'] = emojiCode;
+        },
+
+        updateNewEventPrivacy(state,privacy) {
+            state.newEventData.privacy = privacy;
         },
 
         // Change page style - Light / Dark

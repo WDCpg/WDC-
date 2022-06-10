@@ -18,7 +18,7 @@ export default {
         },
 
         postPrivacy(privary) {
-            store.dispatch('newEventEmoji', privary);
+            store.dispatch('newEventPrivacy', privary);
         },
 
         cancelCreate() {
