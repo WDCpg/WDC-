@@ -1,7 +1,6 @@
 export default {
     postNewEvent(newEventData){
-        console.log(newEventData)
-
+        //console.log(newEventData)
         let xhttp = new XMLHttpRequest();
 
         //Run on response
