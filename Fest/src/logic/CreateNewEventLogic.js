@@ -26,9 +26,9 @@ export default {
             store.dispatch('clearInput', type);
         },
 
-        submitNewEvent() {
+        submitNewEvent(invitedFriends) {
             store.dispatch('postNewEvent');
-            store.dispatch('postFriendInvited', this.invitedFriends);
+            store.dispatch('postFriendInvited', invitedFriends);
         },
 
         inviteFriend(friend,index) {
