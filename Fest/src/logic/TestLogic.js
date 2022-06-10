@@ -1,6 +1,11 @@
 import store from "@/store/index";
 
 export default {
+    mounted() {
+        gapi.signin2.render('google-signin-button', {
+          onsuccess: this.onSignIn
+        })
+    }
     computed: {
         googleData(){
             return store.state.googleData;
@@ -11,7 +16,7 @@ export default {
             const myuser = user
             console.log(profile)
             console.log(myuser)
-            store.dispatch('postGoogleData')
+            store.dispatch('googleData')
           },
 
           signOut() {
