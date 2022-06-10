@@ -9,7 +9,12 @@
   function onSignIn(googleUser) {
     console.log('WORKING');
     console.log('user is ' +JSON.stringify(googleUser.getBasicProfile()));
-    document.querySelector
+
+    function signOut() {
+      gapi.auth2.getAuthInstance().signOut().then(function() {
+        console.log("User signed out")
+        })
+    }
 }
 
 </script>
