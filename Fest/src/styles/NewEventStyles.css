@@ -224,10 +224,7 @@ h3 {
 .event-photo {
     font-size: 1vw;
 }
-<<<<<<< HEAD
-=======
 
->>>>>>> b759056b344f58af2e0c5542765eb57c09b9bf7c
 .event-photo input[type=file]::file-selector-button {
     border: none;
     border-radius: 12px;

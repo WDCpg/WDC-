@@ -96,7 +96,6 @@ export default createStore({
             return state.userInfo.profile_picture;
         },
 
-<<<<<<< HEAD
         // invitedFriends(state) {
         //     if (state.invitedFriends.length > 0) {
         //         return state.invitedFriends.filter(friend => friend.status == true);
@@ -105,18 +104,15 @@ export default createStore({
         //         return state.invitedFriends;
         //     }
         // }
-=======
         userId(state) {
             return state.userInfo.user_id;
         }
->>>>>>> b759056b344f58af2e0c5542765eb57c09b9bf7c
     },
 
     // Actions == Methods
         //API calls go here.
         // Actions never update the state
     actions: {
-<<<<<<< HEAD
         // Invite friend
         // inviteFriend({commit}, friend) {
         //     commit('updateFriendsInvited', friend);
@@ -132,7 +128,6 @@ export default createStore({
 
         InviteList({commit}, invitedFriends) {
             commit('updateInviteList', invitedFriends);
-=======
         // Update Show Notifications
         toggleShowNotifications({commit}) {
             commit('updateShowNotifications');
@@ -141,7 +136,6 @@ export default createStore({
         // Update Login Modal
         toggleLoginModal({commit}) {
             commit('updateLoginModal');
->>>>>>> b759056b344f58af2e0c5542765eb57c09b9bf7c
         },
 
         // Post New Event
@@ -306,7 +300,6 @@ export default createStore({
             })
         },
 
-<<<<<<< HEAD
         // Change page style - Light / Dark
         updatePageStyle({commit}) {
             commit('togglePageStyle');
@@ -314,7 +307,6 @@ export default createStore({
 
             commit('setNewEventNone', [clear, type]);
         },
-=======
 
 
             // commit('setNewEventNone', [clear, type]);
@@ -327,13 +319,11 @@ export default createStore({
                 friend.lastName.toLowerCase().includes(this.search.toLowerCase())
             });
         }
->>>>>>> b759056b344f58af2e0c5542765eb57c09b9bf7c
     },
 
     // Setting and updating the state.
     // Mutations only set or update the state.
     mutations: {
-<<<<<<< HEAD
         // Invite Friend
         // updateFriendsInvited(state, friend) {
         //     friend['status'] = true;
@@ -349,7 +339,6 @@ export default createStore({
 
         updateInviteList(state, invitedFriends) {
             state.invitedFriends = invitedFriends;
-=======
         // Update Show Notifications
         updateShowNotifications(state) {
             state.showNotifications = !state.showNotifications;
@@ -364,7 +353,6 @@ export default createStore({
         // Update Login Modal
         updateLoginModal(state) {
             state.loginModal = !state.loginModal;
->>>>>>> b759056b344f58af2e0c5542765eb57c09b9bf7c
         },
 
         // Change page style - Light / Dark
@@ -396,7 +384,7 @@ export default createStore({
 
         },
 
-       
+
         updateIconCode(state, stateElement) {
             for (let i = 0; i < state[stateElement].length; i++) {
                 let rawCode = state[stateElement][i].icon.replace("U+", "0x");

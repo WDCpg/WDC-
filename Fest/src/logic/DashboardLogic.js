@@ -45,10 +45,7 @@ export default {
     created() {
         store.dispatch('updateIsLoading');
 
-<<<<<<< HEAD
-=======
         // store.dispatch('loginOnOpen');
->>>>>>> b759056b344f58af2e0c5542765eb57c09b9bf7c
         store.dispatch('fetchPublicEvents')
             .then(() => store.dispatch('updateIsLoading'));
     }
