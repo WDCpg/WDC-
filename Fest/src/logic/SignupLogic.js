@@ -1,6 +1,11 @@
 import store from "@/store/index";
 
 export default {
+    mounted() {
+        gapi.signin2.render('google-signin-button', {
+          onsuccess: this.onSignIn
+        })
+    },
     computed: {
         newSignupData(){
             return store.state.newSignupData;
@@ -24,7 +29,20 @@ export default {
                     document.querySelector(".signUpError").appendChild(error);
                 }
             }
-        }
+        },
+        onSignIn (user) {
+            var profile = user.getBasicProfile()
+            var myuser = user
+            console.log(profile);
+            console.log(user)
+            store.dispatch('postGoogleLogin', profile, user);
+          },
+
+          signOut() {
+            gapi.auth2.getAuthInstance().signOut().then((function() {
+              console.log('User signed out')
+                }))
+          }
     }
 }
 
