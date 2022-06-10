@@ -123,7 +123,7 @@ export default createStore({
 
         InviteList({commit}, invitedFriends) {
             commit('updateInviteList', invitedFriends);
-        }
+        },
 
         // Update Show Notifications
         toggleShowNotifications({commit}) {
