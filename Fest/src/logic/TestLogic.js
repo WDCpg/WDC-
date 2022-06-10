@@ -5,12 +5,12 @@ export default {
         gapi.signin2.render('google-signin-button', {
           onsuccess: this.onSignIn
         })
-    }
+    },
     computed: {
         googleData(){
             return store.state.googleData;
         }
-    }
+    },
     methods: {
         onSignIn (user) {
             const profile = user.getBasicProfile()
@@ -24,7 +24,6 @@ export default {
             gapi.auth2.getAuthInstance().signOut().then((function() {
               console.log('User signed out')
                 }))
-              }
           }
     }
 }
