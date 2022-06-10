@@ -6,7 +6,8 @@
 <script>
   function onSignIn(googleUser) {
     console.log('WORKING');
-    console.log('user is ' +JSON.stringify(googleUser));
+    console.log('user is ' +JSON.stringify(googleUser.getBasicProfile()));
+    document.querySelector
 }
 
 </script>
