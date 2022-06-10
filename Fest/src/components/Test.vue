@@ -2,6 +2,8 @@
 <template>
   <div id="google-signin-button"></div>
   <button @click="signOut">Sign Out</button>
+  googleData
+
 </template>
 
 <script>
