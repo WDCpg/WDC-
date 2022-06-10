@@ -25,7 +25,7 @@
                             <label for="email">Email</label><br>
                             <input type="text" id="email" name="email"><br><br>
                             <label for="password">Password</label><br>
-                            <input minlength="8" type="password" id="password" name="password"><br><br><br>
+                            <input minlength="8" type="password" id="password" name="password"><br><br>
                             <div class="signinbuttons">
                             </div>
                             <button type="submit" @click="submitLogin" class="signin-button">Sign in</button>
