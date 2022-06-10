@@ -40,7 +40,7 @@ export default {
 
         submitNewEvent() {
             store.dispatch('postNewEvent');
-            store.dispatch('postFriendInvited');
+            //store.dispatch('postFriendInvited');
         },
 
         inviteFriend(friend,index) {
