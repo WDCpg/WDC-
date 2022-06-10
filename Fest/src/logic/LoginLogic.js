@@ -27,12 +27,12 @@ export default {
         },
         onSignIn (user) {
             var profile = user.getBasicProfile()
-            var myuser = user
+            //var myuser = user
             var id_token = user.getAuthResponse().id_token
             console.log(id_token)
             console.log(profile)
-            console.log(user)
-            store.dispatch('postGoogleLogin', profile, user)
+            //console.log(user)
+            store.dispatch('postGoogleLogin', profile, id_token)
 
           },
 
