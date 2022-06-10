@@ -184,14 +184,15 @@ h2 {
 }
 .event-start {
     display: flex;
-    gap:33px;
+    gap:30px;
     font-size: 1vw;
 }
 .event-end {
     display: flex;
-    gap:39px;
+    gap:30px;
     font-size: 1vw;
 }
+
 
 .event-location {
     font-size: 1vw;

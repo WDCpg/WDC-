@@ -102,14 +102,18 @@
                             <div>
                                 <label>Start Date and Time:</label>
                             </div>
-                            <input type = "datetime-local" v-model="newEventData.event_start">
+                            <div>
+                                <input type = "datetime-local" v-model="newEventData.event_start">
+                            </div>
                     </form>
 
                     <form class = "event-end">
                         <div>
                             <label>End Date and Time:</label>
                         </div>
-                        <input type = "datetime-local" v-model="newEventData.event_end">
+                        <div>
+                            <input type = "datetime-local" v-model="newEventData.event_end">
+                        </div>
                     </form>
                     <br>
                 </div>
