@@ -1,6 +1,26 @@
 var express = require('express');
 var router = express.Router();
 
+// router.get('/Friend', function(req, res, next) {
+//     //Get all friend
+//     req.db.getConnection(function(error, connection) {
+//         if (error) {
+//             res.sendStatus(500);
+//             return;
+//         }
+
+//         let query = 'SELECT * FROM friends';
+
+//         connection.query(query, function(error, rows, fields) {
+//             connection.release();
+//             if(error){
+//                 res.sendStatus(500);
+//                 return;
+//             }
+//             res.json(rows);
+//         });
+//     });
+// })
 
 // var path = require('path');
 // var multer = require('multer');
