@@ -160,8 +160,8 @@
                 <!-- ----------------------------------------------------------------------  -->
                 <!-- event photo -->
                 <div class = "event-photo">
-                    <label>Upload a cover photo</label>
-                    <input type="file" @change="uploadImage" name="cover" accept="image/*">
+                    <div><label>Upload a cover photo</label> </div>
+                    <div><input type="file" @change="uploadImage" name="cover" accept="image/*"></div>
                 </div>
                 <br>
                 <!-- event photo end -->
