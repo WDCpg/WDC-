@@ -387,7 +387,6 @@ export default createStore({
 
         setGoogleProfile(state, profile) {
             state.googleUserProfile = profile;
-            //this.commit('googleUserProfile', "profile");
             console.log('googleUserProfile: ', this.googleUserProfile);
         },
 
