@@ -17,7 +17,7 @@ export default {
         xhttp.send(JSON.stringify(newEventData));
     },
 
-    postFriendInvited(friendInfo) {
-        console.log(friendInfo)
+    postFriendInvited(invitedFriends) {
+        console.log(invitedFriends)
     }
 }
