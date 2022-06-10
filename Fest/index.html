@@ -18,19 +18,22 @@
 
   </head>
   <body>
-    
+
     <!-- VUE APP -->
     <div id="app">
-      
+
     </div>
     <script type="module" src="/src/main.js"></script>
 
     <!-- Google Sign In -->
     <script>
       function onSignIn(googleUser) {
-        console.log('User is' + JSON.stringify(googleUser));
+        console.log('User is' + JSON.stringify(googleUser.getBasicProfile()));
+      }
+      function signOut() {
+        console.log('User signed out');
       }
     </script>
-    
+
   </body>
 </html>
