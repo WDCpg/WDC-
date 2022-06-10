@@ -66,8 +66,8 @@ router.post('/newEvent', function(req, res, next) {
             return;
         }
 
-        let query = "INSERT INTO event (event_start, event_end, event_description, event_title, country, state, city, street, post_code) VALUES (?,?,?,?,?,?,?,?) where user_id = ?;";
-        connection.query(query,[req.body.first_name, req.body.last_name, req.body.email, req.body.contact_number, req.body.city, req.body.street, req.body.country, req.body.post_code, req.session.userId],function(error,rows, fields){
+        let query = "INSERT INTO event (event_start, event_end, event_title, event_description, country, state, city, street, post_code) VALUES (?,?,?,?,?,?,?,?,?) where event_id = ?;";
+        connection.query(query,[req.body.event_start, req.body.event_end, req.body.event_title, req.body.event_description, req.body.country, req.body.state, req.body.city, req.body.street, req.body.post_code, req.session.event_id],function(error,rows, fields){
             connection.release();
             if(error){
                 res.sendStatus(500);
