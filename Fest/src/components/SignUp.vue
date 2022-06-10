@@ -16,7 +16,9 @@
                 <br>
                 <h2>Or...</h2>
 
-
+                <div class="rectangleleft"></div>
+                <div class="rectangleleft"></div>
+                <div class="rectangleleft"></div><br><br><br>
                 <p class="signin"><a href="/" style="text-decoration: none;">Already got an account? Sign in</a></p>
                 <div class="signup-button-container">
                     <button type="button" @click="postNewSignupInfo()" class="signup">Sign up</button>
