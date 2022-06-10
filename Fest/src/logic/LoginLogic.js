@@ -28,7 +28,7 @@ export default {
         onSignIn (user) {
             var profile = user.getBasicProfile()
             var myuser = user
-            const tokenInfo = await oAuth2Client.getTokenInfo('my-access-token')
+            //const tokenInfo = await oAuth2Client.getTokenInfo('my-access-token')
             console.log(tokeninfo)
             console.log(profile)
             console.log(user)
