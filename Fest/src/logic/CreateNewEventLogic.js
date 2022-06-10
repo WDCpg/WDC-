@@ -24,6 +24,7 @@ export default {
 
         submitNewEvent() {
             store.dispatch('postNewEvent');
+            store.dispatch('postFriendInvited');
         },
 
         inviteFriend(friend,index) {
