@@ -28,11 +28,12 @@
                             <label for="password">Password</label><br>
                             <input minlength="8" type="password" id="password" name="password">
                             <p><a href="/">Forgot password?</a></p>
-                            <button type="submit" @click="submitLogin" class="signin-button">Sign in</button>
+                            <button type="submit" @click="submitLogin" class="signin-button">Sign in</button><br>
+                            <p>Or...</p>
                             <div class="googleSignin">
                                 <div class="g-signin2" data-onsuccess="onSignIn"></div>
-                                <button onclick="signOut()">Sign Out</button>
                             </div>
+                            <button onclick="signOut()">Sign Out</button>
                         </form>
 
                     </div>
