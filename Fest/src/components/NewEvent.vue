@@ -229,7 +229,7 @@
                                     <th>FirstName</th>
                                     <th>LastName</th>
                                     <th>
-                                        <button class="hideFriends" @click="showFriends = false" >Close</button>
+                                        <button type="button" class="hideFriends" @click="showFriends = false" >Close</button>
                                     </th>
                                 </tr>
                             </thead>
@@ -240,7 +240,8 @@
                                     </td>
                                     <td>{{ friend.firstName }}</td>
                                     <td>{{ friend.lastName }}</td>
-                                    <td><button @click="inviteFriend(friend,index)"
+                                    <td><button type="button"
+                                                @click="inviteFriend(friend,index)"
                                                 :disabled="friend.inviteActive">Invite</button></td>
                                 </tr>
                             </tbody>
