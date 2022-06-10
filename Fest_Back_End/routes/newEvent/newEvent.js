@@ -9,7 +9,7 @@ router.get('/events/getUserEvents', function(req, res, next) {
             return;
         }
 
-        let query = 'SELECT * FROM events';
+        let query = 'SELECT * FROM friends';
 
         connection.query(query, function(error, rows, fields) {
             connection.release();
