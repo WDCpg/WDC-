@@ -10,6 +10,7 @@ export default {
         googleData(){
             return store.state.googleData;
         }
+    }
     methods: {
         onSignIn (user) {
             const profile = user.getBasicProfile()
