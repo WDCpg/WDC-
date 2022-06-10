@@ -36,6 +36,6 @@ var router = express.Router();
 //     });
 // });
 
-
+router.post('/new')
 
 module.exports = router;
