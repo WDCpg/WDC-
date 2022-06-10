@@ -10,6 +10,15 @@ export default {
         displayModal: function(){
             document.querySelector(".admin_modal").style.display="flex";
         },
+
+        hideModalUser: function(){
+            document.querySelector(".edit_user_modal").style.display="none";
+
+        },
+
+        displayModalUser: function(){
+            document.querySelector(".edit_user_modal").style.display="flex";
+        },
     },
     computed: {
         adminEmailData() {

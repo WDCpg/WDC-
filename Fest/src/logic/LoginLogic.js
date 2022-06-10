@@ -19,6 +19,7 @@ export default {
             else {
                 return;
             }
+<<<<<<< HEAD
         },
 
     //     onSignIn(googleUser) {
@@ -41,3 +42,8 @@ export default {
     
     }
 }
+=======
+        }
+    }
+}
+>>>>>>> fuleiNew2

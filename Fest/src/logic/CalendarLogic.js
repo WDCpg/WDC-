@@ -1,40 +1,87 @@
 import VueCal from 'vue-cal';
 import 'vue-cal/dist/vuecal.css';
+import store from "@/store/index";
+
 
 
 export default {
   components: { VueCal },
   data: () => ({
-    events: [
-      {
-        start: '2022-06-05 10:30',
-        end: '2022-06-05 11:30',
-        // You can also define event dates with Javascript Date objects:
-        // start: new Date(2018, 11 - 1, 16, 10, 30),
-        // end: new Date(2018, 11 - 1, 16, 11, 30),
-        title: 'Doctor appointment',
-        content: '<i class="v-icon material-icons">local_hospital</i>',
-        class: 'leisure'
-      },
-      {
-        start: '2018-11-21',
-        end: '2018-11-21',
-        title: 'Golf with John',
-        content: '<i class="v-icon material-icons">golf_course</i>',
-        class: 'sport'
-      },
-      {
-        start: '2018-11-22',
-        end: '2018-11-22',
-        title: 'Dad\'s birthday!',
-        content: '<i class="v-icon material-icons">cake</i>',
-        class: 'sport'
-      }
-    ],
-    selectedDate: new Date(new Date().getFullYear(), 11, 31),
-
+      calendarEvent: [],
+      userCalendarEvent: [],
+      selectedDate: new Date(new Date().getFullYear(), 11, 31)
   }),
 
+
+  computed: {
+    userAvailability() {
+      console.log(store.state.userAvailability);
+      return store.state.userAvailability;
+    },
+
+    userId() {
+      return store.getters.userId;
+    }
+  },
+
+  methods: {
+    logUserCalendar(event, data) {
+      console.log(event, data)
+
+    },
+
+    newCalEvent(event,data){
+        this.calendarEvent.push(data.event);
+
+       for (let i = 0; i < this.calendarEvent.length; i++){
+            let id = this.calendarEvent[i]._eid.replace("_","");
+            let startDate = this.calendarEvent[i].start;
+            let endDate = this.calendarEvent[i].end;
+            let title = this.calendarEvent[i].title;
+            let content = this.calendarEvent[i].content;
+            let htmlContent = `<i class="v-icon material-icons">${content}</i>`;
+            let object = {
+              eid: id,
+              start: startDate,
+              end: endDate,
+              title: title,
+              content: htmlContent,
+              class: "leisure"
+            };
+            this.userCalendarEvent.push(object);
+            console.log(startDate);
+
+    }
+    console.log(this.userCalendarEvent[0]);
+
+
+    },
+
+    //delete calendar events function
+    logEvents(event, data){
+      let deleteId = data._eid;
+      for(let i = 0; i < this.userCalendarEvent.length; i++){
+        if(deleteId == this.userCalendarEvent[i].event_id){
+            this.userCalendarEvent.splice(i, 1);
+        }
+      }
+      // console.log(data._eid);
+      console.log(this.userCalendarEvent);
+    },
+
+    submitUserCalendar(){
+      if(this.userCalendarEvent.length!=0){
+          store.dispatch('saveUserCalendar',this.userCalendarEvent);
+      }
+    }
+  },
+
+
+  created() {
+    if (store.getters.userId) {
+      store.dispatch('fetchUserAvailability');
+    }
+  }
 }
 
 

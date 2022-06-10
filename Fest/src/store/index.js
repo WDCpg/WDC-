@@ -6,6 +6,7 @@ import NewEventAPI from "../api/NewEventAPI";
 import LoginsAPI from "../api/LoginsAPI";
 import registerApi from "../api/RegisterAPI";
 import RefreshLoginAPI from "../api/RefreshLoginAPI";
+import CalendarAPI from "../api/CalendarAPI";
 import NotificationsAPI from "../api/NotificationsAPI";
 import signupAPI from "../api/signupAPI";
 
@@ -22,8 +23,13 @@ export default createStore({
         showNotifications: false,
         //userInfo template JSON
         userInfo: {
+
             // "first_name": "Santiago"
         },
+        //get user availability
+        userAvailability:  [
+        ],
+
         userEvents: [
             {
                 "event_id": 1,
@@ -63,12 +69,17 @@ export default createStore({
         newUserPassword: {
         },
 
+<<<<<<< HEAD
         //new registration info
         newRegisterData: {
         },
 
         //new signup info
         newSignupData: {
+=======
+        googleData: {
+        
+>>>>>>> fuleiNew2
         },
 
         friendInfo: [
@@ -91,6 +102,10 @@ export default createStore({
 
         getImages(state){
             return state.userInfo.profile_picture;
+        },
+
+        userId(state) {
+            return state.userInfo.user_id;
         }
     },
 
@@ -137,6 +152,25 @@ export default createStore({
                     resolve();
                 })
             })
+        },
+        //--CALENDAR ACTIONS--//
+        fetchUserAvailability({commit}) {
+            return new Promise((resolve, reject) => {
+                CalendarAPI.getUserAvailability1(events => {
+                    commit('setUserAvailability', events);
+                    commit('updateDatetimeCalendar');
+                    resolve();
+                })
+            })
+        },
+
+        saveUserCalendar({commit}, calendarEvents){
+
+            for(let i = 0; i<calendarEvents.length; i++){
+                // console.log(calendarEvents[i].start);
+                // CalendarAPI.postUserCalendar(calendarEvents[i]);
+                commit('setUserCalendar', calendarEvents[i]);
+            }
         },
 
 
@@ -317,6 +351,7 @@ export default createStore({
 
         },
 
+
         updateIconCode(state, stateElement) {
             for (let i = 0; i < state[stateElement].length; i++) {
                 let rawCode = state[stateElement][i].icon.replace("U+", "0x");
@@ -332,6 +367,21 @@ export default createStore({
 
         setUserInfo(state, userInfo) {
             state.userInfo = userInfo;
+        },
+
+        setUserAvailability (state, userAvailability){
+            state.userAvailability=userAvailability;
+        },
+
+        updateDatetimeCalendar(state) {
+            for(let i = 0; i<state.userAvailability.length;i++){
+                state.userAvailability[i].start = new Date(state.userAvailability[i].start);
+                state.userAvailability[i].end = new Date(state.userAvailability[i].end);
+            }
+        },
+
+        setUserCalendar(state, calendarEvents){
+            state.userAvailability.push(calendarEvents);
         }
 
     }

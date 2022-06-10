@@ -33,7 +33,8 @@
                             
                             </div>
                             <p><a href="/">Forgot password?</a></p>
-                            <button type="submit" @click="submitLogin" class="signin-button">Sign in</button>
+                            <button type="submit" @click="submitLogin" class="signin-button">Sign in</button><br>
+                            <p>Or...</p>
                         </form>
                     </div>
                 </div>

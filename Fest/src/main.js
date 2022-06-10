@@ -11,6 +11,11 @@ import UserProfile from "./components/UserProfile.vue";
 import NewEvent from "./components/NewEvent.vue";
 import SignUp from "./components/SignUp.vue";
 import Login from "./components/Login.vue";
+<<<<<<< HEAD
+=======
+import Test from './components/Test.vue';
+
+>>>>>>> fuleiNew2
 
 /* APP ARCHITECTURE */
 const app = createApp(App);
@@ -30,6 +35,10 @@ app.use(router);
 // Store - State Management
 app.use(store);
 
+/* Google Login */
+
+
+
 // Set Components
 app.component("Navigation", Navigation);
 app.component("SideNavigation", SideNavigation);
@@ -38,6 +47,7 @@ app.component("UserProfile", UserProfile);
 app.component("NewEvent", NewEvent);
 app.component("SignUp", SignUp);
 app.component("Login", Login);
+app.component("Test", Test);
 
 // Mount app on HTML
 app.mount("#app");

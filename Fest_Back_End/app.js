@@ -14,7 +14,11 @@ var loginRouter = require('./routes/User_Auth/login');
 var signUpRouter = require('./routes/User_Auth/signup');
 var logOutRouter = require('./routes/User_Auth/logout');
 var profileRouter = require('./routes/Profile/profile');
+<<<<<<< HEAD
 var registerRouter = require('./routes/User_Auth/register');
+=======
+var calendarRouter = require('./routes/Calendar/calendar');
+>>>>>>> fuleiNew2
 var notificationsRouter = require('./routes/Notifications/notifications');
 
 var app = express();
@@ -23,6 +27,7 @@ var app = express();
 var mysql = require('mysql');
 const router = require('./routes/index');
 //localhost 1
+<<<<<<< HEAD
 var dbConnectionPool = mysql.createPool({host: '127.0.0.1', database: 'fest_db'});
 
 //local env 2
@@ -35,6 +40,9 @@ var dbConnectionPool = mysql.createPool({host: '127.0.0.1', database: 'fest_db'}
 //   database: 'fest_db'
 // });
 var dbConnectionPool = mysql.createPool({host: '127.0.0.1', database: 'fest_db' });
+=======
+//var dbConnectionPool = mysql.createPool({host: '127.0.0.1', database: 'fest_db' });
+>>>>>>> fuleiNew2
 
 // local env 2
 // var dbConnectionPool = mysql.createPool({
@@ -53,6 +61,19 @@ app.use(function(req,res,next){
     next();
 });
 
+
+// Sessions
+app.use(session({
+  name: 'FestApp2',
+  secret: 'FestApp12345@',
+  resave: true,
+  saveUninitialized: true,
+  cookie: {
+    name: 'FestAppCookie',
+    secure: false,
+    expires : 360000 + Date.now()
+  }
+}))
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -100,6 +121,12 @@ app.use(session({
   }
 }))
 
+router.use('/', function(req, res, next) {
+
+  console.log(req.session);
+
+  next();
+})
 
 
 app.use('/', indexRouter);
@@ -111,7 +138,11 @@ app.use('/', loginRouter);
 app.use('/', signUpRouter);
 app.use('/', logOutRouter);
 app.use('/', profileRouter);
+<<<<<<< HEAD
 app.use('/', registerRouter);
+=======
+app.use('/', calendarRouter);
+>>>>>>> fuleiNew2
 app.use('/', notificationsRouter);
 
 

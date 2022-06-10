@@ -26,6 +26,12 @@ const router = createRouter({
     {
       path: "/newEvent",
       name: "newEvent",
+      meta: {
+        title: "New Event",
+        metaTags: [{
+          name: 'New Event'
+        }]
+      },
       component: NewEventView,
     },
     {
