@@ -304,6 +304,35 @@ export default createStore({
         }
     },
 
+    googleTokenValidation({commit, dispatch}) {
+        return new Promise((resolve, reject) => {
+            RefreshLoginAPI.postLogin(status => {
+                // Forbidden wrong email or password
+                if (status.status == 200) {
+                    // Commit user info to state
+
+                    // Notifications call
+                    dispatch('fetchNotifications', status.rows[0].user_id);
+
+                    console.log(status.rows)
+                    commit('setUserInfo', status.rows);
+                    console.log('Login successful');
+                    // router.push({ name: 'login' });
+                    return;
+                }
+                else if (status.status == 403) {
+                    console.log(status)
+                    console.log('Bad login');
+                }
+                else {
+                    console.log('Error');
+                }
+                resolve();
+            });
+        })
+    },
+
+
     // Setting and updating the state.
     // Mutations only set or update the state.
     mutations: {
