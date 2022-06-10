@@ -13,12 +13,12 @@ export default {
     // },
     methods: {
         onSignIn (user) {
-            const profile = user.getBasicProfile()
-            const myuser = user
+            var profile = user.getBasicProfile()
+            var myuser = user
             console.log(profile)
             console.log(myuser)
             console.log(user.getAuthResponse())
-            store.dispatch('googleUserProfile', profile);
+            store.dispatch('onSignIn', profile);
           },
 
           signOut() {

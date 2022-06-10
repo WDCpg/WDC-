@@ -78,6 +78,10 @@ export default createStore({
         googleUserProfile: {
         },
 
+        onSignIn: {
+            
+        }
+
         friendInfo: [
             {id:1, firstName:'Mark', lastName:'Leo', icon:'P1.jpeg'},
             {id:2, firstName:'Carlos ', lastName:'Liu', icon:'P2.jpeg'},
@@ -205,6 +209,10 @@ export default createStore({
 
             commit('setNewEventNone', [clear, type]);
         },
+
+        onSignIn({commit, dispatch}, profile) {
+
+        }
 
 
         // Login
