@@ -113,11 +113,6 @@ export default createStore({
         //API calls go here.
         // Actions never update the state
     actions: {
-        // Invite friend
-        // inviteFriend({commit}, friend) {
-        //     commit('updateFriendsInvited', friend);
-
-        // },
         newEventEmoji({commit}, emojiCode) {
             commit('updateNewEventEmoji', emojiCode);
         },
@@ -129,7 +124,7 @@ export default createStore({
         InviteList({commit}, invitedFriends) {
             commit('updateInviteList', invitedFriends);
         }
-        
+
         // Update Show Notifications
         toggleShowNotifications({commit}) {
             commit('updateShowNotifications');
