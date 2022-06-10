@@ -11,11 +11,8 @@ import UserProfile from "./components/UserProfile.vue";
 import NewEvent from "./components/NewEvent.vue";
 import SignUp from "./components/SignUp.vue";
 import Login from "./components/Login.vue";
-<<<<<<< HEAD
-=======
 import Test from './components/Test.vue';
 
->>>>>>> fuleiNew2
 
 /* APP ARCHITECTURE */
 const app = createApp(App);

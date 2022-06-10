@@ -69,17 +69,8 @@ export default createStore({
         newUserPassword: {
         },
 
-<<<<<<< HEAD
-        //new registration info
-        newRegisterData: {
-        },
-
-        //new signup info
-        newSignupData: {
-=======
         googleData: {
-        
->>>>>>> fuleiNew2
+
         },
 
         friendInfo: [
