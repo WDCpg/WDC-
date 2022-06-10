@@ -15,26 +15,9 @@ const checkUser = () => {
   console.log('Checking login');
   return;
 }
-
-checkUser();
-
-const onSignIn(googleUser) = () => {
-    console.log('WORKING');
-    console.log('user is ' +JSON.stringify(googleUser));
-}
-
-
-
-
 </script>
 
 <template>
-
-
-<img alt="Vue logo" src="./assets/images/P1.png">
-<Test msg="Welcome to Your Vue.js App"/>
-
-
 
   <div>
       <Navigation />
