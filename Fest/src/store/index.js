@@ -218,7 +218,7 @@ export default createStore({
         // Login
         submitLogin({commit, dispatch}, auth) {
             return new Promise((resolve, reject) => {
-                LoginsAPI.postLogin(auth, status => {
+                LoginsAPI.postLogin(auth, status) => {
                     // Forbidden wrong email or password
                     if (status.status == 200) {
                         // Commit user info to state
