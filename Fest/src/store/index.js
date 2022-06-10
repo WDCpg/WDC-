@@ -336,10 +336,11 @@ export default createStore({
 
         updateInviteList(state, invitedFriends) {
             state.invitedFriends = invitedFriends;
+        },
+
         // Update Show Notifications
         updateShowNotifications(state) {
             state.showNotifications = !state.showNotifications;
-
         },
 
         // Update Notifications
