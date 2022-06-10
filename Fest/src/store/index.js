@@ -397,6 +397,7 @@ export default createStore({
 
         setGoogleToken(state, token) {
             state.googleToken = token;
+            console.log('googleToken: ', this.googleToken);
         }
     }
 })
