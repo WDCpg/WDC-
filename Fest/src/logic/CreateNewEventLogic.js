@@ -17,6 +17,10 @@ export default {
             store.dispatch('newEventEmoji', emojiCode);
         },
 
+        postPrivacy(privary) {
+            store.dispatch('newEventEmoji', privary);
+        },
+
         cancelCreate() {
             location.replace("/");
             //store.dispatch('cancelCreate');

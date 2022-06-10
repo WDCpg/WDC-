@@ -179,7 +179,7 @@
                 <!-- ----------------------------------------------------------------------  -->
                 <!-- event group -->
                 <div class = "event-group">
-                    <input type="radio" id="closeFriend" name="eventGroup" v-model="newEventData.privacy" value="Close Friend">
+                    <input type="radio" id="closeFriend" name="eventGroup" @click="postPrivacy('Close Friend')" v-model="newEventData.privacy" value="Close Friend">
                     <label for="closeFriend" class="event-group-selector">
                             <div>&#128525;</div>
                             <p>
@@ -187,7 +187,7 @@
                             </p>
                     </label>
 
-                    <input type="radio" id="allFriend" name="eventGroup" v-model="newEventData.privacy" value="All Friend">
+                    <input type="radio" id="allFriend" name="eventGroup" @click="postPrivacy('All Friend')" v-model="newEventData.privacy" value="All Friend">
                     <label for="allFriend" class="event-group-selector">
                             <div>&#129321;</div>
                             <p>
@@ -195,7 +195,7 @@
                             </p>
                     </label>
 
-                    <input type="radio" id="allPublic" name="eventGroup" v-model="newEventData.privacy" value="All Public">
+                    <input type="radio" id="allPublic" name="eventGroup" @click="postPrivacy('All Public')" v-model="newEventData.privacy" value="All Public">
                     <label for="allPublic" class="event-group-selector">
                             <div>&#128516;</div>
                             <p>
