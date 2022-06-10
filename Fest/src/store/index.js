@@ -117,6 +117,9 @@ export default createStore({
         postNewEvent() {
             NewEventAPI.postNewEvent(this.state.newEventData);
         },
+        // Post Frient Invited
+        postFriendInvited
+
         //update user's password
         postNewUserPassword(){
             userInfoApi.postUserPassword(this.state.newUserPassword);
