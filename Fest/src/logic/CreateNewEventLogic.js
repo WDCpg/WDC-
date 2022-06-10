@@ -48,10 +48,6 @@ export default {
 
             invitedFriends.splice(index, 1);
             this.friendInfo[friendIndex].inviteActive = false;
-
-            console.log(this.friendInfo)
-            console.log(friendIndex)
-            console.log(this.friendInfo[friendIndex]);
             console.log(invitedFriends);
         }
     },
@@ -82,6 +78,6 @@ export default {
         //         friends[i]['inviteActive'] = false;
         //     }
         this.friendInfo = friends;
-        console.log('this friend', this.friendInfo)
+        //console.log('this friend', this.friendInfo)
     }
 }
