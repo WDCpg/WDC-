@@ -67,6 +67,9 @@ export default createStore({
         newUserPassword: {
         },
 
+        googleData: {
+        },
+
         friendInfo: [
             {id:1, firstName:'Mark', lastName:'Leo', icon:'P1.jpeg'},
             {id:2, firstName:'Carlos ', lastName:'Liu', icon:'P2.jpeg'},
@@ -327,7 +330,7 @@ export default createStore({
 
         },
 
-       
+
         updateIconCode(state, stateElement) {
             for (let i = 0; i < state[stateElement].length; i++) {
                 let rawCode = state[stateElement][i].icon.replace("U+", "0x");
