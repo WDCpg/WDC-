@@ -115,6 +115,12 @@ a {
     cursor:pointer;
 }
 
+.googleSignin {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
 .welcomeback {
     margin: 25px 0 0 0 ;
     font-size: 3em;
