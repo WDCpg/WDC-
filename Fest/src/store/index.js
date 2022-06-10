@@ -174,6 +174,7 @@ export default createStore({
                 "city": "Adelaide",
                 "street": "1 KingWilliam St",
                 "post_code": "5000",
+                "icon": "None",
                 "privacy" : "Public"
             }
             commit('setNewEventDefault', newEventDefault);
@@ -250,7 +251,7 @@ export default createStore({
         //     state.invitedFriends.push(friend);
         // },
         updateNewEventEmoji(state, emojiCode) {
-            state.newEventData['emoji'] = emojiCode;
+            state.newEventData['icon'] = emojiCode;
         },
 
         updateNewEventPrivacy(state,privacy) {
