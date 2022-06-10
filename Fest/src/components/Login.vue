@@ -30,8 +30,7 @@
                             <p><a href="/">Forgot password?</a></p><br>
                             <div class="signinbuttons">
                             <button type="button" @click="submitLogin" class="signin-button">Sign in</button><br>
-                            <div class="g-signin2" data-onsuccess="onSignIn()"></div>
-                            <a href="#" onclick="signOut()">Sign out</a>
+                            <div class="g-signin2" data-onsuccess="onSignIn()"></div>  
                             </div>
                             <p><a href="/">Forgot password?</a></p>
                             <button type="submit" @click="submitLogin" class="signin-button">Sign in</button>
