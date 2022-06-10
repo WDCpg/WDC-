@@ -9,7 +9,7 @@
             <!-- breadcrumbs navigation -->
                 <div class = "topline">
                     <div class="close-button-container">
-                        <button class="event-create-cancel" @click="cancelCreate" >
+                        <button class="event-create-cancel" type="button" @click="cancelCreate" >
                             X
                         </button>
                     </div>
