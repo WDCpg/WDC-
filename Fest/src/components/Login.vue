@@ -32,7 +32,10 @@
                             </div>
                             <button type="submit" @click="submitLogin" class="signin-button">Sign in</button>
                             <p>Or...</p>
-                            <div id="google-signin-button"></div>
+                            <div class="googleSignin">
+                                <div id="google-signin-button"></div><br><br><br>
+                            </div>
+                            <button @click="signOut()">Sign Out</button>
                         </form>
                     </div>
                 </div>
