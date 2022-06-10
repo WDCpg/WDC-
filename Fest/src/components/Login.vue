@@ -30,12 +30,7 @@
                             <p><a href="/">Forgot password?</a></p>
                             <button type="submit" @click="submitLogin" class="signin-button">Sign in</button><br>
                             <p>Or...</p>
-                            <div class="googleSignin">
-                                <div class="g-signin2" data-onsuccess="onSignIn"></div>
-                            </div>
-                            <button onclick="signOut()">Sign Out</button>
                         </form>
-
                     </div>
                 </div>
         </div>
