@@ -24,7 +24,7 @@ export default {
 
     googleTokenValidate() {
         var xhr = new XMLHttpRequest();
-        xhr.open('POST', 'hhttps://fulzske-code50-61676631-9pr7w7wq27rwr-8080.githubpreview.dev/googleToken');
+        xhr.open('POST', 'https://fulzske-code50-61676631-9pr7w7wq27rwr-8080.githubpreview.dev/googleToken');
         xhttp.withCredentials = true;
         xhr.setRequestHeader('Content-Type', 'application');
         xhr.onload = function() {
