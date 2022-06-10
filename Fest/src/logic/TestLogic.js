@@ -18,7 +18,7 @@ export default {
             console.log(profile)
             console.log(myuser)
             console.log(user.getAuthResponse())
-            store.dispatch("googleUserProfile"(myuser));
+            store.dispatch('googleUserProfile', profile);
           },
 
           signOut() {
