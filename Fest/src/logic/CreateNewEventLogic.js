@@ -39,7 +39,7 @@ export default {
             friend.inviteActive = !friend.inviteActive;
             this.invitedFriends.push(friend);
             this.inviteCount.push(index);
-            store.dispatch('updateInviteFriend', friend);
+            store.dispatch('InviteList', invitedFriends);
         },
         inviteSent(index) {
             if (this.inviteCount[index] == index) {
