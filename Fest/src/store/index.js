@@ -126,12 +126,6 @@ export default createStore({
         //API calls go here.
         // Actions never update the state
     actions: {
-
-        postGoogleData({commit}, profile, id_token) {
-            commit('googleProfileData', profile);
-            commit('googleTokenData', id_tken)
-        }
-
         newEventEmoji({commit}, emojiCode) {
             commit('updateNewEventEmoji', emojiCode);
         },
