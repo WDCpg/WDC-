@@ -1,6 +1,6 @@
 
 <template>
-<div class="g-sign2" data-onsuccess="onSignIn"></div>
+<div class="g-signin2" data-onsuccess="onSignIn"></div>
 <button @click="signOut()"</button>
 </template>
 
