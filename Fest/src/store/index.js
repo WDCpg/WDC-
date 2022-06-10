@@ -69,6 +69,12 @@ export default createStore({
         newUserPassword: {
         },
 
+        newRegisterData: {
+        },
+
+        newSignupData: {
+        },
+
         googleData: {
         },
 
