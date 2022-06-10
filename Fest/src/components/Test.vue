@@ -9,12 +9,10 @@
 export default {
   methods: {
       onSignIn(googleUser) {
-      console.log('WORKING');
-      console.log('user is ' +JSON.stringify(googleUser.getBasicProfile()));
+        console.log('WORKING');
+        console.log('user is ' +JSON.stringify(googleUser.getBasicProfile()));
      }
-
-
-
+   }
 }
 
 
