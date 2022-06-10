@@ -32,10 +32,6 @@ app.use(router);
 // Store - State Management
 app.use(store);
 
-/* Google Login */
-
-
-
 // Set Components
 app.component("Navigation", Navigation);
 app.component("SideNavigation", SideNavigation);
