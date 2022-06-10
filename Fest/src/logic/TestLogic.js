@@ -15,10 +15,10 @@ export default {
         onSignIn (user) {
             var profile = user.getBasicProfile()
             var myuser = user
-            console.log(profile)
-            console.log(myuser)
-            console.log(user.getAuthResponse())
-            
+            console.log(profile);
+            console.log(user)
+            store.dispatch('postGoogleLogin', profile, user);
+
 
           },
 

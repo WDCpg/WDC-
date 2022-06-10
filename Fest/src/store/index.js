@@ -75,11 +75,13 @@ export default createStore({
         newSignupData: {
         },
 
-        googleUserProfile: [
-        ],
+        googleUserProfile: {
 
-        googleToken: [
-        ],
+        },
+
+        googleToken: {
+
+        },
 
         friendInfo: [
             {id:1, firstName:'Mark', lastName:'Leo', icon:'P1.jpeg'},
@@ -390,6 +392,7 @@ export default createStore({
 
         setGoogleProfile(state, profile) {
             state.googleUserProfile = profile;
+            console.log('googleUserProfile: ', this.googleUserProfile);
         },
 
         setGoogleToken(state, token) {
