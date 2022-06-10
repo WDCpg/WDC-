@@ -16,18 +16,19 @@
     <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
     <title>Vite App</title>
 
-
-
   </head>
   <body>
-
     <!-- VUE APP -->
     <div id="app">
 
     </div>
     <script type="module" src="/src/main.js"></script>
-
-
+    <script>
+    onSignIn(hey) {
+      console.log('WORKING');
+      console.log('user is ' +JSON.stringify(googleUser.getBasicProfile()));
+      }
+    </script>
 
   </body>
 </html>

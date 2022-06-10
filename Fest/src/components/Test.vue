@@ -5,14 +5,5 @@
 
 <script>
 
-export default {
-  methods: {
-    onSignIn(hey) {
-    console.log('WORKING');
-    console.log('user is ' +JSON.stringify(googleUser.getBasicProfile()));
-    }
-  }
-}
-
 </script>
 
