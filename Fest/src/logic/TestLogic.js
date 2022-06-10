@@ -13,7 +13,6 @@ export default {
     // },
     methods: {
         onSignIn (user) {
-            console.log("hello")
             const profile = user.getBasicProfile()
             const myuser = user
             console.log(profile)
