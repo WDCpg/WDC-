@@ -91,9 +91,6 @@ export default {
     created() {
         store.dispatch('fetchNewEventDefault');
         var friends = JSON.parse(JSON.stringify(store.state.friendInfo));
-        // for (let i = 0; friends.length; i++) {
-        //         friends[i]['inviteActive'] = false;
-        //     }
         this.friendInfo = friends;
         //console.log('this friend', this.friendInfo)
     }
