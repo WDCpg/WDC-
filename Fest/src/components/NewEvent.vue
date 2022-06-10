@@ -68,14 +68,14 @@
 
                         <div >
                             <ul class = "emoji-list">
-                                <li><button @click="postEmoji('U+1F600')" type="button" class = "emoji-button">&#x1F600;</button></li>
-                                <li><button @click="postEmoji('U+1F606')" type="button" class = "emoji-button">&#x1F606;</button></li>
-                                <li><button @click="postEmoji('U+1F923')" type="button" class = "emoji-button">&#x1F923;</button></li>
-                                <li><button @click="postEmoji('U+1F929')" type="button" class = "emoji-button">&#x1F929;</button></li>
-                                <li><button @click="postEmoji('U+1F973')" type="button" class = "emoji-button">&#x1F973;</button></li>
-                                <li><button @click="postEmoji('U+1F3C7')" type="button" class = "emoji-button">&#x1F3C7;</button></li>
-                                <li><button @click="postEmoji('U+1F6B5')" type="button" class = "emoji-button">&#x1F6B5;</button></li>
-                                <li><button @click="postEmoji('U+1F46F')" type="button" class = "emoji-button">&#x1F46F;</button></li>
+                                <li><button v-model="newEventData.icon" @click="postEmoji('U+1F600')" type="button" class = "emoji-button">&#x1F600;</button></li>
+                                <li><button v-model="newEventData.icon" @click="postEmoji('U+1F606')" type="button" class = "emoji-button">&#x1F606;</button></li>
+                                <li><button v-model="newEventData.icon" @click="postEmoji('U+1F923')" type="button" class = "emoji-button">&#x1F923;</button></li>
+                                <li><button v-model="newEventData.icon" @click="postEmoji('U+1F929')" type="button" class = "emoji-button">&#x1F929;</button></li>
+                                <li><button v-model="newEventData.icon" @click="postEmoji('U+1F973')" type="button" class = "emoji-button">&#x1F973;</button></li>
+                                <li><button v-model="newEventData.icon" @click="postEmoji('U+1F3C7')" type="button" class = "emoji-button">&#x1F3C7;</button></li>
+                                <li><button v-model="newEventData.icon" @click="postEmoji('U+1F6B5')" type="button" class = "emoji-button">&#x1F6B5;</button></li>
+                                <li><button v-model="newEventData.icon" @click="postEmoji('U+1F46F')" type="button" class = "emoji-button">&#x1F46F;</button></li>
                             </ul>
                         </div>
                     </div>
