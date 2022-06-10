@@ -13,6 +13,14 @@ export default {
     },
 
     methods: {
+        formatDate(dateString) {
+            if (dateString == null) {
+                return;
+            }
+            const date = new Date(dateString);
+            return new Intl.DateTimeFormat('default', {dateStyle: 'long'}).format(date) + " " + date.toLocaleTimeString(('en-US'), { hour: '2-digit', minute: '2-digit' });
+        },
+
         postEmoji(emojiCode) {
             store.dispatch('newEventEmoji', emojiCode);
         },

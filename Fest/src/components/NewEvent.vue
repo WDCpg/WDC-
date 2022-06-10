@@ -307,10 +307,10 @@
 
                     <div class="post-time-container">
                         <p>
-                            {{newEventData.event_start}}
+                            {{ formatDate(newEventData.event_start) }}
                         </p>
                         <p>
-                            {{newEventData.event_end}}
+                            {{ formatDate(newEventData.event_start) }}
                         </p>
                     </div>
 
