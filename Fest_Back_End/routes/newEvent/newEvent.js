@@ -1,5 +1,27 @@
 var express = require('express');
 var router = express.Router();
+
+router.get('/events/getUserEvents', function(req, res, next) {
+    //Get all friend
+    req.db.getConnection(function(error, connection) {
+        if (error) {
+            res.sendStatus(500);
+            return;
+        }
+
+        let query = 'SELECT * FROM events';
+
+        connection.query(query, function(error, rows, fields) {
+            connection.release();
+            if(error){
+                res.sendStatus(500);
+                return;
+            }
+            res.json(rows);
+        });
+    });
+})
+
 // var path = require('path');
 // var multer = require('multer');
 // var storage = multer.diskStorage({
@@ -36,6 +58,13 @@ var router = express.Router();
 //     });
 // });
 
-router.post('/new')
+router.post('/newEvent', function(req, res, next) {
+    req.db.getConnection(function(error, connection){
+        if (error){
+            console.log(error);
+            res.sendStatus(500);
+            return;
+        }
+})
 
 module.exports = router;
