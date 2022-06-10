@@ -20,7 +20,7 @@ let gauthClientId = '676785461988-icoil0dtlld2fcp5kb22llst7t94mans.apps.googleus
 app.use(gAuthPlugin, {
   clientId: gauthClientId,
   scope: 'email',
-  prompt: 'consent',
+  prompt: 'consent'
 })
 
 
