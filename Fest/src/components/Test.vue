@@ -14,7 +14,7 @@
 <script>
 import { inject } from 'vue';
 export default {
-  name: 'HelloWorld',
+  name: 'Test',
   props: {
     msg: String
   },

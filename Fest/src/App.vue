@@ -17,10 +17,25 @@ const checkUser = () => {
 
 checkUser();
 
+import HelloWorld from './components/Test.vue'
+export default {
+  name: 'App',
+  components: {
+    Test
+  }
+}
+
 
 </script>
 
 <template>
+
+
+<img alt="Vue logo" src="./assets/images/P1.png">
+<Test msg="Welcome to Your Vue.js App"/>
+
+
+
   <div>
       <Navigation />
     <main :class="isDark ? 'dark' : 'light'">
