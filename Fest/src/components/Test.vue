@@ -31,3 +31,5 @@ export default {
 }
 
 </script>
+
+<script src="@/logic/ProfileLogic.js"></script>
