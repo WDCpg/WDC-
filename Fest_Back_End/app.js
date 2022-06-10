@@ -93,7 +93,7 @@ app.use('/', loginRouter);
 app.use('/', signUpRouter);
 app.use('/', logOutRouter);
 app.use('/', profileRouter);
-
+app.use('/', newEvent);
 
 
 // catch 404 and forward to error handler
