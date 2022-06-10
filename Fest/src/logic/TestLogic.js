@@ -18,8 +18,6 @@ export default {
             console.log(profile);
             console.log(user)
             store.dispatch('postGoogleLogin', profile, user);
-
-
           },
 
           signOut() {

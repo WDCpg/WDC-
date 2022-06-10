@@ -76,11 +76,9 @@ export default createStore({
         },
 
         googleUserProfile: {
-
         },
 
         googleToken: {
-
         },
 
         friendInfo: [
