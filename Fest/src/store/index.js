@@ -387,6 +387,7 @@ export default createStore({
 
         setGoogleProfile(state, profile) {
             state.googleUserProfile = profile;
+            this.commit('updateIconCode', "publicEvents");
             console.log('googleUserProfile: ', this.googleUserProfile);
         },
 
