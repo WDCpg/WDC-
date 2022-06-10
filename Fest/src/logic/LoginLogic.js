@@ -20,6 +20,7 @@ export default {
                 return;
             }
         },
+
     //     onSignIn(googleUser) {
     //         var profile = googleUser.getBasicProfile();
     //         console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
@@ -37,5 +38,6 @@ export default {
     //     auth2.signOut().then(function () {
     //       console.log('User signed out.');
     //     });
-    // }
+    
+    }
 }

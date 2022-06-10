@@ -1,7 +1,5 @@
 <template>
-<h1>
-test
-</h1>
+<div class="g-signin2" data-onsuccess="onSignIn()"></div>
 
 </template>
 
