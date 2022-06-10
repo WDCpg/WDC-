@@ -13,6 +13,7 @@ var loginRouter = require('./routes/User_Auth/login');
 var signUpRouter = require('./routes/User_Auth/signup');
 var logOutRouter = require('./routes/User_Auth/logout');
 var profileRouter = require('./routes/Profile/profile');
+var newEvent = require('./routes/newEvent/newEvent');
 
 var app = express();
 
