@@ -62,7 +62,7 @@ export default {
             }
         }
         //Open connection
-        xhttp.open('GET', `https://chobbiwan-code50-16236897-vgqjwwq6fx9g5-8080.githubpreview.dev/userAvailability`, false);
+        xhttp.open('GET', `http://localhost:8080/userAvailability`, false);
 
         //Send request
         xhttp.send();
@@ -83,7 +83,7 @@ export default {
             }
         }
         //Open connection
-        xhttp.open('POST', `https://chobbiwan-code50-16236897-vgqjwwq6fx9g5-8080.githubpreview.dev/saveCalendar`, true);
+        xhttp.open('POST', `http://localhost:8080/saveCalendar`, true);
         xhttp.setRequestHeader('Content-type', 'application/json; charset=UTF-8' );
         xhttp.send(JSON.stringify(CalEvents));
     }

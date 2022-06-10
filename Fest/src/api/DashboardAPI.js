@@ -13,7 +13,7 @@ export default {
             }
         }
         //Open connection
-        xhttp.open('GET', `https://chobbiwan-code50-16236897-vgqjwwq6fx9g5-8080.githubpreview.dev/events/getPublicEvents`, false);
+        xhttp.open('GET', `http://localhost:8080/events/getPublicEvents`, false);
 
         //Send request
         xhttp.send();
