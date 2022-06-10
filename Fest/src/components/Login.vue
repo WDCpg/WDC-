@@ -1,6 +1,5 @@
 <template>
         <div class="logincontent">
-
                 <div class="outer">
                     <div class = "close-button-container">
                         <button v-on:click="hideLoginModal();" class = "close-button-x">
