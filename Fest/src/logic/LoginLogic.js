@@ -29,10 +29,9 @@ export default {
             var profile = user.getBasicProfile()
             var myuser = user
             var id_token = user.getAuthResponse().id_token
-            console.log("hey")
             console.log(id_token)
-            //console.log(profile)
-            //console.log(user)
+            console.log(profile)
+            console.log(user)
             store.dispatch('postGoogleLogin', profile, user)
 
           },
