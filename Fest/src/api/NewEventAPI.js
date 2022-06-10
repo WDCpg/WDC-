@@ -14,7 +14,7 @@ export default {
         xhttp.open('POST', `http://localhost:8080/newEvent`, true);
         xhttp.setRequestHeader('Content-type', 'application/json; charset=UTF-8' );
         //Send request
-        xhttp.send(JSON.stringify(newUserData));
+        xhttp.send(JSON.stringify(newEventData));
     },
 
     postFriendInvited(friendInfo) {
