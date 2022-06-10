@@ -1,6 +1,7 @@
 
 <template>
   <div id="google-signin-button"></div>
+  <button onclick="signOut">
 </template>
 
 <script>
@@ -16,7 +17,13 @@ export default {
       const myuser = user
       console.log(profile)
       console.log(myuser)
-    }
+    },
+
+    signOut() {
+            gapi.auth2.getAuthInstance().signOut().then((function() {
+              console.log('User signed out')
+            }))
+          }
   }
 }
 </script>
