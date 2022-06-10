@@ -22,11 +22,14 @@ export default {
         xhttp.send(JSON.stringify(auth));
     },
 
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'https://yourbackend.example.com/tokensignin');
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    xhr.onload = function() {
-    console.log('Signed in as: ' + xhr.responseText);
-    };
-    xhr.send('idtoken=' + id_token);
+    googleTokenValidate() {
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'hhttps://fulzske-code50-61676631-9pr7w7wq27rwr-8080.githubpreview.dev/googleToken');
+        xhttp.withCredentials = true;
+        xhr.setRequestHeader('Content-Type', 'application');
+        xhr.onload = function() {
+            console.log('Signed in as: ' + xhr.responseText);
+        };
+        xhr.send('idtoken=' + id_token);
+    }
 }
