@@ -26,15 +26,13 @@
                             <label for="email">Email</label><br>
                             <input type="text" id="email" name="email"><br><br>
                             <label for="password">Password</label><br>
-                            <input minlength="8" type="password" id="password" name="password">
+                            <input minlength="8" type="password" id="password" name="password"><br>
                             <p><a href="/">Forgot password?</a></p><br>
                             <div class="signinbuttons">
-                            <button type="button" @click="submitLogin" class="signin-button">Sign in</button><br>
-                            
                             </div>
-                            <p><a href="/">Forgot password?</a></p>
-                            <button type="submit" @click="submitLogin" class="signin-button">Sign in</button><br>
+                            <button type="submit" @click="submitLogin" class="signin-button">Sign in</button>
                             <p>Or...</p>
+                            <div id="google-signin-button"></div>
                         </form>
                     </div>
                 </div>
