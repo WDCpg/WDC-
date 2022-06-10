@@ -292,9 +292,6 @@ export default createStore({
                 });
             })
         },
-
-
-
             // commit('setNewEventNone', [clear, type]);
 
 
