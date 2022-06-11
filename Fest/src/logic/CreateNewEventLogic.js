@@ -39,7 +39,24 @@ export default {
         },
 
         submitNewEvent() {
-            store.dispatch('postNewEvent');
+            var titleEmpty = true;
+            var descriptionEmpty = true;
+            let elements = document.getElementsByTagName('textarea');
+            // Title
+            if(elements[0].value != "Your event's title" && elements[0].value != "") {
+                titleEmpty = false;
+            }
+            if (elements[1].value != "Your description" && elements[1].value != ""){
+                descriptionEmpty = false;
+            }
+            if (titleEmpty === false && descriptionEmpty === false) {
+                store.dispatch('postNewEvent');
+            }
+
+            return;
+
+        
+            
             //store.dispatch('postFriendInvited');
         },
 
@@ -66,7 +83,8 @@ export default {
             this.friendInfo[friendIndex].inviteActive = false;
             store.dispatch('InviteList', invitedFriends);
             console.log(invitedFriends);
-        }
+        },
+
     },
 
     computed: {
@@ -86,9 +104,11 @@ export default {
             return store.state.newEventData;
         }
 
+
     },
 
     created() {
+        
         store.dispatch('fetchNewEventDefault');
         var friends = JSON.parse(JSON.stringify(store.state.friendInfo));
         this.friendInfo = friends;

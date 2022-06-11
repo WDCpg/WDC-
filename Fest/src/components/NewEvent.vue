@@ -45,7 +45,7 @@
 
             <!-- ----------------------------------------------------------------------  -->
             <!-- event info -->
-                <div class = "eventDetails">
+                <div class = "newEventData">
                     <h3>Details</h3>
 
                     <!-- ----------------------------------------------------------------------  -->
@@ -53,7 +53,7 @@
                     <div class = "emoji">
                         <div class="emoji-search-container">
                             <form class = "emoji-search">
-                                <input class = "emoji-search-text" type="search" placeholder="Search Emoji...Coming Soon..." name ="emoji">
+                                <input class = "emoji-search-text" type="search" placeholder="Search Emoji...Coming Soon..." name ="ignore">
                                 <svg class = "emoji-search-button" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg>
                             </form>
 
@@ -288,6 +288,7 @@
             </div>
 
             <div class="post-container-major">
+
                 <!-- Post -->
                 <div class="post-container">
                     <div class="post-image-container">
@@ -296,51 +297,47 @@
 
                     <div class="post-icon-container">
                         <p>
-                            {{newEventData.icon}};
+                            {{ newEventData.icon }}
                         </p>
                     </div>
                     <div class="post-details-container">
                         <div class="post-title-container">
                             <h3>
-                                {{ newEventData.title }}
+                               {{ newEventData.title }}
                             </h3>
                         </div>
                         <p class="post-description">
                             {{ newEventData.description }}
                         </p>
-                    </div>
-
-                    <div class="post-time-container">
-                        <p>
-                            {{ formatDate(newEventData.event_start) }}
+                        <p class="post-description-label">
+                            Start & End date:
                         </p>
-                        <p>
-                            {{ formatDate(newEventData.event_start) }}
+                        <p class="post-datetime">
+                            <span> {{ formatDate(newEventData.event_start) }} </span> <span v-if=" newEventData.event_end != null"> to {{ formatDate(newEventData.event_end) }} </span>
+                            <!-- {{ formatDate('17-03-2022') }} -->
                         </p>
-                    </div>
-
-                    <div class="post-location-container">
-                        <p>
-                            {{newEventData.street}}
+                        <p class="post-description-label">
+                            Location
                         </p>
-                        <p>
-                            {{newEventData.city}}
-                        </p>
-                        <p>
-                            {{newEventData.state}}
-                        </p>
-                        <p>
-                            {{newEventData.country}}
-                        </p>
-                        <p>
-                            {{newEventData.post_code}}
+                        <p class="post-location"> 
+                            {{ newEventData.street }}, {{ newEventData.city }}. {{ newEventData.country }}
                         </p>
                     </div>
 
-                    <div class="post-privacy-container">
-                        <p>{{ newEventData.privacy }}</p>
-                    </div>
+                    
+                    
+                    
                 </div>
+
+
+
+
+
+
+
+
+
+               
             </div>
 
         </div>

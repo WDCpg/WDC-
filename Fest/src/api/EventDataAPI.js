@@ -43,8 +43,8 @@ export default {
             }
         }
         //Open connection
-        xhttp.open('GET', `${store.state.backEndUrl}/getAttendantsByStatus?event_id=${eventId}`, true);
-
+        xhttp.open('POST', `${store.state.backEndUrl}/getAttendantsByStatus?event_id=${eventId}`, true);
+        xhttp.withCredentials = true;
         //Send request
         xhttp.send();
     }

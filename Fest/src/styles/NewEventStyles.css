@@ -387,6 +387,7 @@ h3 {
 
 /*  Post Content */
 
+
 .post-container-major {
     display: flex;
     flex-direction: row;
@@ -396,8 +397,11 @@ h3 {
     height: calc(100vh - 65px);
 }
 
+
+
 .post-container {
-    width: 650px;
+    width: 100%;
+    max-width: 700px;
     height: 670px;
     background-color: white;
     border-radius: 30px;
@@ -405,6 +409,11 @@ h3 {
     flex-direction: column;
     margin: 0 15px;
     transition: box-shadow .24s cubic-bezier(.4,0,.3,1),background-color .24s cubic-bezier(.4,0,.3,1);
+
+}
+
+.dark .post-container {
+    background-color: #333232;
 }
 
 
@@ -440,7 +449,34 @@ h3 {
 .post-description {
     font-size: 1.5em;
     white-space: pre-line;
+    line-height: 1.2;
+    margin: 0 0 35px 0;
+    max-height: 150px;
+    min-height: 32px;
 }
+
+.post-datetime {
+    font-size: 1.2em;
+    color: #FF8C42;
+    margin: 0 0 15px 0;
+}
+
+.post-location {
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+.post-datetime span {
+    font-weight: 600;
+}
+
+.post-description-label {
+    font-size: 0.9em;
+    font-weight: 600;
+    color: #9C9C9C;
+}
+
+
 
 /* Display Style */
 

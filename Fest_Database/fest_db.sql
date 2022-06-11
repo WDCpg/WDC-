@@ -63,7 +63,7 @@ CREATE Table events (
   post_code varchar(20),
   icon varchar(20),
   is_active boolean,
-  event_type int,
+  event_type varchar(50),
   PRIMARY KEY (event_id),
   FOREIGN KEY (event_type) REFERENCES event_types(type_id)
 );

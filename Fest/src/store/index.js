@@ -64,10 +64,10 @@ export default createStore({
 
         },
 
-        //update user's profile information
-        newUserData: {
+        // //update user's profile information
+        // newUserData: setNewEventDefaultnew{
 
-        },
+        // },
         //new password
         newUserPassword: {
         },
@@ -133,6 +133,12 @@ export default createStore({
         //API calls go here.
         // Actions never update the state
     actions: {
+
+        userSignOut({commit}) {
+            LoginsAPI.postLogOut();
+            commit('clearUser');
+        },
+
         // Get Base URL
         fetchBaseUrl({commit}) {
             var baseUrl = window.location.origin;
@@ -140,9 +146,9 @@ export default createStore({
         },
 
         // Google Login 
-        postGoogleLogin({commit, dispatch}, id_token) {
+        postGoogleLogin({commit, dispatch}, [id_token, profile]) {
             return new Promise((resolve, reject) => {
-                LoginsAPI.googlePostLogin(id_token, status => {
+                SignUpAPI.googleSignUp(id_token, profile, status => {
                     // Forbidden wrong email or password
                     if (status.status == 200) {
                         // Commit user info to state
@@ -237,6 +243,7 @@ export default createStore({
         
         newEventEmoji({commit}, emojiCode) {
             commit('updateNewEventEmoji', emojiCode);
+            commit('updateIconCodeObject', "newEventData");
         },
 
         newEventPrivacy({commit},privacy) {
@@ -262,9 +269,21 @@ export default createStore({
             commit('updateSignUpModal');
         },
 
+        sendNotifications() {
+            let friends = this.state.invitedFriends;
+            if (friends.length > 0) {
+                for(let i = 0; i < friends.length; i++) {
+                    NewEventAPI.postFriendNotifications(friends);
+                }
+            }
+            return;
+        },
+
         // Post New Event
-        postNewEvent() {
+        postNewEvent({ dispatch }) {
+
             NewEventAPI.postNewEvent(this.state.newEventData);
+            dispatch('sendNotifications');
         },
         // Post Frient Invited
         // postFriendInvited() {
@@ -301,12 +320,17 @@ export default createStore({
         },
 
         saveUserCalendar({commit}, calendarEvents){
+            console.log('CALENDAR POST', calendarEvents)
+            // for(let i = 0; i < calendarEvents.length; i++){
+            //     // console.log(calendarEvents[i].start);
+            //     var startDate = new Date(calendarEvents[i].start);
+            //     var endDate = new Date(calendarEvents[i].end);
+            //     calendarEvents[i].start = startDate.getFullYear() + "-" + (startDate.getMonth() + 1) + "-" + startDate.getDate() + " " + startDate.getHours() + ":" + startDate.getMinutes() + ":" + startDate.getSeconds(); 
+            //     calendarEvents[i].end = startDate.getFullYear() + "-" + (endDate.getMonth() + 1) + "-" + endDate.getDate() + " " + endDate.getHours() + ":" + endDate.getMinutes() + ":" + endDate.getSeconds();
+            //     CalendarAPI.postUserCalendar(calendarEvents[i]);
+            //     // commit('setUserCalendar', calendarEvents[i]);
+            // }
 
-            for(let i = 0; i<calendarEvents.length; i++){
-                // console.log(calendarEvents[i].start);
-                // CalendarAPI.postUserCalendar(calendarEvents[i]);
-                commit('setUserCalendar', calendarEvents[i]);
-            }
         },
 
 
@@ -338,6 +362,8 @@ export default createStore({
                 "privacy" : "Public"
             }
             commit('setNewEventDefault', newEventDefault);
+            commit('updateIconCodeObject', "newEventData");
+
         },
 
         clearInput({commit}, type) {
@@ -424,18 +450,6 @@ export default createStore({
             })
         },
 
-        // Change page style - Light / Dark
-        updatePageStyle({commit}) {
-            commit('togglePageStyle');
-
-
-            commit('setNewEventNone', [clear, type]);
-        },
-
-
-            // commit('setNewEventNone', [clear, type]);
-
-
         inviteFriend() {
             let search = '';
             return this.friendInfo.filter((friend) =>{
@@ -448,6 +462,9 @@ export default createStore({
     // Setting and updating the state.
     // Mutations only set or update the state.
     mutations: {
+        clearUser(state) {
+            state.userInfo = [];
+        },
         setBaseUrl(state, baseUrl) {
             try {
                 let url = baseUrl.replace("3000", "8080");
@@ -544,8 +561,17 @@ export default createStore({
 
         },
 
+        updateIconCodeObject (state, stateElement) {
+            state[stateElement]['iconUnicode'] = state[stateElement].icon;
+
+            let rawCode = state[stateElement].icon.replace("U+", "0x");
+            let decoded = String.fromCodePoint(rawCode);
+            state[stateElement].icon = decoded;
+        },
+
 
         updateIconCode(state, stateElement) {
+            
             for (let i = 0; i < state[stateElement].length; i++) {
                 let rawCode = state[stateElement][i].icon.replace("U+", "0x");
                 let decoded = String.fromCodePoint(rawCode);

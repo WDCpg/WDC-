@@ -58,6 +58,14 @@ var router = express.Router();
 //     });
 // });
 
+// router.use('/', function(req, res, next) {
+//     if (req.cookies.session_id == undefined) {
+//         res.status(403).send('Not Logged In');
+//         return;
+//     }
+//     next();
+// })
+
 router.post('/newEvent', function(req, res, next) {
     req.db.getConnection(function(error, connection){
         if (error){
@@ -66,16 +74,48 @@ router.post('/newEvent', function(req, res, next) {
             return;
         }
 
-        let query = "INSERT INTO events (event_start, event_end, event_title, event_description, country, state, city, street, post_code, icon, event_type) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
-        connection.query(query,[req.body.event_start, req.body.event_end, req.body.event_title, req.body.event_description, req.body.country, req.body.state, req.body.city, req.body.street, req.body.post_code, req.body.icon, req.body.event_type],function(error,rows, fields){
-            connection.release();
+        let query = "INSERT INTO events (event_start, event_end, event_title, event_description, country, state, city, street, post_code, icon, event_type) VALUES (?,?,?,?,?,?,?,?,?,?,?);";
+        connection.query(query,[req.body.event_start, req.body.event_end, req.body.title, req.body.description, req.body.country, req.body.state, req.body.city, req.body.street, req.body.post_code, req.body.iconUnicode, req.body.privacy],function(error,rows, fields){
+            
+            
             if(error){
+                connection.release();
+                console.log(req.body)
                 res.sendStatus(500);
                 return;
             }
+
+            // var eventId = 0;
+            // let query = " SELECT LAST_INSERT_ID() AS event_id;";
+            //     connection.query(query,function(error,rows, fields){
+            //     if(error){
+            //         connection.release();
+            //         console.log(req.body)
+            //         res.sendStatus(500);
+            //         return;
+            //     }
+            //     eventId = rows.event_id;
+            // });
+
+            // let queryOrgniser = " INSERT INTO organiser (user_id, event_id) VALUES (?, ?);";
+            //     connection.query(queryOrgniser, [req.cookies.user_id, eventId], function(error,rows, fields){
+            //     connection.release();
+            //     if(error){
+                    
+            //         console.log(req.body)
+            //         res.sendStatus(500);
+            //         return;
+            //     }
+            // });
+
             res.end();
         });
     });
 });
+
+// router.post('/sendNotifications', function(req, res, next) {
+//     console.log('FRIENDS', req.body)
+//     res.sendStatus(200)
+// });
 
 module.exports = router;

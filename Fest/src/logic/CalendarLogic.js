@@ -72,6 +72,8 @@ export default {
     submitUserCalendar(){
       if(this.userCalendarEvent.length!=0){
           store.dispatch('saveUserCalendar',this.userCalendarEvent);
+          this.userCalendarEvent = [];
+          store.dispatch('fetchUserAvailability');
       }
     }
   },

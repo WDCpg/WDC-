@@ -14,7 +14,7 @@ export default {
         const id_token = user.getAuthResponse().id_token;
         console.log(profile)
         console.log(id_token)
-        store.dispatch('postGoogleLogin', id_token);
+        store.dispatch('postGoogleLogin', [id_token, profile]);
         },
 
         hideLoginModal() {

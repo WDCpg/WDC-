@@ -31,14 +31,14 @@ const router = require('./routes/index');
 //var dbConnectionPool = mysql.createPool({host: '127.0.0.1', database: 'fest_db' });
 
 // local env 2
-// var dbConnectionPool = mysql.createPool({
-//   name: 'fest-db',
-//   host: 'localhost',
-//   port: '3306',
-//   user: 'root',
-//   password: 'Roomdly1234',
-//   database: 'fest_db'
-// });
+var dbConnectionPool = mysql.createPool({
+  name: 'fest-db',
+  host: 'localhost',
+  port: '3306',
+  user: 'root',
+  password: 'Roomdly1234',
+  database: 'fest_db'
+});
 
 
 //connect to database middleware
@@ -112,6 +112,8 @@ router.use('/', function(req, res, next) {
 
   next();
 })
+
+
 
 
 app.use('/', indexRouter);

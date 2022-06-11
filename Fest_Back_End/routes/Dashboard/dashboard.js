@@ -26,20 +26,73 @@ router.get('/events/getPublicEvents', function(req, res, next) {
     })
 });
 
+router.get('/getEventDetails', function(req, res, next) {
+    req.db.getConnection((error, connection) => {
+        if(error) {
+            res.status(500).send("Database connection");
+            return;
+        }
+
+        let eventId = req.query.event_id;
+
+        let query = `SELECT * FROM events AS ev WHERE ev.event_id = (?)`;
+
+        connection.query(query, eventId, function(error, rows, fields) {
+            if(error){
+                res.status(500).send(error.sqlMessage);
+                return;
+            }
+
+            res.json({rows, status: 200});
+            return;
+        })
+
+    })
+});
+
+router.get('/getEventAttendants', function(req, res, next) {
+    req.db.getConnection((error, connection) => {
+        if(error) {
+            res.status(500).send("Database connection");
+            return;
+        }
+
+        let eventId = req.query.event_id;
+        console.log(eventId)
+
+        let query = `SELECT att.att_id, att.event_id, att.user_id, u.first_name, u.last_name, u.profile_picture, att.user_status FROM attendance AS att LEFT JOIN users AS u ON att.user_id = u.user_id WHERE att.event_id = (?)`;
+
+        connection.query(query, eventId, function(error, rows, fields) {
+            if(error){
+                res.status(500).send(error.sqlMessage);
+                return;
+            }
+
+            res.json({rows, status: 200});
+            return;
+        })
+
+    })
+    
+    
+});
+
 
 /*
     MIDDLEWARE:
     Check user is logged in for private routes.
 */
-router.use('/events/', function(req, res, next) {
-    if (!('user' in req.session)) {
-        res.sendStatus(403);
-        return;
-    }
-    else {
-        next();
-    }
-});
+
+// router.use('/events/', function(req, res, next) {
+    
+//     // if (req.cookies.session_id === undefined) {
+//     //     res.sendStatus(403);
+//     //     return;
+//     // }
+//     // else {
+//     //     next();
+//     // }
+//   });
 
 /*
     Private Routes:

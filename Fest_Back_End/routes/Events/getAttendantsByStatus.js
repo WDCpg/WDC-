@@ -1,11 +1,10 @@
 var express = require('express');
 var router = express.Router();
 
-router.get('/getAttendantsByStatus', function(req, res, next) {
-    if (!'user' in req.session) {
-        res.sendStatus(403);
-        return;
-    }
+
+router.post('/getAttendantsByStatus', function(req, res, next) {
+    //Get all user events
+    
     if ('event_id' in req.query) {
         req.db.getConnection((error, connection) => {
             if(error) {
@@ -33,6 +32,11 @@ router.get('/getAttendantsByStatus', function(req, res, next) {
         res.sendStatus(400);
         return;
     }
+    
+   
+
+    
+    
 });
 
 module.exports = router;
