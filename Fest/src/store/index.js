@@ -173,7 +173,9 @@ export default createStore({
             RegisterAPI.postRegisterInfo(this.state.newRegisterData);
         },
 
-        postSignup
+        postSignupData() {
+            SignupAPI from postSignup
+        }
         import SignupAPI from "../api/SignupAPI";
 
         fetchPublicEvents({commit}) {
