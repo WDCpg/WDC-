@@ -7,7 +7,7 @@ import LoginsAPI from "../api/LoginsAPI";
 import RefreshLoginAPI from "../api/RefreshLoginAPI";
 import CalendarAPI from "../api/CalendarAPI";
 import NotificationsAPI from "../api/NotificationsAPI";
-
+import RegisterAPI from "../api/RegisterAPI";
 
 export default createStore({
     // State == Data
@@ -165,6 +165,11 @@ export default createStore({
         //update user's profile information
         postNewUserData(){
             userInfoApi.postUserInfo(this.state.newUserData);
+        },
+
+        //Registers a user
+        postRegisterData() {
+            RegisterAPI.postRegisterInfo(this.state.newRegisterData);
         },
 
         fetchPublicEvents({commit}) {
