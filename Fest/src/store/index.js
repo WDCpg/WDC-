@@ -8,7 +8,7 @@ import RefreshLoginAPI from "../api/RefreshLoginAPI";
 import CalendarAPI from "../api/CalendarAPI";
 import NotificationsAPI from "../api/NotificationsAPI";
 import RegisterAPI from "../api/RegisterAPI";
-import SignupAPI from "../api/SignupAPI";
+//import SignupAPI from "../api/SignupAPI";
 
 export default createStore({
     // State == Data
