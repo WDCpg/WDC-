@@ -164,7 +164,7 @@ export default createStore({
         //Registers a user
         postRegisterData() {
             RegisterAPI.postRegisterInfo(this.state.newRegisterData);
-            for (int i = 0; i < newRegisterData.length; i++) {
+            for (let i = 0; i < newRegisterData.length; i++) {
                 console.log(newRegisterData[i].start);
             }
         },
