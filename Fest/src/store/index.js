@@ -75,13 +75,6 @@ export default createStore({
         newSignupData: {
         },
 
-        googleProfileData:{
-        },
-
-        googleTokenData: [
-        ],
-
-
         friendInfo: [
             {id:1, firstName:'Mark', lastName:'Leo', icon:'P1.jpeg'},
             {id:2, firstName:'Carlos ', lastName:'Liu', icon:'P2.jpeg'},
@@ -173,9 +166,9 @@ export default createStore({
             RegisterAPI.postRegisterInfo(this.state.newRegisterData);
         },
 
-        postSignupData() {
-            SignupAPI.postSignupInfo(this.state.newSignupData);
-        }
+        // postSignupData() {
+        //     SignupAPI.postSignupInfo(this.state.newSignupData);
+        // },
 
         fetchPublicEvents({commit}) {
             return new Promise((resolve, reject) => {
@@ -436,6 +429,5 @@ export default createStore({
         setUserCalendar(state, calendarEvents){
             state.userAvailability.push(calendarEvents);
         }
-
     }
 })
