@@ -14,7 +14,7 @@ var loginRouter = require('./routes/User_Auth/login');
 var signUpRouter = require('./routes/User_Auth/signup');
 var logOutRouter = require('./routes/User_Auth/logout');
 var profileRouter = require('./routes/Profile/profile');
-var calendarRouter = require('./routes/Calendar/calendar');
+var registerRouter = require('./routes/User_Auth/register');
 var notificationsRouter = require('./routes/Notifications/notifications');
 
 var app = express();
