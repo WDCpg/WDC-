@@ -174,9 +174,8 @@ export default createStore({
         },
 
         postSignupData() {
-            SignupAPI from postSignup
+            SignupAPI.postSignupInfo(this.state.newSignupData);
         }
-        import SignupAPI from "../api/SignupAPI";
 
         fetchPublicEvents({commit}) {
             return new Promise((resolve, reject) => {
@@ -205,7 +204,6 @@ export default createStore({
                 commit('setUserCalendar', calendarEvents[i]);
             }
         },
-
 
         updateIsLoading({commit}) {
             commit('isLoading');
