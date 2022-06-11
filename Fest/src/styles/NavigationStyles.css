@@ -277,3 +277,34 @@ border-radius: 20px;
 .notification-attending {
   font-weight: 600;
 }
+
+@media (max-width: 500px) {
+  .menu-icon-container {
+    display: none;
+  }
+
+  
+}
+
+@media (max-width: 800px) {
+  .light-dark-container {
+    margin: 0 5px;
+  }
+}
+
+@media (max-width: 650px) {
+  .navigation-container {
+    height: 100%;
+    padding: 10px 0;
+  }
+
+  .nav-bar {
+    flex-direction: column;
+    align-items: flex-start;
+
+  }
+
+  .nav-bar-right {
+    justify-content: left !important;
+  }
+}

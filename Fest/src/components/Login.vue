@@ -28,6 +28,8 @@
                             <label for="password">Password</label><br>
                             <input minlength="8" type="password" id="password" name="password">
                             <p><a href="/">Forgot password?</a></p>
+                            <!-- GOOGLE LOGIN -->
+                            <div id="google-signin-button"></div>
                             <button type="submit" @click="submitLogin" class="signin-button">Sign in</button>
                         </form>
 

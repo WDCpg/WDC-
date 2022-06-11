@@ -1,3 +1,5 @@
+import store from "@/store/index";
+
 //1) create template JSON from database
 
 const userInfo = {
@@ -50,7 +52,7 @@ export default {
             }
         }
         //Open connection
-        xhttp.open('POST', `https://chobbiwan-code50-16236897-vgqjwwq6fx9g5-8080.githubpreview.dev/updateUserData`, true);
+        xhttp.open('POST', `${store.state.backEndUrl}/updateUserData`, true);
         xhttp.setRequestHeader('Content-type', 'application/json; charset=UTF-8' );
         //Send request
         xhttp.send(JSON.stringify(newUserData));
@@ -68,11 +70,10 @@ export default {
             }
         }
         //Open connection
-        xhttp.open('POST', `https://chobbiwan-code50-16236897-vgqjwwq6fx9g5-8080.githubpreview.dev/UpdatePassword`, true);
+        xhttp.open('POST', `${store.state.backEndUrl}/UpdatePassword`, true);
         xhttp.setRequestHeader('Content-type', 'application/json; charset=UTF-8' );
         //Send request
         xhttp.send(JSON.stringify(newUserPassword));
-
     }
 }
 

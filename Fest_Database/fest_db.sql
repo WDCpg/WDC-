@@ -67,6 +67,7 @@ CREATE Table events (
   event_description varchar(510),
   event_title varchar(100),
   country varchar(63),
+  state varchar(63),
   city varchar(63),
   street varchar(63),
   post_code varchar(20),

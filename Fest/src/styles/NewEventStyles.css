@@ -90,7 +90,6 @@ h2 {
 .emoji {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
@@ -99,6 +98,7 @@ h2 {
 .emoji-search-container {
     display: flex;
     flex-direction: row;
+    align-items: center;
 }
 
 .emoji-search {
@@ -140,7 +140,7 @@ h2 {
 }
 .emoji-clear-text {
     line-height: 0.9em;
-    font-size: 0.6em;
+    font-size: 0.2em;
     margin-left: 10px;
 }
 .emoji-list {
@@ -150,7 +150,7 @@ h2 {
 }
 
 .emoji-list li button {
-    font-size: 0.5em;
+    font-size: 0.3em;
 }
 
 .emoji ul {
@@ -177,27 +177,38 @@ h2 {
     resize: none;
 }
 
-.event-time i {
-    font-size: 2.5vw;
-    margin-right: 10px;
-}
 .event-time input {
-    font-size: 1vw;
+    font-size: 0.8vw;
     height: auto;
-    width: 10vw;
-}
-.event-date {
-    margin-right: 20px;
+    width: 12vw;
 }
 .event-start {
-    font-size: 1vw;
     display: flex;
-    align-items: flex-end;
+    gap:30px;
+    font-size: 1vw;
 }
 .event-end {
-    font-size: 1vw;
     display: flex;
-    align-items: flex-end;
+    gap:30px;
+    font-size: 1vw;
+}
+
+
+.event-location {
+    font-size: 1vw;
+}
+.city-state, .country-postcode{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+.event-location input{
+    font-size: 0.8vw;
+    height: auto;
+    width: 11vw;
+}
+.street input{
+    width: 23vw;
 }
 
 h3 {
@@ -212,18 +223,11 @@ h3 {
 
 .event-photo {
     font-size: 1vw;
-    display: flex;
-    align-items: flex-end;
-}
-.event-photo i {
-    font-size: 2.5vw;
-    margin-right: 10px;
 }
 
 .event-photo input[type=file]::file-selector-button {
     border: none;
     border-radius: 12px;
-    margin-left: 10px;
     padding: 5px 30px;
     background-color: #2E81DA;
     color: white;
@@ -292,6 +296,53 @@ h3 {
     cursor: pointer;
 }
 
+.friendList {
+    display: flex;
+    border: 1px solid #9A9A9A;
+    border-radius: 8px;
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 150px;
+    overflow-y: scroll;
+}
+.hideFriends {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px 12px;
+    border-radius: 8px;
+    border: none;
+    color: white;
+    background-color: #777E94;
+    cursor: pointer;
+}
+.friendList table {
+    border-collapse: collapse;
+    width: 100%;
+}
+.friendList td, th {
+    padding: 5px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+.friendList td button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px 12px;
+    border-radius: 8px;
+    border: none;
+    color: white;
+    background-color: #2E81DA;
+    cursor: pointer;
+}
+
+.friendIcon {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+}
+
 .people-invited {
     position: relative;
     display: inline-block;
@@ -353,6 +404,7 @@ h3 {
     display: flex;
     flex-direction: column;
     margin: 0 15px;
+    transition: box-shadow .24s cubic-bezier(.4,0,.3,1),background-color .24s cubic-bezier(.4,0,.3,1);
 }
 
 

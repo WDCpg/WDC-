@@ -3,13 +3,35 @@ import store from "@/store/index";
 export default {
     data () {
         return {
-            search: ''
+            search: '',
+            showFriends: false,
+            invitedFriends: [],
+            inviteActived: false,
+            inviteCount: [],
+            friendInfo: []
         }
     },
 
     methods: {
+        formatDate(dateString) {
+            if (dateString == null) {
+                return;
+            }
+            const date = new Date(dateString);
+            return new Intl.DateTimeFormat('default', {dateStyle: 'long'}).format(date) + " " + date.toLocaleTimeString(('en-US'), { hour: '2-digit', minute: '2-digit' });
+        },
+
+        postEmoji(emojiCode) {
+            store.dispatch('newEventEmoji', emojiCode);
+        },
+
+        postPrivacy(privary) {
+            store.dispatch('newEventPrivacy', privary);
+        },
+
         cancelCreate() {
-            store.dispatch('cancelCreate');
+            location.replace("/");
+            //store.dispatch('cancelCreate');
         },
 
         clearInput(type) {
@@ -18,14 +40,42 @@ export default {
 
         submitNewEvent() {
             store.dispatch('postNewEvent');
+            //store.dispatch('postFriendInvited');
+        },
+
+        inviteFriend(friend,index) {
+            friend['status'] = true;
+            friend.inviteActive = !friend.inviteActive;
+            this.invitedFriends.push(friend);
+            this.inviteCount.push(index);
+            store.dispatch('InviteList', this.invitedFriends);
+        },
+        inviteSent(index) {
+            if (this.inviteCount[index] == index) {
+                    this.inviteActived = !this.inviteActived;
+                return this.inviteActived;
+            }
+        },
+
+        cancelInvited(invitedFriends, friendInvited, index) {
+            //console.log('invite', friendInvited);
+
+            let friendIndex = this.friendInfo.findIndex(friend => friend.id === friendInvited.id);
+
+            invitedFriends.splice(index, 1);
+            this.friendInfo[friendIndex].inviteActive = false;
+            store.dispatch('InviteList', invitedFriends);
+            console.log(invitedFriends);
         }
     },
+
     computed: {
-        inviteFriend() {
+        findFriend() {
             let search = this.search.toLowerCase();
-            let friends = store.state.friendInfo;
-            return friends.filter(friend => friend.firstName.toLowerCase().includes(search) ||
-            friend.lastName.toLowerCase().includes(search));
+
+            return this.friendInfo.filter(friend =>
+                friend.firstName.toLowerCase().includes(search)
+                || friend.lastName.toLowerCase().includes(search));
         },
 
         userInfo() {
@@ -34,14 +84,14 @@ export default {
 
         newEventData() {
             return store.state.newEventData;
-        },
-
-        friendInfo() {
-            return store.state.friendInfo;
         }
+
     },
 
     created() {
         store.dispatch('fetchNewEventDefault');
+        var friends = JSON.parse(JSON.stringify(store.state.friendInfo));
+        this.friendInfo = friends;
+        //console.log('this friend', this.friendInfo)
     }
 }

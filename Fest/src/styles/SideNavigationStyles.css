@@ -33,6 +33,10 @@
     background-color: #E8E8E8;
 }
 
+.dark .side-menu-container li:hover {
+    background-color: black;
+}
+
 
 .side-menu-icon {
     height: 25px;
@@ -72,3 +76,5 @@
 .light  #cross-icon {
     stroke: white;
 }
+
+

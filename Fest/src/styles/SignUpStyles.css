@@ -1,10 +1,31 @@
-.outerouterdiv {
-    background-color:white;
+
+.close-button-container {
+    position:absolute;
+    z-index:1;
+    width:100%;
+}
+
+.close-button-x{
+    margin:-50px;
+}
+
+.outerouterdiv .close-button-x {
+    border: none;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    background-color: #777E94 !important;
+    color: white;
+    cursor: pointer;
+    /* display: flex; */
+    bottom:12px;
+    left:12px;
+    align-items: center;
+    float:right;
 }
 
 .outer {
     clear: both;
-    top: 15vh;
     text-align: center;
     position: relative;
     border-color: #9A9A9A;

@@ -84,7 +84,7 @@
                 </router-link>
                 <div v-else class="user-profile-container-login">
                     <!-- Sign up -->
-                    <button type="button" v-on:click="displayLoginModal();" class="user-logs-button" :class="{ dark: isDark }">
+                    <button type="button" v-on:click="displaySignUpModal();" class="user-logs-button" :class="{ dark: isDark }">
                         Sign Up
                     </button>
                     <!-- Login button -->

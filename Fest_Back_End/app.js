@@ -14,9 +14,14 @@ var loginRouter = require('./routes/User_Auth/login');
 var signUpRouter = require('./routes/User_Auth/signup');
 var logOutRouter = require('./routes/User_Auth/logout');
 var profileRouter = require('./routes/Profile/profile');
+var newEvent = require('./routes/newEvent/newEvent');
 var calendarRouter = require('./routes/Calendar/calendar');
 var notificationsRouter = require('./routes/Notifications/notifications');
 var adminRouter = require('./routes/Admin/admin');
+var eventAttendantsRouter = require('./routes/Events/getEventAttendants');
+var eventDetailsRouter = require('./routes/Events/getEventDetails');
+var eventAttendantsByStatusRouter = require('./routes/Events/getAttendantsByStatus');
+
 
 var app = express();
 
@@ -24,7 +29,7 @@ var app = express();
 var mysql = require('mysql');
 const router = require('./routes/index');
 //localhost 1
-var dbConnectionPool = mysql.createPool({host: '127.0.0.1', database: 'fest_db' });
+//var dbConnectionPool = mysql.createPool({host: '127.0.0.1', database: 'fest_db' });
 
 // local env 2
 // var dbConnectionPool = mysql.createPool({
@@ -104,7 +109,7 @@ app.use(session({
 
 router.use('/', function(req, res, next) {
 
-  console.log(req.session);
+  console.log(req.cookies);
 
   next();
 })
@@ -119,11 +124,15 @@ app.use('/', loginRouter);
 app.use('/', signUpRouter);
 app.use('/', logOutRouter);
 app.use('/', profileRouter);
+app.use('/', newEvent);
 app.use('/', calendarRouter);
 app.use('/', notificationsRouter);
 app.use('/', adminRouter);
 
 
+app.use('/', eventAttendantsRouter);
+app.use('/', eventDetailsRouter);
+app.use('/', eventAttendantsByStatusRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -16,16 +16,25 @@ const router = createRouter({
     {
       path: "/",
       name: "home",
+      meta: {
+        title: "Dashboard Fest"
+      },
       component: DashboardView,
     },
     {
       path: "/profile",
       name: "profile",
+      meta: {
+        title: "Profile"
+      },
       component: UserProfileView,
     },
     {
       path: "/newEvent",
       name: "newEvent",
+      meta: {
+        title: "New Event"
+      },
       component: NewEventView,
     },
     {
@@ -46,16 +55,25 @@ const router = createRouter({
     {
       path:"/calendar",
       name: "calendar",
+      meta: {
+        title: "Calendar - Fest"
+      },
       component: CalendarView,
     },
     {
       path: "/admin",
       name:"admin",
+      meta: {
+        title: "Admin Fest"
+      },
       component: AdminView,
     },
     {
       path: "/event/:event_id",
       name:"event",
+      meta: {
+        title: `Fest Event`
+      },
       component: EventView,
       props: true
     },
@@ -66,5 +84,11 @@ const router = createRouter({
     },
   ],
 });
+
+router.beforeEach((to, from, next) => {
+  document.title = `${to.meta.title}`;
+  next();
+})
+
 
 export default router;

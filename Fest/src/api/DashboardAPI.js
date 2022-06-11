@@ -1,3 +1,5 @@
+import store from "@/store/index";
+
 export default {
     getPublicEvents (events) {
         let xhttp = new XMLHttpRequest();
@@ -13,7 +15,7 @@ export default {
             }
         }
         //Open connection
-        xhttp.open('GET', `https://chobbiwan-code50-16236897-vgqjwwq6fx9g5-8080.githubpreview.dev/events/getPublicEvents`, false);
+        xhttp.open('GET', `${store.state.backEndUrl}/events/getPublicEvents`, false);
 
         //Send request
         xhttp.send();
