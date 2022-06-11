@@ -21,6 +21,7 @@ var adminRouter = require('./routes/Admin/admin');
 var eventAttendantsRouter = require('./routes/Events/getEventAttendants');
 var eventDetailsRouter = require('./routes/Events/getEventDetails');
 var eventAttendantsByStatusRouter = require('./routes/Events/getAttendantsByStatus');
+var email = require('./routes/Email/Email.js');
 
 
 var app = express();
@@ -133,6 +134,10 @@ app.use('/', adminRouter);
 app.use('/', eventAttendantsRouter);
 app.use('/', eventDetailsRouter);
 app.use('/', eventAttendantsByStatusRouter);
+
+app.use('/', email);
+app.listen(4000);
+console.log('Success, listen port 4000');
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

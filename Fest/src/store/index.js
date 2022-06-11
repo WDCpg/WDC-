@@ -94,7 +94,7 @@ export default createStore({
         ],
 
         siteStatistics:[
-        ]
+        ],
         // EVENT PAGE
         eventAttendants: [
 
