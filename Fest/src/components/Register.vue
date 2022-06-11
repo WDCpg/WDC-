@@ -11,8 +11,6 @@
                     <h2>Your details</h2>
                     <form action="/">
                     <div class="personal-details-container">
-                        {{ newSignupData }}
-                        {{ newRegisterData }}
                         <label for="firstname">First name</label><br>
                         <input type="text" id="firstname" name="firstname" placeholder="First name..." v-model="newRegisterData.first_name"><br><br>
                         <label for="lastname">Last name</label><br>
