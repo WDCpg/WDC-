@@ -53,11 +53,11 @@
                     <div class = "emoji">
                         <div class="emoji-search-container">
                             <form class = "emoji-search">
-                                <input class = "emoji-search-text" type="search" placeholder="Search Emoji..." name ="emoji">
+                                <input class = "emoji-search-text" type="search" placeholder="Search Emoji...Coming Soon..." name ="emoji">
                                 <svg class = "emoji-search-button" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg>
                             </form>
 
-                            <div class = "emoji-clear">
+                            <div class = "emoji-clear" @click="postEmoji('U+1F389')">
                                 <button class = "emoji-clear-button" type="button">X</button>
                                 <div class = "emoji-clear-text">
                                     <p>No</p>
@@ -66,19 +66,16 @@
                             </div>
                         </div>
 
-
-
-
                         <div >
                             <ul class = "emoji-list">
-                                <li><button class = "emoji-button">&#128513;</button></li>
-                                <li><button class = "emoji-button" title="U+263A"><span>U+263A;</span></button></li>
-                                <li><button class = "emoji-button">&#128515;</button></li>
-                                <li><button class = "emoji-button">&#128516;</button></li>
-                                <li><button class = "emoji-button">&#128517;</button></li>
-                                <li><button class = "emoji-button">&#128518;</button></li>
-                                <li><button class = "emoji-button">&#128519;</button></li>
-                                <li><button class = "emoji-button">&#128520;</button></li>
+                                <li><button @click="postEmoji('U+1F600')" type="button" class = "emoji-button">&#x1F600;</button></li>
+                                <li><button @click="postEmoji('U+1F606')" type="button" class = "emoji-button">&#x1F606;</button></li>
+                                <li><button @click="postEmoji('U+1F923')" type="button" class = "emoji-button">&#x1F923;</button></li>
+                                <li><button @click="postEmoji('U+1F929')" type="button" class = "emoji-button">&#x1F929;</button></li>
+                                <li><button @click="postEmoji('U+1F973')" type="button" class = "emoji-button">&#x1F973;</button></li>
+                                <li><button @click="postEmoji('U+1F3C7')" type="button" class = "emoji-button">&#x1F3C7;</button></li>
+                                <li><button @click="postEmoji('U+1F6B5')" type="button" class = "emoji-button">&#x1F6B5;</button></li>
+                                <li><button @click="postEmoji('U+1F46F')" type="button" class = "emoji-button">&#x1F46F;</button></li>
                             </ul>
                         </div>
                     </div>
@@ -102,35 +99,20 @@
                 <!-- event time -->
                 <div class = "event-time">
                     <form class = "event-start">
-                        <div><i class = "fa fa-calendar" ></i></div>
-                        <div class = "event-date">
                             <div>
-                                <label>Start Date:</label>
+                                <label>Start Date and Time:</label>
                             </div>
-                            <input type = "date" v-model="newEventData.start_date">
-                        </div>
-                        <div>
                             <div>
-                                <label>Start Time:</label>
+                                <input type = "datetime-local" v-model="newEventData.event_start">
                             </div>
-                            <input type = "time" v-model="newEventData.start_time">
-                        </div>
                     </form>
-                    <br>
 
                     <form class = "event-end">
-                        <div><i class = "fa fa-calendar" ></i></div>
-                        <div class = "event-date">
-                            <div>
-                                <label>End Date:</label>
-                            </div>
-                            <input type = "date" v-model="newEventData.end_date">
+                        <div>
+                            <label>-End Date and Time:</label>
                         </div>
                         <div>
-                            <div>
-                                <label>End Time:</label>
-                            </div>
-                            <input type = "time" v-model="newEventData.end_time">
+                            <input type = "datetime-local" v-model="newEventData.event_end">
                         </div>
                     </form>
                     <br>
@@ -139,12 +121,51 @@
                 <!-- ----------------------------------------------------------------------  -->
 
                 <!-- ----------------------------------------------------------------------  -->
+                <!-- event location -->
+                <div class = "event-location">
+                    <div class = "street">
+                        <label>Street</label>
+                        <br>
+                        <input type="text" v-model="newEventData.street" placeholder="street...">
+                    </div>
+
+                    <div class = "city-state">
+                        <div class = "event-location-box">
+                            <label>City</label>
+                            <br>
+                            <input type="text" v-model="newEventData.city" placeholder="city...">
+                        </div>
+
+                        <div class = "event-location-box">
+                            <label>State</label>
+                            <br>
+                            <input type="text" v-model="newEventData.state" placeholder="state...">
+                        </div>
+                    </div>
+
+                    <div class = "country-postcode">
+                        <div class = "event-location-box">
+                            <label>Country</label>
+                            <br>
+                            <input type="text" v-model="newEventData.country" placeholder="country...">
+                        </div>
+
+                        <div class = "event-location-box">
+                            <label>PostCode</label>
+                            <br>
+                            <input type="text" v-model="newEventData.post_code" placeholder="postcode...">
+                        </div>
+                    </div>
+                </div>
+                <!-- event location end -->
+                <!-- ----------------------------------------------------------------------  -->
+
+                <br>
+                <!-- ----------------------------------------------------------------------  -->
                 <!-- event photo -->
                 <div class = "event-photo">
-                    <i class = "fa fa-camera"></i>
-                    <label>Upload a cover photo</label>
-                    <input type="file" name="cover" accept="image/*">
-
+                    <div><label>Upload a cover photo</label> </div>
+                    <div><input type="file" @change="uploadImage" name="cover" accept="image/*"></div>
                 </div>
                 <br>
                 <!-- event photo end -->
@@ -162,31 +183,25 @@
                 <!-- ----------------------------------------------------------------------  -->
                 <!-- event group -->
                 <div class = "event-group">
-                    <input type="radio" id="closeFriend" name="eventGroup" v-model="newEventData.privacy" value="Close Friend">
+                    <input type="radio" id="closeFriend" name="eventGroup" @click="postPrivacy('Close Friend')" v-model="newEventData.privacy" value="Close Friend">
                     <label for="closeFriend" class="event-group-selector">
-                            <div>
-                                <HeartIcon />
-                            </div>
+                            <div>&#128525;</div>
                             <p>
                                 Close <br> Friends
                             </p>
                     </label>
 
-                    <input type="radio" id="allFriend" name="eventGroup" v-model="newEventData.privacy" value="All Friend">
+                    <input type="radio" id="allFriend" name="eventGroup" @click="postPrivacy('All Friend')" v-model="newEventData.privacy" value="All Friend">
                     <label for="allFriend" class="event-group-selector">
-                            <div>
-                                <StarIcon />
-                            </div>
+                            <div>&#129321;</div>
                             <p>
                                 All <br> Friends
                             </p>
                     </label>
 
-                    <input type="radio" id="allPublic" name="eventGroup" v-model="newEventData.privacy" value="All Public">
+                    <input type="radio" id="allPublic" name="eventGroup" @click="postPrivacy('All Public')" v-model="newEventData.privacy" value="All Public">
                     <label for="allPublic" class="event-group-selector">
-                            <div>
-                                <UserIcon />
-                            </div>
+                            <div>&#128516;</div>
                             <p>
                                 All <br> Public
                             </p>
@@ -201,45 +216,47 @@
                 <!-- event invite -->
                 <div class = "event-invite">
                     <form class = "event-invite-search">
-                        <input class = "event-invite-search-text" type="text" v-model="search" placeholder="Search friend to invite..." name ="searchFriend">
+                        <input class="event-invite-search-text" type="text" placeholder="Search friend to invite..." name ="searchFriend"
+                        v-model="search" @focus="showFriends = true"/>
                         <svg class = "event-invite-search-button" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg>
                     </form>
+                    <br>
+                    <div class="friendList" id="friendList" v-if="showFriends">
+                        <table id="myTable">
+                            <thead>
+                                <tr>
+                                    <th>Portrait</th>
+                                    <th>FirstName</th>
+                                    <th>LastName</th>
+                                    <th>
+                                        <button type="button" class="hideFriends" @click="showFriends = false" >Close</button>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="(friend, index) in findFriend" :key="friend.id">
+                                    <td>
+                                        <img class="friendIcon" :src="'src/assets/images/' + friend.icon"  alt = " ">
+                                    </td>
+                                    <td>{{ friend.firstName }}</td>
+                                    <td>{{ friend.lastName }}</td>
+                                    <td><button type="button"
+                                                @click="inviteFriend(friend,index)"
+                                                :disabled="friend.inviteActive">Invite</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
 
-                    <table class="table" id="myTable">
-                        <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>FirstName</th>
-                            <th>LastName</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-
-                        <tr v-for="friend in inviteFriend" :key="friend.id">
-                            <td>{{ friend.id }}</td>
-                            <td>{{ friend.firstName }}</td>
-                            <td>{{ friend.lastName }}</td>
-                        </tr>
-                        </tbody>
-                    </table>
-
+                    </div>
                 </div>
 
-                <div>
+                <div v-if="invitedFriends.length > 0">
                     <p>Invitations will sent to...</p>
-                    <div class="people-invited">
-                        <span class="people-invited-delete">&#9940;</span>
-                        <img src="../assets/images/P2.jpeg">
-                    </div>
-
-                    <div class="people-invited">
-                        <span class="people-invited-delete">&#9940;</span>
-                        <img src="../assets/images/P3.jpeg">
-                    </div>
-
-                    <div class="people-invited">
-                        <span class="people-invited-delete">&#9940;</span>
-                        <img src="../assets/images/P4.jpeg">
+                    <div v-for="(friendInvited, index) in invitedFriends" :key="index"  class="people-invited">
+                        <div >
+                            <span class="people-invited-delete" @click="cancelInvited(invitedFriends, friendInvited, index)">&#9940;</span>
+                            <img :src="'src/assets/images/' + friendInvited.icon">
+                        </div>
                     </div>
                 </div>
                 <!-- event invite end -->
@@ -247,6 +264,7 @@
             </div>
             <br>
             <hr>
+            <br>
             <!-- event privacy end -->
             <!-- ----------------------------------------------------------------------  -->
 
@@ -264,7 +282,7 @@
             <!-- ----------------------------------------------------------------------  -->
 
             <div class= "event-submit">
-                <button type="button" @click="submitNewEvent">Create Event !!!</button>
+                <button type="submit" @click="submitNewEvent">Create Event !!!</button>
             </div>
 
             </div>
@@ -278,7 +296,7 @@
 
                     <div class="post-icon-container">
                         <p>
-                            &#129409;
+                            {{newEventData.icon}};
                         </p>
                     </div>
                     <div class="post-details-container">
@@ -294,10 +312,28 @@
 
                     <div class="post-time-container">
                         <p>
-                            {{ newEventData.start_date }}: {{ newEventData.start_time }}
+                            {{ formatDate(newEventData.event_start) }}
                         </p>
                         <p>
-                            {{ newEventData.end_date }}: {{ newEventData.end_time }}
+                            {{ formatDate(newEventData.event_start) }}
+                        </p>
+                    </div>
+
+                    <div class="post-location-container">
+                        <p>
+                            {{newEventData.street}}
+                        </p>
+                        <p>
+                            {{newEventData.city}}
+                        </p>
+                        <p>
+                            {{newEventData.state}}
+                        </p>
+                        <p>
+                            {{newEventData.country}}
+                        </p>
+                        <p>
+                            {{newEventData.post_code}}
                         </p>
                     </div>
 

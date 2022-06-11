@@ -14,6 +14,7 @@ var loginRouter = require('./routes/User_Auth/login');
 var signUpRouter = require('./routes/User_Auth/signup');
 var logOutRouter = require('./routes/User_Auth/logout');
 var profileRouter = require('./routes/Profile/profile');
+var newEvent = require('./routes/newEvent/newEvent');
 var calendarRouter = require('./routes/Calendar/calendar');
 var notificationsRouter = require('./routes/Notifications/notifications');
 var eventAttendantsRouter = require('./routes/Events/getEventAttendants');
@@ -30,14 +31,14 @@ const router = require('./routes/index');
 //var dbConnectionPool = mysql.createPool({host: '127.0.0.1', database: 'fest_db' });
 
 // local env 2
-var dbConnectionPool = mysql.createPool({
-  name: 'fest-db',
-  host: 'localhost',
-  port: '3306',
-  user: 'root',
-  password: 'Roomdly1234',
-  database: 'fest_db'
-});
+// var dbConnectionPool = mysql.createPool({
+//   name: 'fest-db',
+//   host: 'localhost',
+//   port: '3306',
+//   user: 'root',
+//   password: 'Roomdly1234',
+//   database: 'fest_db'
+// });
 
 
 //connect to database middleware
@@ -122,6 +123,7 @@ app.use('/', loginRouter);
 app.use('/', signUpRouter);
 app.use('/', logOutRouter);
 app.use('/', profileRouter);
+app.use('/', newEvent);
 app.use('/', calendarRouter);
 app.use('/', notificationsRouter);
 app.use('/', eventAttendantsRouter);

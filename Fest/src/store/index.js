@@ -39,6 +39,7 @@ export default createStore({
                 "event_description": "Description of my event goes here",
                 "event_start": "14-06-2022T0:600",
                 "event_end": "21-07-2022T0:800",
+
                 "icon": "&#128047;",
                 "image": "path/image.jpg "
             }
@@ -88,9 +89,14 @@ export default createStore({
         ],
 
         eventDetails: [
+            ],
+
+        invitedFriends: [
 
         ]
     },
+
+
 
     // Getters == Computed properties
     getters: {
@@ -110,6 +116,14 @@ export default createStore({
             return state.userInfo.profile_picture;
         },
 
+        // invitedFriends(state) {
+        //     if (state.invitedFriends.length > 0) {
+        //         return state.invitedFriends.filter(friend => friend.status == true);
+        //     }
+        //     else {
+        //         return state.invitedFriends;
+        //     }
+        // }
         userId(state) {
             return state.userInfo.user_id;
         }
@@ -220,6 +234,18 @@ export default createStore({
                 })
             })
         },
+        
+        newEventEmoji({commit}, emojiCode) {
+            commit('updateNewEventEmoji', emojiCode);
+        },
+
+        newEventPrivacy({commit},privacy) {
+            commit('updateNewEventPrivacy',privacy);
+        },
+
+        InviteList({commit}, invitedFriends) {
+            commit('updateInviteList', invitedFriends);
+        },
 
         // Update Show Notifications
         toggleShowNotifications({commit}) {
@@ -240,6 +266,11 @@ export default createStore({
         postNewEvent() {
             NewEventAPI.postNewEvent(this.state.newEventData);
         },
+        // Post Frient Invited
+        // postFriendInvited() {
+        //     NewEventAPI.postFriendInvited(this.state.invitedFriends);
+        // },
+
         //update user's password
         postNewUserPassword(){
             userInfoApi.postUserPassword(this.state.newUserPassword);
@@ -296,17 +327,17 @@ export default createStore({
             let newEventDefault = {
                 "title": "Your event's title",
                 "description": "Your description",
-                "start_date" : "dd/mm/yyyy",
-                "start_time": "--/--",
-                "end_date": "dd/mm/yyyy",
-                "end_time": "--/--",
+                "event_start" : "2022-06-09T23:41",
+                "event_end": "2022-06-09T23:41",
+                "country": "Australia",
+                "state": "South Australia",
+                "city": "Adelaide",
+                "street": "1 KingWilliam St",
+                "post_code": "5000",
+                "icon": "U+1F389",
                 "privacy" : "Public"
             }
             commit('setNewEventDefault', newEventDefault);
-        },
-
-        cancelCreate() {
-            location.replace("/");
         },
 
         clearInput({commit}, type) {
@@ -393,6 +424,13 @@ export default createStore({
             })
         },
 
+        // Change page style - Light / Dark
+        updatePageStyle({commit}) {
+            commit('togglePageStyle');
+
+
+            commit('setNewEventNone', [clear, type]);
+        },
 
 
             // commit('setNewEventNone', [clear, type]);
@@ -440,11 +478,26 @@ export default createStore({
             state.eventAttendants = eventAttendants;
             return;
         },
+        // Invite Friend
+        // updateFriendsInvited(state, friend) {
+        //     friend['status'] = true;
+        //     state.invitedFriends.push(friend);
+        // },
+        updateNewEventEmoji(state, emojiCode) {
+            state.newEventData['icon'] = emojiCode;
+        },
+
+        updateNewEventPrivacy(state,privacy) {
+            state.newEventData.privacy = privacy;
+        },
+
+        updateInviteList(state, invitedFriends) {
+            state.invitedFriends = invitedFriends;
+        },
 
         // Update Show Notifications
         updateShowNotifications(state) {
             state.showNotifications = !state.showNotifications;
-
         },
 
         // Update Notifications
@@ -491,7 +544,7 @@ export default createStore({
 
         },
 
-       
+
         updateIconCode(state, stateElement) {
             for (let i = 0; i < state[stateElement].length; i++) {
                 let rawCode = state[stateElement][i].icon.replace("U+", "0x");
