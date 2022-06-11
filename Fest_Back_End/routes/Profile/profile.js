@@ -39,7 +39,7 @@ router.post('/UploadPicture', function(req,res,next){
                     res.sendStatus(500);
                     return;
                 }
-                res.send("success");
+                res.end();
             });
         });
     });
@@ -101,6 +101,8 @@ router.get('/getUserInfo', function(req,res,next){
         connection.query(query,req.cookies.session_id, function(error,rows,fields){
             connection.release();
             if(error){
+                console.log(error);
+
                 res.sendStatus(500);
                 return;
             }

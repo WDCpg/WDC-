@@ -1,6 +1,9 @@
 import store from "@/store/index";
+import VueCal from 'vue-cal';
+import 'vue-cal/dist/vuecal.css';
 
 export default {
+    components: { VueCal },
     data () {
         return {
             search: '',
@@ -49,7 +52,10 @@ export default {
             this.invitedFriends.push(friend);
             this.inviteCount.push(index);
             store.dispatch('InviteList', this.invitedFriends);
+            store.dispatch('getFriendAvailablity', friend);
+
         },
+
         inviteSent(index) {
             if (this.inviteCount[index] == index) {
                     this.inviteActived = !this.inviteActived;
@@ -84,6 +90,12 @@ export default {
 
         newEventData() {
             return store.state.newEventData;
+        },
+
+        friendAvailability(){
+            console.log(store.state.invitedFriendsCalendar);
+            return store.state.invitedFriendsCalendar;
+
         }
 
     },
@@ -93,5 +105,6 @@ export default {
         var friends = JSON.parse(JSON.stringify(store.state.friendInfo));
         this.friendInfo = friends;
         //console.log('this friend', this.friendInfo)
+
     }
 }

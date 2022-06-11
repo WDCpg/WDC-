@@ -28,6 +28,7 @@ export default {
 
         },
 
+
         displayModalUser: function(user_id){
             document.querySelector(".edit_user_modal").style.display="flex";
             for(let i = 0; i<store.state.allUsers.length; i++){
@@ -152,6 +153,7 @@ export default {
             return store.state.isLoading;
         },
 
+
         Users(){
             //  return store.state.allUsers;
             let search = this.searchUser.toLowerCase();
@@ -190,8 +192,34 @@ export default {
             }
         },
 
-        Statistics(){
-            return store.state.siteStatistics;
+        eventStats(){
+            // console.log(store.state.siteStatistics);
+            // return store.state.siteStatistics;
+            let count = 0;
+
+            for(let i = 0; i<store.state.allEvents.length; i++){
+                count++;
+            }
+            return count;
+
+        },
+
+        userStats(){
+            let count = 0;
+
+            for(let i = 0; i<store.state.allUsers.length; i++){
+                count++;
+            }
+            return count;
+        },
+
+        adminStats(){
+            let count = 0;
+
+            for(let i = 0; i<store.state.allAdmins.length; i++){
+                count++;
+            }
+            return count;
         }
 
     },

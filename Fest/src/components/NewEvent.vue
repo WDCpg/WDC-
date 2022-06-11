@@ -273,7 +273,18 @@
             <div class = "event-attandance">
                 <h3>Attandance availability</h3>
                 <div class = "event-calendar">
-                    <img src = "../assets/images/Calendar.png">
+                    <vue-cal
+                     class="vuecal--rounded-theme vuecal--green-theme"
+                     xsmall
+                     hide-view-selector
+                    :time="false"
+                    :time-from="10 * 60"
+                    active-view="month"
+                    :disable-views="['week']"
+                     events-count-on-year-view
+                    style="width: 270px;height: 300px"
+                    :events="friendAvailability">
+                    </vue-cal>
                 </div>
 
             </div>

@@ -4,8 +4,15 @@ import Dropzone from "dropzone";
 
 
 export default {
+    data() {
+         return{
+            newUserInfo:[]
+         }
+    },
+
     computed: {
         userInfo() {
+            this.newUserInfo = store.state.userInfo
             return store.state.userInfo;
         },
 
@@ -69,7 +76,10 @@ export default {
         },
 
         submitNewUserData() {
-            store.dispatch('postNewUserData');
+            // store.dispatch('postNewUserData', );
+            console.log(this.newUserInfo);
+            store.dispatch('postNewUserData', this.newUserInfo[0]);
+
         },
 
         submitNewUserPassword() {
@@ -97,13 +107,19 @@ export default {
                 document.querySelector(".error_message2").remove();
             }
 
-            if(password.replace(/\s/g, '').length != 0 && newPassword == confirmPassword){
+            if(newPassword == confirmPassword && newPassword.replace(/\s/g, '').length!=0 && newPassword.replace(/\s/g,'').length<8 && !document.querySelector(".error_message3")){
+                let errorMessage3 = document.createElement("p");
+                errorMessage3.className="error_message3";
+                errorMessage3.innerText = "Password needs to be atleast 8 characters";
+                errorMessage3.style.color = "red";
+                document.querySelector(".confirm_password").appendChild(errorMessage3);
+            }
+
+            if(password.replace(/\s/g, '').length != 0 && password.replace(/\s/g, '').length > 8 && newPassword == confirmPassword){
                 store.dispatch('postNewUserPassword');
             }
 
         }
-
-
 
     }
 }

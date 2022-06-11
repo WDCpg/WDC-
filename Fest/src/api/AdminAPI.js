@@ -1,3 +1,4 @@
+import store from "@/store/index";
 
 export default{
     //test--------------//
@@ -31,7 +32,7 @@ export default{
             }
         }
         //Open connection
-        xhttp.open('GET', `https://chobbiwan-code50-16236897-vgqjwwq6fx9g5-8080.githubpreview.dev/getAllUsers`, false);
+        xhttp.open('GET', `${store.state.backEndUrl}/getAllUsers`, false);
 
         //Send request
         xhttp.send();
@@ -53,7 +54,7 @@ export default{
             }
         }
         //Open connection
-        xhttp.open('GET', `https://chobbiwan-code50-16236897-vgqjwwq6fx9g5-8080.githubpreview.dev/getAllEvents`, false);
+        xhttp.open('GET', `${store.state.backEndUrl}/getAllEvents`, false);
 
         //Send request
         xhttp.send();
@@ -75,7 +76,7 @@ export default{
             }
         }
         //Open connection
-        xhttp.open('GET', `https://chobbiwan-code50-16236897-vgqjwwq6fx9g5-8080.githubpreview.dev/getAllAdmins`, false);
+        xhttp.open('GET', `${store.state.backEndUrl}/getAllAdmins`, false);
 
         //Send request
         xhttp.send();
@@ -91,7 +92,7 @@ export default{
             }
         }
         //Open connection
-        xhttp.open('POST', `https://chobbiwan-code50-16236897-vgqjwwq6fx9g5-8080.githubpreview.dev/adminDeleteEvent`, true);
+        xhttp.open('POST', `${store.state.backEndUrl}/adminDeleteEvent`, true);
         xhttp.setRequestHeader('Content-type', 'application/json; charset=UTF-8' );
         //Send request
         let body = {'user':events};
@@ -109,7 +110,7 @@ export default{
             }
         }
         //Open connection
-        xhttp.open('POST', `https://chobbiwan-code50-16236897-vgqjwwq6fx9g5-8080.githubpreview.dev/adminDeleteUser`, true);
+        xhttp.open('POST', `${store.state.backEndUrl}/adminDeleteUser`, true);
         xhttp.setRequestHeader('Content-type', 'application/json; charset=UTF-8' );
         //Send request
         let body = {'user_id': user};
@@ -127,7 +128,7 @@ export default{
             }
         }
         //Open connection
-        xhttp.open('POST', `https://chobbiwan-code50-16236897-vgqjwwq6fx9g5-8080.githubpreview.dev/adminDeleteAdmin`, true);
+        xhttp.open('POST', `${store.state.backEndUrl}/adminDeleteAdmin`, true);
         xhttp.setRequestHeader('Content-type', 'application/json; charset=UTF-8' );
         //Send request
         let body = {'user_id':user};
@@ -144,7 +145,7 @@ export default{
             }
         }
         //Open connection
-        xhttp.open('POST', `https://chobbiwan-code50-16236897-vgqjwwq6fx9g5-8080.githubpreview.dev/adminUpdateUserData`, true);
+        xhttp.open('POST', `${store.state.backEndUrl}/adminUpdateUserData`, true);
         xhttp.setRequestHeader('Content-type', 'application/json; charset=UTF-8' );
         //Send request
         xhttp.send(JSON.stringify(newUserData));
@@ -165,7 +166,7 @@ export default{
             }
         }
         //Open connection
-        xhttp.open('GET', `https://chobbiwan-code50-16236897-vgqjwwq6fx9g5-8080.githubpreview.dev/getSiteStatistics`, false);
+        xhttp.open('GET', `${store.state.backEndUrl}/getSiteStatistics`, false);
 
         //Send request
         xhttp.send();

@@ -22,7 +22,7 @@
                 <!-- GOOGLE LOGIN -->
                 <div id="google-signin-button"></div>
                 <h2>Or...</h2>
-                
+
                 <p class="signin"><a href="/" style="text-decoration: none;">Already got an account? Sign in</a></p>
                 <div class="signup-button-container">
                     <button type="submit" class="signup">Sign up</button>
@@ -37,5 +37,5 @@
 @import "@/styles/SignUpStyles.css";
 </style>
 
-<script src="@/logic/signUpLogic.js">
+<script src="@/logic/SignUpLogic.js">
 </script>

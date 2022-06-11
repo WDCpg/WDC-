@@ -161,7 +161,7 @@ router.get('/getSiteStatistics', function(req,res,next){
         }
 
 
-        let query = "SELECT * FROM users WHERE is_admin = 1;";
+        let query = "SELECT (SELECT COUNT(*) from users) as users, (SELECT COUNT(*) from events) as events, (SELECT COUNT(*) FROM users WHERE is_admin=true) AS admin;";
         connection.query(query,function(error,rows,fields){
             connection.release();
             if(error){

@@ -13,9 +13,9 @@
                         </button>
                     </div>
                     <div v-if="userInfo.first_name != undefined" class="profile-details">
-                        <h2>{{userInfo.first_name}}</h2>
-                        <p>{{userInfo.street+", " +userInfo.city + ", " +userInfo.country +", " +userInfo.post_code}}</p>
-                        <p>{{userInfo.email}}</p>
+                        <h2>{{userInfo[0].first_name}}</h2>
+                        <p>{{userInfo[0].street+", " +userInfo[0].city + ", " +userInfo[0].country +", " +userInfo[0].post_code}}</p>
+                        <p>{{userInfo[0].email}}</p>
                     </div>
                 </div>
             </div>
@@ -29,21 +29,21 @@
                         <div class = "personal_details_top">
                             <div class = "first_name">
                                 <label for="profile-first-name">First Name</label><br>
-                                <input type="text" name="first_name" :placeholder = "userInfo.first_name" v-model="newUserData.first_name" />
+                                <input type="text" name="first_name" :placeholder = "userInfo[0].first_name" v-model="newUserInfo[0].first_name" />
                             </div>
                             <div class = "last_name">
                                 <label for="profile-last-name">Last Name</label><br>
-                                <input type="text" id="profile-last-name" :placeholder = "userInfo.last_name" v-model="newUserData.last_name" />
+                                <input type="text" id="profile-last-name" :placeholder = "userInfo[0].last_name" v-model="newUserInfo[0].last_name" />
                             </div>
                         </div>
                         <div class = "personal_details_bottom">
                             <div>
                                 <label for="profile-contact-number">Contact Number</label><br>
-                                <input type="text" id="profile-contact-number" :placeholder ="userInfo.contact_number" v-model="newUserData.contact_data"/>
+                                <input type="text" id="profile-contact-number" :placeholder ="userInfo[0].contact_number" v-model="newUserInfo[0].contact_data"/>
                             </div>
                             <div>
                                 <label for="profile-email">Email</label><br>
-                                <input type="text" id="profile-email" :placeholder ="userInfo.email" v-model="newUserData.email" />
+                                <input type="text" id="profile-email" :placeholder ="userInfo[0].email" v-model="newUserInfo[0].email" />
                             </div>
                         </div>
                     </div>
@@ -55,21 +55,21 @@
                             <div class = "residence_top">
                                 <div>
                                     <label for="profile-street-name">Street</label><br>
-                                    <input type="text" id="profile-street-name" :placeholder = "userInfo.street" v-model="newUserData.street" />
+                                    <input type="text" id="profile-street-name" :placeholder = "userInfo[0].street" v-model="newUserInfo[0].street" />
                                 </div>
                                 <div>
                                     <label for="profile-city">City/Suburb</label><br>
-                                    <input type="text" id="profile-city" :placeholder = "userInfo.city" v-model="newUserData.city" />
+                                    <input type="text" id="profile-city" :placeholder = "userInfo[0].city" v-model="newUserInfo[0].city" />
                                 </div>
                             </div>
                             <div class="residence_bottom">
                                 <div>
                                     <label for="profile-country">Country</label><br>
-                                    <input type="text" id="profile-country" :placeholder ="userInfo.country" v-model="newUserData.country" />
+                                    <input type="text" id="profile-country" :placeholder ="userInfo[0].country" v-model="newUserInfo[0].country" />
                                 </div>
                                 <div>
                                     <label for="profile-postcode">Postcode</label><br>
-                                    <input type="text" id="profile-postcode" :placeholder ="userInfo.post_code" v-model="newUserData.post_code" />
+                                    <input type="text" id="profile-postcode" :placeholder ="userInfo[0].post_code" v-model="newUserInfo[0].post_code" />
                                 </div>
                             </div>
                         </div>
@@ -117,7 +117,7 @@
             <div class = "modal_heading">
                 <h2>Upload Image</h2>
             </div>
-            <form action="https://chobbiwan-code50-16236897-vgqjwwq6fx9g5-8080.githubpreview.dev/UploadPicture" method ="post" class = "dropzone" enctype="multipart/form-data">
+            <form action="http://localhost:8080/UploadPicture" method ="post" class = "dropzone" enctype="multipart/form-data">
                 <label for = "dropzoneFile">Select File</label>
                 <input type = "file" name="file" id="dropzoneFile"/>
                 <button type = "submit" class="dropzone_button">Submit</button>

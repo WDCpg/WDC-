@@ -1,5 +1,6 @@
 import store from "@/store/index";
 
+
 export default {
     props: {
         event_id: String
@@ -20,7 +21,7 @@ export default {
             console.log('LOGIC ELEMENT', store.state.eventDetails[0])
             return store.state.eventDetails[0];
         },
-        
+
         eventAttendants() {
             console.log('LOGIC attendants', store.state.eventAttendants[0])
             return store.state.eventAttendants;
@@ -41,7 +42,7 @@ export default {
 
         store.dispatch('fetchEventData', this.event_id)
             .then(() => store.dispatch('updateIsLoading'));
-           
-        
+
+
     }
 }

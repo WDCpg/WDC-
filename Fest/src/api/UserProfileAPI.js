@@ -2,24 +2,24 @@ import store from "@/store/index";
 
 //1) create template JSON from database
 
-const userInfo = {
-    "first_name": "Santiago",
-    "last_name": "Carlos",
-    "contact_number": '0446544654',
-    "email": "adelaide@adelaied",
-    "street": "123 aslkdm",
-    "city": "adelaoide",
-    "country": "australia",
-    "post_code": 5000,
-    "user_id": 12,
-    "profile_picture": "1654505601342.png"
-};
+// const userInfo = {
+//     "first_name": "Santiago",
+//     "last_name": "Carlos",
+//     "contact_number": '0446544654',
+//     "email": "adelaide@adelaied",
+//     "street": "123 aslkdm",
+//     "city": "adelaoide",
+//     "country": "australia",
+//     "post_code": 5000,
+//     "user_id": 12,
+//     "profile_picture": "1654505601342.png"
+// };
 
 //2) create export api call / ajax function
 export default {
-    getUserInfo (events){
-        events(userInfo);
-    },
+    // getUserInfo (events){
+    //     events(userInfo);
+    // },
 
     getUserInfo(events){
         let xhttp = new XMLHttpRequest();
@@ -35,7 +35,7 @@ export default {
             }
         }
         //Open connection
-        xhttp.open('GET', `https://chobbiwan-code50-16236897-vgqjwwq6fx9g5-8080.githubpreview.dev/getUserInfo`, false);
+        xhttp.open('GET', `${store.state.backEndUrl}/getUserInfo`, false);
 
         //Send request
         xhttp.send();

@@ -26,10 +26,10 @@ export default createStore({
         // Base URL
         backEndUrl: '',
         //userInfo template JSON
-        userInfo: {
+        userInfo: [
 
-            // "first_name": "Santiago"
-        },
+        ],
+
         //get user availability
         userAvailability:  [
         ],
@@ -93,8 +93,9 @@ export default createStore({
 
         ],
 
-        siteStatistics:[
-        ]
+        siteStatistics:{
+
+        },
         // EVENT PAGE
         eventAttendants: [
 
@@ -108,6 +109,10 @@ export default createStore({
             ],
 
         invitedFriends: [
+
+        ],
+
+        invitedFriendsCalendar: [
 
         ]
     },
@@ -149,6 +154,16 @@ export default createStore({
         //API calls go here.
         // Actions never update the state
     actions: {
+        getFriendAvailablity({commit}, friend) {
+            return new Promise((resolve, reject) => {
+                CalendarAPI.getFriendAvailability(friend, events => {
+                    commit('setFriendAvailability', events);
+                    commit('updateDatetimeCalendar2');
+                    resolve();
+                })
+            })
+        },
+
         // Get Base URL
         fetchBaseUrl({commit}) {
             var baseUrl = window.location.origin;
@@ -293,8 +308,9 @@ export default createStore({
         },
 
         //update user's profile information
-        postNewUserData(){
-            userInfoApi.postUserInfo(this.state.newUserData);
+        postNewUserData({commit}, userInfo){
+            userInfoApi.postUserInfo(userInfo);
+            commit('updateUserInfo', userInfo);
         },
 
 
@@ -730,6 +746,26 @@ export default createStore({
 
         setSiteStatistics(state, statistics){
             state.siteStatistics = statistics;
+            console.log(state.siteStatistics);
+        },
+
+        setFriendAvailability(state, friendAvailability){
+            console.log(friendAvailability);
+            for (let i = 0 ; i < friendAvailability.length; i++){
+                state.invitedFriendsCalendar.push(friendAvailability[i]);
+            }
+
+        },
+
+        updateDatetimeCalendar2(state) {
+            for(let i = 0; i<state.invitedFriendsCalendar.length;i++){
+                state.invitedFriendsCalendar[i].start = new Date(state.invitedFriendsCalendar[i].start);
+                state.invitedFriendsCalendar[i].end = new Date(state.invitedFriendsCalendar[i].end);
+            }
+        },
+
+        updateUserInfo(state, userInfo){
+            state.userInfo = userInfo
         }
     }
 })

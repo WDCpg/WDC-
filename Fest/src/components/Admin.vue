@@ -23,13 +23,9 @@
                                 <h2>Manage Users</h2>
                             </div>
                             <div class="user_management_stat">
-                                <div class="active_uers">
-                                    <h3><span class = "circle"></span>      Active Users</h3>
-                                    <h2>20,000</h2>
-                                </div>
                                 <div class = "total_users">
                                     <h3><span class = "circle"></span>      Total Users</h3>
-                                    <h2>20,000</h2>
+                                    <h2>{{userStats}}</h2>
                                 </div>
                             </div>
                         </div>
@@ -87,15 +83,7 @@
                             <div class="event_management_stat">
                                 <div class="active_uers">
                                     <h3><span class = "circle"></span>      Active Events</h3>
-                                    <h2>20,000</h2>
-                                </div>
-                                <div class = "total_users">
-                                    <h3><span class = "circle"></span>      Past Events</h3>
-                                    <h2>20,000</h2>
-                                </div>
-                                <div class = "logged_in">
-                                    <h3><span class = "circle"></span>      Total Events</h3>
-                                    <h2>20,000</h2>
+                                    <h2>{{eventStats}}</h2>
                                 </div>
                             </div>
                         </div>
@@ -119,8 +107,8 @@
                                         <tr v-for="(event,index) in Events" :key="event.event_id">
                                             <td>{{event.event_id}}</td>
                                             <td>{{event.event_title}}</td>
-                                            <td>{{event.org}}</td>
-                                            <td>{{event.city}} {{event.post_code}}</td>
+                                            <td>{{event.user_id}}</td>
+                                            <td>{{event.first_name}} {{event.last_name}}</td>
                                             <td>
                                                 <button type="button" class="delete_event_button" :value="event.id" v-on:click="deleteEvent(event.event_id)">
                                                 X
@@ -151,7 +139,7 @@
                     <div class="admin_management_stat">
                         <div class="active_admin">
                             <h3><span class = "circle"></span>Admins</h3>
-                            <h2>5</h2>
+                            <h2>{{adminStats}}</h2>
                         </div>
                     </div>
                 </div>

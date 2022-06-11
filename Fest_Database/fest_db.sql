@@ -72,6 +72,7 @@ CREATE Table events (
   street varchar(63),
   post_code varchar(20),
   icon varchar(20),
+  event_image varchar(62),
   is_active boolean,
   event_type int,
   PRIMARY KEY (event_id),
@@ -87,13 +88,13 @@ VALUES ('2016-12-21 08:00:00','2016-12-21 08:00:00','Event description with basi
 INSERT into events (event_start, event_end, event_description, event_title, country, city, street, post_code)
 VALUES ('2016-12-21 08:00:00','2016-12-21 08:00:00','Event description with basic information goes here','Port Adeliade Grand Final 2022','Australia','Adelade','19 Devon Rd','5032');
 
-CREATE Table event_images (
-  image_id int NOT NULL AUTO_INCREMENT,
-  event_id int NOT NULL,
-  image_loc varchar(255),
-  PRIMARY KEY (image_id),
-  FOREIGN KEY (event_id) REFERENCES events (event_id) ON DELETE CASCADE
-);
+-- CREATE Table event_images (
+--   image_id int NOT NULL AUTO_INCREMENT,
+--   event_id int NOT NULL,
+--   image_loc varchar(255),
+--   PRIMARY KEY (image_id),
+--   FOREIGN KEY (event_id) REFERENCES events (event_id) ON DELETE CASCADE
+-- );
 
 CREATE Table attendance (
   user_id int NOT NULL,
