@@ -191,6 +191,7 @@ export default createStore({
         },
 
         saveUserCalendar({commit}, calendarEvents){
+
             for(let i = 0; i<calendarEvents.length; i++){
                 // console.log(calendarEvents[i].start);
                 // CalendarAPI.postUserCalendar(calendarEvents[i]);
