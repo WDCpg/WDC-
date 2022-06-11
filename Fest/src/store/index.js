@@ -166,7 +166,7 @@ export default createStore({
             RegisterAPI.postRegisterInfo(this.state.newRegisterData);
         },
 
-        //Posts signup data 
+        //Posts signup data
         postSignupData() {
             SignupAPI.postSignupInfo(this.state.newSignupData);
         },
@@ -191,7 +191,6 @@ export default createStore({
         },
 
         saveUserCalendar({commit}, calendarEvents){
-
             for(let i = 0; i<calendarEvents.length; i++){
                 // console.log(calendarEvents[i].start);
                 // CalendarAPI.postUserCalendar(calendarEvents[i]);
