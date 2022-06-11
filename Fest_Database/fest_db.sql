@@ -1,3 +1,4 @@
+DROP DATABASE fest_db;
 CREATE DATABASE fest_db;
 USE fest_db;
 
@@ -19,6 +20,15 @@ CREATE Table users (
   PRIMARY KEY (user_id)
 );
 
+INSERT INTO users (user_id, first_name, last_name, dob, email, contact_number, city, street, country, state, post_code, is_admin )
+VALUES(10, "Ryan", "Nguyen", '2016-12-21', 'nguyen@gamil.com', 0213123, 'adelaide', 12, 'Australia', 'SA', 5000, true );
+
+INSERT INTO users (first_name, last_name, dob, email, contact_number, city, street, country, state, post_code, is_admin )
+VALUES("Santi", "Carlos", '2016-12-21', 'Santi@gamil.com', 0213123, 'adelaide', 12, 'Australia', 'SA', 5000, true );
+
+INSERT INTO users (first_name, last_name, dob, email, contact_number, city, street, country, state, post_code, is_admin )
+VALUES("Carlos", "Fulei", '2016-12-21', 'Carlos@gamil.com', 0213123, 'adelaide', 12, 'Australia', 'SA', 5000, true);
+
 CREATE TABLE userLogin (
   user_id int NOT NULL,
   password varchar(255) NOT NULL
@@ -32,16 +42,16 @@ CREATE Table friends (
 
 );
 
-CREATE Table calendar_availability(
-  calendar_id int NOT NULL,
-  user_id int,
-  start_date datetime AS start,
-  end_date datetime AS end,
-  title varchar(30),
-  content varchar(100),
-  class varchar(20),
-  PRIMARY KEY (calendar_id),
-  FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
+CREATE TABLE calendar_availability (
+    calendar_id int NOT NULL AUTO_INCREMENT,
+    user_id int NOT NULL,
+    start_date datetime,
+    end_date datetime,
+    title varchar (65) ,
+    event_description varchar(255),
+    class varchar(20),
+    PRIMARY KEY (calendar_id),
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
 );
 
 CREATE Table event_types (
@@ -66,6 +76,15 @@ CREATE Table events (
   PRIMARY KEY (event_id),
   FOREIGN KEY (event_type) REFERENCES event_types(type_id)
 );
+
+INSERT into events (event_start, event_end, event_description, event_title, country, city, street, post_code)
+VALUES ('2016-12-21 08:00:00','2016-12-21 08:00:00','Event description with basic information goes here','Winter party in Adelide City','Australia','Adelade','19 Devon Rd','5032');
+
+INSERT into events (event_start, event_end, event_description, event_title, country, city, street, post_code)
+VALUES ('2016-12-21 08:00:00','2016-12-21 08:00:00','Event description with basic information goes here','Part in Adelide City','Australia','Adelade','19 Devon Rd','5032');
+
+INSERT into events (event_start, event_end, event_description, event_title, country, city, street, post_code)
+VALUES ('2016-12-21 08:00:00','2016-12-21 08:00:00','Event description with basic information goes here','Port Adeliade Grand Final 2022','Australia','Adelade','19 Devon Rd','5032');
 
 CREATE Table event_images (
   image_id int NOT NULL AUTO_INCREMENT,
@@ -92,6 +111,11 @@ CREATE Table organiser (
   FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
 );
 
+INSERT INTO organiser (event_id, user_id) VALUES (1, 10);
+INSERT INTO organiser (event_id, user_id) VALUES (2, 10);
+INSERT INTO organiser (event_id, user_id) VALUES (3, 11);
+
+
 CREATE Table user_logs (
   log_id int NOT NULL AUTO_INCREMENT,
   user_id int NOT NULL,
@@ -100,16 +124,16 @@ CREATE Table user_logs (
   FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE NO ACTION
 );
 
-CREATE Table notifications (
-  notification_id int NOT NULL AUTO_INCREMENT,
-  user_id int NOT NULL,
-  event_id int NOT NULL,
-  type_id int NOT NULL,
-  created_at DEFAULT CURRENT_TIMESTAMP ,
-  PRIMARY KEY (notification_id),
-  FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
-  FOREIGN KEY (event_id) REFERENCES events(event_id) ON DELETE CASCADE
-);
+-- CREATE Table notifications (
+--   notification_id int NOT NULL AUTO_INCREMENT,
+--   user_id int NOT NULL,
+--   event_id int NOT NULL,
+--   type_id int NOT NULL,
+--   created_at DEFAULT CURRENT_TIMESTAMP,
+--   PRIMARY KEY (notification_id),
+--   FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
+--   FOREIGN KEY (event_id) REFERENCES events(event_id) ON DELETE CASCADE
+-- );
 
 CREATE Table notification_type (
   type_id int NOT NULL AUTO_INCREMENT,
@@ -124,7 +148,18 @@ CREATE TABLE `user_login` (
 
 
 -- Notification Types
+
+
 INSERT INTO notification_type (type_desc)  VALUES ("Invited"), ("Attending");
+
+INSERT INTO calendar_availability (calendar_id,user_id, start_date, end_date, title, event_description, class)
+VALUES (11, 10,  '2022-06-05 10:30', '2022-06-05 11:30', 'Doctor appointment', '<i class="v-icon material-icons">local_hospital</i>', 'leisure'
+);
+
+INSERT INTO calendar_availability (calendar_id, user_id, start_date, end_date, title, event_description, class)
+VALUES (12,10, '2022-06-06 10:30', '2022-06-06 11:30', 'Exam', '<i class="v-icon material-icons">Exam</i>', 'leisure'
+);
+
 
 
 

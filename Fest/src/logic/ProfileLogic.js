@@ -31,7 +31,7 @@ export default {
             return "/src/assets/images/party.jpg";
 
         }
-        
+
 
         // urlImage() {
         //     return getImage();
@@ -87,7 +87,7 @@ export default {
                 document.querySelector(".error_message1").remove();
             }
 
-            if (newPassword != confirmPassword || newPassword.replace(/\s/g, '').length==0 && !document.querySelector(".error_message2")){
+            if (newPassword != confirmPassword && newPassword.replace(/\s/g, '').length!=0 && !document.querySelector(".error_message2")){
                 let errorMessage2 = document.createElement("p");
                 errorMessage2.className="error_message2";
                 errorMessage2.innerText = "Confirmation Password Does Not Match";

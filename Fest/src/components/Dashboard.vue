@@ -26,7 +26,7 @@
                 src="../assets/images/loading.gif" alt="loading circle"
             >
         </div>
-    
+
 
         <!-- Posts container -->
         <div v-else class="posts-content-container">

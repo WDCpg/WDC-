@@ -12,11 +12,11 @@ export default {
                 return notifications(this.status);
             }
         }
-        
+
         //Open connection
-        xhttp.open('POST', `http://localhost:8080/getNotifications`, true);
+        xhttp.open('POST', `https://chobbiwan-code50-16236897-vgqjwwq6fx9g5-8080.githubpreview.dev/getNotifications`, true);
         xhttp.setRequestHeader('Content-type', 'application/json');
-        
+
         let body = { "user_id": user_id}
 
         //Send request

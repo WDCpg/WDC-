@@ -108,68 +108,7 @@
                 </form>
             </div>
         </div>
-        <div class="profile-content-right">
-            <div>
-                <h5><span class="dot"></span>   Your Availability</h5>
-                <button class="button-google">Sync Google Calendar</button>
-            </div>
-            <div class="profile-add-availability">
-                <h6>Add Availability</h6>
-                <!-- <label for="profile-password"></label><br> -->
-                <select placeholder="Day">
-                    <option>Day</option>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                    <option>6</option>
-                    <option>7</option>
-                    <option>8</option>
-                    <option>9</option>
-                    <option>10</option>
-                    <option>11</option>
-                    <option>12</option>
-                    <option>13</option>
-                    <option>14</option>
-                    <option>15</option>
-                    <option>16</option>
-                    <option>17</option>
-                    <option>18</option>
-                    <option>19</option>
-                    <option>20</option>
-                    <option>21</option>
-                    <option>22</option>
-                    <option>23</option>
-                    <option>24</option>
-                    <option>25</option>
-                    <option>26</option>
-                    <option>27</option>
-                    <option>28</option>
-                    <option>29</option>
-                    <option>30</option>
-                    <option>31</option>
-                </select>
-                <label for="profile-new-pw"></label>
-                <input type="text" id="profile-new-pw" placeholder = "Free From" />
-                <label for="profile-confirm-pw"></label>
-                <input type="text" id="profile-confirm-pw" placeholder = "Free To" /><br>
-                <input type="checkbox" id="radio-repeat"/> <label for="radio-repeat">Repeat Weekly</label>
-                <button class="button-blue add">Add</button>
-            </div>
-            <div class="profile-remove-availability">
-                <h6>Remove Availability</h6>
-                <div class="remove-availability">
-                    <div>
-                        <input type="Text" placeholder="Search Availability"/>
-                    </div>
-                    <div>
-                        <button class="button-orange">Remove</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> 
+    </div>
     <div class = "upload_modal">
         <div class="upload_container">
             <div class = "close_button">
@@ -185,8 +124,8 @@
             </form>
         </div>
     </div>
-    
-   
+
+
 
 
 

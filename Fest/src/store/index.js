@@ -7,6 +7,7 @@ import LoginsAPI from "../api/LoginsAPI";
 import RefreshLoginAPI from "../api/RefreshLoginAPI";
 import CalendarAPI from "../api/CalendarAPI";
 import NotificationsAPI from "../api/NotificationsAPI";
+import AdminAPI from "../api/AdminAPI";
 
 
 export default createStore({
@@ -72,6 +73,22 @@ export default createStore({
             {id:2, firstName:'Carlos ', lastName:'Liu', icon:'P2.jpeg'},
             {id:3, firstName:'Alex', lastName:'G', icon:'P3.jpeg'},
             {id:4, firstName:'Monkey', lastName:'D', icon:'P4.jpeg'}
+        ],
+
+        allUsers: [
+
+        ],
+
+        allEvents:[
+
+        ],
+
+        allAdmins: [
+
+        ],
+
+        siteStatistics:[
+
         ]
     },
 
@@ -98,6 +115,7 @@ export default createStore({
         //API calls go here.
         // Actions never update the state
     actions: {
+
         // Update Show Notifications
         toggleShowNotifications({commit}) {
             commit('updateShowNotifications');
@@ -122,6 +140,7 @@ export default createStore({
             userInfoApi.postUserInfo(this.state.newUserData);
         },
 
+
         fetchPublicEvents({commit}) {
             return new Promise((resolve, reject) => {
                 api.getPublicEvents(events => {
@@ -141,15 +160,100 @@ export default createStore({
             })
         },
 
-        saveUserCalendar({commit}, calendarEvents){
+        // saveUserCalendar({commit}, calendarEvents){
 
-            for(let i = 0; i<calendarEvents.length; i++){
+        //     for(let i = 0; i<calendarEvents.length; i++){
+        //         console.log(calendarEvents[i].start);
+        //         CalendarAPI.postUserCalendar(calendarEvents[i]);
+        //         commit('setUserCalendar', calendarEvents[i]);
+        //     }
+        // },
+
+        saveUserCalendar({commit}, calendarEvents){
+            console.log('CALENDAR POST', calendarEvents)
+            for(let i = 0; i < calendarEvents.length; i++){
                 // console.log(calendarEvents[i].start);
-                // CalendarAPI.postUserCalendar(calendarEvents[i]);
-                commit('setUserCalendar', calendarEvents[i]);
+                var startDate = new Date(calendarEvents[i].start);
+                var endDate = new Date(calendarEvents[i].end);
+                calendarEvents[i].start = startDate.getFullYear() + "-" + (startDate.getMonth() + 1) + "-" + startDate.getDate() + " " + startDate.getHours() + ":" + startDate.getMinutes() + ":" + startDate.getSeconds();
+                calendarEvents[i].end = startDate.getFullYear() + "-" + (endDate.getMonth() + 1) + "-" + endDate.getDate() + " " + endDate.getHours() + ":" + endDate.getMinutes() + ":" + endDate.getSeconds();
+                CalendarAPI.postUserCalendar(calendarEvents[i]);
+                // commit('setUserCalendar', calendarEvents[i]);
+            }
+
+        },
+
+        //---ADMIN ACTION---//
+        loadAdminPage({dispatch}) {
+            dispatch('fetchAllUsers');
+            dispatch('fetchAllEvents');
+            dispatch('fetchAllAdmins');
+        },
+
+        fetchAllUsers({commit}){
+            return new Promise((resolve, reject) => {
+                AdminAPI.getAllUsers(events => {
+                    commit('setAllUsers', events);
+                    resolve();
+                })
+            })
+        },
+
+        adminDeleteUser({commit}, user_id){
+            for(let i = 0; i<user_id.length; i++){
+                AdminAPI.deleteUser(user_id[i]);
+                commit('updateEvents', user_id);
             }
         },
 
+        fetchAllEvents({commit}){
+            return new Promise((resolve, reject) => {
+                AdminAPI.getAllEvents(events => {
+                    commit('setAllEvents', events);
+                    console.log('EVENTS', events);
+                    resolve();
+                })
+            })
+        },
+
+        adminDeleteEvent({commit}, event_id){
+            for(let i = 0; i<event_id.length; i++){
+                AdminAPI.deleteUserEvents(event_id[i]);
+                commit('updateEvents', event_id);
+            }
+        },
+
+        fetchAllAdmins({commit}){
+            return new Promise((resolve, reject) => {
+                AdminAPI.getAllAdmins(events => {
+                    commit('setAllAdmins', events);
+                    resolve();
+                })
+            })
+        },
+
+        adminDeleteAdmin({commit}, user_id){
+            for(let i = 0; i<user_id.length; i++){
+                AdminAPI.deleteAdmin(user_id[i]);
+                commit('updateAdmins', user_id);
+            }
+        },
+
+        postNewUserInfo({commit}, user_data){
+            AdminAPI.adminPostUserInfo(user_data);
+            commit('adminUpdateUser', user_data);
+        },
+
+        fetchSiteStatistics({commit}){
+            return new Promise((resolve, reject) => {
+                AdminAPI.getStatistics(events => {
+                    commit('setSiteStatistics', events);
+                    resolve();
+                })
+            })
+        },
+
+        /*--------------------*/
 
         updateIsLoading({commit}) {
             commit('isLoading');
@@ -327,7 +431,7 @@ export default createStore({
 
         },
 
-       
+
         updateIconCode(state, stateElement) {
             for (let i = 0; i < state[stateElement].length; i++) {
                 let rawCode = state[stateElement][i].icon.replace("U+", "0x");
@@ -358,7 +462,59 @@ export default createStore({
 
         setUserCalendar(state, calendarEvents){
             state.userAvailability.push(calendarEvents);
-        }
+        },
 
+        //-----ADMIN MUTATOR-----//
+        setAllUsers(state, allUsers ){
+            state.allUsers=allUsers;
+            console.log(state.allUsers);
+        },
+
+        setAllEvents(state, allEvents){
+            state.allEvents = allEvents;
+            console.log(state.allEvents);
+        },
+
+        setAllAdmins(state, allAdmins){
+            state.allAdmins=allAdmins;
+            console.log(state.allAdmins);
+        },
+
+        updateEvents(state, event_id){
+            for (let i = 0; i<state.allEvents.length; i++){
+                if(state.allEvents[i].event_id == event_id)
+                    state.allEvents.splice(i,1);
+            }
+            console.log(state.allEvents);
+        },
+
+        updateUsers(state, user_id){
+            for (let i = 0; i<state.allUsers.length; i++){
+                if(state.allUsers[i].user_id == user_id)
+                    state.allUsers.splice(i,1);
+            }
+            console.log(state.allUsers);
+        },
+
+        updateAdmins(state, user_id){
+            for (let i = 0; i<state.allAdmins.length; i++){
+                if(state.allAdmins[i].user_id == user_id)
+                    state.allAdmins.splice(i,1);
+            }
+            console.log(state.allAdmins);
+        },
+
+        adminUpdateUser(state, user){
+            for(let i = 0; i<state.allUsers.length; i++){
+                if(state.allUsers[i].user_id==user.user_id){
+                    state.allUsers.splice(i,1);
+                    state.allUsers.push(user);
+                }
+            }
+        },
+
+        setSiteStatistics(state, statistics){
+            state.siteStatistics = statistics;
+        }
     }
 })

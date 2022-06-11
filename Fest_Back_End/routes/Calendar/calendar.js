@@ -31,8 +31,8 @@ router.post('/saveCalendar', function(req, res, next){
             return;
         }
 
-        let query="INSERT INTO calendar_availability (calendar_id, user_id, start_date, end_date, title, event_description, class) VALUES (?, ?, ?, ?, ?, ?, ?);";
-        connection.query(query,[req.body.eid, 11, req.body.start, req.body.end, req.body.title, req.body.content, req.body.class],function(error,rows,fields){
+        let query="INSERT INTO calendar_availability (user_id, start_date, end_date, title, event_description, class) VALUES (?, ?, ?, ?, ?, ?);";
+        connection.query(query,[ 11, req.body.start, req.body.end, req.body.title, req.body.content, req.body.class],function(error,rows,fields){
             connection.release();
             if(error){
                 console.log(error);

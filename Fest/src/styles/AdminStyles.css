@@ -60,22 +60,27 @@ h1 {
     flex-wrap:wrap;
     justify-content:space-evenly;
     margin-top:20px;
+    width:100%;
 }
 
 .management_container_left, .management_container_right, {
     display:flex;
-    width:900px;
     margin-top:20px;
     margin-bottom:20px;
+    justify-content:space-evenly;
+    width:1000px;
+
 }
 
 .user_management, .event_management, .admin_management{
     background-color:white;
-    width:100%;
+    width:600px;
     border-radius:30px;
     display:flex;
     flex-direction:column;
     justify-content: flex-start;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
 
 }
 
@@ -114,7 +119,7 @@ h1 {
 .user_search_nav, .event_search_nav, .admin_search_nav{
     display:flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: center;
 }
 
 .user_search_nav input, .event_search_nav input, .admin_search_nav input{
@@ -122,9 +127,11 @@ h1 {
     flex-direction: row;
     justify-content: space-evenly;
     border-radius:10px;
-    width:30%;
-    border: 2px solid #F6F5F7;
+    width: 70%;
+    border: 1px solid #9A9A9A;
     height: 25px;
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1); */
+
 }
 
 input:placeholder-shown{
@@ -158,6 +165,8 @@ button span{
 
 td button{
     display:inline;
+    width:19px;
+    margin-right:5px;
 }
 
 .edit_button{
@@ -166,16 +175,35 @@ td button{
 
 .delete_button{
     background-color:#FF7551;
+    color:white;
+}
+
+.delete_event_button{
+    width:38px;
+    height:19px;
+    background-color:#FF7551;
+    color:white;
 }
 
 /*--Admin Modal--*/
-.admin_modal, .edit_user_modal{
+.admin_modal {
     width: 100%;
     height:100%;
     background-color: rgba(0, 0, 0, 0.8);
     position: absolute;
     top: 0;
-    display:flex;
+    display:none;
+    justify-content:center;
+    align-items: center;
+}
+
+.edit_user_modal{
+    width: 100%;
+    height:100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    position: absolute;
+    top: 0;
+    display:none;
     justify-content:center;
     align-items: center;
 }
@@ -213,13 +241,17 @@ td button{
     flex-direction: column;
 }
 
-
-
 .admin_management_nav{
     display:flex;
     flex-direction: column;
     height:100%;
     justify-content:space-evenly;
+}
+
+.admin_management_nav1{
+    display:flex;
+    flex-direction: column;
+    height:100%;
 }
 
 .personal_details_top, .personal_details_bottom, .residence_top, .residence_bottom, .profile-change-pw, .admin_status, .residence_button{
@@ -268,4 +300,61 @@ button {
     height:25px;
 }
 
+.password_header h3, .personal_details_header h3, .residence_container_header h3  {
+    left:10px;
+}
 
+.delete_confirm{
+    display:flex;
+    flex-direction:row;
+    justify-content: center;
+}
+
+.delete_confirm button{
+    color:white;
+    border-radius: 25px;
+    width: 120px;
+    height:35px;
+    border: none;
+    cursor:pointer;
+    text-align:center;
+    font-weight:bold;
+}
+
+.cancel_delete{
+    background-color: #FF7551;
+}
+
+.confirm_delete{
+    background-color: #2E81DA;
+}
+
+
+
+.user_result_nav, .event_result_nav{
+    overflow:auto;
+}
+
+.user_management_title {
+    margin-top:25px;
+    display:flex;
+    flex-direction:row;
+    justify-content: center;
+}
+
+.delete_confirm {
+    margin-top:=10px;
+    margin-bottom:20px;
+    display:flex;
+    flex-direction: rows;
+    justify-content: space-evenly;
+}
+
+.error_message{
+    text-align:center;
+    align-content:center;
+}
+
+.admin_management_userid{
+    top:8px;
+}

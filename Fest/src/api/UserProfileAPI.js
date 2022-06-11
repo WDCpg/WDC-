@@ -19,6 +19,27 @@ export default {
         events(userInfo);
     },
 
+    getUserInfo(events){
+        let xhttp = new XMLHttpRequest();
+
+        //Run on response
+        xhttp.onreadystatechange = function() {
+        if(this.readyState == 4 && this.status == 200) {
+            console.log(JSON.parse(this.response))
+
+            return events (JSON.parse(this.response));
+
+
+            }
+        }
+        //Open connection
+        xhttp.open('GET', `https://chobbiwan-code50-16236897-vgqjwwq6fx9g5-8080.githubpreview.dev/getUserInfo`, false);
+
+        //Send request
+        xhttp.send();
+
+    },
+
     postUserInfo (newUserData) {
         let xhttp = new XMLHttpRequest();
 
