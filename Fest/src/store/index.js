@@ -8,6 +8,7 @@ import RefreshLoginAPI from "../api/RefreshLoginAPI";
 import CalendarAPI from "../api/CalendarAPI";
 import NotificationsAPI from "../api/NotificationsAPI";
 import RegisterAPI from "../api/RegisterAPI";
+import SignupAPI from "../api/SignupAPI";
 
 export default createStore({
     // State == Data
@@ -171,6 +172,9 @@ export default createStore({
         postRegisterData() {
             RegisterAPI.postRegisterInfo(this.state.newRegisterData);
         },
+
+        postSignup
+        import SignupAPI from "../api/SignupAPI";
 
         fetchPublicEvents({commit}) {
             return new Promise((resolve, reject) => {
