@@ -20,7 +20,7 @@ export default {
                 console.log(checkEmail);
                 console.log(checkPassword);
                 store.dispatch('postSignupData');
-                this.$router.push('/');
+                this.$router.push('/register');
             } else {
                 if(!document.querySelector(".errorMessage")) {
                     let error = document.createElement("p");
