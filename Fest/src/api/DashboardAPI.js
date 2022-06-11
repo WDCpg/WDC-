@@ -1,3 +1,5 @@
+import store from "@/store/index";
+
 export default {
     getPublicEvents (events) {
         let xhttp = new XMLHttpRequest();
@@ -13,7 +15,7 @@ export default {
             }
         }
         //Open connection
-        xhttp.open('GET', `http://localhost:8080/events/getPublicEvents`, false);
+        xhttp.open('GET', `${store.state.backEndUrl}/events/getPublicEvents`, false);
 
         //Send request
         xhttp.send();

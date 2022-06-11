@@ -23,6 +23,15 @@
     justify-content: center;
 }
 
+@media (max-width: 1150px){
+    .content-container {
+        flex-direction: column;
+    }
+    .post-container-major,
+    .event-container-details {
+        width: 100%;
+    }
+ }
 /*  Post Content */
 
 .post-container-major {

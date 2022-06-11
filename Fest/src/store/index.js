@@ -7,7 +7,8 @@ import LoginsAPI from "../api/LoginsAPI";
 import RefreshLoginAPI from "../api/RefreshLoginAPI";
 import CalendarAPI from "../api/CalendarAPI";
 import NotificationsAPI from "../api/NotificationsAPI";
-
+import EventDataAPI from "../api/EventDataAPI";
+import SignUpAPI from "../api/SignUpAPI";
 
 export default createStore({
     // State == Data
@@ -18,7 +19,10 @@ export default createStore({
         isTitleChanged: false,
         isDescriptionChanged: false,
         loginModal: false,
+        signUpModal: false, 
         showNotifications: false,
+        // Base URL 
+        backEndUrl: '',
         //userInfo template JSON
         userInfo: {
 
@@ -72,6 +76,19 @@ export default createStore({
             {id:2, firstName:'Carlos ', lastName:'Liu', icon:'P2.jpeg'},
             {id:3, firstName:'Alex', lastName:'G', icon:'P3.jpeg'},
             {id:4, firstName:'Monkey', lastName:'D', icon:'P4.jpeg'}
+        ],
+
+        // EVENT PAGE
+        eventAttendants: [
+
+        ],
+
+        eventAttendantsCount: [
+
+        ],
+
+        eventDetails: [
+
         ]
     },
 
@@ -83,6 +100,10 @@ export default createStore({
 
         isLoginModal(state) {
             return state.loginModal;
+        },
+
+        isSignUpModal(state) {
+            return state.signUpModal;
         },
 
         getImages(state){
@@ -98,6 +119,108 @@ export default createStore({
         //API calls go here.
         // Actions never update the state
     actions: {
+        // Get Base URL
+        fetchBaseUrl({commit}) {
+            var baseUrl = window.location.origin;
+            commit('setBaseUrl', baseUrl);
+        },
+
+        // Google Login 
+        postGoogleLogin({commit, dispatch}, id_token) {
+            return new Promise((resolve, reject) => {
+                LoginsAPI.googlePostLogin(id_token, status => {
+                    // Forbidden wrong email or password
+                    if (status.status == 200) {
+                        // Commit user info to state
+                        commit('setUserInfo', status.rows[0]);
+                        commit('updateLoginModal');
+
+                        // Notifications call
+                        dispatch('fetchNotifications', status.rows[0].user_id);
+
+                        console.log('Login successful');
+                        // router.push({ name: '/' });
+
+                    }
+                    else if (status == 403) {
+                        console.log(status)
+                        console.log('Bad login');
+                    }
+                    else {
+                        console.log(status)
+                        console.log('Error');
+                    }
+                    resolve();
+                });
+            })
+        },
+
+        postGoogleSignUp({commit, dispatch}, [id_token, profile]) {
+            console.log('ACTION', id_token, profile)
+            return new Promise((resolve, reject) => {
+                SignUpAPI.googleSignUp(id_token, profile, status => {
+                    
+                    // Forbidden wrong email or password
+                    if (status.status == 200) {
+                        // Commit user info to state
+                        commit('setUserInfo', status.rows[0]);
+                        commit('updateSignUpModal');
+
+                        // Notifications call
+                        dispatch('fetchNotifications', status.rows[0].user_id);
+
+                        console.log('Login successful');
+                        // router.push({ name: '/' });
+
+                    }
+                    else if (status == 403) {
+                        console.log(status)
+                        console.log('Bad login');
+                    }
+                    else {
+                        console.log(status)
+                        console.log('Error');
+                    }
+                    resolve();
+                });
+            })
+        },
+
+        // Retrieve all data when opening Events page
+        fetchEventData({dispatch}, eventId) {
+            dispatch('fetchAttendantsCount', eventId);
+            dispatch('fetchEventDetails', eventId);
+            dispatch('fetchEventAttendants', eventId);
+        },
+
+        fetchAttendantsCount({commit}, eventId) {
+            return new Promise((resolve, reject) => {
+                EventDataAPI.getAttendantsCount(eventId, attendantsCount => {
+                    commit('setAttendantsCount', attendantsCount.rows);
+                    console.log(attendantsCount)
+                    resolve();
+                })
+            })
+        },
+
+        fetchEventDetails({commit, dispatch}, eventId) {
+            return new Promise((resolve, reject) => {
+                EventDataAPI.getEventDetails(eventId, eventDetails => {
+                    commit('setEventDetails', eventDetails.rows);
+                    resolve();
+                })
+            })
+        },
+
+        fetchEventAttendants({commit}, eventId) {
+            return new Promise((resolve, reject) => {
+                EventDataAPI.getEventAttendants(eventId, eventAttendants => {
+                    commit('setEventAttendants', eventAttendants.rows);
+                    resolve();
+                })
+            })
+        },
+
         // Update Show Notifications
         toggleShowNotifications({commit}) {
             commit('updateShowNotifications');
@@ -106,6 +229,11 @@ export default createStore({
         // Update Login Modal
         toggleLoginModal({commit}) {
             commit('updateLoginModal');
+        },
+
+        // Update Sign up modal
+        toggleSignUpModal({commit}) {
+            commit('updateSignUpModal');
         },
 
         // Post New Event
@@ -205,7 +333,7 @@ export default createStore({
                         // router.push({ name: '/' });
 
                     }
-                    else if (status.status == 403) {
+                    else if (status == 403) {
                         console.log(status)
                         console.log('Bad login');
                     }
@@ -223,7 +351,7 @@ export default createStore({
                 NotificationsAPI.getNotifications(user_id, notifications => {
                     if (notifications.status == 200) {
                         commit('updateNotifications', notifications.rows);
-                        this.commit('updateIconCode', "notifications");
+                        commit('updateIconCode', "notifications");
                     }
                     else {
                         console.log('error');
@@ -282,6 +410,37 @@ export default createStore({
     // Setting and updating the state.
     // Mutations only set or update the state.
     mutations: {
+        setBaseUrl(state, baseUrl) {
+            try {
+                let url = baseUrl.replace("3000", "8080");
+                state.backEndUrl = url;
+                return;
+            }
+            catch {
+                console.log('WRONG FRONT-END URL, MUST BE RUNNING ON PORT 3000');
+                return;
+            }
+            
+            
+        },
+
+        setAttendantsCount(state, attendantsCount) {
+            state.eventAttendantsCount = attendantsCount;
+        },
+
+        setEventDetails(state, eventDetails) {
+            state.eventDetails = eventDetails;
+            console.log('Details', state.eventDetails)
+            this.commit('updateIconCode', "eventDetails");
+            return;
+        },
+
+        // Event Attendants
+        setEventAttendants(state, eventAttendants) {
+            state.eventAttendants = eventAttendants;
+            return;
+        },
+
         // Update Show Notifications
         updateShowNotifications(state) {
             state.showNotifications = !state.showNotifications;
@@ -296,6 +455,11 @@ export default createStore({
         // Update Login Modal
         updateLoginModal(state) {
             state.loginModal = !state.loginModal;
+        },
+
+        // Update Sign Up Modal 
+        updateSignUpModal(state) {
+            state.signUpModal = !state.signUpModal;
         },
 
         // Change page style - Light / Dark

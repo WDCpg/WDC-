@@ -1,6 +1,12 @@
 <template>
     <div class="event-content-container" >
-        <div class="content-container" id="event-container">
+        <!-- Loading icon -->
+        <div v-if="isLoading" class="loading-container">
+            <img v-if="isLoading"
+                src="../assets/images/loading.gif" alt="loading circle"
+            >
+        </div>
+        <div v-else class="content-container" id="event-container">
             <div class="post-container-major">
                 <!-- Post -->
                 <div class="post-container">
@@ -10,32 +16,30 @@
 
                     <div class="post-icon-container">
                         <p>
-                            &#129409;
+                            {{ eventDetails.icon }}
                         </p>
                     </div>
                     <div class="post-details-container">
                         <div class="post-title-container">
                             <h3>
-                                Hello 
+                               {{ eventDetails.event_title }}
                             </h3>
                         </div>
                         <p class="post-description">
-                            My event recommendations and description 
-                             of this great event go here
+                            {{ eventDetails.event_description }}
                         </p>
                         <p class="post-description-label">
                             Start & End date:
                         </p>
                         <p class="post-datetime">
-                            <span> 17-03-2022: 8:00 </span> <span> to 18-03-2022 10:00 </span>
+                            <span> {{ formatDate(eventDetails.event_start) }} </span> <span v-if=" eventDetails.event_end != null"> to {{ formatDate(eventDetails.event_end) }} </span>
                             <!-- {{ formatDate('17-03-2022') }} -->
                         </p>
                         <p class="post-description-label">
                             Location
                         </p>
                         <p class="post-location"> 
-                            19 Devon Road, Melbourne. VIC.
-                            <!-- {{ formatLocation('17-03-2022') }} -->
+                            {{ eventDetails.street }}, {{ eventDetails.city }}. {{ eventDetails.country }}
                         </p>
                     </div>
 
@@ -50,17 +54,11 @@
                     <div class="title-container"> 
                         Attendants
                     </div>
-                    <div class="attendants">
+                    <div v-if="eventAttendants.length > 0" class="attendants">
                         <!-- All attendants -->
-                        <div class="people-invited">
+                        <div class="people-invited" v-for="(attendant, index) in eventAttendants" :key="index">
                             <span class="people-invited-status">
-                                &#9940;
-                            </span>
-                            <img src="../assets/images/P2.jpeg">
-                        </div>
-                        <div class="people-invited">
-                            <span class="people-invited-status">
-                                &#9940;
+                                <span v-if="attendant.user_status === 'Attending'">&#9940;</span>
                             </span>
                             <img src="../assets/images/P2.jpeg">
                         </div>
@@ -77,7 +75,12 @@
                                     Attending
                                 </p>
                                 <p class="description-value">
-                                    250
+                                    <span v-if="attendantsCount.length > 0">
+                                        {{ attendantsCount[0].number_attendants }}
+                                    </span> 
+                                    <span v-else>
+                                        0
+                                    </span>
                                 </p>
                             </div>
                         </div>
@@ -91,7 +94,12 @@
                                     Maybe
                                 </p>
                                 <p class="description-value">
-                                    13
+                                    <span v-if="attendantsCount.length > 0">
+                                        {{ attendantsCount[1].number_attendants }}
+                                    </span> 
+                                    <span v-else>
+                                        0
+                                    </span>
                                 </p>
                             </div>
                         </div>

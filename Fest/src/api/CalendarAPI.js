@@ -43,6 +43,9 @@
     //     class: 'leisure'
     //   },
 
+
+import store from "@/store/index";
+
 export default {
     getUserAvailability(events){
         return events(test);
@@ -62,7 +65,7 @@ export default {
             }
         }
         //Open connection
-        xhttp.open('GET', `http://localhost:8080/userAvailability`, false);
+        xhttp.open('GET', `${store.state.backEndUrl}/userAvailability`, false);
 
         //Send request
         xhttp.send();
@@ -83,7 +86,7 @@ export default {
             }
         }
         //Open connection
-        xhttp.open('POST', `http://localhost:8080/saveCalendar`, true);
+        xhttp.open('POST', `${store.state.backEndUrl}/saveCalendar`, true);
         xhttp.setRequestHeader('Content-type', 'application/json; charset=UTF-8' );
         xhttp.send(JSON.stringify(CalEvents));
     }

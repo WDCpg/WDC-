@@ -16,6 +16,10 @@ var logOutRouter = require('./routes/User_Auth/logout');
 var profileRouter = require('./routes/Profile/profile');
 var calendarRouter = require('./routes/Calendar/calendar');
 var notificationsRouter = require('./routes/Notifications/notifications');
+var eventAttendantsRouter = require('./routes/Events/getEventAttendants');
+var eventDetailsRouter = require('./routes/Events/getEventDetails');
+var eventAttendantsByStatusRouter = require('./routes/Events/getAttendantsByStatus');
+
 
 var app = express();
 
@@ -103,7 +107,7 @@ app.use(session({
 
 router.use('/', function(req, res, next) {
 
-  console.log(req.session);
+  console.log(req.cookies);
 
   next();
 })
@@ -120,8 +124,9 @@ app.use('/', logOutRouter);
 app.use('/', profileRouter);
 app.use('/', calendarRouter);
 app.use('/', notificationsRouter);
-
-
+app.use('/', eventAttendantsRouter);
+app.use('/', eventDetailsRouter);
+app.use('/', eventAttendantsByStatusRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

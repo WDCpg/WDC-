@@ -1,3 +1,5 @@
+import store from "@/store/index";
+
 export default {
     // First parameter has data, second returns status
     getNotifications (user_id, notifications) {
@@ -14,7 +16,7 @@ export default {
         }
         
         //Open connection
-        xhttp.open('POST', `http://localhost:8080/getNotifications`, true);
+        xhttp.open('POST', `${store.state.backEndUrl}/getNotifications`, true);
         xhttp.setRequestHeader('Content-type', 'application/json');
         
         let body = { "user_id": user_id}

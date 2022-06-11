@@ -5,14 +5,15 @@ var router = express.Router();
 router.post('/login', function(req, res, next) {
 
     // Check if user is already logged in
-    if ('user' in req.session) {
+    console.log('Login Check', req.cookies.session_id)
+    if (req.cookies.session_id != undefined) {
         req.db.getConnection((error, connection) => {
             if(error) {
                 res.status(500).send("Database connection");
                 return;
             }
             
-            let queryUser = `SELECT * FROM users AS u WHERE u.user_id = ${req.session.user};`;
+            let queryUser = `SELECT * FROM users AS u WHERE u.user_id = ${req.cookies.session_id};`;
 
             connection.query(queryUser, function(error, rows, fields) {
                 connection.release();
@@ -26,6 +27,66 @@ router.post('/login', function(req, res, next) {
             })
         })
     }
+
+
+    else if ('token' in req.body) {
+        req.db.getConnection((error, connection) => {
+            if(error) {
+                res.status(500).send("Database connection");
+                return;
+            }
+            
+            let queryUser = `SELECT * FROM users AS u WHERE u.google_token= (?);`;
+
+            connection.query(queryUser, req.body.token, function(error, rows, fields) {
+                
+                if(error){
+                    res.status(500).send(error.sqlMessage);
+                    return;
+                }
+
+                var result = Object.values(JSON.parse(JSON.stringify(rows)));
+
+                if (result.length > 0) {
+                    // Check if password matches db
+                    if (result.length == 1) {
+                        
+                        req.session.user = result[0].user_id;
+
+                        let queryUser = `SELECT * FROM users AS u WHERE u.google_token = (?);`;
+
+                        connection.query(queryUser, req.body.token, function(error, rows, fields) {
+                            if(error){
+                                res.status(500).send(error.sqlMessage);
+                                return;
+                            }
+
+                            // Set cookie login 
+                            res.cookie('session_id', result[0].user_id);
+                            res.json({rows, status: 200});
+                            return;
+
+                        })
+
+                        
+                    } else {
+                        res.status(401).send('Wrong password');
+                        return;
+                    }
+
+                } else {
+                    connection.release();
+                    // User not registered
+                    res.status(403).send('Unknown user')
+                    return;
+                }
+
+                res.json({rows, status: 200});
+                return;
+            })
+        })
+    }
+
     else {
         // Check request format
         if ('email' in req.body && 'password' in req.body) {
@@ -56,7 +117,7 @@ router.post('/login', function(req, res, next) {
                             
                             req.session.user = result[0].user_id;
 
-                            let queryUser = `SELECT * FROM users AS u WHERE u.user_id = ${req.session.user};`;
+                            let queryUser = `SELECT * FROM users AS u WHERE u.user_id = ${req.cookies.session_id};`;
 
                             connection.query(queryUser, function(error, rows, fields) {
                                 if(error){

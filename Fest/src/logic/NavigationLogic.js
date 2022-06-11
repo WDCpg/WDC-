@@ -11,6 +11,10 @@ export default {
             store.dispatch('toggleLoginModal');
         },
 
+        displaySignUpModal() {
+            store.dispatch('toggleSignUpModal');
+        },
+
         toggleShowNotifications() {
             store.dispatch('toggleShowNotifications');
         }
