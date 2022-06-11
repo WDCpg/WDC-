@@ -45,3 +45,5 @@ transporter.sendMail(mailOptions, function(error, info){
 
     console.log('Message sent: ' + info.response);
 });
+
+module.exports = router;

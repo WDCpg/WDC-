@@ -30,7 +30,7 @@ var app = express();
 var mysql = require('mysql');
 const router = require('./routes/index');
 //localhost 1
-var dbConnectionPool = mysql.createPool({host: '127.0.0.1', database: 'fest_db' });
+//var dbConnectionPool = mysql.createPool({host: '127.0.0.1', database: 'fest_db' });
 
 // local env 2
 var dbConnectionPool = mysql.createPool({
