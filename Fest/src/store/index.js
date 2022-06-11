@@ -164,14 +164,13 @@ export default createStore({
         //Registers a user
         postRegisterData() {
             RegisterAPI.postRegisterInfo(this.state.newRegisterData);
-            for (let i = 0; i < newRegisterData.length; i++) {
-                console.log(newRegisterData);
             }
         },
 
         //Posts signup data
         postSignupData() {
             SignupAPI.postSignupInfo(this.state.newSignupData);
+            }
         },
 
         fetchPublicEvents({commit}) {
