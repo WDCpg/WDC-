@@ -166,6 +166,7 @@ export default createStore({
             RegisterAPI.postRegisterInfo(this.state.newRegisterData);
         },
 
+        
         postSignupData() {
             SignupAPI.postSignupInfo(this.state.newSignupData);
         },
