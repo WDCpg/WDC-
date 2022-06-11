@@ -13,12 +13,13 @@ export default {
                 return status(this.status);
             }
         }
-        
+
         //Open connection
+        // xhttp.withCredentials = true;
         xhttp.open('POST', `${store.state.backEndUrl}/login`, false);
         xhttp.withCredentials = true;
         xhttp.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
-        
+
         //Send request
         xhttp.send(JSON.stringify({"email": "", "password": ""}));
     }

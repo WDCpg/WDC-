@@ -13,9 +13,9 @@
                         </button>
                     </div>
                     <div v-if="userInfo.first_name != undefined" class="profile-details">
-                        <h2>{{userInfo.first_name}}</h2>
-                        <p>{{userInfo.street+", " +userInfo.city + ", " +userInfo.country +", " +userInfo.post_code}}</p>
-                        <p>{{userInfo.email}}</p>
+                        <h2>{{userInfo[0].first_name}}</h2>
+                        <p>{{userInfo[0].street+", " +userInfo[0].city + ", " +userInfo[0].country +", " +userInfo[0].post_code}}</p>
+                        <p>{{userInfo[0].email}}</p>
                     </div>
                 </div>
             </div>
@@ -29,21 +29,21 @@
                         <div class = "personal_details_top">
                             <div class = "first_name">
                                 <label for="profile-first-name">First Name</label><br>
-                                <input type="text" name="first_name" :placeholder = "userInfo.first_name" v-model="newUserData.first_name" />
+                                <input type="text" name="first_name" :placeholder = "userInfo[0].first_name" v-model="newUserInfo[0].first_name" />
                             </div>
                             <div class = "last_name">
                                 <label for="profile-last-name">Last Name</label><br>
-                                <input type="text" id="profile-last-name" :placeholder = "userInfo.last_name" v-model="newUserData.last_name" />
+                                <input type="text" id="profile-last-name" :placeholder = "userInfo[0].last_name" v-model="newUserInfo[0].last_name" />
                             </div>
                         </div>
                         <div class = "personal_details_bottom">
                             <div>
                                 <label for="profile-contact-number">Contact Number</label><br>
-                                <input type="text" id="profile-contact-number" :placeholder ="userInfo.contact_number" v-model="newUserData.contact_data"/>
+                                <input type="text" id="profile-contact-number" :placeholder ="userInfo[0].contact_number" v-model="newUserInfo[0].contact_data"/>
                             </div>
                             <div>
                                 <label for="profile-email">Email</label><br>
-                                <input type="text" id="profile-email" :placeholder ="userInfo.email" v-model="newUserData.email" />
+                                <input type="text" id="profile-email" :placeholder ="userInfo[0].email" v-model="newUserInfo[0].email" />
                             </div>
                         </div>
                     </div>
@@ -55,21 +55,21 @@
                             <div class = "residence_top">
                                 <div>
                                     <label for="profile-street-name">Street</label><br>
-                                    <input type="text" id="profile-street-name" :placeholder = "userInfo.street" v-model="newUserData.street" />
+                                    <input type="text" id="profile-street-name" :placeholder = "userInfo[0].street" v-model="newUserInfo[0].street" />
                                 </div>
                                 <div>
                                     <label for="profile-city">City/Suburb</label><br>
-                                    <input type="text" id="profile-city" :placeholder = "userInfo.city" v-model="newUserData.city" />
+                                    <input type="text" id="profile-city" :placeholder = "userInfo[0].city" v-model="newUserInfo[0].city" />
                                 </div>
                             </div>
                             <div class="residence_bottom">
                                 <div>
                                     <label for="profile-country">Country</label><br>
-                                    <input type="text" id="profile-country" :placeholder ="userInfo.country" v-model="newUserData.country" />
+                                    <input type="text" id="profile-country" :placeholder ="userInfo[0].country" v-model="newUserInfo[0].country" />
                                 </div>
                                 <div>
                                     <label for="profile-postcode">Postcode</label><br>
-                                    <input type="text" id="profile-postcode" :placeholder ="userInfo.post_code" v-model="newUserData.post_code" />
+                                    <input type="text" id="profile-postcode" :placeholder ="userInfo[0].post_code" v-model="newUserInfo[0].post_code" />
                                 </div>
                             </div>
                         </div>
@@ -108,68 +108,7 @@
                 </form>
             </div>
         </div>
-        <div class="profile-content-right">
-            <div>
-                <h5><span class="dot"></span>   Your Availability</h5>
-                <button class="button-google">Sync Google Calendar</button>
-            </div>
-            <div class="profile-add-availability">
-                <h6>Add Availability</h6>
-                <!-- <label for="profile-password"></label><br> -->
-                <select placeholder="Day">
-                    <option>Day</option>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                    <option>6</option>
-                    <option>7</option>
-                    <option>8</option>
-                    <option>9</option>
-                    <option>10</option>
-                    <option>11</option>
-                    <option>12</option>
-                    <option>13</option>
-                    <option>14</option>
-                    <option>15</option>
-                    <option>16</option>
-                    <option>17</option>
-                    <option>18</option>
-                    <option>19</option>
-                    <option>20</option>
-                    <option>21</option>
-                    <option>22</option>
-                    <option>23</option>
-                    <option>24</option>
-                    <option>25</option>
-                    <option>26</option>
-                    <option>27</option>
-                    <option>28</option>
-                    <option>29</option>
-                    <option>30</option>
-                    <option>31</option>
-                </select>
-                <label for="profile-new-pw"></label>
-                <input type="text" id="profile-new-pw" placeholder = "Free From" />
-                <label for="profile-confirm-pw"></label>
-                <input type="text" id="profile-confirm-pw" placeholder = "Free To" /><br>
-                <input type="checkbox" id="radio-repeat"/> <label for="radio-repeat">Repeat Weekly</label>
-                <button class="button-blue add">Add</button>
-            </div>
-            <div class="profile-remove-availability">
-                <h6>Remove Availability</h6>
-                <div class="remove-availability">
-                    <div>
-                        <input type="Text" placeholder="Search Availability"/>
-                    </div>
-                    <div>
-                        <button class="button-orange">Remove</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> 
+    </div>
     <div class = "upload_modal">
         <div class="upload_container">
             <div class = "close_button">
@@ -178,15 +117,15 @@
             <div class = "modal_heading">
                 <h2>Upload Image</h2>
             </div>
-            <form action="https://chobbiwan-code50-16236897-vgqjwwq6fx9g5-8080.githubpreview.dev/UploadPicture" method ="post" class = "dropzone" enctype="multipart/form-data">
+            <form action="http://localhost:8080/UploadPicture" method ="post" class = "dropzone" enctype="multipart/form-data">
                 <label for = "dropzoneFile">Select File</label>
                 <input type = "file" name="file" id="dropzoneFile"/>
                 <button type = "submit" class="dropzone_button">Submit</button>
             </form>
         </div>
     </div>
-    
-   
+
+
 
 
 

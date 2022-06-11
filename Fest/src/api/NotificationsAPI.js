@@ -14,11 +14,11 @@ export default {
                 return notifications(this.status);
             }
         }
-        
+
         //Open connection
         xhttp.open('POST', `${store.state.backEndUrl}/getNotifications`, true);
         xhttp.setRequestHeader('Content-type', 'application/json');
-        
+
         let body = { "user_id": user_id}
 
         //Send request

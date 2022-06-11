@@ -17,9 +17,11 @@ var profileRouter = require('./routes/Profile/profile');
 var newEvent = require('./routes/newEvent/newEvent');
 var calendarRouter = require('./routes/Calendar/calendar');
 var notificationsRouter = require('./routes/Notifications/notifications');
+var adminRouter = require('./routes/Admin/admin');
 var eventAttendantsRouter = require('./routes/Events/getEventAttendants');
 var eventDetailsRouter = require('./routes/Events/getEventDetails');
 var eventAttendantsByStatusRouter = require('./routes/Events/getAttendantsByStatus');
+var email = require('./routes/Email/Email.js');
 
 
 var app = express();
@@ -28,7 +30,7 @@ var app = express();
 var mysql = require('mysql');
 const router = require('./routes/index');
 //localhost 1
-//var dbConnectionPool = mysql.createPool({host: '127.0.0.1', database: 'fest_db' });
+var dbConnectionPool = mysql.createPool({host: '127.0.0.1', database: 'fest_db' });
 
 // local env 2
 var dbConnectionPool = mysql.createPool({
@@ -76,22 +78,22 @@ app.use(express.static(path.join(__dirname, 'public')));
   MIDDLEWARE:
   Allow access from localhost:3000 - Front End Vue Port
 */
-app.use(cors({
-  origin: [
-    'http://localhost:3000'
-  ],
-  methods: "GET, POST",
-  credentials: true
-  // exposedHeaders: ['set-cookie'],
-  // allowedHeaders: '*'
-}))
+// app.use(cors({
+//   origin: [
+//     'http://localhost:3000'
+//   ],
+//   methods: "GET, POST",
+//   credentials: true
+//   // exposedHeaders: ['set-cookie'],
+//   // allowedHeaders: '*'
+// }))
 
-// app.use(function(req, res, next) {
-//   res.set('Access-Control-Allow-Origin', '*');
-//   res.header("Access-Control-Allow-Headers","*");
-//   res.set('Access-Control-Allow-Methods', 'GET, POST');
-//   next();
-// });
+app.use(function(req, res, next) {
+  res.set('Access-Control-Allow-Origin', '*');
+  res.header("Access-Control-Allow-Headers","*");
+  res.set('Access-Control-Allow-Methods', 'GET, POST');
+  next();
+});
 
 // Sessions
 app.use(session({
@@ -128,9 +130,16 @@ app.use('/', profileRouter);
 app.use('/', newEvent);
 app.use('/', calendarRouter);
 app.use('/', notificationsRouter);
+app.use('/', adminRouter);
+
+
 app.use('/', eventAttendantsRouter);
 app.use('/', eventDetailsRouter);
 app.use('/', eventAttendantsByStatusRouter);
+
+app.use('/', email);
+app.listen(4000);
+console.log('Success, listen port 4000');
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

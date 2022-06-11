@@ -16,6 +16,8 @@ h1{
     display:none;
     padding-left:150px;
     margin-top:25px;
+    display:flex;
+    flex-direction:column;
 
     /* align-content:flex-end; */
 }

@@ -7,6 +7,8 @@ import LoginsAPI from "../api/LoginsAPI";
 import RefreshLoginAPI from "../api/RefreshLoginAPI";
 import CalendarAPI from "../api/CalendarAPI";
 import NotificationsAPI from "../api/NotificationsAPI";
+import AdminAPI from "../api/AdminAPI";
+
 import EventDataAPI from "../api/EventDataAPI";
 import SignUpAPI from "../api/SignUpAPI";
 
@@ -19,15 +21,15 @@ export default createStore({
         isTitleChanged: false,
         isDescriptionChanged: false,
         loginModal: false,
-        signUpModal: false, 
+        signUpModal: false,
         showNotifications: false,
-        // Base URL 
+        // Base URL
         backEndUrl: '',
         //userInfo template JSON
-        userInfo: {
+        userInfo: [
 
-            // "first_name": "Santiago"
-        },
+        ],
+
         //get user availability
         userAvailability:  [
         ],
@@ -79,6 +81,20 @@ export default createStore({
             {id:4, firstName:'Monkey', lastName:'D', icon:'P4.jpeg'}
         ],
 
+        allUsers: [
+
+        ],
+
+        allEvents:[
+
+        ],
+
+        allAdmins: [
+
+        ],
+
+        siteStatistics:[
+        ],
         // EVENT PAGE
         eventAttendants: [
 
@@ -92,6 +108,10 @@ export default createStore({
             ],
 
         invitedFriends: [
+
+        ],
+
+        invitedFriendsCalendar: [
 
         ]
     },
@@ -139,6 +159,16 @@ export default createStore({
             commit('clearUser');
         },
 
+        getFriendAvailablity({commit}, friend) {
+            return new Promise((resolve, reject) => {
+                CalendarAPI.getFriendAvailability(friend, events => {
+                    commit('setFriendAvailability', events);
+                    commit('updateDatetimeCalendar2');
+                    resolve();
+                })
+            })
+        },
+
         // Get Base URL
         fetchBaseUrl({commit}) {
             var baseUrl = window.location.origin;
@@ -146,7 +176,8 @@ export default createStore({
         },
 
         // Google Login 
-        postGoogleLogin({commit, dispatch}, [id_token, profile]) {
+        // Google Login
+        postGoogleLogin({commit, dispatch}, id_token) {
             return new Promise((resolve, reject) => {
                 SignUpAPI.googleSignUp(id_token, profile, status => {
                     // Forbidden wrong email or password
@@ -179,7 +210,7 @@ export default createStore({
             console.log('ACTION', id_token, profile)
             return new Promise((resolve, reject) => {
                 SignUpAPI.googleSignUp(id_token, profile, status => {
-                    
+
                     // Forbidden wrong email or password
                     if (status.status == 200) {
                         // Commit user info to state
@@ -240,7 +271,7 @@ export default createStore({
                 })
             })
         },
-        
+
         newEventEmoji({commit}, emojiCode) {
             commit('updateNewEventEmoji', emojiCode);
             commit('updateIconCodeObject', "newEventData");
@@ -296,9 +327,11 @@ export default createStore({
         },
 
         //update user's profile information
-        postNewUserData(){
-            userInfoApi.postUserInfo(this.state.newUserData);
+        postNewUserData({commit}, userInfo){
+            userInfoApi.postUserInfo(userInfo);
+            commit('updateUserInfo', userInfo);
         },
+
 
         fetchPublicEvents({commit}) {
             return new Promise((resolve, reject) => {
@@ -319,20 +352,100 @@ export default createStore({
             })
         },
 
+        // saveUserCalendar({commit}, calendarEvents){
+
+        //     for(let i = 0; i<calendarEvents.length; i++){
+        //         console.log(calendarEvents[i].start);
+        //         CalendarAPI.postUserCalendar(calendarEvents[i]);
+        //         commit('setUserCalendar', calendarEvents[i]);
+        //     }
+        // },
+
         saveUserCalendar({commit}, calendarEvents){
             console.log('CALENDAR POST', calendarEvents)
-            // for(let i = 0; i < calendarEvents.length; i++){
-            //     // console.log(calendarEvents[i].start);
-            //     var startDate = new Date(calendarEvents[i].start);
-            //     var endDate = new Date(calendarEvents[i].end);
-            //     calendarEvents[i].start = startDate.getFullYear() + "-" + (startDate.getMonth() + 1) + "-" + startDate.getDate() + " " + startDate.getHours() + ":" + startDate.getMinutes() + ":" + startDate.getSeconds(); 
-            //     calendarEvents[i].end = startDate.getFullYear() + "-" + (endDate.getMonth() + 1) + "-" + endDate.getDate() + " " + endDate.getHours() + ":" + endDate.getMinutes() + ":" + endDate.getSeconds();
-            //     CalendarAPI.postUserCalendar(calendarEvents[i]);
-            //     // commit('setUserCalendar', calendarEvents[i]);
-            // }
+            for(let i = 0; i < calendarEvents.length; i++){
+                // console.log(calendarEvents[i].start);
+                var startDate = new Date(calendarEvents[i].start);
+                var endDate = new Date(calendarEvents[i].end);
+                calendarEvents[i].start = startDate.getFullYear() + "-" + (startDate.getMonth() + 1) + "-" + startDate.getDate() + " " + startDate.getHours() + ":" + startDate.getMinutes() + ":" + startDate.getSeconds();
+                calendarEvents[i].end = startDate.getFullYear() + "-" + (endDate.getMonth() + 1) + "-" + endDate.getDate() + " " + endDate.getHours() + ":" + endDate.getMinutes() + ":" + endDate.getSeconds();
+                CalendarAPI.postUserCalendar(calendarEvents[i]);
+                // commit('setUserCalendar', calendarEvents[i]);
+            }
 
         },
 
+        //---ADMIN ACTION---//
+        loadAdminPage({dispatch}) {
+            dispatch('fetchAllUsers');
+            dispatch('fetchAllEvents');
+            dispatch('fetchAllAdmins');
+        },
+
+        fetchAllUsers({commit}){
+            return new Promise((resolve, reject) => {
+                AdminAPI.getAllUsers(events => {
+                    commit('setAllUsers', events);
+                    resolve();
+                })
+            })
+        },
+
+        adminDeleteUser({commit}, user_id){
+            for(let i = 0; i<user_id.length; i++){
+                AdminAPI.deleteUser(user_id[i]);
+                commit('updateEvents', user_id);
+            }
+        },
+
+        fetchAllEvents({commit}){
+            return new Promise((resolve, reject) => {
+                AdminAPI.getAllEvents(events => {
+                    commit('setAllEvents', events);
+                    console.log('EVENTS', events);
+                    resolve();
+                })
+            })
+        },
+
+        adminDeleteEvent({commit}, event_id){
+            for(let i = 0; i<event_id.length; i++){
+                AdminAPI.deleteUserEvents(event_id[i]);
+                commit('updateEvents', event_id);
+            }
+        },
+
+        fetchAllAdmins({commit}){
+            return new Promise((resolve, reject) => {
+                AdminAPI.getAllAdmins(events => {
+                    commit('setAllAdmins', events);
+                    resolve();
+                })
+            })
+        },
+
+        adminDeleteAdmin({commit}, user_id){
+            for(let i = 0; i<user_id.length; i++){
+                AdminAPI.deleteAdmin(user_id[i]);
+                commit('updateAdmins', user_id);
+            }
+        },
+
+        postNewUserInfo({commit}, user_data){
+            AdminAPI.adminPostUserInfo(user_data);
+            commit('adminUpdateUser', user_data);
+        },
+
+        fetchSiteStatistics({commit}){
+            return new Promise((resolve, reject) => {
+                AdminAPI.getStatistics(events => {
+                    commit('setSiteStatistics', events);
+                    resolve();
+                })
+            })
+        },
+
+        /*--------------------*/
 
         updateIsLoading({commit}) {
             commit('isLoading');
@@ -475,8 +588,8 @@ export default createStore({
                 console.log('WRONG FRONT-END URL, MUST BE RUNNING ON PORT 3000');
                 return;
             }
-            
-            
+
+
         },
 
         setAttendantsCount(state, attendantsCount) {
@@ -527,7 +640,7 @@ export default createStore({
             state.loginModal = !state.loginModal;
         },
 
-        // Update Sign Up Modal 
+        // Update Sign Up Modal
         updateSignUpModal(state) {
             state.signUpModal = !state.signUpModal;
         },
@@ -601,7 +714,79 @@ export default createStore({
 
         setUserCalendar(state, calendarEvents){
             state.userAvailability.push(calendarEvents);
-        }
+        },
 
+        //-----ADMIN MUTATOR-----//
+        setAllUsers(state, allUsers ){
+            state.allUsers=allUsers;
+            console.log(state.allUsers);
+        },
+
+        setAllEvents(state, allEvents){
+            state.allEvents = allEvents;
+            console.log(state.allEvents);
+        },
+
+        setAllAdmins(state, allAdmins){
+            state.allAdmins=allAdmins;
+            console.log(state.allAdmins);
+        },
+
+        updateEvents(state, event_id){
+            for (let i = 0; i<state.allEvents.length; i++){
+                if(state.allEvents[i].event_id == event_id)
+                    state.allEvents.splice(i,1);
+            }
+            console.log(state.allEvents);
+        },
+
+        updateUsers(state, user_id){
+            for (let i = 0; i<state.allUsers.length; i++){
+                if(state.allUsers[i].user_id == user_id)
+                    state.allUsers.splice(i,1);
+            }
+            console.log(state.allUsers);
+        },
+
+        updateAdmins(state, user_id){
+            for (let i = 0; i<state.allAdmins.length; i++){
+                if(state.allAdmins[i].user_id == user_id)
+                    state.allAdmins.splice(i,1);
+            }
+            console.log(state.allAdmins);
+        },
+
+        adminUpdateUser(state, user){
+            for(let i = 0; i<state.allUsers.length; i++){
+                if(state.allUsers[i].user_id==user.user_id){
+                    state.allUsers.splice(i,1);
+                    state.allUsers.push(user);
+                }
+            }
+        },
+
+        setSiteStatistics(state, statistics){
+            state.siteStatistics = statistics;
+            console.log(state.siteStatistics);
+        },
+
+        setFriendAvailability(state, friendAvailability){
+            console.log(friendAvailability);
+            for (let i = 0 ; i < friendAvailability.length; i++){
+                state.invitedFriendsCalendar.push(friendAvailability[i]);
+            }
+
+        },
+
+        updateDatetimeCalendar2(state) {
+            for(let i = 0; i<state.invitedFriendsCalendar.length;i++){
+                state.invitedFriendsCalendar[i].start = new Date(state.invitedFriendsCalendar[i].start);
+                state.invitedFriendsCalendar[i].end = new Date(state.invitedFriendsCalendar[i].end);
+            }
+        },
+
+        updateUserInfo(state, userInfo){
+            state.userInfo = userInfo
+        }
     }
 })

@@ -119,8 +119,11 @@
 }
 /* .vuecal__cell--selected:before {border-color: rgba(66, 185, 131, 0.5);} */
 
-.vuecal__event .leisure {background-color: rgba(253, 156, 66, 0.9);border: 1px solid rgb(233, 136, 46);color: #fff;}
+/* .vuecal__cell-events {background-color: blue;border: 1px solid rgb(233, 136, 46);color: #fff;} */
 
+.vuecal__event-title .vuecal__event-title--edit{
+    background-color:blue;
+}
 /*----mnth view---*/
 .vuecal--month-view .vuecal__cell {height: 80px;}
 
