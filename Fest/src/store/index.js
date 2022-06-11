@@ -70,9 +70,11 @@ export default createStore({
         },
 
         newRegisterData: {
+
         },
 
         newSignupData: {
+
         },
 
         friendInfo: [
