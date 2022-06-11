@@ -169,6 +169,7 @@ export default createStore({
         //Posts signup data
         postSignupData() {
             SignupAPI.postSignupInfo(this.state.newSignupData);
+            console.log(newSignupData);
         },
 
         fetchPublicEvents({commit}) {
