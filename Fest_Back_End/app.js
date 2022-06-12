@@ -22,6 +22,7 @@ var eventAttendantsRouter = require('./routes/Events/getEventAttendants');
 var eventDetailsRouter = require('./routes/Events/getEventDetails');
 var eventAttendantsByStatusRouter = require('./routes/Events/getAttendantsByStatus');
 var email = require('./routes/Email/Email.js');
+var registerRouter = require('./routes/User_Auth/register');
 
 
 var app = express();
@@ -78,22 +79,22 @@ app.use(express.static(path.join(__dirname, 'public')));
   MIDDLEWARE:
   Allow access from localhost:3000 - Front End Vue Port
 */
-// app.use(cors({
-//   origin: [
-//     'http://localhost:3000'
-//   ],
-//   methods: "GET, POST",
-//   credentials: true
-//   // exposedHeaders: ['set-cookie'],
-//   // allowedHeaders: '*'
-// }))
+app.use(cors({
+  origin: [
+    'http://localhost:3000'
+  ],
+  methods: "GET, POST",
+  credentials: true
+  // exposedHeaders: ['set-cookie'],
+  // allowedHeaders: '*'
+}))
 
-app.use(function(req, res, next) {
-  res.set('Access-Control-Allow-Origin', '*');
-  res.header("Access-Control-Allow-Headers","*");
-  res.set('Access-Control-Allow-Methods', 'GET, POST');
-  next();
-});
+// app.use(function(req, res, next) {
+//   res.set('Access-Control-Allow-Origin', '*');
+//   res.header("Access-Control-Allow-Headers","*");
+//   res.set('Access-Control-Allow-Methods', 'GET, POST');
+//   next();
+// });
 
 // Sessions
 app.use(session({
@@ -131,6 +132,7 @@ app.use('/', newEvent);
 app.use('/', calendarRouter);
 app.use('/', notificationsRouter);
 app.use('/', adminRouter);
+app.use('/', registerRouter);
 
 
 app.use('/', eventAttendantsRouter);

@@ -36,7 +36,7 @@ export default {
         }
         //Open connection
         xhttp.open('GET', `${store.state.backEndUrl}/getUserInfo`, false);
-
+        xhttp.withCredentials = true;
         //Send request
         xhttp.send();
 
@@ -54,6 +54,7 @@ export default {
         //Open connection
         xhttp.open('POST', `${store.state.backEndUrl}/updateUserData`, true);
         xhttp.setRequestHeader('Content-type', 'application/json; charset=UTF-8' );
+        xhttp.withCredentials = true;
         //Send request
         xhttp.send(JSON.stringify(newUserData));
 
@@ -72,6 +73,7 @@ export default {
         //Open connection
         xhttp.open('POST', `${store.state.backEndUrl}/UpdatePassword`, true);
         xhttp.setRequestHeader('Content-type', 'application/json; charset=UTF-8' );
+        xhttp.withCredentials = true;
         //Send request
         xhttp.send(JSON.stringify(newUserPassword));
     }

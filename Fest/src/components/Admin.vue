@@ -279,9 +279,9 @@
                                 <div class="admin_status">
                                     <label for="user_admin">Admin Status:</label><br>
                                     <label for="true">True</label>
-                                    <input type="radio" id="true" name="admin" value="true" v-model="selectedUser.is_admin"/>
+                                    <input type="radio" id="true" name="admin" value="1" v-model="selectedUser.is_admin"/>
                                     <label for="false">False</label>
-                                    <input type="radio" id="false" name="admin" value="false"  v-model="selectedUser.is_admin"/>
+                                    <input type="radio" id="false" name="admin" value="0"  v-model="selectedUser.is_admin"/>
                                 </div>
                                 <div class="residence_button">
                                     <div>

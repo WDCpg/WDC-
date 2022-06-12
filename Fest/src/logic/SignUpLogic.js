@@ -39,5 +39,40 @@ export default {
         hideSignUpModal() {
             store.dispatch('toggleSignUpModal');
         },
+
+        postSignUp() {
+            let email = document.getElementById('email');
+            let password = document.getElementById('password');
+            
+            let validEmail = false;
+            let validPassword = false;
+
+            if (email.value != '' && email.value.length > 0) {
+                validEmail = true;
+            }
+
+            if (password.value != '' && password.value.length >= 8) {
+                validPassword = true;
+            }
+
+            if (validEmail && validPassword) {
+                var auth = {
+                    "email": email.value,
+                    "password": password.value
+                }
+
+                store.dispatch('postSignUp', auth);
+            }
+
+            else {
+                if(!document.querySelector(".errorMessage")) {
+                    let error = document.createElement("p");
+                    error.innerText = "Requirements not met, please try again";
+                    error.className="errorMessage";
+                    error.style.color = "red";
+                    document.querySelector(".signUpError").appendChild(error);
+                }
+            }
+        }
     },
 }

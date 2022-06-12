@@ -39,7 +39,7 @@
                         <div class = "personal_details_bottom">
                             <div>
                                 <label for="profile-contact-number">Contact Number</label><br>
-                                <input type="text" id="profile-contact-number" :placeholder ="userInfo[0].contact_number" v-model="newUserInfo[0].contact_data"/>
+                                <input type="text" id="profile-contact-number" :placeholder ="userInfo[0].contact_number" v-model="newUserInfo[0].contact_number"/>
                             </div>
                             <div>
                                 <label for="profile-email">Email</label><br>

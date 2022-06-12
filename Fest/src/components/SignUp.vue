@@ -15,9 +15,9 @@
                 <h2>Email Sign up</h2>
                 <form action="/register">
                     <label for="email">Email</label><br>
-                    <input type="text" id="email" name="email"><br><br>
+                    <input type="email" id="email" name="email" required><br><br>
                     <label for="password">Password</label><br>
-                    <input type="password" id="password" name="password">
+                    <input type="password" id="password" name="password" required>
                 <br>
                 <!-- GOOGLE LOGIN -->
                 <div id="google-signin-button"></div>
@@ -25,9 +25,12 @@
 
                 <p class="signin"><a href="/" style="text-decoration: none;">Already got an account? Sign in</a></p>
                 <div class="signup-button-container">
-                    <button type="submit" class="signup">Sign up</button>
+                    <button @click="postSignUp()" type="button" class="signup">Sign up</button>
                 </div>
                 </form>
+                <br>
+                <div class="signUpError">
+                </div>
             </div>
         </div>
     </div>

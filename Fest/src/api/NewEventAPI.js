@@ -37,6 +37,24 @@ export default {
         //Send request
 
         xhttp.send(JSON.stringify(friend));
+    },
+
+    sendNewEventEmail() {
+        //console.log(newEventData)
+        let xhttp = new XMLHttpRequest();
+
+        //Run on response
+        xhttp.onreadystatechange = function() {
+        if(this.readyState == 4 && this.status == 200) {
+            return this.response;
+            }
+        }
+        //Open connection
+        xhttp.open('POST', `${store.state.backEndUrl}/sendEmail`, true);
+        xhttp.setRequestHeader('Content-type', 'application/json; charset=UTF-8' );
+        //Send request
+
+        xhttp.send();
     }
 
     // postFriendInvited(invitedFriends) {

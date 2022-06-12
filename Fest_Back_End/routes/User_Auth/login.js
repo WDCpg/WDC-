@@ -3,6 +3,7 @@ var router = express.Router();
 
 
 router.post('/login', function(req, res, next) {
+    console.log('BACKEND LOGIN', req.body)
 
     // Check if user is already logged in
     console.log('Login Check', req.cookies.session_id)
@@ -36,9 +37,9 @@ router.post('/login', function(req, res, next) {
                 return;
             }
             
-            let queryUser = `SELECT * FROM users AS u WHERE u.google_token= (?);`;
+            let queryUser = `SELECT * FROM users AS u WHERE u.email= (?);`;
 
-            connection.query(queryUser, req.body.token, function(error, rows, fields) {
+            connection.query(queryUser, req.body.profile['Iv'], function(error, rows, fields) {
                 
                 if(error){
                     res.status(500).send(error.sqlMessage);
@@ -50,24 +51,10 @@ router.post('/login', function(req, res, next) {
                 if (result.length > 0) {
                     // Check if password matches db
                     if (result.length == 1) {
-                        
-                        req.session.user = result[0].user_id;
-
-                        let queryUser = `SELECT * FROM users AS u WHERE u.google_token = (?);`;
-
-                        connection.query(queryUser, req.body.token, function(error, rows, fields) {
-                            if(error){
-                                res.status(500).send(error.sqlMessage);
-                                return;
-                            }
-
-                            // Set cookie login 
-                            res.cookie('session_id', result[0].user_id);
-                            res.json({rows, status: 200});
-                            return;
-
-                        })
-
+                        // Set cookie login 
+                        res.cookie('session_id', result[0].user_id);
+                        res.json({rows, status: 200});
+                        return;
                         
                     } else {
                         res.status(401).send('Wrong password');
@@ -81,8 +68,7 @@ router.post('/login', function(req, res, next) {
                     return;
                 }
 
-                res.json({rows, status: 200});
-                return;
+                
             })
         })
     }
@@ -117,9 +103,9 @@ router.post('/login', function(req, res, next) {
                             
                             req.session.user = result[0].user_id;
 
-                            let queryUser = `SELECT * FROM users AS u WHERE u.user_id = ${req.cookies.session_id};`;
+                            let queryUser = `SELECT * FROM users AS u WHERE u.user_id = (?);`;
 
-                            connection.query(queryUser, function(error, rows, fields) {
+                            connection.query(queryUser, result[0].user_id, function(error, rows, fields) {
                                 if(error){
                                     res.status(500).send(error.sqlMessage);
                                     return;
@@ -149,7 +135,7 @@ router.post('/login', function(req, res, next) {
 
         }
         else {
-            res.sendStatus(400);
+            res.sendStatus(403);
             return;
         }
     }

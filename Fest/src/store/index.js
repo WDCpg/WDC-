@@ -11,6 +11,7 @@ import AdminAPI from "../api/AdminAPI";
 
 import EventDataAPI from "../api/EventDataAPI";
 import SignUpAPI from "../api/SignUpAPI";
+import RegisterAPI from "../api/RegisterAPI";
 
 export default createStore({
     // State == Data
@@ -22,6 +23,7 @@ export default createStore({
         isDescriptionChanged: false,
         loginModal: false,
         signUpModal: false,
+        registerModal: false,
         showNotifications: false,
         // Base URL
         backEndUrl: '',
@@ -75,10 +77,10 @@ export default createStore({
         },
 
         friendInfo: [
-            {id:1, firstName:'Mark', lastName:'Leo', icon:'P1.jpeg'},
-            {id:2, firstName:'Carlos ', lastName:'Liu', icon:'P2.jpeg'},
-            {id:3, firstName:'Alex', lastName:'G', icon:'P3.jpeg'},
-            {id:4, firstName:'Monkey', lastName:'D', icon:'P4.jpeg'}
+            {id:10, firstName:'Mark', lastName:'Leo', icon:'P1.jpeg'},
+            {id:66, firstName:'Carlos ', lastName:'Liu', icon:'P2.jpeg'},
+            {id:1, firstName:'Alex', lastName:'G', icon:'P3.jpeg'},
+            {id:67, firstName:'Monkey', lastName:'D', icon:'P4.jpeg'}
         ],
 
         allUsers: [
@@ -113,7 +115,11 @@ export default createStore({
 
         invitedFriendsCalendar: [
 
-        ]
+        ],
+
+        newRegisterData: {
+
+        }
     },
 
 
@@ -130,6 +136,10 @@ export default createStore({
 
         isSignUpModal(state) {
             return state.signUpModal;
+        },
+
+        isRegisterModal(state) {
+            return state.registerModal;
         },
 
         getImages(state){
@@ -153,6 +163,16 @@ export default createStore({
         //API calls go here.
         // Actions never update the state
     actions: {
+         //Registers a user
+        postRegisterData({commit}) {
+            RegisterAPI.postRegisterInfo(this.state.newRegisterData);
+            commit('updateRegisterModal');
+        },
+
+        sendEmail() {
+            NewEventAPI.sendNewEventEmail();
+            return;
+        },
 
         userSignOut({commit}) {
             LoginsAPI.postLogOut();
@@ -175,11 +195,44 @@ export default createStore({
             commit('setBaseUrl', baseUrl);
         },
 
+        postSignUp({commit, dispatch}, auth) {
+            return new Promise((resolve, reject) => {
+                SignUpAPI.signUp(auth, status => {
+                    // Forbidden wrong email or password
+                    if (status.status == 200) {
+                        console.log(status)
+                        // Commit user info to state
+                        commit('setUserInfo', status.rows[0]);
+                        commit('updateSignUpModal');
+                        commit('updateRegisterModal');
+
+                        // Notifications call
+                        dispatch('fetchNotifications', status.rows[0].user_id);
+
+                        console.log('Login successful');
+                        router.push({ name: '/register' });
+
+                    }
+                    else if (status == 403) {
+                        console.log(status)
+                        console.log('Bad login');
+                    }
+                    else {
+                        console.log(status)
+                        console.log('Error');
+                    }
+                    resolve();
+                });
+            })
+        },
+
+        
+
         // Google Login 
         // Google Login
-        postGoogleLogin({commit, dispatch}, id_token) {
+        postGoogleLogin({commit, dispatch}, [id_token, profile]) {
             return new Promise((resolve, reject) => {
-                SignUpAPI.googleSignUp(id_token, profile, status => {
+                LoginsAPI.googlePostLogin(id_token, profile, status => {
                     // Forbidden wrong email or password
                     if (status.status == 200) {
                         // Commit user info to state
@@ -300,6 +353,11 @@ export default createStore({
             commit('updateSignUpModal');
         },
 
+        // Update Register Modal
+        toggleRegisterModal({commit}) {
+            commit('updateRegisterModal');
+        },
+
         sendNotifications() {
             let friends = this.state.invitedFriends;
             if (friends.length > 0) {
@@ -314,7 +372,8 @@ export default createStore({
         postNewEvent({ dispatch }) {
 
             NewEventAPI.postNewEvent(this.state.newEventData);
-            dispatch('sendNotifications');
+            dispatch('sendEmail')
+                .then(() =>  dispatch('sendNotifications'));
         },
         // Post Frient Invited
         // postFriendInvited() {
@@ -380,6 +439,7 @@ export default createStore({
             dispatch('fetchAllUsers');
             dispatch('fetchAllEvents');
             dispatch('fetchAllAdmins');
+            return;
         },
 
         fetchAllUsers({commit}){
@@ -493,6 +553,7 @@ export default createStore({
                     // Forbidden wrong email or password
                     if (status.status == 200) {
                         // Commit user info to state
+                        console.log('STATUS',status)
                         commit('setUserInfo', status.rows[0]);
                         commit('updateLoginModal');
 
@@ -643,6 +704,11 @@ export default createStore({
         // Update Sign Up Modal
         updateSignUpModal(state) {
             state.signUpModal = !state.signUpModal;
+        },
+
+        // Update Sign Up Modal
+        updateRegisterModal(state) {
+            state.registerModal = !state.registerModal;
         },
 
         // Change page style - Light / Dark

@@ -54,6 +54,7 @@ export default {
             }
             if (titleEmpty === false && descriptionEmpty === false) {
                 store.dispatch('postNewEvent');
+                location.replace("/");
             }
 
             return;

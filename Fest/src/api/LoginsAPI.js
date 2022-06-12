@@ -20,12 +20,13 @@ export default {
         xhttp.withCredentials = true;
         xhttp.setRequestHeader('Content-type', 'application/json');
 
+        console.log('API', auth)
         //Send request
         xhttp.send(JSON.stringify(auth));
     },
 
     // First parameter has data, second returns status
-    googlePostLogin (id_token, status) {
+    googlePostLogin (id_token, profile, status) {
         let xhttp = new XMLHttpRequest();
 
         //Run on response
@@ -43,7 +44,10 @@ export default {
         xhttp.withCredentials = true;
         xhttp.setRequestHeader('Content-type', 'application/json');
 
-        let body = { "token": id_token};
+        let body = { 
+            "token": id_token,
+            "profile": profile
+        };
         //Send request
         xhttp.send(JSON.stringify(body));
     },

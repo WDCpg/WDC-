@@ -74,7 +74,7 @@ router.post('/UpdatePassword', function(req,res,next){
         }
         req.session.userId = 11;
         //password verification
-        let query = "UPDATE users SET password = ? WHERE password = ? && user_id = ?;";
+        let query = "UPDATE user_login SET password = SHA2(?, 224) WHERE password = SHA2(?, 224) && user_id = ?;";
         connection.query(query,[req.body.new_password, req.body.user_password, req.cookies.session_id], function(error, rows, fields){
             connection.release();
             if(error){
@@ -96,8 +96,8 @@ router.get('/getUserInfo', function(req,res,next){
             return;
         }
 
-
-        let query = "SELECT * FROM users WHERE user_id = ?;";
+        console.log('PROFILE', req.cookies.session_id)
+        let query = "SELECT * FROM users WHERE user_id = (?);";
         connection.query(query,req.cookies.session_id, function(error,rows,fields){
             connection.release();
             if(error){

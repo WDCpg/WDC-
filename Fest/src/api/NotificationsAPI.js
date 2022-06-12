@@ -18,7 +18,8 @@ export default {
         //Open connection
         xhttp.open('POST', `${store.state.backEndUrl}/getNotifications`, true);
         xhttp.setRequestHeader('Content-type', 'application/json');
-
+        xhttp.withCredentials = true;
+        
         let body = { "user_id": user_id}
 
         //Send request

@@ -66,7 +66,7 @@ export default {
         }
         //Open connection
         xhttp.open('GET', `${store.state.backEndUrl}/userAvailability`, false);
-
+        xhttp.withCredentials = true;
         //Send request
         xhttp.send();
 
@@ -87,7 +87,10 @@ export default {
         }
         //Open connection
         xhttp.open('POST', `${store.state.backEndUrl}/saveCalendar`, true);
+        xhttp.withCredentials = true;
         xhttp.setRequestHeader('Content-type', 'application/json; charset=UTF-8' );
+       
+
         xhttp.send(JSON.stringify(CalEvents));
     },
 
@@ -110,7 +113,9 @@ export default {
         }
         //Open connection
         xhttp.open('POST', `${store.state.backEndUrl}/friendAvailability`, true);
+        xhttp.withCredentials = true;
         xhttp.setRequestHeader('Content-type', 'application/json; charset=UTF-8' );
+        
         console.log(events);
         xhttp.send(JSON.stringify(events));
 

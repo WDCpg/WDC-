@@ -4,6 +4,7 @@ import Navigation from "@/components/Navigation.vue"
 import SideNavigation from "@/components/SideNavigation.vue"
 import Login from "@/components/Login.vue"
 import SignUp from "@/components/SignUp.vue"
+import Register from "@/components/Register.vue"
 import store from "@/store/index";
 
 import { computed } from 'vue';
@@ -16,7 +17,9 @@ const isMobile = computed(() => {
     return true;
   }
   return false;
-})
+});
+
+const isRegisterModal = computed(() => store.getters.isRegisterModal);
 
 // Check if user is logged in
 const checkUser = () => {
@@ -71,6 +74,9 @@ baseUrl();
     </div>
     <div v-if="isSignUpModal" class="bg-modal">
       <SignUp/>
+    </div>
+    <div v-if="isRegisterModal" class="bg-modal">
+      <Register/>
     </div>
   </div>
 </template>

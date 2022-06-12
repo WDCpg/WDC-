@@ -2,12 +2,13 @@ var express = require('express');
 var router = express.Router();
 
 router.post('/signup', function(req, res, next) {
+    console.log(req.body);
     // Check if user is already logged in
-    if ('user' in req.session) {
-        res.status(401).send("User already logged in");
-    }
+    // if (req.cookies.session_id != undefined) {
+    //     res.status(401).send("User already logged in");
+    // }
 
-    else if (req.body.token != undefined) {
+    if (req.body.token != undefined) {
         console.log('BACKEND', req.body.token, req.body.profile);
         req.db.getConnection((error, connection) => {
             if(error) {
@@ -17,9 +18,9 @@ router.post('/signup', function(req, res, next) {
 
             
             
-            let queryUser = `SELECT * FROM users AS u WHERE u.google_token = (?);`;
+            let queryUser = `SELECT * FROM users AS u WHERE u.email = (?);`;
               
-            connection.query(queryUser, req.body.token, function(errorToken, rowsToken, fieldsToken) {
+            connection.query(queryUser, req.body.profile['Iv'], function(errorToken, rowsToken, fieldsToken) {
                 if(errorToken){
                     connection.release();
                     res.status(500).send(errorToken.sqlMessage);
@@ -121,7 +122,10 @@ router.post('/signup', function(req, res, next) {
 
                             // Successful created account
                             req.session.user = result[0].user_id;
-                            res.sendStatus(200);
+
+                            console.log('RESULT',result[0][0].user_id)
+                            res.cookie('session_id', result[0][0].user_id);
+                            res.json({rows: result, status: 200});
                             return;
                         })
                     })
