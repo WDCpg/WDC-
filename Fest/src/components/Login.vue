@@ -20,9 +20,8 @@
                     </div>
 
                     <div class="lowerdiv">
-                        <p><a href="/">Not a member? Sign up</a></p>
-                        <br>
                         <form action="submitLogin">
+                            <p><a href="/">Not a member? Signup</a></p>
                             <label for="email">Email</label><br>
                             <input type="text" id="email" name="email"><br><br>
                             <label for="password">Password</label><br>
@@ -30,7 +29,11 @@
                             <p><a href="/">Forgot password?</a></p>
                             <!-- GOOGLE LOGIN -->
                             <div id="google-signin-button"></div>
-                            <button type="submit" @click="submitLogin" class="signin-button">Sign in</button>
+                            <h2>or</h2>
+                            <div class="signin-button-container">
+                                <!-- <button @click="postSignUp()" type="button" class="signup">Signup</button> -->
+                                <button type="submit" @click="submitLogin" class="signin-button">Sign in</button>
+                            </div>
                         </form>
 
                     </div>

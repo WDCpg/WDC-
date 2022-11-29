@@ -12,8 +12,8 @@
                 </h1>
             </div>
             <div class="lowerdiv">
-                <h2>Email Sign up</h2>
                 <form action="/register">
+                    <h2>Email Signup</h2>
                     <label for="email">Email</label><br>
                     <input type="email" id="email" name="email" required><br><br>
                     <label for="password">Password</label><br>
@@ -21,11 +21,10 @@
                 <br>
                 <!-- GOOGLE LOGIN -->
                 <div id="google-signin-button"></div>
-                <h2>Or...</h2>
-
+                <h2>or</h2>
                 <p class="signin"><a href="/" style="text-decoration: none;">Already got an account? Sign in</a></p>
                 <div class="signup-button-container">
-                    <button @click="postSignUp()" type="button" class="signup">Sign up</button>
+                    <button @click="postSignUp()" type="button" class="signup">Signup</button>
                 </div>
                 </form>
                 <br>

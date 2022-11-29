@@ -47,7 +47,7 @@
 .outer {
     text-align: center;
     /* border-color: grey; */
-    height: 600px;
+    height: 650px;
     width: 350px;
     /* border: 1px solid grey; */
     margin: auto;
@@ -84,12 +84,26 @@ input[name=password] {
 .lowerdiv {
     position: relative;
     flex-grow: 1;
-    /* border: 1px solid grey; */
     box-align: center;
     margin: auto;
     border: 0;
     width: 100%;
 }
+
+.lowerdiv p{
+    padding-top: 20px;
+    padding-bottom:10px;
+
+}
+
+.lowerdiv form h2 {
+    font-weight:600;
+}
+
+form label{
+    font-size: 1.1em;
+}
+
 
 a {
     text-decoration: none;
@@ -97,7 +111,7 @@ a {
 }
 
 .emoji {
-    font-size: 5em;
+    font-size: 4em;
 }
 
 .signin-button {
@@ -107,17 +121,24 @@ a {
     height: 50px;
     width: 280px;
     border-radius: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
     font-weight: 600;
+    font-size: 20px;
     cursor:pointer;
 }
 
 .welcomeback {
     margin: 25px 0 0 0 ;
-    font-size: 3em;
+    font-size: 2em;
     line-height: 1em;
-    font-weight: 600;
+    font-weight: 700;
+}
+
+.signin-button-container, #google-signin-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 15px;
+    padding-bottom: 20px;
 }
