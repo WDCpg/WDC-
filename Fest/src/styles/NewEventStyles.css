@@ -5,6 +5,8 @@
     align-items: center;
 }
 
+
+
 #newEvent {
     background-color: #FFFFFF;
     padding: 35px 45px 35px 35px;
@@ -169,44 +171,70 @@ h2 {
 
 }
 
+.event-detail, .event-time, .event-location, .event-photo {
+    padding-bottom:20px;
+}
+
 .event-detail textarea{
     border-radius: 8px;
     padding-left: 10px;
     padding-right: 10px;
     width: 90%;
     resize: none;
+    font-family: "Montserrat", sans-serif;
+    font-size: 1vw;
+
 }
 
-.event-time input {
-    font-size: 0.8vw;
+.event-time input, .event-location input {
+    font-size: 0.9vw;
     height: auto;
     width: 12vw;
+    font-family: "Montserrat", sans-serif;
+    border-radius: 8px;
+    border-width:1px;
+    padding-left:10px;
+
 }
+
+/* .event-time div, .street div, .city-state div{
+    padding-bottom:10px;
+} */
+
+.event-time div, .event-location div{
+    padding-bottom: 10px;
+}
+
 .event-start {
     display: flex;
     gap:30px;
-    font-size: 1vw;
+    justify-content: space-between;
 }
+
 .event-end {
     display: flex;
     gap:30px;
-    font-size: 1vw;
+    justify-content: space-between;
+
 }
 
-
-.event-location {
-    font-size: 1vw;
+.event-start  label, .event-end  label, .event-location  label, .event-photo label{
+    font-weight:500;
+    font-size:0.9vw;
+    padding-bottom:5px;
+    display:block;
 }
+
 .city-state, .country-postcode{
     display: flex;
     flex-direction: row;
     gap: 20px;
 }
-.event-location input{
+/* .event-location input{
     font-size: 0.8vw;
     height: auto;
     width: 11vw;
-}
+} */
 .street input{
     width: 23vw;
 }
@@ -254,11 +282,11 @@ h3 {
     border-radius: 5px;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
-    text-align: left;
     color: white;
     cursor: pointer;
+    gap:10px;
 }
 .event-group input[type="radio"]:checked + label {
     background-color: #76cf9f;
@@ -283,13 +311,15 @@ h3 {
     display: flex;
     flex: 1 0 80%;
     width: auto;
-    height: 20px;
+    height: 30px;
     max-width: 356px;
 }
 .event-invite-search-text {
     width: 100%;
     height: 100%;
     border: none;
+    font-size:0.9vw;
+    outline:none;
 }
 .event-invite-search-button {
     height: 100%;

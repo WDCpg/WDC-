@@ -15,8 +15,8 @@
                     </div>
                     <nav class = "breadcrumbs">
                         <span>
-                            <a href = "/">Home</a>
-                            >
+                            <a href = "https://localhost:3000/">Home</a>
+                            /
                             <span class = "breadcrumbs">New Event</span>
                         </span>
                     </nav>
@@ -60,8 +60,7 @@
                             <div class = "emoji-clear" @click="postEmoji('U+1F389')">
                                 <button class = "emoji-clear-button" type="button">X</button>
                                 <div class = "emoji-clear-text">
-                                    <p>No</p>
-                                    <p>Emoji</p>
+                                    <p>No Emoji</p>
                                 </div>
                             </div>
                         </div>
@@ -86,12 +85,10 @@
                 <!-- ----------------------------------------------------------------------  -->
                 <!-- event detail -->
                 <div class = "event-detail">
-                    <textarea v-model="newEventData.title" @click="clearInput('title')" placeholder="Event title..." rows="2" maxlength="30"></textarea>
-                <br>
-                <br>
-                    <textarea @click="clearInput('description')" v-model="newEventData.description" placeholder="Event description..." rows="10" maxlength="300"></textarea>
+                    <textarea v-model="newEventData.title" @click="clearInput('title')" placeholder="Event Title..." rows="2" maxlength="30"></textarea>
+                    <textarea @click="clearInput('description')" v-model="newEventData.description" placeholder="Event Description..." rows="10" maxlength="300"></textarea>
                 </div>
-                <br>
+                
                 <!-- event detail end -->
                 <!-- ----------------------------------------------------------------------  -->
 
@@ -109,13 +106,12 @@
 
                     <form class = "event-end">
                         <div>
-                            <label>-End Date and Time:</label>
+                            <label>End Date and Time:</label>
                         </div>
                         <div>
                             <input type = "datetime-local" v-model="newEventData.event_end">
                         </div>
                     </form>
-                    <br>
                 </div>
                 <!-- event time end -->
                 <!-- ----------------------------------------------------------------------  -->
@@ -125,20 +121,17 @@
                 <div class = "event-location">
                     <div class = "street">
                         <label>Street</label>
-                        <br>
                         <input type="text" v-model="newEventData.street" placeholder="street...">
                     </div>
 
                     <div class = "city-state">
                         <div class = "event-location-box">
                             <label>City</label>
-                            <br>
                             <input type="text" v-model="newEventData.city" placeholder="city...">
                         </div>
 
                         <div class = "event-location-box">
                             <label>State</label>
-                            <br>
                             <input type="text" v-model="newEventData.state" placeholder="state...">
                         </div>
                     </div>
@@ -146,32 +139,26 @@
                     <div class = "country-postcode">
                         <div class = "event-location-box">
                             <label>Country</label>
-                            <br>
                             <input type="text" v-model="newEventData.country" placeholder="country...">
                         </div>
 
                         <div class = "event-location-box">
                             <label>PostCode</label>
-                            <br>
                             <input type="text" v-model="newEventData.post_code" placeholder="postcode...">
                         </div>
                     </div>
                 </div>
                 <!-- event location end -->
                 <!-- ----------------------------------------------------------------------  -->
-
-                <br>
                 <!-- ----------------------------------------------------------------------  -->
                 <!-- event photo -->
                 <div class = "event-photo">
                     <div><label>Upload a cover photo</label> </div>
                     <div><input type="file" @change="uploadImage" name="cover" accept="image/*"></div>
                 </div>
-                <br>
                 <!-- event photo end -->
                 <!-- ----------------------------------------------------------------------  -->
             </div>
-            <hr>
             <!-- event info end -->
             <!-- ----------------------------------------------------------------------  -->
 
@@ -185,38 +172,37 @@
                 <div class = "event-group">
                     <input type="radio" id="closeFriend" name="eventGroup" @click="postPrivacy('Close Friend')" v-model="newEventData.privacy" value="Close Friend">
                     <label for="closeFriend" class="event-group-selector">
-                            <div>&#128525;</div>
+                            <div class="icon">&#128525;</div>
                             <p>
-                                Close <br> Friends
+                                Close Friends
                             </p>
                     </label>
 
                     <input type="radio" id="allFriend" name="eventGroup" @click="postPrivacy('All Friend')" v-model="newEventData.privacy" value="All Friend">
                     <label for="allFriend" class="event-group-selector">
-                            <div>&#129321;</div>
+                            <div class="icon">&#129321;</div>
                             <p>
-                                All <br> Friends
+                                All Friends
                             </p>
                     </label>
 
                     <input type="radio" id="allPublic" name="eventGroup" @click="postPrivacy('All Public')" v-model="newEventData.privacy" value="All Public">
                     <label for="allPublic" class="event-group-selector">
-                            <div>&#128516;</div>
+                            <div class="icon">&#128516;</div>
                             <p>
-                                All <br> Public
+                                All Public
                             </p>
                     </label>
 
                 </div>
                 <!-- event group end -->
                 <!-- ----------------------------------------------------------------------  -->
-                <br>
 
                 <!-- ----------------------------------------------------------------------  -->
                 <!-- event invite -->
                 <div class = "event-invite">
                     <form class = "event-invite-search">
-                        <input class="event-invite-search-text" type="text" placeholder="Search friend to invite..." name ="searchFriend"
+                        <input class="event-invite-search-text" type="text" placeholder="Search friends to invite..." name ="searchFriend"
                         v-model="search" @focus="showFriends = true"/>
                         <svg class = "event-invite-search-button" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg>
                     </form>
